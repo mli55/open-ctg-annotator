@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1302,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 71,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -67.667,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -65.267,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -63.367,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -62.067,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -40.15,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -38.583,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -37.167,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -35.433,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -32.933,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -31.517,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -29.867,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -20.6,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -19.8,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -18.2,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -16.933,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -212,7 +212,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -14.383,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d17",
@@ -225,7 +225,7 @@
    "review": "accepted",
    "type": "prolonged",
    "nadir_min": -8.817,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d18",
@@ -238,7 +238,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -6.583,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d19",
@@ -251,7 +251,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -5.533,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d20",
@@ -264,7 +264,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -3.683,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm48",
@@ -277,7 +277,7 @@
    "type": null,
    "det_type": null,
    "nadir_min": -1.033,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   }
  ],
@@ -486,37 +486,37 @@
  "history": [
   {
    "t": "2026-08-20T21:32:40.954098+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 21 decels (11 late, 7 uc-flagged-untyped, 1 prolonged, 1 variable, 1 unsure); 1 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:32:40.954098+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. The late-pattern record: a uniform train of single-trough decels whose nadirs lag the contraction peaks by +30..+55s with recovery after contraction end - d1-d11 all typed late on that timing+shape, even where onset-to-nadir is 8-22s (the NICHD 30s gate would miscall these variable; that is the known failure mode of the shipped rule). After -21 the toco is gone: d12-d16, d18 are smooth single troughs left untyped with the UC flag (the late train plausibly continues but timing is unverifiable); d19 V-shaped -> variable+UC; d17 is a 144s jagged complex -> prolonged+UC. FHR gap -29..-21.5. Added dm48 -1.2..-0.85 (post-accel trough to 96, no UC, ambiguous -> unsure). Sub-threshold dip at -2.1 (107, depth ~14) not annotated."
+   "by": "mengning",
+   "action": "note: First pass. The late-pattern record: a uniform train of single-trough decels whose nadirs lag the contraction peaks by +30..+55s with recovery after contraction end - d1-d11 all typed late on that timing+shape, even where onset-to-nadir is 8-22s (the NICHD 30s gate would miscall these variable; that is the known failure mode of the shipped rule). After -21 the toco is gone: d12-d16, d18 are smooth single troughs left untyped with the UC flag (the late train plausibly continues but timing is unverifiable); d19 V-shaped -> variable+UC; d17 is a 144s jagged complex -> prolonged+UC. FHR gap -29..-21.5. Added dm48 -1.2..-0.85 (post-accel trough to 96, no UC, ambiguous -> unsure). Sub-threshold dip at -2.1 (107, depth ~14) not annotated."
   },
   {
    "t": "2026-08-20T21:32:40.954098+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 7 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
   },
   {
    "t": "2026-08-20T21:32:40.954098+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: n/a merged into unsure (7 events)"
   },
   {
    "t": "2026-08-20T21:32:40.954098+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (8 events)"
   },
   {
    "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 27 contractions with 22 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

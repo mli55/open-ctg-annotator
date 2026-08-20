@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1101,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 57,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "early",
    "nadir_min": -45.583,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -40.533,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -32.95,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -30.617,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -26.667,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -25.2,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -23.517,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.083,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -18.1,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -14.867,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -11.65,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -8.583,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -6.1,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -3.817,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -2.983,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -362,17 +362,17 @@
  "history": [
   {
    "t": "2026-08-20T21:14:58.739124+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 15 decels (14 variable, 1 early); 0 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:14:58.739124+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Recurrent deep decels (nadirs 60-100) every 2-3 min from -46 to delivery; classic evolving pattern for pH 7.16. d1 typed early (gradual, mirrors c22, nadir-lag +16s) - borderline vs late, flag for review. All others typed variable on abrupt/jagged morphology; d6-d9 carry the UC flag (toco lost -26..-16). Added contraction cm39 (-27.1..-26.15): clear toco hump the detector missed, it is the contraction linked to d5. Terminal 9 min: baseline estimate collapses to ~95 while true baseline is ~130-140, so shipped depth/lag features there are unreliable; the -9..-6 stretch (d12+d13 with only partial recovery between) is arguably one prolonged complex - kept detector delineation, noted for reviewer. Tail after -2.6 sits ~100 with no further discrete decels."
+   "by": "mengning",
+   "action": "note: First pass. Recurrent deep decels (nadirs 60-100) every 2-3 min from -46 to delivery; classic evolving pattern for pH 7.16. d1 typed early (gradual, mirrors c22, nadir-lag +16s) - borderline vs late, flag for review. All others typed variable on abrupt/jagged morphology; d6-d9 carry the UC flag (toco lost -26..-16). Added contraction cm39 (-27.1..-26.15): clear toco hump the detector missed, it is the contraction linked to d5. Terminal 9 min: baseline estimate collapses to ~95 while true baseline is ~130-140, so shipped depth/lag features there are unreliable; the -9..-6 stretch (d12+d13 with only partial recovery between) is arguably one prolonged complex - kept detector delineation, noted for reviewer. Tail after -2.6 sits ~100 with no further discrete decels."
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 24 contractions with 17 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

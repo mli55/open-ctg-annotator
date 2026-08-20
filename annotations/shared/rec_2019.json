@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 2019,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 30,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -77.204,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -75.104,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -71.404,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -69.654,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -65.104,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -63.187,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -59.821,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -57.337,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -53.354,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -51.054,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -48.087,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -45.421,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -35.287,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -32.937,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   },
   {
@@ -200,7 +200,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -29.721,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -213,7 +213,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -28.171,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d17",
@@ -226,7 +226,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -26.587,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d18",
@@ -239,7 +239,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.254,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d19",
@@ -252,7 +252,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -23.004,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d20",
@@ -265,7 +265,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -20.571,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -277,7 +277,7 @@
    "b0": -75.8,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c22",
@@ -287,7 +287,7 @@
    "b0": -35.62,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c23",
@@ -297,7 +297,7 @@
    "b0": -33.17,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c24",
@@ -307,7 +307,7 @@
    "b0": -29.9,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c25",
@@ -317,7 +317,7 @@
    "b0": -28.72,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c26",
@@ -327,7 +327,7 @@
    "b0": -26.84,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c27",
@@ -337,7 +337,7 @@
    "b0": -26.1,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c28",
@@ -347,7 +347,7 @@
    "b0": -25.42,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c29",
@@ -357,7 +357,7 @@
    "b0": -21.1,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "deleted": [],
@@ -365,32 +365,32 @@
  "history": [
   {
    "t": "2026-08-20T21:50:09.541804+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 20 decels (8 uc-flagged-untyped, 8 variable, 3 late, 1 unsure); 0 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:50:09.541804+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. A regular train of broad gradual troughs (durations 50-86s, onset-to-nadir mostly 30-50s) every 3-5 min - the morphology of an early/late train, but the toco is DEAD for the first hour, so d2, d5-d11 are honestly left untyped with the UC flag: without contraction timing, early vs late is unverifiable (this is the record where that policy matters most). d1 late (c21 readable, +49s); after toco returns: d13 late (+40s), d15 late (+58s), d14 unsure (unlinked), d16, d17-d19 variable, d20 variable+UC. d3, d4, d12 jagged double troughs -> variable+UC. FHR gaps: -44..-36.5 fragmentary, and the record ENDS at -18.5 - the last 18 min before delivery are missing."
+   "by": "mengning",
+   "action": "note: First pass. A regular train of broad gradual troughs (durations 50-86s, onset-to-nadir mostly 30-50s) every 3-5 min - the morphology of an early/late train, but the toco is DEAD for the first hour, so d2, d5-d11 are honestly left untyped with the UC flag: without contraction timing, early vs late is unverifiable (this is the record where that policy matters most). d1 late (c21 readable, +49s); after toco returns: d13 late (+40s), d15 late (+58s), d14 unsure (unlinked), d16, d17-d19 variable, d20 variable+UC. d3, d4, d12 jagged double troughs -> variable+UC. FHR gaps: -44..-36.5 fragmentary, and the record ENDS at -18.5 - the last 18 min before delivery are missing."
   },
   {
    "t": "2026-08-20T21:50:09.541804+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 8 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
   },
   {
    "t": "2026-08-20T21:50:09.541804+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: n/a merged into unsure (8 events)"
   },
   {
    "t": "2026-08-20T21:50:09.541804+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (9 events)"
   },
   {
    "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
   }
  ]

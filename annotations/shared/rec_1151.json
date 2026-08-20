@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1151,
- "annotator": "claude",
+ "annotator": "mengning",
  "notes": "",
  "next_id": 10,
  "decels": [
@@ -16,7 +16,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -8.0,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm7",
@@ -29,7 +29,7 @@
    "type": null,
    "det_type": null,
    "nadir_min": -4.933,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   },
   {
@@ -43,7 +43,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -3.333,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm9",
@@ -56,7 +56,7 @@
    "type": null,
    "det_type": null,
    "nadir_min": -1.8,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   }
  ],
@@ -69,7 +69,7 @@
    "b0": -51.03,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c2",
@@ -79,7 +79,7 @@
    "b0": -50.16,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c3",
@@ -89,7 +89,7 @@
    "b0": -49.31,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c4",
@@ -99,7 +99,7 @@
    "b0": -47.83,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c5",
@@ -109,7 +109,7 @@
    "b0": -25.55,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "deleted": [],
@@ -117,17 +117,17 @@
  "history": [
   {
    "t": "2026-08-20T21:12:21.740914+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 4 decels (2 variable, 2 unclassified); 4 added, 0 detector events deleted"
   },
   {
    "t": "2026-08-20T21:12:21.740914+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. UC essentially unreadable throughout (toco only -52..-48; c5 is a flat ~24 plateau of dubious validity). Detector found 0 decels; four small events added, all UC-flagged: -8.2..-7.85 (nadir 92), -5.1..-4.6 (plateau 104-107 ~30 s, ambiguous shape, unsure), -3.45..-3.2 (sharp V to 102), -2.0..-1.7 (dip to 108 off an accelerative second-stage segment, marginal, unsure). Second stage (from -5) is saltatory; delineation there is uncertain. The -12.1 post-accel undershoot (108, depth ~11) was judged sub-threshold."
+   "by": "mengning",
+   "action": "note: First pass. UC essentially unreadable throughout (toco only -52..-48; c5 is a flat ~24 plateau of dubious validity). Detector found 0 decels; four small events added, all UC-flagged: -8.2..-7.85 (nadir 92), -5.1..-4.6 (plateau 104-107 ~30 s, ambiguous shape, unsure), -3.45..-3.2 (sharp V to 102), -2.0..-1.7 (dip to 108 off an accelerative second-stage segment, marginal, unsure). Second stage (from -5) is saltatory; delineation there is uncertain. The -12.1 post-accel undershoot (108, depth ~11) was judged sub-threshold."
   },
   {
    "t": "2026-08-20T23:39:13.282029+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "2 ambiguous event(s) from the first pass flagged as \u2691 questions"
   }
  ]

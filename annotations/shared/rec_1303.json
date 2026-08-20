@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1303,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 87,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -68.583,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -65.717,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm56",
@@ -43,7 +43,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -63.8,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -58.717,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -53.817,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -42.533,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm57",
@@ -95,7 +95,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -27.483,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "prolonged",
    "nadir_min": -24.25,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.683,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -19.117,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -17.917,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -15.4,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -13.733,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -12.117,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -10.233,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -212,7 +212,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -5.567,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   },
   {
@@ -226,7 +226,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -3.233,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d19",
@@ -239,7 +239,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -0.933,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -518,7 +518,7 @@
    "review": "deleted",
    "type": null,
    "reason": "false positive: flat FHR / data gap in window, depth 7 bpm",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "list": "decels",
@@ -532,7 +532,7 @@
    "review": "deleted",
    "type": null,
    "reason": "false positive: depth 7 bpm; the real trough -6.8..-4.9 is d16",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "list": "decels",
@@ -546,34 +546,34 @@
    "review": "deleted",
    "type": null,
    "reason": "false positive: depth 8 bpm, sits in recovery between d16 and d18",
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "updated": "2026-08-20T23:25:55.776774+00:00",
  "history": [
   {
    "t": "2026-08-20T21:34:57.014866+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 18 decels (11 variable, 5 late, 1 prolonged, 1 unsure); 2 added, 3 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:34:57.014866+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Three detector false positives DELETED: d3, d15, d17 - each window holds near-flat FHR (depth 7-8 bpm), no qualifying decel (d15's real neighbouring trough is separately covered by d16). Lates: d1 (o2n 52s, +48s), d4, d6, d9, d11 - gradual troughs lagging their contraction peaks. d7 typed prolonged (124s gradual fall to 88; late-morphology noted). d16 unsure (gradual trough to 92, toco amplitude too weak to trust timing). d18, d19 sharp plunges to 55 with UC flag (toco gone after -4). Adds: dm58 -64.12..-63.7 (V to 98 after c22 peak, missed between d2 and the false d3) and dm59 -27.68..-27.3 (abrupt V to 86 during c40 decline), both variable. Recapture artifact spikes (190) inside d11/d12 windows noted."
+   "by": "mengning",
+   "action": "note: First pass. Three detector false positives DELETED: d3, d15, d17 - each window holds near-flat FHR (depth 7-8 bpm), no qualifying decel (d15's real neighbouring trough is separately covered by d16). Lates: d1 (o2n 52s, +48s), d4, d6, d9, d11 - gradual troughs lagging their contraction peaks. d7 typed prolonged (124s gradual fall to 88; late-morphology noted). d16 unsure (gradual trough to 92, toco amplitude too weak to trust timing). d18, d19 sharp plunges to 55 with UC flag (toco gone after -4). Adds: dm58 -64.12..-63.7 (V to 98 after c22 peak, missed between d2 and the false d3) and dm59 -27.68..-27.3 (abrupt V to 86 during c40 decline), both variable. Recapture artifact spikes (190) inside d11/d12 windows noted."
   },
   {
    "t": "2026-08-20T21:34:57.014866+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (1 events)"
   },
   {
    "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 36 contractions with 29 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

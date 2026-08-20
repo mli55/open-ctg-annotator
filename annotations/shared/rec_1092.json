@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1092,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 33,
@@ -17,7 +17,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -43.567,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm32",
@@ -30,7 +30,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -27.65,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -42,7 +42,7 @@
    "b0": -59.89,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c2",
@@ -52,7 +52,7 @@
    "b0": -57.12,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c3",
@@ -62,7 +62,7 @@
    "b0": -54.72,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c4",
@@ -72,7 +72,7 @@
    "b0": -52.65,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c5",
@@ -82,7 +82,7 @@
    "b0": -51.85,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c6",
@@ -92,7 +92,7 @@
    "b0": -48.9,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c7",
@@ -102,7 +102,7 @@
    "b0": -47.81,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c8",
@@ -112,7 +112,7 @@
    "b0": -44.2,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c9",
@@ -122,7 +122,7 @@
    "b0": -41.54,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c10",
@@ -132,7 +132,7 @@
    "b0": -41.1,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c11",
@@ -142,7 +142,7 @@
    "b0": -39.65,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c12",
@@ -152,7 +152,7 @@
    "b0": -36.6,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c13",
@@ -162,7 +162,7 @@
    "b0": -35.17,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c14",
@@ -172,7 +172,7 @@
    "b0": -33.62,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c15",
@@ -182,7 +182,7 @@
    "b0": -31.52,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c16",
@@ -192,7 +192,7 @@
    "b0": -28.21,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c17",
@@ -202,7 +202,7 @@
    "b0": -27.76,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c18",
@@ -212,7 +212,7 @@
    "b0": -25.09,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c19",
@@ -222,7 +222,7 @@
    "b0": -22.14,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c20",
@@ -232,7 +232,7 @@
    "b0": -20.86,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c21",
@@ -242,7 +242,7 @@
    "b0": -18.88,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c22",
@@ -252,7 +252,7 @@
    "b0": -16.15,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c23",
@@ -262,7 +262,7 @@
    "b0": -15.08,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c24",
@@ -272,7 +272,7 @@
    "b0": -11.85,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c25",
@@ -282,7 +282,7 @@
    "b0": -10.44,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c26",
@@ -292,7 +292,7 @@
    "b0": -9.25,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c27",
@@ -302,7 +302,7 @@
    "b0": -6.07,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c28",
@@ -312,7 +312,7 @@
    "b0": -4.98,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c29",
@@ -322,7 +322,7 @@
    "b0": -4.33,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c30",
@@ -332,7 +332,7 @@
    "b0": -3.23,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "deleted": [],
@@ -340,13 +340,13 @@
  "history": [
   {
    "t": "2026-08-20T21:12:21.642209+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 2 decels (2 variable); 2 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:12:21.642209+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. High-variability trace, baseline ~118, detector found 0 decels. Two clear misses added: -43.78..-43.28 (nadir 75, depth ~45, abrupt double-V in the quiet interval after c8) and -27.75..-27.42 (nadir 88, right after c17). Other sharp negative excursions (to 95-105 for 10-15 s) read as variability swings, not discrete decels - left unannotated. Regular contractions, accepted."
+   "by": "mengning",
+   "action": "note: First pass. High-variability trace, baseline ~118, detector found 0 decels. Two clear misses added: -43.78..-43.28 (nadir 75, depth ~45, abrupt double-V in the quiet interval after c8) and -27.75..-27.42 (nadir 88, right after c17). Other sharp negative excursions (to 95-105 for 10-15 s) read as variability swings, not discrete decels - left unannotated. Regular contractions, accepted."
   }
  ]
 }

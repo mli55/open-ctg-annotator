@@ -47,7 +47,8 @@
   button:hover{background:#f2f2f7}
   button.on{background:var(--blue); border-color:var(--blue); color:#fff}
   canvas{display:block; width:100%; border:1px solid var(--line); border-radius:10px;
-    background:var(--card)}
+    background:var(--card); user-select:none; -webkit-user-select:none}
+  aside#recsWrap, aside#panel .pairHead, #evList, #recFilter{user-select:none; -webkit-user-select:none}
   #mini{height:52px; margin-bottom:6px}
   #fhr{flex:65 1 0; min-height:0}
   #uc{flex:35 1 0; min-height:0; margin-top:6px}
@@ -516,12 +517,14 @@ function renderRecs(){
     row.className = 'recRow' + (p.id === S.rid ? ' cur' : '');
     let stTxt = '·', stStyle = 'color:var(--dim)', tip = '';
     if (st){
-      if (st.decels_done < st.decels || st.cons_done < st.cons){
-        stTxt = `${st.decels_done}/${st.decels}`; stStyle = 'color:var(--orange)';
-      } else if (st.n_flag > 0){
+      if (st.n_flag > 0){
         stTxt = '⚑' + st.n_flag;
         stStyle = 'color:var(--orange);font-size:13px;font-weight:700';
         tip = ` · ${st.n_flag} open question(s)`;
+      } else if (st.decels_done < st.decels || st.cons_done < st.cons){
+        const done = st.decels_done + st.cons_done, tot = st.decels + st.cons;
+        stTxt = `${done}/${tot}`;
+        tip = ' · events reviewed / total';
       }
     }
     row.innerHTML = `<span class="${p.hypoxia ? 'dotH' : 'dotN'}"></span>
@@ -740,6 +743,7 @@ function hitTest(pane, px, w){
 function setupPane(id){
   const c = $(id);
   c.addEventListener('mousedown', ev => {
+    ev.preventDefault();
     const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
     const t = px2t(px, w);
     if (S.addMode){

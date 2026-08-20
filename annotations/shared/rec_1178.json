@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1178,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 60,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -38.483,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -35.0,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -32.45,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -27.783,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -25.433,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.383,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -95,7 +95,7 @@
    "review": "edited",
    "type": null,
    "nadir_min": -18.633,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   },
   {
@@ -109,7 +109,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -14.317,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -122,7 +122,7 @@
    "review": "accepted",
    "type": "prolonged",
    "nadir_min": -10.55,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -135,7 +135,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -6.333,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -148,7 +148,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -3.583,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -161,7 +161,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -0.6,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -386,44 +386,44 @@
    "review": "deleted",
    "type": null,
    "reason": "detector bridged 3.5-min FHR signal loss (-22..-18.7); visible portion covered by d8",
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "updated": "2026-08-20T23:25:55.776774+00:00",
  "history": [
   {
    "t": "2026-08-20T21:17:19.108154+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 12 decels (6 variable, 3 late, 1 unsure, 1 prolonged, 1 uc-flagged-untyped); 0 added, 1 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:17:19.108154+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Good UC coverage, so early/late typing is mostly possible here. Three lates: d4 (-28.4, gradual o2n 37s, nadir +28s after c26 peak, slow recovery), d9 (-14.9, gradual, +45s after c31), d11 (-7.0, gradual o2n 31s, +48s). d10 (-10.65..-8.15) lasts 149s -> prolonged (abrupt onset noted). d7 DELETED: the detector bridged a 3.5-min FHR signal loss (-22..-18.7) into one 221s pseudo-event; the visible sub-baseline portion after re-acquisition is d8, whose onset I extended left to -18.65 - typed unsure because the true onset is unobserved. d13 (terminal, -1.2..0, gradual, UC missing) left untyped with the UC flag. d1-d3, d5, d6, d12: abrupt/jagged -> variable. High-variability spikes in -52..-39 are swings, not decels; brief pre-dip at -6.95 treated as part of d11's onset context, boundary kept."
+   "by": "mengning",
+   "action": "note: First pass. Good UC coverage, so early/late typing is mostly possible here. Three lates: d4 (-28.4, gradual o2n 37s, nadir +28s after c26 peak, slow recovery), d9 (-14.9, gradual, +45s after c31), d11 (-7.0, gradual o2n 31s, +48s). d10 (-10.65..-8.15) lasts 149s -> prolonged (abrupt onset noted). d7 DELETED: the detector bridged a 3.5-min FHR signal loss (-22..-18.7) into one 221s pseudo-event; the visible sub-baseline portion after re-acquisition is d8, whose onset I extended left to -18.65 - typed unsure because the true onset is unobserved. d13 (terminal, -1.2..0, gradual, UC missing) left untyped with the UC flag. d1-d3, d5, d6, d12: abrupt/jagged -> variable. High-variability spikes in -52..-39 are swings, not decels; brief pre-dip at -6.95 treated as part of d11's onset context, boundary kept."
   },
   {
    "t": "2026-08-20T21:17:19.108154+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 1 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
   },
   {
    "t": "2026-08-20T21:17:19.108154+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: n/a merged into unsure (1 events)"
   },
   {
    "t": "2026-08-20T21:17:19.108154+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (2 events)"
   },
   {
    "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 23 contractions with 23 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

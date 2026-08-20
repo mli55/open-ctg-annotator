@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1058,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 19,
@@ -15,7 +15,7 @@
    "b0": -84.6,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c2",
@@ -25,7 +25,7 @@
    "b0": -83.52,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c3",
@@ -35,7 +35,7 @@
    "b0": -80.44,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c4",
@@ -45,7 +45,7 @@
    "b0": -77.41,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c5",
@@ -55,7 +55,7 @@
    "b0": -76.5,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c6",
@@ -65,7 +65,7 @@
    "b0": -74.77,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c7",
@@ -75,7 +75,7 @@
    "b0": -73.12,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c8",
@@ -85,7 +85,7 @@
    "b0": -70.84,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c9",
@@ -95,7 +95,7 @@
    "b0": -69.34,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c10",
@@ -105,7 +105,7 @@
    "b0": -66.19,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c11",
@@ -115,7 +115,7 @@
    "b0": -62.42,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c12",
@@ -125,7 +125,7 @@
    "b0": -59.1,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c13",
@@ -135,7 +135,7 @@
    "b0": -51.28,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c14",
@@ -145,7 +145,7 @@
    "b0": -50.57,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c15",
@@ -155,7 +155,7 @@
    "b0": -49.01,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c16",
@@ -165,7 +165,7 @@
    "b0": -46.96,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c17",
@@ -175,7 +175,7 @@
    "b0": -46.13,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c18",
@@ -185,7 +185,7 @@
    "b0": -43.28,
    "origin": "detector",
    "review": "accepted",
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "deleted": [],
@@ -193,13 +193,13 @@
  "history": [
   {
    "t": "2026-08-20T21:12:21.556240+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 0 decels (); 0 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:12:21.556240+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. FHR readable only -86..-44 (stable ~135, low variability); after -44 the FHR channel is almost entirely lost. The sparse fragments -13..-4 sit at 75-80 bpm: terminal bradycardia consistent with pH 7.05, but >=10 min below baseline is a baseline change (bradycardia), not a deceleration, and coverage is too fragmentary to delineate events - so zero decel annotations is the honest call; the pathology lives in the missing-signal / bradycardia domain. c3 spans 3.5 min (-84.5..-81), more likely tonus drift than one contraction - accepted but flagged for review."
+   "by": "mengning",
+   "action": "note: First pass. FHR readable only -86..-44 (stable ~135, low variability); after -44 the FHR channel is almost entirely lost. The sparse fragments -13..-4 sit at 75-80 bpm: terminal bradycardia consistent with pH 7.05, but >=10 min below baseline is a baseline change (bradycardia), not a deceleration, and coverage is too fragmentary to delineate events - so zero decel annotations is the honest call; the pathology lives in the missing-signal / bradycardia domain. c3 spans 3.5 min (-84.5..-81), more likely tonus drift than one contraction - accepted but flagged for review."
   }
  ]
 }

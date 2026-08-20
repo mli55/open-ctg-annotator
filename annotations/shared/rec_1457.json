@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1457,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 103,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -69.717,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -68.15,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -62.717,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -53.133,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -48.417,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -46.383,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -44.567,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -42.55,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm67",
@@ -121,7 +121,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -42.55,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -41.8,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -40.1,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -38.333,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -31.817,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -30.067,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -28.217,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -212,7 +212,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -26.533,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d17",
@@ -225,7 +225,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -25.117,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d18",
@@ -238,7 +238,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.2,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d19",
@@ -251,7 +251,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -23.4,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d20",
@@ -264,7 +264,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.6,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d21",
@@ -277,7 +277,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -17.317,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d22",
@@ -290,7 +290,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -15.433,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d23",
@@ -303,7 +303,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -13.333,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d24",
@@ -316,7 +316,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -11.217,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d25",
@@ -329,7 +329,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -9.117,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d26",
@@ -342,7 +342,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -7.6,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d27",
@@ -355,7 +355,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -6.733,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d28",
@@ -368,7 +368,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -5.0,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d29",
@@ -381,7 +381,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -0.983,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -714,24 +714,24 @@
    "review": "deleted",
    "type": null,
    "reason": "window sits on an FHR signal gap - no data, no decel (all event stats undefined)",
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "updated": "2026-08-20T23:25:55.776774+00:00",
  "history": [
   {
    "t": "2026-08-20T21:47:46.874449+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 29 decels (27 variable, 2 late); 1 added, 1 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:47:46.874449+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Baseline ~140; very frequent short variables (nadirs 75-125) with good UC coverage - the archetypal recurrent-variable record. d6 and d7 typed late (gradual single troughs, nadirs +26..+29s after their contraction peaks, recovery after contraction end) - matches the 2 expert lates here. d3 DELETED: its window covers a pure FHR signal gap. Added dm67 -42.75..-42.4 (V to 93 on a contraction peak, unshaded twin of d10). The -27..-24.5 cluster is dense recurrent variables; d16/d17 delineation there is loose but acceptable. d2 and d22 are marginal (depth 15-16) - kept, reviewer may veto."
+   "by": "mengning",
+   "action": "note: First pass. Baseline ~140; very frequent short variables (nadirs 75-125) with good UC coverage - the archetypal recurrent-variable record. d6 and d7 typed late (gradual single troughs, nadirs +26..+29s after their contraction peaks, recovery after contraction end) - matches the 2 expert lates here. d3 DELETED: its window covers a pure FHR signal gap. Added dm67 -42.75..-42.4 (V to 93 on a contraction peak, unshaded twin of d10). The -27..-24.5 cluster is dense recurrent variables; d16/d17 delineation there is loose but acceptable. d2 and d22 are marginal (depth 15-16) - kept, reviewer may veto."
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 37 contractions with 35 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

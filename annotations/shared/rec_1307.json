@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1307,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 62,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -69.467,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -67.683,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -65.4,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -63.883,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm42",
@@ -69,7 +69,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -61.983,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -60.4,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -59.133,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -33.783,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -30.733,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -29.0,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -26.133,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.05,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.317,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -17.433,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -15.1,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -212,7 +212,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -13.167,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -225,7 +225,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -11.317,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d17",
@@ -238,7 +238,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -7.95,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d18",
@@ -251,7 +251,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -6.167,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -440,24 +440,24 @@
    "review": "deleted",
    "type": null,
    "reason": "terminal bradycardia -5.2..0 (baseline change, fragmented signal), not a discrete decel",
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "updated": "2026-08-20T23:25:55.776774+00:00",
  "history": [
   {
    "t": "2026-08-20T21:37:02.235727+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 19 decels (19 variable); 1 added, 1 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:37:02.235727+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Recurrent deep narrow V decels (nadirs 55-90) with quick recoveries - classic variables; all detector events d1-d18 typed variable (d5, d8, d10 are deeper double-V complexes). d14, d15 carry the UC flag. d19 DELETED: from -5.2 to delivery the FHR sits at 50-65 for over 4 min in heavily fragmented signal - terminal bradycardia (baseline change), not a discrete decel; flagged in notes exactly like rec 1058 (surprising given pH 7.26 - possibly late cord-gas or maternal-HR capture; reviewer please look). Added dm61 -62.07..-61.85 (121->85 during c24 with overshoot recovery -> variable). Toco clipped at 100 around -18..-11 (c40) and -5..-2 (c41); sustained 90-100 plateau -13..-11 noted (possible hypertonus)."
+   "by": "mengning",
+   "action": "note: First pass. Recurrent deep narrow V decels (nadirs 55-90) with quick recoveries - classic variables; all detector events d1-d18 typed variable (d5, d8, d10 are deeper double-V complexes). d14, d15 carry the UC flag. d19 DELETED: from -5.2 to delivery the FHR sits at 50-65 for over 4 min in heavily fragmented signal - terminal bradycardia (baseline change), not a discrete decel; flagged in notes exactly like rec 1058 (surprising given pH 7.26 - possibly late cord-gas or maternal-HR capture; reviewer please look). Added dm61 -62.07..-61.85 (121->85 during c24 with overshoot recovery -> variable). Toco clipped at 100 around -18..-11 (c40) and -5..-2 (c41); sustained 90-100 plateau -13..-11 noted (possible hypertonus)."
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 22 contractions with 19 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

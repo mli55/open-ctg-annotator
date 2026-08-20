@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1485,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 97,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -84.929,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -81.729,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -76.779,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -74.879,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -73.112,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -72.412,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -69.846,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "prolonged",
    "nadir_min": -53.912,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -41.829,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -40.879,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -38.946,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "prolonged",
    "nadir_min": -35.696,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -32.429,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -26.662,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -25.562,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -212,7 +212,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.029,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d17",
@@ -225,7 +225,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -22.096,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d18",
@@ -238,7 +238,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -19.812,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d19",
@@ -251,7 +251,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -13.963,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d20",
@@ -264,7 +264,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -8.812,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d21",
@@ -277,7 +277,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -4.763,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d22",
@@ -290,7 +290,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -3.446,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d23",
@@ -303,7 +303,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -2.496,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm64",
@@ -316,7 +316,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -1.162,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d24",
@@ -329,7 +329,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -0.429,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -627,32 +627,32 @@
  "history": [
   {
    "t": "2026-08-20T21:49:06.291769+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 25 decels (22 variable, 2 prolonged, 1 uc-flagged-untyped); 1 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:49:06.291769+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "note: Claude first pass (exemplar record #2, pH 7.16). Repeated multi-minute depressions: -78..-70 is one ~8-min prolonged complex with partial recoveries that the detector split into d3-d7 - each piece typed variable on its jagged morphology, but the reviewer should consider reading them as a single prolonged event (>2min pieces d8 140s and d12 164s are typed prolonged). Terminal collapse from -7: baseline falls to ~85 with recurrent deep troughs (d21-d24). Added dm64 -1.5..-0.88 (trough at 60-65 between d23 and d24, missed) -> variable. d2 left untyped+UC (smooth gradual trough, toco missing); d1 variable+UC. Toco elsewhere shows clipped 75-plateaus but is readable. This is the record where typing agreement was lowest in decel_analysis; most events here are deep jagged variables rather than early/late."
   },
   {
    "t": "2026-08-20T21:49:06.291769+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 1 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
   },
   {
    "t": "2026-08-20T21:49:06.291769+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: n/a merged into unsure (1 events)"
   },
   {
    "t": "2026-08-20T21:49:06.291769+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (1 events)"
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 39 contractions with 32 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -68.217,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -67.35,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -63.25,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -57.317,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -53,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -50,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -46.95,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -42.417,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -38.483,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -37.817,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -34.233,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -30.367,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -26.967,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -22.9,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -19.517,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -212,7 +212,7 @@
    "review": "accepted",
    "type": "prolonged",
    "nadir_min": -15.15,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d17",
@@ -225,7 +225,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -11.483,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d18",
@@ -238,7 +238,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -5.1,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d19",
@@ -251,7 +251,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -3.817,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d20",
@@ -264,7 +264,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -0.233,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -400,27 +400,27 @@
  "history": [
   {
    "t": "2026-08-20T21:40:40.378687+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 20 decels (16 variable, 2 uc-flagged-untyped, 1 late, 1 prolonged); 0 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:40:40.378687+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Baseline 135 declining to ~95 at delivery. Mostly deep U/V variables (nadirs 63-92) with quick recoveries. d5 typed late (stepped gradual decline o2n 71s, nadir +30s after c25, recovery after). d16 prolonged (174s trough at 75-85 with recapture-artifact spikes to 170). d1 is a 98s artifact-ridden complex (rapid 90-160 switching, possible maternal capture) kept as variable - reviewer please check. d11 and d20 left untyped with UC flag (gradual troughs, toco dead); d17 variable+UC flag (toco 38%). d20 is the terminal decline to 60-70 truncated at delivery. Toco 90-100 plateau -5.5..-3.7 looks clipped. Zoom check at -4.3 found no missed event; no adds, no deletes."
+   "by": "mengning",
+   "action": "note: First pass. Baseline 135 declining to ~95 at delivery. Mostly deep U/V variables (nadirs 63-92) with quick recoveries. d5 typed late (stepped gradual decline o2n 71s, nadir +30s after c25, recovery after). d16 prolonged (174s trough at 75-85 with recapture-artifact spikes to 170). d1 is a 98s artifact-ridden complex (rapid 90-160 switching, possible maternal capture) kept as variable - reviewer please check. d11 and d20 left untyped with UC flag (gradual troughs, toco dead); d17 variable+UC flag (toco 38%). d20 is the terminal decline to 60-70 truncated at delivery. Toco 90-100 plateau -5.5..-3.7 looks clipped. Zoom check at -4.3 found no missed event; no adds, no deletes."
   },
   {
    "t": "2026-08-20T21:40:40.378687+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 2 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
   },
   {
    "t": "2026-08-20T21:40:40.378687+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: n/a merged into unsure (2 events)"
   },
   {
    "t": "2026-08-20T21:40:40.378687+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (2 events)"
   },
   {
@@ -520,7 +520,7 @@
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 20 contractions with 14 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

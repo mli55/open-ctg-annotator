@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1358,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 57,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -79.404,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -77.921,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -73.338,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -71.721,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -70.404,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -64.821,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -63.471,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -62.488,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -60.454,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -59.071,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -55.304,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -54.738,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -49.321,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -47.504,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -45.488,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -212,7 +212,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -41.621,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   },
   {
@@ -226,7 +226,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -32.404,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -389,27 +389,27 @@
  "history": [
   {
    "t": "2026-08-20T21:43:33.549872+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 17 decels (11 variable, 5 late, 1 unsure); 0 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:43:33.549872+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Progressive tachycardia: baseline climbs 155 -> 188 across the record. FHR ENDS at -28.5 - the last 28 minutes before delivery are entirely missing (pH 7.14; the outcome-proximal window is unobserved). Lates: d2, d3, d6 (107s near-prolonged, gradual 86s), d7, d10 - gradual troughs lagging contraction peaks. d13+d14 are one deep complex (180 -> 55, trough 65-90) split by a signal gap; kept as detector delineated, both variable. d16 unsure (shallow smooth dip, toco hump timing unclear). Remaining events abrupt/jagged -> variable. d5 truncated by signal loss."
+   "by": "mengning",
+   "action": "note: First pass. Progressive tachycardia: baseline climbs 155 -> 188 across the record. FHR ENDS at -28.5 - the last 28 minutes before delivery are entirely missing (pH 7.14; the outcome-proximal window is unobserved). Lates: d2, d3, d6 (107s near-prolonged, gradual 86s), d7, d10 - gradual troughs lagging contraction peaks. d13+d14 are one deep complex (180 -> 55, trough 65-90) split by a signal gap; kept as detector delineated, both variable. d16 unsure (shallow smooth dip, toco hump timing unclear). Remaining events abrupt/jagged -> variable. d5 truncated by signal loss."
   },
   {
    "t": "2026-08-20T21:43:33.549872+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (1 events)"
   },
   {
    "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 22 contractions with 17 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

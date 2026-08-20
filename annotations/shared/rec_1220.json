@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1220,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 82,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -72.267,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "prolonged",
    "nadir_min": -70.533,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -68.133,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -67.05,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -65.283,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -63.267,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -59.117,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -55.783,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -53.567,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -50.5,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "early",
    "nadir_min": -48.717,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -44.783,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm54",
@@ -173,7 +173,7 @@
    "type": null,
    "det_type": null,
    "nadir_min": -43.333,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   },
   {
@@ -187,7 +187,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -11.083,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -200,7 +200,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -8.167,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -213,7 +213,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -2.283,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -226,7 +226,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -0.083,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -479,37 +479,37 @@
  "history": [
   {
    "t": "2026-08-20T21:28:17.007865+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 17 decels (10 variable, 3 late, 1 prolonged, 1 early, 1 unsure, 1 uc-flagged-untyped); 1 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:28:17.007865+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Two regimes: recurrent decels -75..-44 (baseline ~120 rising to 145), then a 13-min FHR gap (-29..-16), then second-stage events. d2 lasts 120s (nadir 73, gradual) -> prolonged; brief recovery to ~140 separates it from d1, so they stay two events. Lates: d3 (o2n 46s, +33s), d6 (o2n 29s, +33s, borderline), d12 (o2n 32s, +34s). d11 typed early (o2n 34s, nadir at peak). d16 is a terminal gradual fall 160->80 truncated at delivery with toco gone - UC flag, untyped. Added dm54 -43.52..-42.95 (shallow 40s sag to 118 during c35, ambiguous shape -> unsure). Brief 120-135 dips at -47.3/-41.2 sub-threshold, not annotated. FHR gap -29..-16 has nothing annotatable."
+   "by": "mengning",
+   "action": "note: First pass. Two regimes: recurrent decels -75..-44 (baseline ~120 rising to 145), then a 13-min FHR gap (-29..-16), then second-stage events. d2 lasts 120s (nadir 73, gradual) -> prolonged; brief recovery to ~140 separates it from d1, so they stay two events. Lates: d3 (o2n 46s, +33s), d6 (o2n 29s, +33s, borderline), d12 (o2n 32s, +34s). d11 typed early (o2n 34s, nadir at peak). d16 is a terminal gradual fall 160->80 truncated at delivery with toco gone - UC flag, untyped. Added dm54 -43.52..-42.95 (shallow 40s sag to 118 during c35, ambiguous shape -> unsure). Brief 120-135 dips at -47.3/-41.2 sub-threshold, not annotated. FHR gap -29..-16 has nothing annotatable."
   },
   {
    "t": "2026-08-20T21:28:17.007865+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 1 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
   },
   {
    "t": "2026-08-20T21:28:17.007865+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: n/a merged into unsure (1 events)"
   },
   {
    "t": "2026-08-20T21:28:17.007865+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (2 events)"
   },
   {
    "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 37 contractions with 27 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

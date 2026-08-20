@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1185,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 70,
@@ -17,7 +17,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -42.817,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm44",
@@ -30,7 +30,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -40.433,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d1",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -33.117,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -28.45,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.3,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm45",
@@ -82,7 +82,7 @@
    "type": null,
    "det_type": null,
    "nadir_min": -21.083,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   },
   {
@@ -96,7 +96,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -20.383,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -109,7 +109,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -18.417,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -122,7 +122,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -16.933,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -135,7 +135,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -16.183,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -148,7 +148,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -15.1,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -161,7 +161,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -13.217,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -174,7 +174,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -11.117,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -187,7 +187,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -10.0,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -200,7 +200,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -8.067,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -213,7 +213,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -5.317,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -226,7 +226,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -3.467,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -239,7 +239,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -1.667,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -465,27 +465,27 @@
  "history": [
   {
    "t": "2026-08-20T21:25:18.435047+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 18 decels (17 variable, 1 unsure); 3 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:25:18.435047+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Baseline 140-150; decels from -34, worsening after -20 with deep plunges (nadirs 53-65) and dropout-recapture artifacts (abrupt 50<->185 jumps inside d5, d6, d12 - depths there partly artifactual). All detector events typed variable on abrupt morphology (o2n 2-22s); d14, d15 carry the UC flag (toco gone after -4). Three misses added: -42.98..-42.6 (nadir 102 on c26 peak) and -40.62..-40.25 (nadir 87 on c27), both abrupt -> variable; -21.45..-21.02 (gradual fall 147->101 onto c36's rise, truncated by signal loss then followed by d4) -> unsure. Sub-threshold brief dips at -42.25/-41.5/-41.3 not annotated. d11's toco (0-12, flat) read as visible-but-quiet, no flag."
+   "by": "mengning",
+   "action": "note: First pass. Baseline 140-150; decels from -34, worsening after -20 with deep plunges (nadirs 53-65) and dropout-recapture artifacts (abrupt 50<->185 jumps inside d5, d6, d12 - depths there partly artifactual). All detector events typed variable on abrupt morphology (o2n 2-22s); d14, d15 carry the UC flag (toco gone after -4). Three misses added: -42.98..-42.6 (nadir 102 on c26 peak) and -40.62..-40.25 (nadir 87 on c27), both abrupt -> variable; -21.45..-21.02 (gradual fall 147->101 onto c36's rise, truncated by signal loss then followed by d4) -> unsure. Sub-threshold brief dips at -42.25/-41.5/-41.3 not annotated. d11's toco (0-12, flat) read as visible-but-quiet, no flag."
   },
   {
    "t": "2026-08-20T21:25:18.435047+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (1 events)"
   },
   {
    "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 27 contractions with 24 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

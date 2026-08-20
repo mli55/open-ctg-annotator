@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -68.617,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -65.517,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -64.533,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -63.067,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -60.85,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": "prolonged",
    "nadir_min": -54.583,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -95,7 +95,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -53.267,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -108,7 +108,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -50.017,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -121,7 +121,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -48.083,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -134,7 +134,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -44.9,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -147,7 +147,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -39.433,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -160,7 +160,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -35.6,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -173,7 +173,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -33.917,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -186,7 +186,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -31.95,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -199,7 +199,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -28.833,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -212,7 +212,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -25.383,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d17",
@@ -225,7 +225,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -23.3,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d18",
@@ -238,7 +238,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.667,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d19",
@@ -251,7 +251,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -20.233,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d20",
@@ -264,7 +264,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -17.3,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm35",
@@ -277,7 +277,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -16.867,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d21",
@@ -290,7 +290,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -16.067,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d22",
@@ -303,7 +303,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -14.417,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d23",
@@ -316,7 +316,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -10,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm36",
@@ -329,7 +329,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -7.35,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d24",
@@ -342,7 +342,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -3.617,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -424,27 +424,27 @@
  "history": [
   {
    "t": "2026-08-20T21:45:09.415053+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 26 decels (21 variable, 3 late, 1 prolonged, 1 uc-flagged-untyped); 2 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:45:09.415053+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "note: Claude first pass, worst outcome in the pilot (pH 6.95). Baseline declines 140 -> ~75; from about -24 the trace is continuously unstable (75-145 swings, dead toco) and from ~-5.5 it is terminal bradycardia at 60-85. Toco is dead except clipped bursts -64..-51 and c34: every event without a readable contraction carries the UC flag. d6 prolonged (135s, nadir 57). Lates: d7, d8 (98s deep gradual troughs lagging real contractions), d13 (+43s). d10 left untyped+UC (gradual, no contraction context). Adds (both variable+UC): dm35 -16.9..-16.35 (60-75 trough missed between d20 and d21), dm36 -8.05..-7.35 (75-85 ~40s). Event delineation inside the -24..-15 chaos is somewhat arbitrary - reviewer should treat boundaries there loosely. d24 sits below even the collapsed baseline; after it the FHR stays 60-85 to delivery (baseline change, not annotated as decels)."
   },
   {
    "t": "2026-08-20T21:45:09.415053+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 1 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
   },
   {
    "t": "2026-08-20T21:45:09.415053+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: n/a merged into unsure (1 events)"
   },
   {
    "t": "2026-08-20T21:45:09.415053+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (1 events)"
   },
   {
@@ -459,7 +459,7 @@
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 10 contractions with 8 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

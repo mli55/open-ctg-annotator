@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1027,
- "annotator": "claude",
+ "annotator": "mengning",
  "notes": "",
  "next_id": 39,
  "decels": [
@@ -16,7 +16,7 @@
    "review": "accepted",
    "type": "early",
    "nadir_min": -74.2,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -29,7 +29,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -70.5,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -42,7 +42,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -63.317,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -55,7 +55,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -61.183,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -68,7 +68,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -58.817,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -81,7 +81,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -55.067,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d7",
@@ -94,7 +94,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -36.617,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -107,7 +107,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -31.733,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -120,7 +120,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -30.183,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -133,7 +133,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -28.45,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -146,7 +146,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -26.45,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -159,7 +159,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -21.083,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -172,7 +172,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -15.517,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d14",
@@ -185,7 +185,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -14.217,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d15",
@@ -198,7 +198,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -11.133,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d16",
@@ -211,7 +211,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -9.283,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d17",
@@ -224,7 +224,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -6.567,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d18",
@@ -237,7 +237,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -5.15,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "dm32",
@@ -250,7 +250,7 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -2.967,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -314,22 +314,22 @@
  "history": [
   {
    "t": "2026-08-20T21:09:35.882122+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 19 decels (14 variable, 3 unclassified, 1 early, 1 late); 1 added, 0 detector events deleted"
   },
   {
    "t": "2026-08-20T21:09:35.882122+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. UC readable only -75..-55 and -47..-44.8 (c31 toco clipped at 100). All decels after -44 carry the UC-unreadable flag: typed variable where morphology is abrupt/jagged, left untyped where gradual (d7, d12, d13 - early vs late undecidable without UC). Recurrent deep variables -33..end. d6 truncated by FHR signal loss at -55. Added dm: truncated abrupt decel at trace end (-3.2..-2.9), missed by detector."
+   "by": "mengning",
+   "action": "note: First pass. UC readable only -75..-55 and -47..-44.8 (c31 toco clipped at 100). All decels after -44 carry the UC-unreadable flag: typed variable where morphology is abrupt/jagged, left untyped where gradual (d7, d12, d13 - early vs late undecidable without UC). Recurrent deep variables -33..end. d6 truncated by FHR signal loss at -55. Added dm: truncated abrupt decel at trace end (-3.2..-2.9), missed by detector."
   },
   {
    "t": "2026-08-20T23:39:13.282029+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 3 event(s) set to unclassified"
   },
   {
    "t": "2026-08-20T23:44:17.636960+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 13 contractions with 6 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]

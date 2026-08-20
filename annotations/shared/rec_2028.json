@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 2028,
- "annotator": "claude",
+ "annotator": "mengning",
  "status": "done",
  "notes": "",
  "next_id": 35,
@@ -17,7 +17,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -74.663,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d2",
@@ -30,7 +30,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -66.796,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d3",
@@ -43,7 +43,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -59.946,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d4",
@@ -56,7 +56,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -57.812,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d5",
@@ -69,7 +69,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -55.613,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d6",
@@ -82,7 +82,7 @@
    "review": "accepted",
    "type": null,
    "nadir_min": -51.246,
-   "by": "claude",
+   "by": "mengning",
    "flag": true
   },
   {
@@ -96,7 +96,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -49.879,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d8",
@@ -109,7 +109,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -27.196,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d9",
@@ -122,7 +122,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -25.546,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d10",
@@ -135,7 +135,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.113,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d11",
@@ -148,7 +148,7 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -22.613,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d12",
@@ -161,7 +161,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.079,
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "d13",
@@ -174,7 +174,7 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -18.946,
-   "by": "claude"
+   "by": "mengning"
   }
  ],
  "contractions": [
@@ -274,37 +274,37 @@
  "history": [
   {
    "t": "2026-08-20T21:52:37.979888+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "first pass: 13 decels (8 variable, 3 late, 1 uc-flagged-untyped, 1 unsure); 0 added, 0 detector events deleted; marked done"
   },
   {
    "t": "2026-08-20T21:52:37.979888+00:00",
-   "by": "claude",
-   "action": "note: Claude first pass. Two clusters separated by a 14-min FHR gap (-44..-30); the record also ENDS at -17, so the final 17 min are missing. First cluster: toco dead - d2-d4 variable+UC, d5 untyped+UC (gradual, no contraction context), d6 unsure (gradual trough, nadir 39s BEFORE a weak toco peak). Second cluster has clean contractions: d7, d8, d11 late (gradual/single troughs, nadirs +43..+62s after peaks); d9, d10, d12, d13 variable (jagged or abrupt-ish morphology). The 160 baseline plateau inside the gap is interpolation artifact, not data."
+   "by": "mengning",
+   "action": "note: First pass. Two clusters separated by a 14-min FHR gap (-44..-30); the record also ENDS at -17, so the final 17 min are missing. First cluster: toco dead - d2-d4 variable+UC, d5 untyped+UC (gradual, no contraction context), d6 unsure (gradual trough, nadir 39s BEFORE a weak toco peak). Second cluster has clean contractions: d7, d8, d11 late (gradual/single troughs, nadirs +43..+62s after peaks); d9, d10, d12, d13 variable (jagged or abrupt-ish morphology). The 160 baseline plateau inside the gap is interpolation artifact, not data."
   },
   {
    "t": "2026-08-20T21:52:37.979888+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: 1 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
   },
   {
    "t": "2026-08-20T21:52:37.979888+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: n/a merged into unsure (1 events)"
   },
   {
    "t": "2026-08-20T21:52:37.979888+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "schema update: unsure merged into unclassified (2 events)"
   },
   {
    "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
   },
   {
    "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "claude",
+   "by": "mengning",
    "action": "uc prefill v2: replaced all 11 contractions with 10 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]
