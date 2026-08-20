@@ -1,0 +1,527 @@
+{
+ "schema": 1,
+ "record_id": 1326,
+ "annotator": "mengning",
+ "status": "done",
+ "notes": "",
+ "next_id": 56,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -69.8,
+   "b": -68.17,
+   "a0": -69.8,
+   "b0": -68.17,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -68.217,
+   "by": "claude"
+  },
+  {
+   "id": "d2",
+   "a": -67.71,
+   "b": -67.3,
+   "a0": -67.71,
+   "b0": -67.3,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -67.35,
+   "by": "claude"
+  },
+  {
+   "id": "d3",
+   "a": -63.35,
+   "b": -62.95,
+   "a0": -63.35,
+   "b0": -62.95,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -63.25,
+   "by": "claude"
+  },
+  {
+   "id": "d4",
+   "a": -58.32,
+   "b": -57.27,
+   "a0": -58.32,
+   "b0": -57.27,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -57.317,
+   "by": "claude"
+  },
+  {
+   "id": "d5",
+   "a": -54.18,
+   "b": -52.9,
+   "a0": -54.18,
+   "b0": -52.9,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "late",
+   "nadir_min": -53,
+   "by": "claude"
+  },
+  {
+   "id": "d6",
+   "a": -50.22,
+   "b": -49.84,
+   "a0": -50.22,
+   "b0": -49.84,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -50,
+   "by": "claude"
+  },
+  {
+   "id": "d7",
+   "a": -47.26,
+   "b": -46.56,
+   "a0": -47.26,
+   "b0": -46.56,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -46.95,
+   "by": "claude"
+  },
+  {
+   "id": "d8",
+   "a": -42.65,
+   "b": -41.9,
+   "a0": -42.65,
+   "b0": -41.9,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -42.417,
+   "by": "claude"
+  },
+  {
+   "id": "d9",
+   "a": -39.28,
+   "b": -38.42,
+   "a0": -39.28,
+   "b0": -38.42,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -38.483,
+   "by": "claude"
+  },
+  {
+   "id": "d10",
+   "a": -37.98,
+   "b": -37.48,
+   "a0": -37.98,
+   "b0": -37.48,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -37.817,
+   "by": "claude"
+  },
+  {
+   "id": "d11",
+   "a": -35.25,
+   "b": -34.1,
+   "a0": -35.25,
+   "b0": -34.1,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -34.233,
+   "by": "claude"
+  },
+  {
+   "id": "d12",
+   "a": -30.56,
+   "b": -29.91,
+   "a0": -30.56,
+   "b0": -29.91,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -30.367,
+   "by": "claude"
+  },
+  {
+   "id": "d13",
+   "a": -27.26,
+   "b": -26.51,
+   "a0": -27.26,
+   "b0": -26.51,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -26.967,
+   "by": "claude"
+  },
+  {
+   "id": "d14",
+   "a": -23.15,
+   "b": -22.55,
+   "a0": -23.15,
+   "b0": -22.55,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -22.9,
+   "by": "claude"
+  },
+  {
+   "id": "d15",
+   "a": -19.83,
+   "b": -19.16,
+   "a0": -19.83,
+   "b0": -19.16,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -19.517,
+   "by": "claude"
+  },
+  {
+   "id": "d16",
+   "a": -15.88,
+   "b": -12.98,
+   "a0": -15.88,
+   "b0": -12.98,
+   "origin": "detector",
+   "det_type": "early",
+   "review": "accepted",
+   "type": "prolonged",
+   "nadir_min": -15.15,
+   "by": "claude"
+  },
+  {
+   "id": "d17",
+   "a": -11.88,
+   "b": -11.18,
+   "a0": -11.88,
+   "b0": -11.18,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -11.483,
+   "by": "claude"
+  },
+  {
+   "id": "d18",
+   "a": -5.17,
+   "b": -4.81,
+   "a0": -5.17,
+   "b0": -4.81,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -5.1,
+   "by": "claude"
+  },
+  {
+   "id": "d19",
+   "a": -3.92,
+   "b": -3.34,
+   "a0": -3.92,
+   "b0": -3.34,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -3.817,
+   "by": "claude"
+  },
+  {
+   "id": "d20",
+   "a": -1.21,
+   "b": 0,
+   "a0": -1.21,
+   "b0": 0,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -0.233,
+   "by": "claude"
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c42",
+   "a": -70.0,
+   "b": -68.73,
+   "a0": -70.0,
+   "b0": -68.73,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c43",
+   "a": -68.12,
+   "b": -66.92,
+   "a0": -68.12,
+   "b0": -66.92,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c44",
+   "a": -63.79,
+   "b": -61.62,
+   "a0": -63.79,
+   "b0": -61.62,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c45",
+   "a": -58.55,
+   "b": -56.63,
+   "a0": -58.55,
+   "b0": -56.63,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c46",
+   "a": -54.61,
+   "b": -52.45,
+   "a0": -54.61,
+   "b0": -52.45,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c47",
+   "a": -51.68,
+   "b": -50.61,
+   "a0": -51.68,
+   "b0": -50.61,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c48",
+   "a": -47.75,
+   "b": -45.68,
+   "a0": -47.75,
+   "b0": -45.68,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c49",
+   "a": -43.5,
+   "b": -42.27,
+   "a0": -43.5,
+   "b0": -42.27,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c50",
+   "a": -42.27,
+   "b": -40.52,
+   "a0": -42.27,
+   "b0": -40.52,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c51",
+   "a": -38.24,
+   "b": -37.1,
+   "a0": -38.24,
+   "b0": -37.1,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c52",
+   "a": -23.69,
+   "b": -22.19,
+   "a0": -23.69,
+   "b0": -22.19,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c53",
+   "a": -20.55,
+   "b": -18.65,
+   "a0": -20.55,
+   "b0": -18.65,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c54",
+   "a": -16.24,
+   "b": -14.22,
+   "a0": -16.24,
+   "b0": -14.22,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c55",
+   "a": -14.21,
+   "b": -11.97,
+   "a0": -14.21,
+   "b0": -11.97,
+   "origin": "detector",
+   "review": "pending"
+  }
+ ],
+ "deleted": [],
+ "updated": "2026-08-20T23:25:55.776774+00:00",
+ "history": [
+  {
+   "t": "2026-08-20T21:40:40.378687+00:00",
+   "by": "claude",
+   "action": "first pass: 20 decels (16 variable, 2 uc-flagged-untyped, 1 late, 1 prolonged); 0 added, 0 detector events deleted; marked done"
+  },
+  {
+   "t": "2026-08-20T21:40:40.378687+00:00",
+   "by": "claude",
+   "action": "note: Claude first pass. Baseline 135 declining to ~95 at delivery. Mostly deep U/V variables (nadirs 63-92) with quick recoveries. d5 typed late (stepped gradual decline o2n 71s, nadir +30s after c25, recovery after). d16 prolonged (174s trough at 75-85 with recapture-artifact spikes to 170). d1 is a 98s artifact-ridden complex (rapid 90-160 switching, possible maternal capture) kept as variable - reviewer please check. d11 and d20 left untyped with UC flag (gradual troughs, toco dead); d17 variable+UC flag (toco 38%). d20 is the terminal decline to 60-70 truncated at delivery. Toco 90-100 plateau -5.5..-3.7 looks clipped. Zoom check at -4.3 found no missed event; no adds, no deletes."
+  },
+  {
+   "t": "2026-08-20T21:40:40.378687+00:00",
+   "by": "claude",
+   "action": "schema update: 2 unclassifiable decel(s) set to n/a (was UC-unreadable flag)"
+  },
+  {
+   "t": "2026-08-20T21:40:40.378687+00:00",
+   "by": "claude",
+   "action": "schema update: n/a merged into unsure (2 events)"
+  },
+  {
+   "t": "2026-08-20T21:40:40.378687+00:00",
+   "by": "claude",
+   "action": "schema update: unsure merged into unclassified (2 events)"
+  },
+  {
+   "t": "2026-08-20T23:14:47.373Z",
+   "by": "mengning",
+   "action": "added contraction -6.15..-2.53"
+  },
+  {
+   "t": "2026-08-20T23:14:50.390Z",
+   "by": "mengning",
+   "action": "added contraction -3.28..-2.75"
+  },
+  {
+   "t": "2026-08-20T23:14:54.073Z",
+   "by": "mengning",
+   "action": "added contraction -8.95..-6.37"
+  },
+  {
+   "t": "2026-08-20T23:14:56.123Z",
+   "by": "mengning",
+   "action": "added contraction -9.02..-8.68"
+  },
+  {
+   "t": "2026-08-20T23:14:56.824Z",
+   "by": "mengning",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-20T23:15:02.457Z",
+   "by": "mengning",
+   "action": "cm41: boundary -8.95..-6.37 \u2192 -8.68..-6.37"
+  },
+  {
+   "t": "2026-08-20T23:15:04.757Z",
+   "by": "mengning",
+   "action": "cm39: boundary -6.15..-2.53 \u2192 -6.15..-5.27"
+  },
+  {
+   "t": "2026-08-20T23:15:04.907Z",
+   "by": "mengning",
+   "action": "cm39: deleted"
+  },
+  {
+   "t": "2026-08-20T23:15:05.591Z",
+   "by": "mengning",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-20T23:15:06.142Z",
+   "by": "mengning",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-20T23:15:07.289Z",
+   "by": "mengning",
+   "action": "cm40: boundary -3.28..-2.75 \u2192 -3.28..-2.75"
+  },
+  {
+   "t": "2026-08-20T23:15:08.072Z",
+   "by": "mengning",
+   "action": "cm41: boundary -8.68..-6.37 \u2192 -8.68..-6.22"
+  },
+  {
+   "t": "2026-08-20T23:15:10.358Z",
+   "by": "mengning",
+   "action": "cm39: boundary -6.15..-2.53 \u2192 -6.15..-3.22"
+  },
+  {
+   "t": "2026-08-20T23:15:13.684Z",
+   "by": "mengning",
+   "action": "cm40: deleted"
+  },
+  {
+   "t": "2026-08-20T23:15:17.357Z",
+   "by": "mengning",
+   "action": "cm39: boundary -6.15..-3.22 \u2192 -6.15..-3.28"
+  },
+  {
+   "t": "2026-08-20T23:15:21.123Z",
+   "by": "mengning",
+   "action": "c37: boundary -16.24..-14.22 \u2192 -16.24..-13.67"
+  },
+  {
+   "t": "2026-08-20T23:15:21.277Z",
+   "by": "mengning",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-20T23:15:23.440Z",
+   "by": "mengning",
+   "action": "c37: boundary -16.24..-14.22 \u2192 -16.24..-14.33"
+  },
+  {
+   "t": "2026-08-20T23:15:23.599Z",
+   "by": "mengning",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-20T23:25:55.776774+00:00",
+   "by": "claude",
+   "action": "uc prefill v2: replaced all 20 contractions with 14 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
+  }
+ ]
+}

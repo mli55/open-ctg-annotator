@@ -1,0 +1,394 @@
+{
+ "schema": 1,
+ "record_id": 1027,
+ "annotator": "mn",
+ "notes": "",
+ "next_id": 39,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -74.69,
+   "b": -73.22,
+   "a0": -74.69,
+   "b0": -73.22,
+   "origin": "detector",
+   "det_type": "early",
+   "review": "accepted",
+   "type": "early",
+   "nadir_min": -74.2,
+   "by": "claude"
+  },
+  {
+   "id": "d2",
+   "a": -70.9,
+   "b": -70.2,
+   "a0": -70.9,
+   "b0": -70.2,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -70.5,
+   "by": "claude"
+  },
+  {
+   "id": "d3",
+   "a": -63.59,
+   "b": -62.86,
+   "a0": -63.59,
+   "b0": -62.86,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -63.317,
+   "by": "claude"
+  },
+  {
+   "id": "d4",
+   "a": -61.44,
+   "b": -60.91,
+   "a0": -61.44,
+   "b0": -60.91,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -61.183,
+   "by": "claude"
+  },
+  {
+   "id": "d5",
+   "a": -59.43,
+   "b": -57.62,
+   "a0": -59.43,
+   "b0": -57.62,
+   "origin": "detector",
+   "det_type": "early",
+   "review": "accepted",
+   "type": "late",
+   "nadir_min": -58.817,
+   "by": "claude"
+  },
+  {
+   "id": "d6",
+   "a": -55.37,
+   "b": -55.05,
+   "a0": -55.37,
+   "b0": -55.05,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -55.067,
+   "by": "claude"
+  },
+  {
+   "id": "d7",
+   "a": -37.3,
+   "b": -36.2,
+   "a0": -37.3,
+   "b0": -36.2,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -36.617,
+   "by": "claude"
+  },
+  {
+   "id": "d8",
+   "a": -32.51,
+   "b": -31.17,
+   "a0": -32.51,
+   "b0": -31.17,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -31.733,
+   "by": "claude"
+  },
+  {
+   "id": "d9",
+   "a": -30.99,
+   "b": -29.72,
+   "a0": -30.99,
+   "b0": -29.72,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -30.183,
+   "by": "claude"
+  },
+  {
+   "id": "d10",
+   "a": -28.81,
+   "b": -28.08,
+   "a0": -28.81,
+   "b0": -28.08,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -28.45,
+   "by": "claude"
+  },
+  {
+   "id": "d11",
+   "a": -26.94,
+   "b": -26.05,
+   "a0": -26.94,
+   "b0": -26.05,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -26.45,
+   "by": "mn",
+   "flag": false
+  },
+  {
+   "id": "d12",
+   "a": -21.82,
+   "b": -20.75,
+   "a0": -21.82,
+   "b0": -20.75,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -21.083,
+   "by": "claude"
+  },
+  {
+   "id": "d13",
+   "a": -16.066666666666666,
+   "b": -15.36,
+   "a0": -16.48,
+   "b0": -15.36,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "edited",
+   "type": null,
+   "nadir_min": -15.517,
+   "by": "mn"
+  },
+  {
+   "id": "d14",
+   "a": -14.26,
+   "b": -13.73,
+   "a0": -14.26,
+   "b0": -13.73,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -14.217,
+   "by": "claude"
+  },
+  {
+   "id": "d16",
+   "a": -9.6,
+   "b": -9.21,
+   "a0": -9.6,
+   "b0": -9.21,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -9.283,
+   "by": "claude"
+  },
+  {
+   "id": "d17",
+   "a": -7.3,
+   "b": -6.31,
+   "a0": -7.3,
+   "b0": -6.31,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -6.567,
+   "by": "claude"
+  },
+  {
+   "id": "d18",
+   "a": -5.44,
+   "b": -3.95,
+   "a0": -5.44,
+   "b0": -3.95,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -5.15,
+   "by": "claude"
+  },
+  {
+   "id": "dm32",
+   "a": -3.22,
+   "b": -2.92,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": "variable",
+   "det_type": null,
+   "nadir_min": -2.967,
+   "by": "claude"
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c33",
+   "a": -74.22,
+   "b": -72.63,
+   "a0": -74.22,
+   "b0": -72.63,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c34",
+   "a": -71.56,
+   "b": -68.9,
+   "a0": -71.56,
+   "b0": -68.9,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c35",
+   "a": -66.57,
+   "b": -64.45,
+   "a0": -66.57,
+   "b0": -64.45,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c36",
+   "a": -62.37,
+   "b": -61.45,
+   "a0": -62.37,
+   "b0": -61.45,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c37",
+   "a": -60.11,
+   "b": -57.76,
+   "a0": -60.11,
+   "b0": -57.76,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c38",
+   "a": -47.03,
+   "b": -44.86,
+   "a0": -47.03,
+   "b0": -44.86,
+   "origin": "detector",
+   "review": "pending"
+  }
+ ],
+ "deleted": [
+  {
+   "list": "decels",
+   "id": "d15",
+   "a": -11.98,
+   "b": -10.983333333333333,
+   "a0": -11.98,
+   "b0": -10.7,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -11.133,
+   "by": "mn"
+  }
+ ],
+ "updated": "2026-08-20T23:25:55.776774+00:00",
+ "history": [
+  {
+   "t": "2026-08-20T21:09:35.882122+00:00",
+   "by": "claude",
+   "action": "first pass: 19 decels (14 variable, 3 unclassified, 1 early, 1 late); 1 added, 0 detector events deleted"
+  },
+  {
+   "t": "2026-08-20T21:09:35.882122+00:00",
+   "by": "claude",
+   "action": "note: Claude first pass. UC readable only -75..-55 and -47..-44.8 (c31 toco clipped at 100). All decels after -44 carry the UC-unreadable flag: typed variable where morphology is abrupt/jagged, left untyped where gradual (d7, d12, d13 - early vs late undecidable without UC). Recurrent deep variables -33..end. d6 truncated by FHR signal loss at -55. Added dm: truncated abrupt decel at trace end (-3.2..-2.9), missed by detector."
+  },
+  {
+   "t": "2026-08-20T23:00:09.146079+00:00",
+   "by": "claude",
+   "action": "schema update: 3 event(s) set to unclassified"
+  },
+  {
+   "t": "2026-08-20T23:00:46.403Z",
+   "by": "mn",
+   "action": "d15: boundary -11.98..-10.70 \u2192 -11.98..-10.98"
+  },
+  {
+   "t": "2026-08-20T23:00:50.572Z",
+   "by": "mn",
+   "action": "d15: deleted"
+  },
+  {
+   "t": "2026-08-20T23:00:52.269Z",
+   "by": "mn",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-20T23:00:54.304Z",
+   "by": "mn",
+   "action": "d15: deleted"
+  },
+  {
+   "t": "2026-08-20T23:02:58.844Z",
+   "by": "mn",
+   "action": "d13: boundary -16.48..-15.36 \u2192 -16.07..-15.36"
+  },
+  {
+   "t": "2026-08-20T23:03:08.427Z",
+   "by": "mn",
+   "action": "d12: boundary -21.82..-20.75 \u2192 -21.82..-21.10"
+  },
+  {
+   "t": "2026-08-20T23:03:09.247Z",
+   "by": "mn",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-20T23:03:48.313Z",
+   "by": "mn",
+   "action": "d11: question raised"
+  },
+  {
+   "t": "2026-08-20T23:03:49.845Z",
+   "by": "mn",
+   "action": "d11: question cleared"
+  },
+  {
+   "t": "2026-08-20T23:03:50.795Z",
+   "by": "mn",
+   "action": "d11: question raised"
+  },
+  {
+   "t": "2026-08-20T23:03:51.228Z",
+   "by": "mn",
+   "action": "d11: question cleared"
+  },
+  {
+   "t": "2026-08-20T23:25:55.776774+00:00",
+   "by": "claude",
+   "action": "uc prefill v2: replaced all 13 contractions with 6 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
+  }
+ ]
+}

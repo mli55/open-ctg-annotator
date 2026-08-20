@@ -1,0 +1,433 @@
+{
+ "schema": 1,
+ "record_id": 1358,
+ "annotator": "claude",
+ "status": "done",
+ "notes": "Claude first pass. Progressive tachycardia: baseline climbs 155 -> 188 across the record. FHR ENDS at -28.5 - the last 28 minutes before delivery are entirely missing (pH 7.14; the outcome-proximal window is unobserved). Lates: d2, d3, d6 (107s near-prolonged, gradual 86s), d7, d10 - gradual troughs lagging contraction peaks. d13+d14 are one deep complex (180 -> 55, trough 65-90) split by a signal gap; kept as detector delineated, both variable. d16 unsure (shallow smooth dip, toco hump timing unclear). Remaining events abrupt/jagged -> variable. d5 truncated by signal loss.",
+ "next_id": 40,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -79.89,
+   "b": -79.34,
+   "a0": -79.89,
+   "b0": -79.34,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -79.404
+  },
+  {
+   "id": "d2",
+   "a": -78.58,
+   "b": -77.78,
+   "a0": -78.58,
+   "b0": -77.78,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -77.921
+  },
+  {
+   "id": "d3",
+   "a": -73.87,
+   "b": -73.12,
+   "a0": -73.87,
+   "b0": -73.12,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -73.338
+  },
+  {
+   "id": "d4",
+   "a": -71.95,
+   "b": -71.41,
+   "a0": -71.95,
+   "b0": -71.41,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -71.721
+  },
+  {
+   "id": "d5",
+   "a": -70.76,
+   "b": -70.39,
+   "a0": -70.76,
+   "b0": -70.39,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -70.404
+  },
+  {
+   "id": "d6",
+   "a": -66.26,
+   "b": -64.48,
+   "a0": -66.26,
+   "b0": -64.48,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -64.821
+  },
+  {
+   "id": "d7",
+   "a": -64.09,
+   "b": -63.09,
+   "a0": -64.09,
+   "b0": -63.09,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -63.471
+  },
+  {
+   "id": "d8",
+   "a": -62.76,
+   "b": -62.37,
+   "a0": -62.76,
+   "b0": -62.37,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -62.488
+  },
+  {
+   "id": "d9",
+   "a": -60.72,
+   "b": -60.28,
+   "a0": -60.72,
+   "b0": -60.28,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -60.454
+  },
+  {
+   "id": "d10",
+   "a": -59.45,
+   "b": -58.73,
+   "a0": -59.45,
+   "b0": -58.73,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -59.071
+  },
+  {
+   "id": "d11",
+   "a": -55.73,
+   "b": -55.3,
+   "a0": -55.73,
+   "b0": -55.3,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -55.304
+  },
+  {
+   "id": "d12",
+   "a": -54.8,
+   "b": -53.24,
+   "a0": -54.8,
+   "b0": -53.24,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -54.738
+  },
+  {
+   "id": "d13",
+   "a": -49.6,
+   "b": -48.92,
+   "a0": -49.6,
+   "b0": -48.92,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -49.321
+  },
+  {
+   "id": "d14",
+   "a": -48.16,
+   "b": -47.29,
+   "a0": -48.16,
+   "b0": -47.29,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -47.504
+  },
+  {
+   "id": "d15",
+   "a": -45.78,
+   "b": -45.29,
+   "a0": -45.78,
+   "b0": -45.29,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -45.488
+  },
+  {
+   "id": "d16",
+   "a": -41.92,
+   "b": -41.2,
+   "a0": -41.92,
+   "b0": -41.2,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "unsure",
+   "uc_unreadable": false,
+   "nadir_min": -41.621
+  },
+  {
+   "id": "d17",
+   "a": -32.51,
+   "b": -31.62,
+   "a0": -32.51,
+   "b0": -31.62,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -32.404
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c18",
+   "a": -79.3,
+   "b": -78.32,
+   "a0": -79.3,
+   "b0": -78.32,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c19",
+   "a": -77.31,
+   "b": -76.47,
+   "a0": -77.31,
+   "b0": -76.47,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c20",
+   "a": -76.23,
+   "b": -75.21,
+   "a0": -76.23,
+   "b0": -75.21,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c21",
+   "a": -74.68,
+   "b": -73.08,
+   "a0": -74.68,
+   "b0": -73.08,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c22",
+   "a": -72.71,
+   "b": -71.74,
+   "a0": -72.71,
+   "b0": -71.74,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c23",
+   "a": -71.26,
+   "b": -70.11,
+   "a0": -71.26,
+   "b0": -70.11,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c24",
+   "a": -67.93,
+   "b": -66.18,
+   "a0": -67.93,
+   "b0": -66.18,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c25",
+   "a": -66.09,
+   "b": -65.3,
+   "a0": -66.09,
+   "b0": -65.3,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c26",
+   "a": -64.5,
+   "b": -63.61,
+   "a0": -64.5,
+   "b0": -63.61,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c27",
+   "a": -63.32,
+   "b": -62.43,
+   "a0": -63.32,
+   "b0": -62.43,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c28",
+   "a": -61.53,
+   "b": -60.95,
+   "a0": -61.53,
+   "b0": -60.95,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c29",
+   "a": -60.94,
+   "b": -60.47,
+   "a0": -60.94,
+   "b0": -60.47,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c30",
+   "a": -60.35,
+   "b": -59.0,
+   "a0": -60.35,
+   "b0": -59.0,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c31",
+   "a": -57.96,
+   "b": -56.8,
+   "a0": -57.96,
+   "b0": -56.8,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c32",
+   "a": -55.33,
+   "b": -54.18,
+   "a0": -55.33,
+   "b0": -54.18,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c33",
+   "a": -47.4,
+   "b": -46.08,
+   "a0": -47.4,
+   "b0": -46.08,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c34",
+   "a": -46.07,
+   "b": -44.17,
+   "a0": -46.07,
+   "b0": -44.17,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c35",
+   "a": -40.22,
+   "b": -39.39,
+   "a0": -40.22,
+   "b0": -39.39,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c36",
+   "a": -37.55,
+   "b": -35.75,
+   "a0": -37.55,
+   "b0": -35.75,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c37",
+   "a": -35.33,
+   "b": -33.35,
+   "a0": -35.33,
+   "b0": -33.35,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c38",
+   "a": -30.85,
+   "b": -30.18,
+   "a0": -30.85,
+   "b0": -30.18,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c39",
+   "a": -30.17,
+   "b": -27.72,
+   "a0": -30.17,
+   "b0": -27.72,
+   "origin": "detector",
+   "review": "accepted"
+  }
+ ],
+ "deleted": [],
+ "updated": "2026-08-20T21:43:33.549872+00:00"
+}

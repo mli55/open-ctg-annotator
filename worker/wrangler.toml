@@ -1,0 +1,13 @@
+name = "decel-review"
+main = "worker.js"
+compatibility_date = "2026-08-01"
+
+[assets]
+directory = "../public"
+binding = "ASSETS"
+run_worker_first = true
+
+# After `wrangler kv namespace create ANN`, paste the returned id below.
+[[kv_namespaces]]
+binding = "ANN"
+id = "PASTE_NAMESPACE_ID_HERE"

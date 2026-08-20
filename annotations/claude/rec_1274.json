@@ -1,0 +1,473 @@
+{
+ "schema": 1,
+ "record_id": 1274,
+ "annotator": "claude",
+ "status": "done",
+ "notes": "Claude first pass. Unstable record from -50 on: long jagged sub-baseline complexes with recapture artifacts (spikes to 160-190 inside d5/d15 windows), toco repeatedly clipped at 100 (c19, the -50 plateau, c41). Lates: d2 (gradual 87s under/after the clipped sustained contraction -50..-48, ambiguous but late-morphology), d9 (o2n 90s, +76s), d15 (o2n 81s, +85s). d1 early (shallow smooth sag, nadir at peak). d16 typed prolonged (118s plunge to 78, nearly 2 min). d11 unsure (gentle 41s sag, +62s lag, shape neither clean). Adds: dm42 -23.0..-22.68 (155->90 on c33 peak, gradual down + abrupt overshoot recovery -> variable), dm43 -41.75..-41.35 (sharp V to 87 during c23 plateau -> variable). Sub-threshold sags at -54.0 and -43.0 noted, not annotated.",
+ "next_id": 44,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -58.66,
+   "b": -58.11,
+   "a0": -58.66,
+   "b0": -58.11,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "early",
+   "uc_unreadable": false,
+   "nadir_min": -58.308
+  },
+  {
+   "id": "d2",
+   "a": -49.3,
+   "b": -47.61,
+   "a0": -49.3,
+   "b0": -47.61,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -47.858
+  },
+  {
+   "id": "d3",
+   "a": -46.93,
+   "b": -45.14,
+   "a0": -46.93,
+   "b0": -45.14,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -46.775
+  },
+  {
+   "id": "dm43",
+   "a": -41.75,
+   "b": -41.35,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": "variable",
+   "uc_unreadable": false,
+   "det_type": null,
+   "nadir_min": -41.642
+  },
+  {
+   "id": "d4",
+   "a": -40.66,
+   "b": -38.95,
+   "a0": -40.66,
+   "b0": -38.95,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -40.192
+  },
+  {
+   "id": "d5",
+   "a": -36.83,
+   "b": -35.2,
+   "a0": -36.83,
+   "b0": -35.2,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -36.442
+  },
+  {
+   "id": "d6",
+   "a": -34.88,
+   "b": -33.98,
+   "a0": -34.88,
+   "b0": -33.98,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -34.575
+  },
+  {
+   "id": "d7",
+   "a": -29.63,
+   "b": -29.22,
+   "a0": -29.63,
+   "b0": -29.22,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -29.408
+  },
+  {
+   "id": "d8",
+   "a": -27.81,
+   "b": -26.82,
+   "a0": -27.81,
+   "b0": -26.82,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -27.608
+  },
+  {
+   "id": "d9",
+   "a": -26.65,
+   "b": -24.75,
+   "a0": -26.65,
+   "b0": -24.75,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -25.142
+  },
+  {
+   "id": "dm42",
+   "a": -23.0,
+   "b": -22.68,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": "variable",
+   "uc_unreadable": false,
+   "det_type": null,
+   "nadir_min": -22.808
+  },
+  {
+   "id": "d10",
+   "a": -21.4,
+   "b": -21.0,
+   "a0": -21.4,
+   "b0": -21.0,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -21.158
+  },
+  {
+   "id": "d11",
+   "a": -20.8,
+   "b": -20.12,
+   "a0": -20.8,
+   "b0": -20.12,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "unsure",
+   "uc_unreadable": false,
+   "nadir_min": -20.392
+  },
+  {
+   "id": "d12",
+   "a": -18.12,
+   "b": -17.46,
+   "a0": -18.12,
+   "b0": -17.46,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -17.675
+  },
+  {
+   "id": "d13",
+   "a": -15.88,
+   "b": -15.4,
+   "a0": -15.88,
+   "b0": -15.4,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -15.692
+  },
+  {
+   "id": "d14",
+   "a": -13.93,
+   "b": -13.11,
+   "a0": -13.93,
+   "b0": -13.11,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -13.858
+  },
+  {
+   "id": "d15",
+   "a": -12.52,
+   "b": -11.06,
+   "a0": -12.52,
+   "b0": -11.06,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -11.175
+  },
+  {
+   "id": "d16",
+   "a": -9.42,
+   "b": -7.45,
+   "a0": -9.42,
+   "b0": -7.45,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "prolonged",
+   "uc_unreadable": false,
+   "nadir_min": -9.292
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c17",
+   "a": -61.81,
+   "b": -59.34,
+   "a0": -61.81,
+   "b0": -59.34,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c18",
+   "a": -59.34,
+   "b": -57.74,
+   "a0": -59.34,
+   "b0": -57.74,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c19",
+   "a": -56.72,
+   "b": -53.95,
+   "a0": -56.72,
+   "b0": -53.95,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c20",
+   "a": -53.95,
+   "b": -53.13,
+   "a0": -53.95,
+   "b0": -53.13,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c21",
+   "a": -47.07,
+   "b": -45.72,
+   "a0": -47.07,
+   "b0": -45.72,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c22",
+   "a": -44.05,
+   "b": -42.58,
+   "a0": -44.05,
+   "b0": -42.58,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c23",
+   "a": -42.1,
+   "b": -40.91,
+   "a0": -42.1,
+   "b0": -40.91,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c24",
+   "a": -40.41,
+   "b": -39.39,
+   "a0": -40.41,
+   "b0": -39.39,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c25",
+   "a": -37.94,
+   "b": -37.15,
+   "a0": -37.94,
+   "b0": -37.15,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c26",
+   "a": -37.14,
+   "b": -36.48,
+   "a0": -37.14,
+   "b0": -36.48,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c27",
+   "a": -35.23,
+   "b": -34.03,
+   "a0": -35.23,
+   "b0": -34.03,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c28",
+   "a": -34.02,
+   "b": -32.74,
+   "a0": -34.02,
+   "b0": -32.74,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c29",
+   "a": -30.68,
+   "b": -30.03,
+   "a0": -30.68,
+   "b0": -30.03,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c30",
+   "a": -28.09,
+   "b": -26.83,
+   "a0": -28.09,
+   "b0": -26.83,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c31",
+   "a": -26.82,
+   "b": -26.28,
+   "a0": -26.82,
+   "b0": -26.28,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c32",
+   "a": -26.28,
+   "b": -25.35,
+   "a0": -26.28,
+   "b0": -25.35,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c33",
+   "a": -23.17,
+   "b": -22.63,
+   "a0": -23.17,
+   "b0": -22.63,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c34",
+   "a": -22.63,
+   "b": -21.69,
+   "a0": -22.63,
+   "b0": -21.69,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c35",
+   "a": -21.68,
+   "b": -20.78,
+   "a0": -21.68,
+   "b0": -20.78,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c36",
+   "a": -19.13,
+   "b": -18.68,
+   "a0": -19.13,
+   "b0": -18.68,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c37",
+   "a": -17.73,
+   "b": -17.24,
+   "a0": -17.73,
+   "b0": -17.24,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c38",
+   "a": -16.95,
+   "b": -15.41,
+   "a0": -16.95,
+   "b0": -15.41,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c39",
+   "a": -14.43,
+   "b": -13.9,
+   "a0": -14.43,
+   "b0": -13.9,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c40",
+   "a": -13.9,
+   "b": -11.73,
+   "a0": -13.9,
+   "b0": -11.73,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c41",
+   "a": -10.7,
+   "b": -9.7,
+   "a0": -10.7,
+   "b0": -9.7,
+   "origin": "detector",
+   "review": "accepted"
+  }
+ ],
+ "deleted": [],
+ "updated": "2026-08-20T21:31:02.228456+00:00"
+}

@@ -1,0 +1,428 @@
+{
+ "schema": 1,
+ "record_id": 2024,
+ "annotator": "claude",
+ "status": "done",
+ "notes": "Claude first pass (pH 7.01). The late-dominated record the algorithm already agreed with best (2 disagreements). Lates: d3, d5, d7, d8, d9, d11 - gradual troughs with nadir +20..+63s after contraction peaks; matches the 6 expert lates. d2 prolonged (118s, plunge to 63 with an artifact spike 192 inside). d12 prolonged (121s gradual decline to 85). d4 DELETED: 240s window bridging mostly-missing FHR (depth 18, fragments only). d1 unsure (shallow sag, nadir 39s BEFORE the peak - fits neither early nor late cleanly). Added dm40 -15.62..-15.12 (gradual dip to 113, toco missing) untyped+UC. FHR ends at -14: the last 14 min before delivery are missing.",
+ "next_id": 41,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -73.66,
+   "b": -72.88,
+   "a0": -73.66,
+   "b0": -72.88,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "unsure",
+   "uc_unreadable": false,
+   "nadir_min": -73.208
+  },
+  {
+   "id": "d2",
+   "a": -68.54,
+   "b": -66.58,
+   "a0": -68.54,
+   "b0": -66.58,
+   "origin": "detector",
+   "det_type": "early",
+   "review": "accepted",
+   "type": "prolonged",
+   "uc_unreadable": false,
+   "nadir_min": -67.292
+  },
+  {
+   "id": "d3",
+   "a": -62.74,
+   "b": -61.95,
+   "a0": -62.74,
+   "b0": -61.95,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -62.158
+  },
+  {
+   "id": "d5",
+   "a": -54.23,
+   "b": -53.2,
+   "a0": -54.23,
+   "b0": -53.2,
+   "origin": "detector",
+   "det_type": "early",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -53.542
+  },
+  {
+   "id": "d6",
+   "a": -50.9,
+   "b": -50.38,
+   "a0": -50.9,
+   "b0": -50.38,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -50.742
+  },
+  {
+   "id": "d7",
+   "a": -47.31,
+   "b": -46.42,
+   "a0": -47.31,
+   "b0": -46.42,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -46.808
+  },
+  {
+   "id": "d8",
+   "a": -45.82,
+   "b": -44.7,
+   "a0": -45.82,
+   "b0": -44.7,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -45.292
+  },
+  {
+   "id": "d9",
+   "a": -44.04,
+   "b": -42.42,
+   "a0": -44.04,
+   "b0": -42.42,
+   "origin": "detector",
+   "det_type": "early",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -43.292
+  },
+  {
+   "id": "d10",
+   "a": -28.31,
+   "b": -27.84,
+   "a0": -28.31,
+   "b0": -27.84,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "uc_unreadable": false,
+   "nadir_min": -27.925
+  },
+  {
+   "id": "d11",
+   "a": -26.46,
+   "b": -25.76,
+   "a0": -26.46,
+   "b0": -25.76,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "late",
+   "uc_unreadable": false,
+   "nadir_min": -26.042
+  },
+  {
+   "id": "d12",
+   "a": -20.42,
+   "b": -18.4,
+   "a0": -20.42,
+   "b0": -18.4,
+   "origin": "detector",
+   "det_type": "late",
+   "review": "accepted",
+   "type": "prolonged",
+   "uc_unreadable": false,
+   "nadir_min": -18.708
+  },
+  {
+   "id": "dm40",
+   "a": -15.62,
+   "b": -15.12,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": null,
+   "uc_unreadable": true,
+   "det_type": null,
+   "nadir_min": -15.342
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c13",
+   "a": -72.7,
+   "b": -72.07,
+   "a0": -72.7,
+   "b0": -72.07,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c14",
+   "a": -71.8,
+   "b": -70.59,
+   "a0": -71.8,
+   "b0": -70.59,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c15",
+   "a": -69.13,
+   "b": -68.67,
+   "a0": -69.13,
+   "b0": -68.67,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c16",
+   "a": -68.25,
+   "b": -67.55,
+   "a0": -68.25,
+   "b0": -67.55,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c17",
+   "a": -67.55,
+   "b": -66.84,
+   "a0": -67.55,
+   "b0": -66.84,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c18",
+   "a": -66.84,
+   "b": -63.45,
+   "a0": -66.84,
+   "b0": -63.45,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c19",
+   "a": -63.45,
+   "b": -61.99,
+   "a0": -63.45,
+   "b0": -61.99,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c20",
+   "a": -56.78,
+   "b": -56.05,
+   "a0": -56.78,
+   "b0": -56.05,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c21",
+   "a": -55.48,
+   "b": -54.34,
+   "a0": -55.48,
+   "b0": -54.34,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c22",
+   "a": -54.16,
+   "b": -53.6,
+   "a0": -54.16,
+   "b0": -53.6,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c23",
+   "a": -53.33,
+   "b": -52.37,
+   "a0": -53.33,
+   "b0": -52.37,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c24",
+   "a": -51.4,
+   "b": -50.62,
+   "a0": -51.4,
+   "b0": -50.62,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c25",
+   "a": -49.82,
+   "b": -48.93,
+   "a0": -49.82,
+   "b0": -48.93,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c26",
+   "a": -48.06,
+   "b": -46.83,
+   "a0": -48.06,
+   "b0": -46.83,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c27",
+   "a": -46.27,
+   "b": -45.63,
+   "a0": -46.27,
+   "b0": -45.63,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c28",
+   "a": -44.52,
+   "b": -43.97,
+   "a0": -44.52,
+   "b0": -43.97,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c29",
+   "a": -43.02,
+   "b": -42.05,
+   "a0": -43.02,
+   "b0": -42.05,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c30",
+   "a": -42.05,
+   "b": -40.31,
+   "a0": -42.05,
+   "b0": -40.31,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c31",
+   "a": -40.3,
+   "b": -38.97,
+   "a0": -40.3,
+   "b0": -38.97,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c32",
+   "a": -33.02,
+   "b": -32.13,
+   "a0": -33.02,
+   "b0": -32.13,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c33",
+   "a": -31.1,
+   "b": -29.95,
+   "a0": -31.1,
+   "b0": -29.95,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c34",
+   "a": -29.02,
+   "b": -28.52,
+   "a0": -29.02,
+   "b0": -28.52,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c35",
+   "a": -27.88,
+   "b": -26.87,
+   "a0": -27.88,
+   "b0": -26.87,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c36",
+   "a": -26.86,
+   "b": -26.46,
+   "a0": -26.86,
+   "b0": -26.46,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c37",
+   "a": -21.63,
+   "b": -20.4,
+   "a0": -21.63,
+   "b0": -20.4,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c38",
+   "a": -20.4,
+   "b": -19.94,
+   "a0": -20.4,
+   "b0": -19.94,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c39",
+   "a": -19.94,
+   "b": -19.11,
+   "a0": -19.94,
+   "b0": -19.11,
+   "origin": "detector",
+   "review": "accepted"
+  }
+ ],
+ "deleted": [
+  {
+   "list": "decels",
+   "id": "d4",
+   "a": -61.49,
+   "b": -57.49,
+   "a0": -61.49,
+   "b0": -57.49,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "deleted",
+   "type": null,
+   "uc_unreadable": false,
+   "reason": "240s window over mostly-missing FHR, depth 18 - no verifiable decel"
+  }
+ ],
+ "updated": "2026-08-20T21:51:36.813882+00:00"
+}

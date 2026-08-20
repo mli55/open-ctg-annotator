@@ -1,0 +1,237 @@
+{
+ "generated": "make_pilot_list.py",
+ "n": 21,
+ "records": [
+  {
+   "id": 1027,
+   "hypoxia": 0,
+   "ph": 7.33,
+   "dur_min": 74.983,
+   "n_decel": 18,
+   "n_contraction": 13,
+   "n_expert_late": 0,
+   "n_disagree": 15,
+   "reason": "normal, 0 expert late, 15 label disagreements"
+  },
+  {
+   "id": 1101,
+   "hypoxia": 1,
+   "ph": 7.16,
+   "dur_min": 64.983,
+   "n_decel": 15,
+   "n_contraction": 23,
+   "n_expert_late": 1,
+   "n_disagree": 10,
+   "reason": "hypoxia, 1 expert late, 10 label disagreements"
+  },
+  {
+   "id": 1178,
+   "hypoxia": 0,
+   "ph": 7.2,
+   "dur_min": 64.983,
+   "n_decel": 13,
+   "n_contraction": 23,
+   "n_expert_late": 4,
+   "n_disagree": 6,
+   "reason": "normal, 4 expert late, 6 label disagreements"
+  },
+  {
+   "id": 1180,
+   "hypoxia": 1,
+   "ph": 7.07,
+   "dur_min": 79.983,
+   "n_decel": 32,
+   "n_contraction": 36,
+   "n_expert_late": 4,
+   "n_disagree": 28,
+   "reason": "exemplar (decel_analysis \u00a70)"
+  },
+  {
+   "id": 1185,
+   "hypoxia": 1,
+   "ph": 7.12,
+   "dur_min": 74.983,
+   "n_decel": 15,
+   "n_contraction": 27,
+   "n_expert_late": 4,
+   "n_disagree": 4,
+   "reason": "hypoxia, 4 expert late, 4 label disagreements"
+  },
+  {
+   "id": 1220,
+   "hypoxia": 0,
+   "ph": 7.3,
+   "dur_min": 74.983,
+   "n_decel": 16,
+   "n_contraction": 37,
+   "n_expert_late": 3,
+   "n_disagree": 8,
+   "reason": "normal, 3 expert late, 8 label disagreements"
+  },
+  {
+   "id": 1242,
+   "hypoxia": 0,
+   "ph": 7.27,
+   "dur_min": 69.983,
+   "n_decel": 13,
+   "n_contraction": 25,
+   "n_expert_late": 3,
+   "n_disagree": 8,
+   "reason": "normal, 3 expert late, 8 label disagreements"
+  },
+  {
+   "id": 1274,
+   "hypoxia": 1,
+   "ph": 7.15,
+   "dur_min": 64.75,
+   "n_decel": 16,
+   "n_contraction": 25,
+   "n_expert_late": 4,
+   "n_disagree": 8,
+   "reason": "hypoxia, 4 expert late, 8 label disagreements"
+  },
+  {
+   "id": 1302,
+   "hypoxia": 0,
+   "ph": 7.24,
+   "dur_min": 74.983,
+   "n_decel": 20,
+   "n_contraction": 27,
+   "n_expert_late": 9,
+   "n_disagree": 15,
+   "reason": "normal, 9 expert late, 15 label disagreements"
+  },
+  {
+   "id": 1303,
+   "hypoxia": 1,
+   "ph": 7.14,
+   "dur_min": 69.983,
+   "n_decel": 19,
+   "n_contraction": 36,
+   "n_expert_late": 3,
+   "n_disagree": 7,
+   "reason": "hypoxia, 3 expert late, 7 label disagreements"
+  },
+  {
+   "id": 1307,
+   "hypoxia": 0,
+   "ph": 7.26,
+   "dur_min": 69.983,
+   "n_decel": 19,
+   "n_contraction": 22,
+   "n_expert_late": 0,
+   "n_disagree": 14,
+   "reason": "normal, 0 expert late, 14 label disagreements"
+  },
+  {
+   "id": 1316,
+   "hypoxia": 0,
+   "ph": 7.24,
+   "dur_min": 79.983,
+   "n_decel": 26,
+   "n_contraction": 19,
+   "n_expert_late": 0,
+   "n_disagree": 13,
+   "reason": "normal, 0 expert late, 13 label disagreements"
+  },
+  {
+   "id": 1326,
+   "hypoxia": 0,
+   "ph": 7.29,
+   "dur_min": 69.983,
+   "n_decel": 20,
+   "n_contraction": 18,
+   "n_expert_late": 4,
+   "n_disagree": 14,
+   "reason": "normal, 4 expert late, 14 label disagreements"
+  },
+  {
+   "id": 1329,
+   "hypoxia": 1,
+   "ph": 7.09,
+   "dur_min": 80.066,
+   "n_decel": 22,
+   "n_contraction": 10,
+   "n_expert_late": 3,
+   "n_disagree": 17,
+   "reason": "hypoxia, 3 expert late, 17 label disagreements"
+  },
+  {
+   "id": 1358,
+   "hypoxia": 1,
+   "ph": 7.14,
+   "dur_min": 79.884,
+   "n_decel": 17,
+   "n_contraction": 22,
+   "n_expert_late": 4,
+   "n_disagree": 6,
+   "reason": "hypoxia, 4 expert late, 6 label disagreements"
+  },
+  {
+   "id": 1359,
+   "hypoxia": 1,
+   "ph": 6.95,
+   "dur_min": 69.983,
+   "n_decel": 24,
+   "n_contraction": 10,
+   "n_expert_late": 1,
+   "n_disagree": 11,
+   "reason": "hypoxia, 1 expert late, 11 label disagreements"
+  },
+  {
+   "id": 1427,
+   "hypoxia": 0,
+   "ph": 7.37,
+   "dur_min": 64.983,
+   "n_decel": 19,
+   "n_contraction": 20,
+   "n_expert_late": 1,
+   "n_disagree": 12,
+   "reason": "normal, 1 expert late, 12 label disagreements"
+  },
+  {
+   "id": 1457,
+   "hypoxia": 1,
+   "ph": 7.18,
+   "dur_min": 70.066,
+   "n_decel": 29,
+   "n_contraction": 37,
+   "n_expert_late": 2,
+   "n_disagree": 12,
+   "reason": "hypoxia, 2 expert late, 12 label disagreements"
+  },
+  {
+   "id": 1485,
+   "hypoxia": 1,
+   "ph": 7.16,
+   "dur_min": 85.06599999999999,
+   "n_decel": 24,
+   "n_contraction": 39,
+   "n_expert_late": 0,
+   "n_disagree": 12,
+   "reason": "exemplar (decel_analysis \u00a70)"
+  },
+  {
+   "id": 2024,
+   "hypoxia": 1,
+   "ph": 7.01,
+   "dur_min": 73.65,
+   "n_decel": 12,
+   "n_contraction": 27,
+   "n_expert_late": 6,
+   "n_disagree": 2,
+   "reason": "hypoxia, 6 expert late, 2 label disagreements"
+  },
+  {
+   "id": 2028,
+   "hypoxia": 1,
+   "ph": 7.18,
+   "dur_min": 76.716,
+   "n_decel": 13,
+   "n_contraction": 11,
+   "n_expert_late": 2,
+   "n_disagree": 9,
+   "reason": "hypoxia, 2 expert late, 9 label disagreements"
+  }
+ ]
+}

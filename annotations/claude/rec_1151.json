@@ -1,0 +1,111 @@
+{
+ "schema": 1,
+ "record_id": 1151,
+ "annotator": "claude",
+ "status": "done",
+ "notes": "Claude first pass. UC essentially unreadable throughout (toco only -52..-48; c5 is a flat ~24 plateau of dubious validity). Detector found 0 decels; four small events added, all UC-flagged: -8.2..-7.85 (nadir 92), -5.1..-4.6 (plateau 104-107 ~30 s, ambiguous shape, unsure), -3.45..-3.2 (sharp V to 102), -2.0..-1.7 (dip to 108 off an accelerative second-stage segment, marginal, unsure). Second stage (from -5) is saltatory; delineation there is uncertain. The -12.1 post-accel undershoot (108, depth ~11) was judged sub-threshold.",
+ "next_id": 10,
+ "decels": [
+  {
+   "id": "dm6",
+   "a": -8.2,
+   "b": -7.85,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": "variable",
+   "uc_unreadable": true,
+   "det_type": null,
+   "nadir_min": -8.0
+  },
+  {
+   "id": "dm7",
+   "a": -5.1,
+   "b": -4.6,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": "unsure",
+   "uc_unreadable": true,
+   "det_type": null,
+   "nadir_min": -4.933
+  },
+  {
+   "id": "dm8",
+   "a": -3.45,
+   "b": -3.2,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": "variable",
+   "uc_unreadable": true,
+   "det_type": null,
+   "nadir_min": -3.333
+  },
+  {
+   "id": "dm9",
+   "a": -2.0,
+   "b": -1.7,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": "unsure",
+   "uc_unreadable": true,
+   "det_type": null,
+   "nadir_min": -1.8
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c1",
+   "a": -51.62,
+   "b": -51.03,
+   "a0": -51.62,
+   "b0": -51.03,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c2",
+   "a": -51.02,
+   "b": -50.16,
+   "a0": -51.02,
+   "b0": -50.16,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c3",
+   "a": -50.15,
+   "b": -49.31,
+   "a0": -50.15,
+   "b0": -49.31,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c4",
+   "a": -48.51,
+   "b": -47.83,
+   "a0": -48.51,
+   "b0": -47.83,
+   "origin": "detector",
+   "review": "accepted"
+  },
+  {
+   "id": "c5",
+   "a": -27.57,
+   "b": -25.55,
+   "a0": -27.57,
+   "b0": -25.55,
+   "origin": "detector",
+   "review": "accepted"
+  }
+ ],
+ "deleted": [],
+ "updated": "2026-08-20T21:12:21.740914+00:00"
+}

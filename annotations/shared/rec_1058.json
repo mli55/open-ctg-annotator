@@ -1,0 +1,205 @@
+{
+ "schema": 1,
+ "record_id": 1058,
+ "annotator": "claude",
+ "status": "done",
+ "notes": "",
+ "next_id": 19,
+ "decels": [],
+ "contractions": [
+  {
+   "id": "c1",
+   "a": -85.22,
+   "b": -84.6,
+   "a0": -85.22,
+   "b0": -84.6,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c2",
+   "a": -84.59,
+   "b": -83.52,
+   "a0": -84.59,
+   "b0": -83.52,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c3",
+   "a": -83.51,
+   "b": -80.44,
+   "a0": -83.51,
+   "b0": -80.44,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c4",
+   "a": -78.47,
+   "b": -77.41,
+   "a0": -78.47,
+   "b0": -77.41,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c5",
+   "a": -77.21,
+   "b": -76.5,
+   "a0": -77.21,
+   "b0": -76.5,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c6",
+   "a": -75.64,
+   "b": -74.77,
+   "a0": -75.64,
+   "b0": -74.77,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c7",
+   "a": -74.0,
+   "b": -73.12,
+   "a0": -74.0,
+   "b0": -73.12,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c8",
+   "a": -73.11,
+   "b": -70.84,
+   "a0": -73.11,
+   "b0": -70.84,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c9",
+   "a": -70.84,
+   "b": -69.34,
+   "a0": -70.84,
+   "b0": -69.34,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c10",
+   "a": -67.75,
+   "b": -66.19,
+   "a0": -67.75,
+   "b0": -66.19,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c11",
+   "a": -63.82,
+   "b": -62.42,
+   "a0": -63.82,
+   "b0": -62.42,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c12",
+   "a": -60.72,
+   "b": -59.1,
+   "a0": -60.72,
+   "b0": -59.1,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c13",
+   "a": -52.82,
+   "b": -51.28,
+   "a0": -52.82,
+   "b0": -51.28,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c14",
+   "a": -51.28,
+   "b": -50.57,
+   "a0": -51.28,
+   "b0": -50.57,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c15",
+   "a": -50.56,
+   "b": -49.01,
+   "a0": -50.56,
+   "b0": -49.01,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c16",
+   "a": -47.67,
+   "b": -46.96,
+   "a0": -47.67,
+   "b0": -46.96,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c17",
+   "a": -46.95,
+   "b": -46.13,
+   "a0": -46.95,
+   "b0": -46.13,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  },
+  {
+   "id": "c18",
+   "a": -46.12,
+   "b": -43.28,
+   "a0": -46.12,
+   "b0": -43.28,
+   "origin": "detector",
+   "review": "accepted",
+   "by": "claude"
+  }
+ ],
+ "deleted": [],
+ "updated": "2026-08-20T22:38:27.174305+00:00",
+ "history": [
+  {
+   "t": "2026-08-20T21:12:21.556240+00:00",
+   "by": "claude",
+   "action": "first pass: 0 decels (); 0 added, 0 detector events deleted; marked done"
+  },
+  {
+   "t": "2026-08-20T21:12:21.556240+00:00",
+   "by": "claude",
+   "action": "note: Claude first pass. FHR readable only -86..-44 (stable ~135, low variability); after -44 the FHR channel is almost entirely lost. The sparse fragments -13..-4 sit at 75-80 bpm: terminal bradycardia consistent with pH 7.05, but >=10 min below baseline is a baseline change (bradycardia), not a deceleration, and coverage is too fragmentary to delineate events - so zero decel annotations is the honest call; the pathology lives in the missing-signal / bradycardia domain. c3 spans 3.5 min (-84.5..-81), more likely tonus drift than one contraction - accepted but flagged for review."
+  }
+ ]
+}

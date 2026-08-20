@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Decel Annotator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --paper:#f2f2f7; --card:#ffffff; --line:#e5e5ea; --ink:#1c1c1e; --dim:#8e8e93;
+    --blue:#007aff; --green:#34c759; --red:#ff3b30; --orange:#ff9500;
+    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#00c7be;
+  }
+  *{box-sizing:border-box; margin:0}
+  html,body{height:100%}
+  body{background:var(--paper); color:var(--ink);
+    font:14px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",sans-serif;
+    display:flex; flex-direction:column; overflow:hidden}
+  header{display:flex; align-items:center; gap:14px; padding:8px 14px;
+    background:#f9f9fb; border-bottom:1px solid var(--line); flex:none}
+  header h1{font-size:15px; font-weight:600}
+  header .sp{flex:1}
+  #saveState{font-size:12px; color:var(--dim)}
+  #annName{border:1px solid var(--line); border-radius:6px; padding:2px 8px; width:110px;
+    background:var(--card); font:inherit; font-size:12px}
+  #app{flex:1; display:flex; min-height:0}
+  aside#recsWrap{width:172px; flex:none; display:flex; flex-direction:column;
+    border-right:1px solid var(--line); background:var(--card)}
+  #recFilter{display:flex; flex-wrap:wrap; gap:3px; padding:8px 6px 4px}
+  #recFilter button{font-size:10.5px; padding:2px 8px; border-radius:999px}
+  #recs{flex:1; overflow-y:auto; padding:0 6px 6px; min-height:0}
+  .recRow{padding:5px 8px; border-radius:8px; cursor:pointer; display:flex;
+    align-items:baseline; gap:6px; font-size:12.5px}
+  .recRow:hover{background:#f2f2f7}
+  .recRow.cur{background:#e8f0fe}
+  .recRow .rid{font-weight:600; font-variant-numeric:tabular-nums}
+  .recRow .ph{color:var(--dim); font-size:11px}
+  .recRow .st{margin-left:auto; font-size:10.5px; font-variant-numeric:tabular-nums}
+  .dotH{display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--red)}
+  .dotN{display:inline-block; width:7px; height:7px; border-radius:50%; background:#c9c4ba}
+  main{flex:1; display:flex; flex-direction:column; min-width:0; padding:8px 10px 10px}
+  #topbar{display:flex; align-items:center; gap:14px; padding:2px 4px 8px; font-size:13px}
+  #topbar .meta b{font-weight:600}
+  #progress{color:var(--dim); font-variant-numeric:tabular-nums}
+  #cursorRead{margin-left:auto; color:var(--dim); font-variant-numeric:tabular-nums; font-size:12px}
+  button{font:inherit; border:1px solid var(--line); background:var(--card); color:var(--ink);
+    border-radius:8px; padding:4px 10px; cursor:pointer}
+  button:hover{background:#f2f2f7}
+  button.on{background:var(--blue); border-color:var(--blue); color:#fff}
+  canvas{display:block; width:100%; border:1px solid var(--line); border-radius:10px;
+    background:var(--card)}
+  #mini{height:52px; margin-bottom:6px}
+  #fhr{flex:65 1 0; min-height:0}
+  #uc{flex:35 1 0; min-height:0; margin-top:6px}
+  aside#panel{width:252px; flex:none; border-left:1px solid var(--line); background:var(--card);
+    display:flex; flex-direction:column; min-height:0}
+  .secTitle{font-size:10.5px; font-weight:600; color:var(--dim); text-transform:uppercase;
+    letter-spacing:.5px; margin:0 12px 4px}
+  #panel #histWrap{flex:0 0 auto; max-height:24%; display:flex; flex-direction:column;
+    padding:8px 0 6px}
+  #histList{overflow-y:auto; min-height:0; scrollbar-gutter:stable}
+  #histList::-webkit-scrollbar, #evList::-webkit-scrollbar, #recs::-webkit-scrollbar{width:12px}
+  #histList::-webkit-scrollbar-thumb, #evList::-webkit-scrollbar-thumb,
+  #recs::-webkit-scrollbar-thumb{
+    background:#c7c7cc; border-radius:6px; border:3px solid var(--card)}
+  #histList::-webkit-scrollbar-track, #evList::-webkit-scrollbar-track,
+  #recs::-webkit-scrollbar-track{background:transparent}
+  .pairHead{display:flex; padding:7px 20px 2px 12px; font-size:10.5px; font-weight:600;
+    color:var(--dim); text-transform:uppercase; letter-spacing:.5px}
+  .pairHead span{flex:1 1 50%; min-width:0}
+  .pairHead span:last-child{padding-left:6px}
+  .pairRow{display:flex}
+  .cell{flex:1 1 50%; display:flex; gap:5px; align-items:center; padding:3px 6px 3px 12px;
+    cursor:pointer; font-size:11.5px; line-height:1.5; font-variant-numeric:tabular-nums;
+    min-width:0; white-space:nowrap}
+  .cell:last-child{padding:3px 12px 3px 6px}
+  .cell:hover{background:#f2f2f7}
+  .cell.cur{background:#dbe9fe}
+  .pairRow.cur{background:#eef4ff; border-radius:6px}
+  .cell.miss{color:#c7c7cc; cursor:default; font-size:11px}
+  .cell.miss:hover{background:none}
+  #legend{flex:none; padding:7px 12px 9px; border-top:1px solid var(--line); font-size:10.5px;
+    color:var(--dim); display:flex; flex-wrap:wrap; gap:3px 10px; align-items:center}
+  .lg{display:inline-flex; gap:4px; align-items:center}
+  #credit{flex:none; padding:5px 12px 7px; font-size:9px; line-height:1.45; color:#aeaeb2;
+    border-top:1px solid var(--line)}
+  #panel .pad{padding:10px 12px; border-bottom:1px solid var(--line)}
+  #selCard .t{font-size:12px; color:var(--dim); margin-bottom:6px}
+  .typeGrid{display:flex; gap:4px; margin:6px 0}
+  .typeGrid button{flex:1 1 auto; padding:5px 3px; font-size:11.5px; white-space:nowrap}
+  .typeGrid button b{opacity:.55; font-weight:600; margin-right:3px}
+  button.tEarly.on{background:var(--green); border-color:var(--green); color:#fff}
+  button.tLate.on{background:var(--red); border-color:var(--red); color:#fff}
+  button.tVariable.on{background:var(--blue); border-color:var(--blue); color:#fff}
+  button.tProlonged.on{background:var(--purple); border-color:var(--purple); color:#fff}
+  button.tUnclassified.on{background:var(--gray); border-color:var(--gray); color:#fff}
+  .rowBtns{display:flex; gap:6px; margin-top:6px}
+  .rowBtns button{flex:1; font-size:12.5px}
+  label.chk{display:flex; gap:6px; align-items:center; font-size:12.5px; margin-top:6px; cursor:pointer}
+  #notes{width:100%; height:44px; border:1px solid var(--line); border-radius:8px;
+    padding:5px 8px; font:inherit; font-size:12.5px; background:var(--paper); resize:vertical}
+  #doneBtn{width:100%; font-weight:600}
+  #doneBtn.done{background:var(--green); border-color:var(--green); color:#fff}
+  #evList{flex:1; overflow-y:auto; padding:0 0 6px; scrollbar-gutter:stable}
+  .evRow{display:flex; gap:7px; align-items:center; padding:3px 8px; border-radius:7px;
+    cursor:pointer; font-size:12px; font-variant-numeric:tabular-nums}
+  .evRow:hover{background:#f2f2f7}
+  .evRow.cur{background:#e8f0fe}
+  .chip{width:9px; height:9px; border-radius:3px; flex:none}
+  .evRow .rv{margin-left:auto; font-size:11px}
+  .tabs{display:flex; gap:4px; padding:8px 12px 0}
+  .hRow{padding:3px 12px; font-size:11.5px; line-height:1.5}
+  .hRow b{color:var(--blue); margin-right:5px}
+  .hRow .ht{color:var(--dim); margin-right:7px; font-variant-numeric:tabular-nums}
+  .tabs button{padding:2px 10px; font-size:12px; border-radius:999px}
+  #help{position:fixed; inset:0; background:rgba(44,42,39,.45); display:none;
+    align-items:center; justify-content:center; z-index:9}
+  #help .box{background:var(--card); border-radius:14px; padding:22px 26px; max-width:640px;
+    max-height:80vh; overflow:auto; font-size:13px}
+  #help h2{font-size:15px; margin-bottom:10px}
+  #help table{border-collapse:collapse; margin:8px 0}
+  #help td{padding:2px 12px 2px 0; vertical-align:top}
+  #help kbd{background:#f2f2f7; border-radius:4px; padding:0 5px; font-size:12px}
+  #help .proto{color:var(--dim); margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Decel Annotator</h1>
+  <span id="recTitle" style="color:var(--dim)"></span>
+  <span class="sp"></span>
+  <button id="addBtn" title="Turn on, then drag on the FHR trace to draw a missed deceleration, or on the UC trace to draw a missed contraction. Shortcut: N, exit with Esc.">＋ Draw missed event</button>
+  <button id="helpBtn" title="?">Shortcuts ?</button>
+  <input id="annName" title="Your name — every edit is recorded under it" placeholder="your name">
+  <span id="saveState"></span>
+</header>
+<div id="app">
+  <aside id="recsWrap">
+    <div id="recFilter">
+      <button data-f="all" class="on">All</button><button data-f="hyp">Hypoxia</button><button data-f="norm">Normal</button><button data-f="flag">⚑ flagged</button>
+    </div>
+    <div id="recs"></div>
+  </aside>
+  <main>
+    <div id="topbar">
+      <span class="meta" id="recMeta"></span>
+      <span id="progress"></span>
+      <span id="cursorRead"></span>
+    </div>
+    <canvas id="mini"></canvas>
+    <canvas id="fhr"></canvas>
+    <canvas id="uc"></canvas>
+  </main>
+  <aside id="panel">
+    <div class="pad" id="selCard"><div class="t">No event selected — click one on the trace, or press <b>Tab</b> for the next pending</div></div>
+    <div class="pad">
+      <textarea id="notes" placeholder="Add a note… (Enter to log it to History)"></textarea>
+    </div>
+    <div class="pad" id="histWrap">
+      <div class="secTitle">History</div>
+      <div id="histList"></div>
+    </div>
+    <div class="pairHead"><span>Decels</span><span>Contractions</span></div>
+    <div id="evList"></div>
+    <div id="legend">
+      <span class="lg"><span class="chip" style="background:#34c759"></span>early</span>
+      <span class="lg"><span class="chip" style="background:#ff3b30"></span>late</span>
+      <span class="lg"><span class="chip" style="background:#007aff"></span>variable</span>
+      <span class="lg"><span class="chip" style="background:#af52de"></span>prolonged</span>
+      <span style="flex-basis:100%;height:0"></span>
+      <span class="lg"><span class="chip" style="background:#fff;border:1.5px dashed #8e8e93"></span>unclassified</span>
+      <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
+      <span class="lg" style="color:var(--orange)">⚑ question</span>
+    </div>
+    <div id="credit">Data: CTU-CHB Intrapartum CTG Database (Chudáček et al. 2014) via PhysioNet · ODC-By 1.0 · edits are recorded under your name, visible to the project team</div>
+  </aside>
+</div>
+
+<div id="help"><div class="box">
+  <h2>Shortcuts</h2>
+  <table>
+    <tr><td><kbd>1</kbd>–<kbd>4</kbd></td><td>Classify: early / late / variable / prolonged; press the active one again to clear it back to unclassified (dashed)</td></tr>
+    <tr><td><kbd>Enter</kbd></td><td>Raise / clear a ⚑ question on the selected event — a spot the next reviewer should look at</td></tr>
+    <tr><td><kbd>X</kbd> / <kbd>Del</kbd></td><td>Delete selected event (detector events go to a recoverable deleted list)</td></tr>
+    <tr><td><kbd>N</kbd></td><td>Add mode: drag on the FHR pane to draw a deceleration, on the UC pane a contraction</td></tr>
+    <tr><td><kbd>Tab</kbd> / <kbd>⇧Tab</kbd></td><td>Next / previous pending event</td></tr>
+    <tr><td>Drag an edge</td><td>Adjust onset/offset (recorded as edited; original boundaries kept)</td></tr>
+    <tr><td>Drag inside a selected event</td><td>Move the whole event</td></tr>
+    <tr><td>Wheel / <kbd>+</kbd><kbd>−</kbd> / <kbd>0</kbd></td><td>Zoom (0 = fit all); drag background or <kbd>←</kbd><kbd>→</kbd> to pan; double-click an event to zoom to it</td></tr>
+    <tr><td><kbd>⌘Z</kbd> / <kbd>⇧⌘Z</kbd></td><td>Undo / redo</td></tr>
+  </table>
+  <div class="proto">
+    Typing criteria (NICHD/FIGO): <b>early</b> mirrors the contraction, gradual, nadir aligned with the peak; <b>late</b> gradual but onset/nadir/recovery shifted after the contraction (nadir past the peak); <b>variable</b> abrupt drop and recovery (&lt;30 s to nadir), variable shape, inconsistent relation to contractions; <b>prolonged</b> below baseline ≥2 min and &lt;10 min. Leave an event <b>unclassified</b> (dashed) when you cannot decide or classification is not applicable (e.g. the contraction channel is unreadable, so early vs late cannot be judged). Detector prefill provides intervals only: <b>all classification is yours</b>. Annotations are one shared copy: enter <b>your name</b> (top right) before editing — every action is attributed and listed in the record&rsquo;s History panel.
+  </div>
+</div></div>
+
+<script>
+'use strict';
+const TYPES = ['early','late','variable','prolonged'];
+const TCOLOR = {early:'#34c759', late:'#ff3b30', variable:'#007aff',
+                prolonged:'#af52de', pending:'#8e8e93'};
+const TCN = {early:'early', late:'late', variable:'variable',
+             prolonged:'prolonged', unclassified:'unclassified'};
+const $ = id => document.getElementById(id);
+const KEY = new URLSearchParams(location.search).get('key');
+const api = p => KEY ? p + (p.includes('?') ? '&' : '?') + 'key=' + encodeURIComponent(KEY) : p;
+
+const S = {
+  pilot:[], status:{}, annotator:'mengning',
+  rid:null, rec:null, ann:null,
+  tmin:0, tmax:1, view:{t0:0,t1:1},
+  sel:null, addMode:false, listTab:'decels',
+  undo:[], redo:[], dirty:false, saveTimer:null,
+  drag:null, mouse:null,
+};
+
+/* ---------- data ---------- */
+async function boot(){
+  S.annotator = localStorage.getItem('annotator') || '';
+  $('annName').value = S.annotator;
+  S.pilot = (await (await fetch(api('/pilot.json'))).json()).records;
+  S.status = await (await fetch(api('/status'))).json();
+  renderRecs();
+  if (S.pilot.length) loadRecord(S.pilot[0].id);
+}
+function requireName(){
+  if (S.annotator) return true;
+  const el = $('annName');
+  el.focus(); el.style.borderColor = 'var(--red)'; el.style.borderWidth = '2px';
+  setTimeout(() => { el.style.borderColor = ''; el.style.borderWidth = ''; }, 1600);
+  return false;
+}
+function logH(action){
+  (S.ann.history = S.ann.history || []).push(
+    {t: new Date().toISOString(), by: S.annotator, action});
+}
+function prefill(rec){
+  let n = 0; const decels=[], cons=[];
+  for (const e of rec.events || []){
+    if (e.k === 'deceleration')
+      decels.push({id:'d'+(++n), a:e.a, b:e.b, a0:e.a, b0:e.b, origin:'detector',
+                   review:'pending', type:null, det_type:e.d ?? null});
+    else if (e.k === 'contraction')
+      cons.push({id:'c'+(++n), a:e.a, b:e.b, a0:e.a, b0:e.b, origin:'detector', review:'pending'});
+  }
+  return {schema:1, record_id:rec.record_id, annotator:S.annotator, status:'in_progress',
+          notes:'', next_id:n+1, decels, contractions:cons, deleted:[], history:[]};
+}
+async function loadRecord(rid){
+  await flushSave();
+  const rec = await (await fetch(api('/data/rec_'+rid+'.json'))).json();
+  let ann = null;
+  const r = await fetch(api('/ann/rec_'+rid+'.json'));
+  if (r.ok) ann = await r.json();
+  S.rid = rid; S.rec = rec; S.ann = ann || prefill(rec);
+  if (!S.ann.history) S.ann.history = [];
+  S.baseUpdated = ann ? (ann.updated ?? null) : null;
+  S.undo = []; S.redo = []; S.sel = null; setAddMode(false);
+  const x = rec.strip.x;
+  S.tmin = x[0]; S.tmax = x[x.length-1];
+  S.view = {t0:S.tmin, t1:S.tmax};
+  $('notes').value = '';
+  $('recTitle').textContent = 'rec ' + rid;
+  $('recMeta').innerHTML = `<b>rec ${rid}</b> · pH ${rec.ph ?? '?'} · ` +
+    (rec.hypoxia ? '<span style="color:var(--red)">hypoxia</span>' : 'normal') +
+    ` · ${((S.tmax-S.tmin)).toFixed(0)} min` +
+    (rec.ii_start != null ? ` · stage II ${rec.ii_start.toFixed(0)}′` : '');
+  renderAll();
+}
+
+/* ---------- mutations ---------- */
+function snap(){ return JSON.parse(JSON.stringify(
+  {decels:S.ann.decels, contractions:S.ann.contractions, deleted:S.ann.deleted,
+   notes:S.ann.notes, status:S.ann.status, next_id:S.ann.next_id})); }
+function restore(s){ Object.assign(S.ann, JSON.parse(JSON.stringify(s))); }
+function mutate(fn, desc){
+  if (!requireName()) return false;
+  S.undo.push(snap()); if (S.undo.length > 100) S.undo.shift();
+  S.redo = [];
+  fn();
+  if (desc) logH(desc);
+  S.ann.updated = new Date().toISOString();
+  S.dirty = true; scheduleSave(); renderAll();
+  return true;
+}
+function undo(){ if (!S.undo.length || !requireName()) return;
+  S.redo.push(snap()); restore(S.undo.pop()); logH('undo');
+  S.ann.updated = new Date().toISOString();
+  S.dirty = true; scheduleSave(); fixSel(); renderAll(); }
+function redo(){ if (!S.redo.length || !requireName()) return;
+  S.undo.push(snap()); restore(S.redo.pop()); logH('redo');
+  S.ann.updated = new Date().toISOString();
+  S.dirty = true; scheduleSave(); fixSel(); renderAll(); }
+function fixSel(){ if (S.sel && !getSel()) S.sel = null; }
+
+function getSel(){ if (!S.sel) return null;
+  return S.ann[S.sel.list].find(e => e.id === S.sel.id) || null; }
+function markEdited(e){ if (e.origin === 'detector' && e.review !== 'added') e.review = 'edited'; }
+
+function scheduleSave(){
+  clearTimeout(S.saveTimer);
+  S.saveTimer = setTimeout(saveNow, 600);
+  $('saveState').textContent = '…';
+}
+function savePayload(){
+  const a = JSON.parse(JSON.stringify(S.ann));
+  a.annotator = S.annotator;
+  a.base_updated = S.baseUpdated;
+  for (const d of a.decels) d.nadir_min = nadirOf(d);
+  return a;
+}
+async function saveNow(){
+  if (!S.ann) return;
+  clearTimeout(S.saveTimer);
+  try{
+    const r = await fetch(api('/save'), {method:'POST', body:JSON.stringify(savePayload())});
+    if (r.status === 409){
+      $('saveState').textContent = '⚠ Conflict: someone else changed this record — reload it';
+      return;
+    }
+    if (!r.ok) throw new Error(r.status);
+    S.dirty = false;
+    S.baseUpdated = S.ann.updated;
+    $('saveState').textContent = 'Saved ' + new Date().toLocaleTimeString();
+    S.status[S.rid] = localStatus(); renderRecs();
+  }catch(e){ $('saveState').textContent = 'Save failed!'; }
+}
+async function flushSave(){ if (S.dirty) await saveNow(); }
+window.addEventListener('beforeunload', () => {
+  if (S.dirty && S.ann)
+    navigator.sendBeacon(api('/save'), JSON.stringify(savePayload()));
+});
+
+function decelDone(e){ return e.review !== 'pending'; }
+function localStatus(){
+  const d = S.ann.decels, c = S.ann.contractions;
+  return {decels:d.length, decels_done:d.filter(decelDone).length,
+          cons:c.length, cons_done:c.filter(e => e.review !== 'pending').length,
+          n_flag:[...d, ...c].filter(e => e.flag).length};
+}
+
+/* ---------- geometry ---------- */
+function nadirOf(d){
+  const {x, fhr} = S.rec.strip; let m = null, mt = null;
+  for (let i = 0; i < x.length; i++)
+    if (x[i] >= d.a && x[i] <= d.b && fhr[i] != null && (m === null || fhr[i] < m)){
+      m = fhr[i]; mt = x[i]; }
+  return mt;
+}
+const SNAP = 1/60, MINDUR = 5/60;
+const rt = t => Math.round(t*60)/60;
+function panes(){ return {fhr:$('fhr'), uc:$('uc')}; }
+function t2px(t, w){ return (t - S.view.t0)/(S.view.t1 - S.view.t0)*w; }
+function px2t(p, w){ return S.view.t0 + p/w*(S.view.t1 - S.view.t0); }
+function clampView(){
+  const span = Math.min(Math.max(S.view.t1 - S.view.t0, 0.5), S.tmax - S.tmin);
+  if (S.view.t0 < S.tmin) S.view.t0 = S.tmin;
+  if (S.view.t0 + span > S.tmax) S.view.t0 = S.tmax - span;
+  S.view.t1 = S.view.t0 + span;
+}
+
+/* ---------- drawing ---------- */
+function sizeCanvas(c){
+  const r = c.getBoundingClientRect(), dpr = devicePixelRatio || 1;
+  if (c.width !== Math.round(r.width*dpr) || c.height !== Math.round(r.height*dpr)){
+    c.width = Math.round(r.width*dpr); c.height = Math.round(r.height*dpr); }
+  const g = c.getContext('2d');
+  g.setTransform(dpr,0,0,dpr,0,0);
+  return [g, r.width, r.height];
+}
+function timeStep(span){
+  return span > 40 ? 10 : span > 15 ? 5 : span > 6 ? 2 : span > 2.5 ? 1 : 0.5;
+}
+function drawTimeGrid(g, w, h, labels){
+  const step = timeStep(S.view.t1 - S.view.t0);
+  g.strokeStyle = '#ececf0'; g.fillStyle = '#aeaeb2';
+  g.font = '10px -apple-system'; g.textAlign = 'center';
+  for (let t = Math.ceil(S.view.t0/step)*step; t <= S.view.t1; t += step){
+    const px = t2px(t, w);
+    g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke();
+    if (labels) g.fillText(t.toFixed(step < 1 ? 1 : 0), px, h - 4);
+  }
+}
+function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
+  const {x} = S.rec.strip;
+  g.strokeStyle = color; g.lineWidth = lw; g.beginPath();
+  let pen = false;
+  const y2 = v => h - (v - ymin)/(ymax - ymin)*h;
+  for (let i = 0; i < x.length; i++){
+    if (x[i] < S.view.t0 - 0.1 || x[i] > S.view.t1 + 0.1){ pen = false; continue; }
+    const v = arr[i];
+    if (v == null){ pen = false; continue; }
+    const px = t2px(x[i], w), py = y2(v);
+    if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
+  }
+  g.stroke();
+}
+function eventRect(g, w, h, e, color, selected, pending, handles){
+  const pa = t2px(e.a, w), pb = t2px(e.b, w);
+  if (pb < 0 || pa > w) return;
+  g.fillStyle = color + (selected ? '4d' : '2e');
+  g.fillRect(pa, 0, pb - pa, h);
+  g.strokeStyle = color; g.lineWidth = selected ? 2 : 1.2;
+  g.setLineDash(pending ? [4,3] : []);
+  g.strokeRect(pa + .5, .5, pb - pa - 1, h - 1);
+  g.setLineDash([]);
+  if (handles){
+    g.fillStyle = color;
+    g.fillRect(pa - 2, h/2 - 12, 4, 24); g.fillRect(pb - 2, h/2 - 12, 4, 24);
+  }
+}
+function partnerOf(sel){
+  if (!sel) return null;
+  const r = pairRows().find(x => (x.d && x.d.id === sel.id) || (x.c && x.c.id === sel.id));
+  if (!r) return null;
+  return sel.list === 'decels'
+    ? (r.c ? {list:'contractions', id:r.c.id} : null)
+    : (r.d ? {list:'decels', id:r.d.id} : null);
+}
+function paneLabel(g, txt){ g.font = '600 11px -apple-system'; g.fillStyle = '#8e8e93';
+  g.textAlign = 'left'; g.fillText(txt, 8, 15); }
+function drawFHR(){
+  const [g, w, h] = sizeCanvas($('fhr'));
+  g.clearRect(0,0,w,h);
+  const ymin = 50, ymax = 210, y2 = v => h - (v - ymin)/(ymax - ymin)*h;
+  g.strokeStyle = '#f0f0f3'; g.fillStyle = '#aeaeb2';
+  g.font = '10px -apple-system'; g.textAlign = 'left';
+  for (let v = 60; v < ymax; v += 30){
+    g.beginPath(); g.moveTo(0, y2(v)); g.lineTo(w, y2(v)); g.stroke();
+    g.fillText(v, 4, y2(v) - 2);
+  }
+  drawTimeGrid(g, w, h, false);
+  if (S.rec.ii_start != null){
+    const px = t2px(S.rec.ii_start, w);
+    g.strokeStyle = '#c9a227'; g.setLineDash([5,4]);
+    g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke(); g.setLineDash([]);
+    g.fillStyle = '#c9a227'; g.fillText('stage II', px + 4, 12);
+  }
+  const pFHR = partnerOf(S.sel);
+  for (const d of S.ann.decels){
+    const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
+    const isPair = pFHR?.list === 'decels' && pFHR.id === d.id;
+    eventRect(g, w, h, d, d.flag ? '#ff9500' : TCOLOR[d.type || 'pending'], isSel || isPair,
+              d.review === 'pending' || !d.type, isSel);
+    if (d.flag){ const px = t2px(d.a, w);
+      if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
+        g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 16); } }
+  }
+  drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
+  paneLabel(g, 'FHR — fetal heart rate (bpm)');
+  const sel = getSel();
+  if (sel && S.sel.list === 'decels'){
+    const nt = nadirOf(sel);
+    if (nt != null){
+      const i = S.rec.strip.x.findIndex(t => t === nt);
+      if (i >= 0 && S.rec.strip.fhr[i] != null){
+        g.fillStyle = TCOLOR[sel.type || 'pending'];
+        g.beginPath(); g.arc(t2px(nt, w), y2(S.rec.strip.fhr[i]), 3.5, 0, 7); g.fill();
+      }
+    }
+  }
+}
+function drawUC(){
+  const [g, w, h] = sizeCanvas($('uc'));
+  g.clearRect(0,0,w,h);
+  let ymax = 0;
+  for (const v of S.rec.strip.uc) if (v != null && v > ymax) ymax = v;
+  ymax = Math.max(ymax, 20);
+  drawTimeGrid(g, w, h, true);
+  const pUC = partnerOf(S.sel);
+  for (const c of S.ann.contractions){
+    const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
+    const isPair = pUC?.list === 'contractions' && pUC.id === c.id;
+    eventRect(g, w, h, c, c.flag ? '#ff9500' : '#00c7be', isSel || isPair, c.review === 'pending', isSel);
+    if (c.flag){ const px = t2px(c.a, w);
+      if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
+        g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 14); } }
+  }
+  drawSignal(g, w, h, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1);
+  paneLabel(g, 'UC — uterine contractions (toco)');
+}
+function drawMini(){
+  const [g, w, h] = sizeCanvas($('mini'));
+  g.clearRect(0,0,w,h);
+  const {x, fhr} = S.rec.strip;
+  const tx = t => (t - S.tmin)/(S.tmax - S.tmin)*w;
+  for (const d of S.ann.decels){
+    g.fillStyle = TCOLOR[d.type || 'pending'] + '66';
+    g.fillRect(tx(d.a), 0, Math.max(tx(d.b) - tx(d.a), 2), h);
+  }
+  g.strokeStyle = '#8a857c'; g.lineWidth = .8; g.beginPath();
+  let pen = false;
+  for (let i = 0; i < x.length; i += 3){
+    const v = fhr[i];
+    if (v == null){ pen = false; continue; }
+    const px = tx(x[i]), py = h - (v - 50)/160*h;
+    if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
+  }
+  g.stroke();
+  g.strokeStyle = '#007aff'; g.lineWidth = 1.5;
+  g.strokeRect(tx(S.view.t0) + .5, .5, tx(S.view.t1) - tx(S.view.t0) - 1, h - 1);
+  g.font = '600 9px -apple-system'; g.fillStyle = '#aeaeb2'; g.textAlign = 'left';
+  g.fillText('OVERVIEW', 8, 12);
+}
+function renderCanvases(){ if (!S.rec) return; drawFHR(); drawUC(); drawMini(); }
+
+/* ---------- panels ---------- */
+function renderRecs(){
+  const el = $('recs'); el.innerHTML = '';
+  const f = S.recFilter || 'all';
+  for (const p of S.pilot){
+    const st = S.status[p.id];
+    if (f === 'hyp' && !p.hypoxia) continue;
+    if (f === 'norm' && p.hypoxia) continue;
+    if (f === 'flag' && !(st && st.n_flag > 0)) continue;
+    const row = document.createElement('div');
+    row.className = 'recRow' + (p.id === S.rid ? ' cur' : '');
+    let stTxt = '·', stStyle = 'color:var(--dim)', tip = '';
+    if (st){
+      if (st.decels_done < st.decels || st.cons_done < st.cons){
+        stTxt = `${st.decels_done}/${st.decels}`; stStyle = 'color:var(--orange)';
+      } else if (st.n_flag > 0){
+        stTxt = '⚑' + st.n_flag;
+        stStyle = 'color:var(--orange);font-size:13px;font-weight:700';
+        tip = ` · ${st.n_flag} open question(s)`;
+      }
+    }
+    row.innerHTML = `<span class="${p.hypoxia ? 'dotH' : 'dotN'}"></span>
+      <span class="rid">${p.id}</span><span class="ph">${p.ph ?? ''}</span>
+      <span class="st" style="${stStyle}">${stTxt}</span>`;
+    row.title = (p.reason || '') + tip;
+    row.onclick = () => loadRecord(p.id);
+    el.appendChild(row);
+  }
+}
+function renderTop(){
+  if (!S.ann) return;
+  const s = localStatus();
+  $('progress').textContent =
+    `Decels ${s.decels_done}/${s.decels} · Contractions ${s.cons_done}/${s.cons}`;
+}
+function fmtT(t){ return t.toFixed(2); }
+function renderSel(){
+  const el = $('selCard'), e = getSel();
+  const isD = e && S.sel.list === 'decels';
+  const box = $('notes');
+  const ref = e ? `${isD ? 'Decel' : 'Contraction'} ${e.id} · ${fmtT(e.a)} → ${fmtT(e.b)} (${((e.b - e.a)*60).toFixed(0)} s) ` : '';
+  if (document.activeElement !== box && (box.value === '' || box.value === (S.noteAuto || '')) && box.value !== ref){
+    box.value = ref; S.noteAuto = ref;
+  }
+  if (!e){
+    el.innerHTML = '<div class="t">No event selected — click one on the trace, or press <b>Tab</b> for the next pending</div>';
+    return;
+  }
+  let html = `<div class="t">${isD ? 'Decel' : 'Contraction'} ${e.id} · ${fmtT(e.a)} → ${fmtT(e.b)}
+     (${((e.b - e.a)*60).toFixed(0)} s)</div>`;
+  if (isD){
+    html += '<div class="typeGrid">' + TYPES.map((t, i) =>
+      `<button class="t${t[0].toUpperCase()+t.slice(1)}${(t === 'unclassified' ? !e.type : e.type === t) ? ' on' : ''}"
+        onclick="setType('${t}')"><b>${i+1}</b>${TCN[t]}</button>`).join('') + '</div>';
+  }
+  html += `<div class="rowBtns">
+    <button onclick="toggleFlag()" style="color:var(--orange)"
+      title="Mark this event as a question the next reviewer should look at (⏎)">${e.flag ? '⚑ Remove flag' : '⚑ Raise a flag'}</button>
+    <button onclick="deleteSel()" style="color:var(--red)">Delete ✕</button></div>`;
+  el.innerHTML = html;
+}
+function esc(s){ const d = document.createElement('span'); d.textContent = s; return d.innerHTML; }
+function renderHist(){
+  const el = $('histList'); el.innerHTML = '';
+  const hs = [...(S.ann.history || [])].reverse();
+  if (!hs.length){
+    el.innerHTML = '<div class="hRow" style="color:var(--dim)">No history yet</div>';
+    return;
+  }
+  for (const h of hs){
+    const row = document.createElement('div');
+    row.className = 'hRow';
+    const d = new Date(h.t);
+    const ts = isNaN(d) ? '' : d.toLocaleDateString([], {month:'numeric', day:'numeric'});
+    row.innerHTML = `<span class="ht">${ts}</span><b>${esc(h.by || '?')}</b> ${esc(h.action || '')}`;
+    el.appendChild(row);
+  }
+}
+function pairRows(){
+  const ds = [...S.ann.decels].sort((p, q) => p.a - q.a);
+  const cs = [...S.ann.contractions].sort((p, q) => p.a - q.a);
+  const used = new Set(), rows = [];
+  for (const d of ds){
+    let best = null, bd = 0.75;                 // pair if overlap or gap < 45 s
+    for (const c of cs){
+      if (used.has(c.id)) continue;
+      const gap = Math.max(0, d.a - c.b, c.a - d.b);
+      if (gap < bd){ bd = gap; best = c; }
+    }
+    if (best) used.add(best.id);
+    rows.push({d, c: best});
+  }
+  for (const c of cs)
+    if (!used.has(c.id)) rows.push({d: null, c});
+  rows.sort((r1, r2) => ((r1.d ? r1.d.a : r1.c.a) - (r2.d ? r2.d.a : r2.c.a)));
+  return rows;
+}
+function cellEl(e, list){
+  const c = document.createElement('div');
+  if (!e){
+    c.className = 'cell miss';
+    c.textContent = list === 'decels' ? '· no decel match' : '· no UC match';
+    return c;
+  }
+  c.className = 'cell' + (S.sel?.id === e.id ? ' cur' : '');
+  const tcol = list === 'decels' ? (e.type ? TCOLOR[e.type] : 'var(--dim)') : 'var(--ink)';
+  c.innerHTML = `<span style="color:${tcol}">${fmtT(e.a)}</span>` +
+    `<span style="color:var(--dim)">${((e.b-e.a)*60).toFixed(0)}s</span>` +
+    (e.flag ? '<span style="color:var(--orange)">⚑</span>' : '');
+  if (e.by) c.title = 'last edit: ' + e.by;
+  c.onclick = () => { S.sel = {list, id:e.id}; ensureVisible(e); renderAll(); };
+  return c;
+}
+function renderList(){
+  const el = $('evList'); el.innerHTML = '';
+  let curRow = null;
+  for (const r of pairRows()){
+    const row = document.createElement('div');
+    row.className = 'pairRow';
+    if (S.sel && ((r.d && r.d.id === S.sel.id) || (r.c && r.c.id === S.sel.id))){
+      row.className += ' cur'; curRow = row;
+    }
+    row.appendChild(cellEl(r.d, 'decels'));
+    row.appendChild(cellEl(r.c, 'contractions'));
+    el.appendChild(row);
+  }
+  if (curRow && S.sel?.id !== S._lastSelId)
+    curRow.scrollIntoView({block:'nearest'});
+  S._lastSelId = S.sel?.id ?? null;
+}
+function renderAll(){ renderCanvases(); renderTop(); renderSel(); renderHist(); renderList(); renderRecs(); }
+
+/* ---------- actions ---------- */
+window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') return;
+  const nv = (t === 'unclassified' || e.type === t) ? null : t;
+  if (nv === e.type) return;
+  mutate(() => { e.type = nv; e.by = S.annotator;
+                 if (e.review === 'pending') e.review = 'accepted'; },
+         `${e.id}: type → ${nv ?? 'unclassified'}`); };
+window.toggleFlag = () => { const e = getSel(); if (!e) return;
+  const nv = !e.flag;
+  mutate(() => { e.flag = nv; e.by = S.annotator; },
+         `${e.id}: ${nv ? 'question raised' : 'question cleared'}`); };
+window.deleteSel = () => { const e = getSel(); if (!e) return;
+  const list = S.sel.list;
+  const ok = mutate(() => {
+    S.ann[list] = S.ann[list].filter(v => v.id !== e.id);
+    if (e.origin === 'detector')
+      S.ann.deleted.push({list, ...e, review:'deleted', by:S.annotator});
+  }, `${e.id}: deleted`);
+  if (ok){ S.sel = null; renderAll(); } };
+
+$('notes').addEventListener('keydown', ev => {
+  if (ev.key === 'Enter' && !ev.shiftKey){
+    ev.preventDefault();
+    const v = $('notes').value.trim();
+    if (!v) return;
+    if (mutate(() => {}, 'note: ' + v)){ $('notes').value = ''; S.noteAuto = ''; }
+  }
+});
+$('annName').addEventListener('change', () => {
+  const v = $('annName').value.trim();
+  if (v && !/^[a-zA-Z0-9_-]{1,40}$/.test(v)){
+    $('saveState').textContent = 'Name: letters, digits, - and _ only';
+    $('annName').value = S.annotator; return;
+  }
+  S.annotator = v;
+  localStorage.setItem('annotator', v);
+  if (v) $('saveState').textContent = 'Hi ' + v + ' — edits will be recorded under this name';
+});
+function setAddMode(v){
+  S.addMode = v;
+  $('addBtn').classList.toggle('on', v);
+  $('addBtn').textContent = v ? 'Drawing — drag on a trace (Esc)' : '＋ Draw missed event';
+}
+$('addBtn').onclick = () => setAddMode(!S.addMode);
+document.querySelectorAll('#recFilter button').forEach(b => b.onclick = () => {
+  S.recFilter = b.dataset.f;
+  document.querySelectorAll('#recFilter button').forEach(x => x.classList.toggle('on', x === b));
+  renderRecs();
+});
+$('helpBtn').onclick = () => $('help').style.display = 'flex';
+$('help').onclick = e => { if (e.target === $('help')) $('help').style.display = 'none'; };
+
+function ensureVisible(e){
+  const span = S.view.t1 - S.view.t0;
+  if (e.a >= S.view.t0 && e.b <= S.view.t1) return;
+  const c = (e.a + e.b)/2, s = Math.max(span, 4);
+  S.view.t0 = c - s/2; S.view.t1 = c + s/2; clampView();
+}
+function pendingSeq(){
+  const d = [...S.ann.decels].sort((p,q) => p.a - q.a).filter(e => !decelDone(e))
+    .map(e => ({list:'decels', e}));
+  const c = [...S.ann.contractions].sort((p,q) => p.a - q.a)
+    .filter(e => e.review === 'pending').map(e => ({list:'contractions', e}));
+  return d.concat(c);
+}
+function jumpPending(dir){
+  const seq = pendingSeq();
+  if (!seq.length) return;
+  let i = 0;
+  if (S.sel){
+    const cur = getSel();
+    i = seq.findIndex(s => s.e.a > (cur ? cur.a : -1e9));
+    if (i < 0) i = 0;
+    if (dir < 0) i = (i - 1 + seq.length) % seq.length;
+  } else if (dir < 0) i = seq.length - 1;
+  const s = seq[i];
+  S.sel = {list:s.list, id:s.e.id};
+  ensureVisible(s.e); renderAll();
+}
+
+/* ---------- mouse ---------- */
+function hitTest(pane, px, w){
+  const list = pane === 'fhr' ? 'decels' : 'contractions';
+  const sel = (S.sel && S.sel.list === list)
+    ? S.ann[list].find(e => e.id === S.sel.id) : null;
+  if (sel){
+    const pa = t2px(sel.a, w), pb = t2px(sel.b, w);
+    if (Math.abs(px - pa) < 7) return {list, e: sel, mode:'resize-a'};
+    if (Math.abs(px - pb) < 7) return {list, e: sel, mode:'resize-b'};
+    if (px >= pa && px <= pb) return {list, e: sel, mode:'body'};
+  }
+  for (const e of S.ann[list]){
+    const pa = t2px(e.a, w), pb = t2px(e.b, w);
+    if (Math.abs(px - pa) < 6) return {list, e, mode:'resize-a'};
+    if (Math.abs(px - pb) < 6) return {list, e, mode:'resize-b'};
+  }
+  for (const e of S.ann[list]){
+    const pa = t2px(e.a, w), pb = t2px(e.b, w);
+    if (px >= pa && px <= pb) return {list, e, mode:'body'};
+  }
+  return null;
+}
+function setupPane(id){
+  const c = $(id);
+  c.addEventListener('mousedown', ev => {
+    const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
+    const t = px2t(px, w);
+    if (S.addMode){
+      if (!requireName()) return;
+      S.drag = {mode:'create', pane:id, t0:rt(t), t1:rt(t)};
+      return;
+    }
+    const hit = hitTest(id, px, w);
+    if (hit){
+      const selected = S.sel && S.sel.id === hit.e.id;
+      S.sel = {list:hit.list, id:hit.e.id};
+      if (hit.mode !== 'body'){
+        if (!requireName()) { renderAll(); return; }
+        S.drag = {mode:hit.mode, pane:id, e:hit.e, undoPushed:false,
+                  origA:hit.e.a, origB:hit.e.b};
+      } else if (selected){
+        if (!requireName()) { renderAll(); return; }
+        S.drag = {mode:'move', pane:id, e:hit.e, grab:t - hit.e.a, undoPushed:false,
+                  origA:hit.e.a, origB:hit.e.b};
+      }
+      renderAll();
+    } else {
+      S.sel = null;
+      S.drag = {mode:'pan', pane:id, t, v0:{...S.view}, x0:ev.clientX, w};
+      renderAll();
+    }
+  });
+  c.addEventListener('dblclick', ev => {
+    const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
+    const hit = hitTest(id, px, w);
+    if (hit){
+      S.sel = {list:hit.list, id:hit.e.id};
+      S.view.t0 = hit.e.a - 2; S.view.t1 = hit.e.b + 2; clampView(); renderAll();
+    }
+  });
+  c.addEventListener('wheel', ev => {
+    ev.preventDefault();
+    const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
+    if (ev.ctrlKey || Math.abs(ev.deltaY) >= Math.abs(ev.deltaX)){
+      const f = Math.pow(1.0018, ev.deltaY), t = px2t(px, w);
+      S.view.t0 = t - (t - S.view.t0)*f;
+      S.view.t1 = t + (S.view.t1 - t)*f;
+    } else {
+      const dt = ev.deltaX/w*(S.view.t1 - S.view.t0);
+      S.view.t0 += dt; S.view.t1 += dt;
+    }
+    clampView(); renderCanvases();
+  }, {passive:false});
+  c.addEventListener('mousemove', ev => {
+    const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
+    const t = px2t(px, w);
+    S.mouse = {pane:id, t};
+    const {x, fhr, uc} = S.rec ? S.rec.strip : {};
+    let read = '';
+    if (S.rec){
+      let i = Math.round((t - x[0])*60);
+      i = Math.max(0, Math.min(x.length-1, i));
+      const v = id === 'fhr' ? fhr[i] : uc[i];
+      read = `t ${t.toFixed(2)}′  ${id === 'fhr' ? 'FHR' : 'UC'} ${v == null ? '—' : v.toFixed(0)}`;
+    }
+    $('cursorRead').textContent = read;
+    if (!S.drag){
+      const hit = S.addMode ? null : hitTest(id, px, w);
+      c.style.cursor = S.addMode ? 'crosshair' :
+        hit ? (hit.mode === 'body' ? 'pointer' : 'ew-resize') : 'grab';
+      return;
+    }
+    const d = S.drag;
+    if (d.pane !== id) return;
+    if (d.mode === 'pan'){
+      const dt = (d.x0 - ev.clientX)/d.w*(d.v0.t1 - d.v0.t0);
+      S.view.t0 = d.v0.t0 + dt; S.view.t1 = d.v0.t1 + dt;
+      clampView(); renderCanvases(); return;
+    }
+    if (d.mode === 'create'){ d.t1 = rt(t); renderCanvases(); drawCreate(c, d); return; }
+    if (!d.undoPushed){ S.undo.push(snap()); S.redo = []; d.undoPushed = true; }
+    const e = d.e;
+    e.by = S.annotator;
+    if (d.mode === 'resize-a') e.a = Math.min(rt(t), e.b - MINDUR);
+    else if (d.mode === 'resize-b') e.b = Math.max(rt(t), e.a + MINDUR);
+    else if (d.mode === 'move'){
+      const dur = e.b - e.a;
+      e.a = rt(t - d.grab); e.b = e.a + dur;
+    }
+    markEdited(e);
+    renderCanvases();
+  });
+  c.addEventListener('mouseleave', () => { $('cursorRead').textContent = ''; });
+}
+function drawCreate(c, d){
+  const [g, w, h] = sizeCanvas(c);
+  const pa = t2px(Math.min(d.t0, d.t1), w), pb = t2px(Math.max(d.t0, d.t1), w);
+  g.fillStyle = 'rgba(0,122,255,.18)'; g.fillRect(pa, 0, pb - pa, h);
+  g.strokeStyle = '#007aff'; g.setLineDash([4,3]); g.strokeRect(pa, 0, pb - pa, h); g.setLineDash([]);
+}
+window.addEventListener('mouseup', () => {
+  const d = S.drag; S.drag = null;
+  if (!d) return;
+  if (d.mode === 'create'){
+    const a = Math.min(d.t0, d.t1), b = Math.max(d.t0, d.t1);
+    if (b - a >= MINDUR){
+      const list = d.pane === 'fhr' ? 'decels' : 'contractions';
+      mutate(() => {
+        const nid = (d.pane === 'fhr' ? 'd' : 'c') + 'm' + (S.ann.next_id++);
+        const e = {id:nid, a, b, a0:null, b0:null, origin:'manual', review:'added',
+                   by:S.annotator};
+        if (list === 'decels'){ e.type = null; e.uc_unreadable = false; e.det_type = null; }
+        S.ann[list].push(e);
+        S.ann[list].sort((p, q) => p.a - q.a);
+        S.sel = {list, id:nid};
+      }, `added ${list === 'decels' ? 'decel' : 'contraction'} ${fmtT(a)}..${fmtT(b)}`);
+    } else renderCanvases();
+    return;
+  }
+  if (d.mode !== 'pan' && d.undoPushed){
+    logH(`${d.e.id}: ${d.mode === 'move' ? 'moved' : 'boundary'} ` +
+         `${fmtT(d.origA)}..${fmtT(d.origB)} → ${fmtT(d.e.a)}..${fmtT(d.e.b)}`);
+    S.ann.updated = new Date().toISOString();
+    S.dirty = true; scheduleSave(); renderAll();
+  }
+});
+setupPane('fhr'); setupPane('uc');
+
+$('mini').addEventListener('mousedown', ev => {
+  const r = $('mini').getBoundingClientRect();
+  const move = e2 => {
+    const frac = (e2.clientX - r.left)/r.width;
+    const t = S.tmin + frac*(S.tmax - S.tmin), span = S.view.t1 - S.view.t0;
+    S.view.t0 = t - span/2; S.view.t1 = t + span/2;
+    clampView(); renderCanvases();
+  };
+  move(ev);
+  const up = () => { removeEventListener('mousemove', move); removeEventListener('mouseup', up); };
+  addEventListener('mousemove', move); addEventListener('mouseup', up);
+});
+
+/* ---------- keyboard ---------- */
+window.addEventListener('keydown', ev => {
+  if (['TEXTAREA','INPUT'].includes(document.activeElement.tagName)) return;
+  if (!S.ann) return;
+  const k = ev.key;
+  if ((ev.metaKey || ev.ctrlKey) && k.toLowerCase() === 'z'){
+    ev.preventDefault(); ev.shiftKey ? redo() : undo(); return; }
+  if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
+  if (k === 'Escape'){
+    if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
+    if (S.addMode){ setAddMode(false); return; }
+    S.sel = null; renderAll(); return; }
+  if (k === 'Tab'){ ev.preventDefault(); jumpPending(ev.shiftKey ? -1 : 1); return; }
+  if (k >= '1' && k <= '4'){ setType(TYPES[+k - 1]); return; }
+  if (k === 'Enter'){ toggleFlag(); return; }
+  if (k === 'x' || k === 'X' || k === 'Delete' || k === 'Backspace'){ ev.preventDefault(); deleteSel(); return; }
+  if (k === 'n' || k === 'N'){ setAddMode(!S.addMode); return; }
+  const span = S.view.t1 - S.view.t0;
+  if (k === 'ArrowLeft'){ S.view.t0 -= span*.2; S.view.t1 -= span*.2; clampView(); renderCanvases(); return; }
+  if (k === 'ArrowRight'){ S.view.t0 += span*.2; S.view.t1 += span*.2; clampView(); renderCanvases(); return; }
+  if (k === '+' || k === '='){ S.view.t0 += span*.15; S.view.t1 -= span*.15; clampView(); renderCanvases(); return; }
+  if (k === '-'){ S.view.t0 -= span*.2; S.view.t1 += span*.2; clampView(); renderCanvases(); return; }
+  if (k === '0'){ S.view = {t0:S.tmin, t1:S.tmax}; renderCanvases(); return; }
+});
+
+new ResizeObserver(() => renderCanvases()).observe($('fhr'));
+boot();
+</script>
+</body>
+</html>
