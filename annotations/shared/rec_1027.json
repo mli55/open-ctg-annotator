@@ -3,7 +3,7 @@
  "record_id": 1027,
  "annotator": "claude",
  "notes": "",
- "next_id": 33,
+ "next_id": 39,
  "decels": [
   {
    "id": "d1",
@@ -255,138 +255,62 @@
  ],
  "contractions": [
   {
-   "id": "c19",
+   "id": "c33",
    "a": -74.22,
-   "b": -73.55,
+   "b": -72.63,
    "a0": -74.22,
-   "b0": -73.55,
+   "b0": -72.63,
    "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
+   "review": "pending"
   },
   {
-   "id": "c20",
-   "a": -73.55,
-   "b": -72.72,
-   "a0": -73.55,
-   "b0": -72.72,
-   "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
-  },
-  {
-   "id": "c21",
-   "a": -71.58,
-   "b": -70.56,
-   "a0": -71.58,
-   "b0": -70.56,
-   "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
-  },
-  {
-   "id": "c22",
-   "a": -70.56,
+   "id": "c34",
+   "a": -71.56,
    "b": -68.9,
-   "a0": -70.56,
+   "a0": -71.56,
    "b0": -68.9,
    "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
+   "review": "pending"
   },
   {
-   "id": "c23",
+   "id": "c35",
    "a": -66.57,
-   "b": -66.03,
-   "a0": -66.57,
-   "b0": -66.03,
-   "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
-  },
-  {
-   "id": "c24",
-   "a": -66.02,
    "b": -64.45,
-   "a0": -66.02,
+   "a0": -66.57,
    "b0": -64.45,
    "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
+   "review": "pending"
   },
   {
-   "id": "c25",
-   "a": -64.44,
-   "b": -63.96,
-   "a0": -64.44,
-   "b0": -63.96,
-   "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
-  },
-  {
-   "id": "c26",
-   "a": -63.95,
-   "b": -62.53,
-   "a0": -63.95,
-   "b0": -62.53,
-   "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
-  },
-  {
-   "id": "c27",
-   "a": -62.36,
+   "id": "c36",
+   "a": -62.37,
    "b": -61.45,
-   "a0": -62.36,
+   "a0": -62.37,
    "b0": -61.45,
    "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
+   "review": "pending"
   },
   {
-   "id": "c28",
+   "id": "c37",
    "a": -60.11,
-   "b": -59.02,
-   "a0": -60.11,
-   "b0": -59.02,
-   "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
-  },
-  {
-   "id": "c29",
-   "a": -59.01,
    "b": -57.76,
-   "a0": -59.01,
+   "a0": -60.11,
    "b0": -57.76,
    "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
+   "review": "pending"
   },
   {
-   "id": "c30",
-   "a": -47.04,
-   "b": -46.7,
-   "a0": -47.04,
-   "b0": -46.7,
-   "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
-  },
-  {
-   "id": "c31",
-   "a": -46.7,
+   "id": "c38",
+   "a": -47.03,
    "b": -44.86,
-   "a0": -46.7,
+   "a0": -47.03,
    "b0": -44.86,
    "origin": "detector",
-   "review": "accepted",
-   "by": "claude"
+   "review": "pending"
   }
  ],
  "deleted": [],
- "updated": "2026-08-20T23:39:13.282029+00:00",
+ "updated": "2026-08-20T23:44:17.636960+00:00",
  "history": [
   {
    "t": "2026-08-20T21:09:35.882122+00:00",
@@ -402,6 +326,11 @@
    "t": "2026-08-20T23:39:13.282029+00:00",
    "by": "claude",
    "action": "schema update: 3 event(s) set to unclassified"
+  },
+  {
+   "t": "2026-08-20T23:44:17.636960+00:00",
+   "by": "claude",
+   "action": "uc prefill v2: replaced all 13 contractions with 6 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
   }
  ]
 }
