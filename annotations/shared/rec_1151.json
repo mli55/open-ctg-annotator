@@ -1,8 +1,7 @@
 {
  "schema": 1,
  "record_id": 1151,
- "annotator": "mn",
- "status": "done",
+ "annotator": "claude",
  "notes": "",
  "next_id": 10,
  "decels": [
@@ -16,7 +15,7 @@
    "review": "added",
    "type": "variable",
    "det_type": null,
-   "nadir_min": -8,
+   "nadir_min": -8.0,
    "by": "claude"
   },
   {
@@ -48,7 +47,7 @@
   },
   {
    "id": "dm9",
-   "a": -2,
+   "a": -2.0,
    "b": -1.7,
    "a0": null,
    "b0": null,
@@ -114,12 +113,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-20T23:12:21.032Z",
+ "updated": "2026-08-20T23:39:13.282029+00:00",
  "history": [
   {
    "t": "2026-08-20T21:12:21.740914+00:00",
    "by": "claude",
-   "action": "first pass: 4 decels (2 variable, 2 unsure); 4 added, 0 detector events deleted; marked done"
+   "action": "first pass: 4 decels (2 variable, 2 unclassified); 4 added, 0 detector events deleted"
   },
   {
    "t": "2026-08-20T21:12:21.740914+00:00",
@@ -127,34 +126,9 @@
    "action": "note: Claude first pass. UC essentially unreadable throughout (toco only -52..-48; c5 is a flat ~24 plateau of dubious validity). Detector found 0 decels; four small events added, all UC-flagged: -8.2..-7.85 (nadir 92), -5.1..-4.6 (plateau 104-107 ~30 s, ambiguous shape, unsure), -3.45..-3.2 (sharp V to 102), -2.0..-1.7 (dip to 108 off an accelerative second-stage segment, marginal, unsure). Second stage (from -5) is saltatory; delineation there is uncertain. The -12.1 post-accel undershoot (108, depth ~11) was judged sub-threshold."
   },
   {
-   "t": "2026-08-20T21:12:21.740914+00:00",
-   "by": "claude",
-   "action": "schema update: unsure merged into unclassified (2 events)"
-  },
-  {
-   "t": "2026-08-20T22:58:18.442545+00:00",
+   "t": "2026-08-20T23:39:13.282029+00:00",
    "by": "claude",
    "action": "2 ambiguous event(s) from the first pass flagged as \u2691 questions"
-  },
-  {
-   "t": "2026-08-20T23:12:11.010Z",
-   "by": "mn",
-   "action": "dm7: deleted"
-  },
-  {
-   "t": "2026-08-20T23:12:13.164Z",
-   "by": "mn",
-   "action": "undo"
-  },
-  {
-   "t": "2026-08-20T23:12:17.341Z",
-   "by": "mn",
-   "action": "dm7: deleted"
-  },
-  {
-   "t": "2026-08-20T23:12:21.032Z",
-   "by": "mn",
-   "action": "undo"
   }
  ]
 }

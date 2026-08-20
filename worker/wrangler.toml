@@ -10,4 +10,4 @@ run_worker_first = true
 # After `wrangler kv namespace create ANN`, paste the returned id below.
 [[kv_namespaces]]
 binding = "ANN"
-id = "PASTE_NAMESPACE_ID_HERE"
+id = "84680cfe9de14a5e8af972365a64bb2c"

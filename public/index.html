@@ -183,7 +183,7 @@
     <tr><td><kbd>X</kbd> / <kbd>Del</kbd></td><td>Delete selected event (detector events go to a recoverable deleted list)</td></tr>
     <tr><td><kbd>N</kbd></td><td>Add mode: drag on the FHR pane to draw a deceleration, on the UC pane a contraction</td></tr>
     <tr><td><kbd>Tab</kbd> / <kbd>⇧Tab</kbd></td><td>Next / previous pending event</td></tr>
-    <tr><td>Drag an edge</td><td>Adjust onset/offset (recorded as edited; original boundaries kept)</td></tr>
+    <tr><td>Drag an edge of a selected event</td><td>Adjust onset/offset (select the event first; recorded as edited, original boundaries kept)</td></tr>
     <tr><td>Drag inside a selected event</td><td>Move the whole event</td></tr>
     <tr><td>Wheel / <kbd>+</kbd><kbd>−</kbd> / <kbd>0</kbd></td><td>Zoom (0 = fit all); drag background or <kbd>←</kbd><kbd>→</kbd> to pan; double-click an event to zoom to it</td></tr>
     <tr><td><kbd>⌘Z</kbd> / <kbd>⇧⌘Z</kbd></td><td>Undo / redo</td></tr>
@@ -751,14 +751,15 @@ function setupPane(id){
     if (hit){
       const selected = S.sel && S.sel.id === hit.e.id;
       S.sel = {list:hit.list, id:hit.e.id};
-      if (hit.mode !== 'body'){
+      if (selected){  // first click only selects; drags need a selected event
         if (!requireName()) { renderAll(); return; }
-        S.drag = {mode:hit.mode, pane:id, e:hit.e, undoPushed:false,
-                  origA:hit.e.a, origB:hit.e.b};
-      } else if (selected){
-        if (!requireName()) { renderAll(); return; }
-        S.drag = {mode:'move', pane:id, e:hit.e, grab:t - hit.e.a, undoPushed:false,
-                  origA:hit.e.a, origB:hit.e.b};
+        if (hit.mode !== 'body'){
+          S.drag = {mode:hit.mode, pane:id, e:hit.e, undoPushed:false,
+                    origA:hit.e.a, origB:hit.e.b};
+        } else {
+          S.drag = {mode:'move', pane:id, e:hit.e, grab:t - hit.e.a, undoPushed:false,
+                    origA:hit.e.a, origB:hit.e.b};
+        }
       }
       renderAll();
     } else {
@@ -803,8 +804,9 @@ function setupPane(id){
     $('cursorRead').textContent = read;
     if (!S.drag){
       const hit = S.addMode ? null : hitTest(id, px, w);
+      const hitSel = hit && S.sel && S.sel.id === hit.e.id;
       c.style.cursor = S.addMode ? 'crosshair' :
-        hit ? (hit.mode === 'body' ? 'pointer' : 'ew-resize') : 'grab';
+        hit ? (hit.mode !== 'body' && hitSel ? 'ew-resize' : 'pointer') : 'grab';
       return;
     }
     const d = S.drag;
