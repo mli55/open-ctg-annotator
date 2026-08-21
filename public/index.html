@@ -51,10 +51,13 @@
     background:var(--card); user-select:none; -webkit-user-select:none}
   aside#recsWrap, aside#panel .pairHead, #evList, #recFilter{user-select:none; -webkit-user-select:none}
   #mini{height:52px; margin-bottom:6px}
-  #fhr{flex:58 1 0; min-height:0}
+  #fhr{flex:52 1 0; min-height:0}
   #link{flex:none; height:34px; margin:2px 0; border:none; background:transparent;
     border-radius:0}
-  #uc{flex:34 1 0; min-height:0}
+  #uc{flex:30 1 0; min-height:0}
+  #pairs{flex:none; height:186px; margin-top:6px; display:flex; flex-direction:column;
+    border:1px solid var(--line); border-radius:10px; background:var(--card);
+    overflow:hidden}
   aside#panel{width:252px; flex:none; border-left:1px solid var(--line); background:var(--card);
     display:flex; flex-direction:column; min-height:0}
   .secTitle{font-size:10.5px; font-weight:600; color:var(--dim); text-transform:uppercase;
@@ -167,6 +170,10 @@
     <canvas id="fhr"></canvas>
     <canvas id="link"></canvas>
     <canvas id="uc"></canvas>
+    <div id="pairs">
+      <div class="pairHead"><span>Decels</span><span>Contractions</span></div>
+      <div id="evList"></div>
+    </div>
     <div id="credit">Data: CTU-CHB Intrapartum CTG Database (Chudáček et al. 2014) via PhysioNet · ODC-By 1.0 · edits are recorded under your name, visible to the project team</div>
   </main>
   <aside id="panel">
@@ -178,8 +185,6 @@
       <div class="secTitle">History</div>
       <div id="histList"></div>
     </div>
-    <div class="pairHead"><span>Decels</span><span>Contractions</span></div>
-    <div id="evList"></div>
     <div id="legend">
       <span class="lg"><span class="chip" style="background:#34c759"></span>early</span>
       <span class="lg"><span class="chip" style="background:#ff3b30"></span>late</span>
@@ -553,6 +558,7 @@ function drawFHR(){
   }
   drawBaseline(g, w, h, ymin, ymax);
   drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
+  drawLinkAnchor(g, w, h, 'fhr');
   paneLabel(g, 'FHR — fetal heart rate (bpm)');
   const sel = getSel();
   if (sel && S.sel.list === 'decels'){
@@ -587,37 +593,79 @@ function linkAnchors(){
   }
   return out;
 }
+function selDecel(){ return S.sel && S.sel.list === 'decels' ? getSel() : null; }
+function pairAnchorT(){          // where the lower tip sits; null while it dangles
+  const d = selDecel(); if (!d) return null;
+  if (S.drag && S.drag.mode === 'pair') return S.drag.t;
+  const a = linkAnchors().find(v => v.d.id === d.id);
+  return a ? a.tc : null;
+}
+/* The two ends of a pairing live inside the panes they belong to: the upper
+   tip stands on the floor of the FHR pane under the middle of the
+   deceleration, the lower one on the ceiling of the UC pane under the middle
+   of the contraction, and the two point at each other. The lane between them
+   carries nothing but the dashed run that joins them. */
+function drawLinkAnchor(g, w, h, pane){
+  const d = selDecel(); if (!d) return;
+  g.fillStyle = TCOLOR[d.type || 'pending'] || '#8e8e93';
+  if (pane === 'fhr'){ linkTri(g, t2px((d.a + d.b) / 2, w), h, 1); return; }
+  const t = pairAnchorT();
+  if (t != null) linkTri(g, t2px(t, w), 0, -1);
+}
+function ucAnchorHit(px, py, w){
+  if (py > 11) return null;
+  const d = selDecel(); if (!d) return null;
+  const t = pairAnchorT();
+  return Math.abs(px - t2px(t == null ? (d.a + d.b) / 2 : t, w)) <= 9 ? d : null;
+}
+function linkTri(g, x, tipY, dir){   // dir 1 = tip down, -1 = tip up
+  g.beginPath();
+  g.moveTo(x, tipY);
+  g.lineTo(x - 4.5, tipY - dir * 6);
+  g.lineTo(x + 4.5, tipY - dir * 6);
+  g.closePath(); g.fill();
+}
+/* Within this much of a contraction the grip is taken by it. Pairing is a
+   judgement about which contraction, not about where exactly the cursor
+   landed, so the anchor is allowed to reach: inside the band is a certain
+   claim, and just outside it still is -- roughly one contraction's rise. */
+const PAIR_PULL = 0.4;              // minutes
+function nearestContraction(t){
+  let best = null, bd = PAIR_PULL;
+  for (const c of S.ann.contractions){
+    const gap = Math.max(0, c.a - t, t - c.b);   // 0 anywhere inside the band
+    if (gap <= bd){ bd = gap; best = c; }
+  }
+  return best;
+}
 function drawLinks(){
   const [g, w, h] = sizeCanvas($('link'));
   g.clearRect(0, 0, w, h);
   if (!S.rec || !S.ann) return;
   const selId = S.sel && S.sel.list === 'decels' ? S.sel.id : null;
   const drag = S.drag && S.drag.mode === 'pair' ? S.drag : null;
-  let sel = null;
+  // every other pair, quiet, so the rhythm of the record still reads
+  g.setLineDash([2,3]); g.lineWidth = 1;
+  g.strokeStyle = 'rgba(142,142,147,.32)';
   for (const a of linkAnchors()){
-    if (a.d.id === selId){ sel = a; continue; }
+    if (a.d.id === selId) continue;
     const x0 = t2px(a.td, w), x1 = t2px(a.tc, w);
     if (Math.max(x0, x1) < -20 || Math.min(x0, x1) > w + 20) continue;
-    g.strokeStyle = 'rgba(142,142,147,.38)'; g.lineWidth = 1;
     g.beginPath(); g.moveTo(x0, 0); g.lineTo(x1, h); g.stroke();
   }
-  // the selected pair last, so it sits over the rest
+  g.setLineDash([]);
+
   const d = selId ? getSel() : null;
   if (!d) return;
+  const sel = linkAnchors().find(v => v.d.id === d.id);
   const col = TCOLOR[d.type || 'pending'] || '#8e8e93';
   const x0 = t2px((d.a + d.b) / 2, w);
-  let x1 = null;
-  if (drag) x1 = drag.t == null ? null : t2px(drag.t, w);
-  else if (sel) x1 = t2px(sel.tc, w);
-  g.strokeStyle = col; g.lineWidth = 2;
-  g.setLineDash(x1 == null ? [3,3] : []);
-  g.beginPath(); g.moveTo(x0, 0);
-  g.lineTo(x1 == null ? x0 : x1, h);
-  g.stroke(); g.setLineDash([]);
-  g.fillStyle = col;
-  g.beginPath(); g.arc(x0, 1.5, 2.5, 0, 7); g.fill();
-  if (x1 != null){ g.beginPath(); g.arc(x1, h - 3.5, 4.5, 0, 7); g.fill();
-    g.strokeStyle = '#fff'; g.lineWidth = 1.4; g.stroke(); }
+  const x1 = drag ? (drag.t == null ? null : t2px(drag.t, w))
+                  : (sel ? t2px(sel.tc, w) : null);
+  g.strokeStyle = col; g.lineWidth = 1.4;
+  g.setLineDash([3,3]);
+  g.beginPath(); g.moveTo(x0, 0); g.lineTo(x1 == null ? x0 : x1, h); g.stroke();
+  g.setLineDash([]);
 }
 function linkGripHit(px, w){
   if (!S.sel || S.sel.list !== 'decels') return null;
@@ -636,13 +684,15 @@ function drawUC(){
   const pUC = partnerOf(S.sel);
   for (const c of S.ann.contractions){
     const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
-    const isPair = pUC?.list === 'contractions' && pUC.id === c.id;
+    const isPair = (pUC?.list === 'contractions' && pUC.id === c.id) ||
+                   (S.drag?.mode === 'pair' && S.drag.target === c.id);
     eventRect(g, w, h, c, c.flag ? '#ff9500' : '#00c7be', isSel || isPair, isSel);
     if (c.flag){ const px = t2px(c.a, w);
       if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 14); } }
   }
   drawSignal(g, w, h, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1);
+  drawLinkAnchor(g, w, h, 'uc');
   paneLabel(g, 'UC — uterine contractions (toco)');
 }
 function drawMini(){
@@ -1171,6 +1221,17 @@ function setupPane(id){
     ev.preventDefault();
     const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
     const t = px2t(px, w);
+    if (id === 'uc'){
+      const d0 = ucAnchorHit(px, ev.clientY - r.top, w);
+      if (d0){                        // the tip sits over the band it points at
+        if (!requireName()){ renderAll(); return; }
+        const a = linkAnchors().find(v => v.d.id === d0.id);
+        S.drag = {mode:'pair', pane:'uc', did: d0.id,
+                  from: a ? a.c.id : 'none', target: a ? a.c.id : 'none',
+                  t: a ? a.tc : null};
+        renderCanvases(); return;
+      }
+    }
     const hit = hitTest(id, px, w);
     if (hit){
       discardProvisional(hit.e);
@@ -1229,6 +1290,8 @@ function setupPane(id){
     }
     $('cursorRead').textContent = read;
     if (!S.drag){
+      if (id === 'uc' && ucAnchorHit(px, ev.clientY - r.top, w)){
+        c.style.cursor = 'grab'; return; }
       const hit = hitTest(id, px, w);
       const hitSel = hit && S.sel && S.sel.id === hit.e.id;
       c.style.cursor =
@@ -1297,35 +1360,18 @@ window.addEventListener('mouseup', () => {
   }
 });
 setupPane('fhr'); setupPane('uc');
-(function setupLink(){
-  const c = $('link');
-  c.addEventListener('mousedown', ev => {
-    if (!S.rec || !S.ann) return;
-    const r = c.getBoundingClientRect(), px = ev.clientX - r.left;
-    const g = linkGripHit(px, r.width);
-    if (!g) return;
-    ev.preventDefault();
-    if (!requireName()) return;
-    S.drag = {mode:'pair', pane:'link', did: g.d.id,
-              from: g.c ? g.c.id : 'none', target: g.c ? g.c.id : 'none',
-              t: g.c ? (g.c.a + g.c.b) / 2 : null};
-    renderCanvases();
-  });
-  c.addEventListener('mousemove', ev => {
-    if (S.drag) return;
-    const r = c.getBoundingClientRect();
-    c.style.cursor = linkGripHit(ev.clientX - r.left, r.width) ? 'grab' : 'default';
-  });
-  /* Tracked on the window, not the lane: the lane is 34 px tall and the hand
-     drifts out of it long before the drag is finished. */
+(function trackPairDrag(){
+  /* Tracked on the window: the tip is 11 px tall and the hand leaves it long
+     before the drag is done. Positions are read off the UC pane, which shares
+     the time axis. */
   window.addEventListener('mousemove', ev => {
     const d = S.drag;
     if (!d || d.mode !== 'pair') return;
-    const r = c.getBoundingClientRect(), w = r.width;
-    const t = px2t(ev.clientX - r.left, w);
-    const hit = S.ann.contractions.find(v => t >= v.a && t <= v.b);
+    const c = $('uc'), r = c.getBoundingClientRect();
+    const t = px2t(ev.clientX - r.left, r.width);
+    const hit = nearestContraction(t);
     d.target = hit ? hit.id : 'none';
-    d.t = hit ? (hit.a + hit.b) / 2 : null;   // anchors only, never open toco
+    d.t = hit ? (hit.a + hit.b) / 2 : null;    // anchors only, never open toco
     renderCanvases();
   });
 })();
