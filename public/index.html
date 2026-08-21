@@ -146,7 +146,6 @@
   <h1>Decel Annotator</h1>
   <span id="recTitle" style="color:var(--dim)"></span>
   <span class="sp"></span>
-  <button id="helpBtn" title="?">Shortcuts ?</button>
   <input id="annName" title="Your name — every edit is recorded under it" placeholder="your name">
   <span id="nameHint">← name required to mark up</span>
   <span id="saveState"></span>
@@ -1054,7 +1053,6 @@ document.querySelectorAll('#recFilter button').forEach(b => b.onclick = () => {
   document.querySelectorAll('#recFilter button').forEach(x => x.classList.toggle('on', x === b));
   renderRecs();
 });
-$('helpBtn').onclick = () => $('help').style.display = 'flex';
 $('help').onclick = e => { if (e.target === $('help')) $('help').style.display = 'none'; };
 
 function ensureVisible(e){
