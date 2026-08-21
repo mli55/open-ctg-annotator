@@ -59,7 +59,7 @@
     display:flex; flex-direction:column; min-height:0}
   .secTitle{font-size:10.5px; font-weight:600; color:var(--dim); text-transform:uppercase;
     letter-spacing:.5px; margin:0 12px 4px}
-  #panel #histWrap{flex:0 0 auto; max-height:24%; display:flex; flex-direction:column;
+  #panel #histWrap{flex:1 1 auto; min-height:0; display:flex; flex-direction:column;
     padding:8px 0 6px}
   #histList{overflow-y:auto; min-height:0; scrollbar-gutter:stable}
   #histList::-webkit-scrollbar, #recs::-webkit-scrollbar{width:12px}
@@ -73,7 +73,7 @@
   .pairRowSel .k{color:var(--dim); white-space:nowrap}
   .pairRowSel select{flex:1; min-width:0; font:inherit; font-size:11.5px; padding:2px 4px;
     border:1px solid var(--line); border-radius:6px; background:var(--card); color:var(--ink)}
-  #legend{flex:none; padding:7px 12px 9px; border-top:1px solid var(--line); font-size:10.5px;
+  #legend{flex:none; margin-top:auto; padding:7px 12px 9px; border-top:1px solid var(--line); font-size:10.5px;
     color:var(--dim); display:flex; flex-wrap:wrap; gap:3px 10px; align-items:center}
   .lg{display:inline-flex; gap:4px; align-items:center}
   #credit{flex:none; padding:4px 4px 0; font-size:9px; color:#b9b9be; text-align:center;
