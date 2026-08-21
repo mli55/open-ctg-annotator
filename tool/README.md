@@ -92,11 +92,42 @@ min_peak_sep 60 s, split_min_sep 120 s, valley_drop 4.0/0.20, prominence 5):
   `decel_manual/claude/` still holds the v1 lists.
 - 2026-08-20 visual review (Claude, full strips of all 21 records): no
   clear false positives among the 412 v2 events; 30 missed contractions
-  added by hand as `origin: manual / review: added / by: claude`
+  added by hand as `origin: manual / review: added`
   (signal-loss-adjacent, saturated, or >180 s footprint events the
-  detector rejects; logged per record in history). Known caveat for a
-  future prefill v3: max_dur 180 s cuts real 181-214 s events; 210-240 s
-  would recover ~8 of these automatically.
+  detector rejects). Known caveat for a future prefill v3: max_dur 180 s
+  cuts real 181-214 s events; 210-240 s would recover ~8 of these.
+
+## Decel typing: consensus seeding (2026-08-20)
+
+Deceleration types are NOT taken from any single source. Three independent
+labellings were compared per event:
+
+- `det_type` - the pipeline linker (`link_fhr_uc_events_v4`): candidate
+  contractions ranked by timing score, peak-dominant early logic with
+  confidence tiers, separate handling of FHR-loss decels;
+- `src_rule` - a geometric rule pass over (onset, nadir, offset, uc_peak)
+  applying the NICHD thresholds literally;
+- `src_claude` - the visual first pass (archived in `decel_manual/claude/`).
+
+All three are stored on every event for later audit. Then:
+
+- **295 events (71%)** where >=2 sources agree and none dissents: the agreed
+  type is pre-filled, for quick expert confirmation;
+- **121 events (29%)** where sources conflict, or only one source had an
+  opinion: type cleared to unclassified and the event flagged with a
+  question, so the expert types it fresh with no anchor.
+
+This concentrates expert effort on the 29% that is genuinely uncertain.
+Rationale: deceleration type/morphology is the least reliable CTG judgement
+in the literature (inter-observer kappa ~0.12-0.23, versus intra-observer
+0.74-1.0), so a single annotator - human or algorithmic - yields a
+self-consistent but idiosyncratic reference. That is the known flaw of the
+Romagnoli reference this tool replaces.
+
+Caveat carried forward: `onset -> nadir` (which decides abrupt vs gradual,
+i.e. variable vs early/late) is dominated by where the *onset* sits, not by
+nadir jitter. Reviewers should drag the onset to where the decel visibly
+begins before typing borderline cases.
 
 The client only needs five endpoints (`/pilot.json`, `/data/rec_*.json`,
 `/ann/rec_*.json`, `/status`, `POST /save`), so for publishing to external

@@ -15,9 +15,12 @@
    "origin": "detector",
    "det_type": "variable",
    "review": "accepted",
-   "type": "early",
+   "type": null,
    "nadir_min": -58.308,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "early",
+   "flag": true
   },
   {
    "id": "d2",
@@ -30,7 +33,9 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -47.858,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "late",
+   "src_claude": "late"
   },
   {
    "id": "d3",
@@ -43,7 +48,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -46.775,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "dm43",
@@ -56,7 +63,9 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -41.642,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d4",
@@ -69,7 +78,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -40.192,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d5",
@@ -82,7 +93,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -36.442,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d6",
@@ -95,7 +108,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -34.575,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d7",
@@ -108,7 +123,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -29.408,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d8",
@@ -121,7 +138,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -27.608,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d9",
@@ -134,7 +153,9 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -25.142,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "late",
+   "src_claude": "late"
   },
   {
    "id": "dm42",
@@ -147,7 +168,9 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -22.808,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d10",
@@ -160,7 +183,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.158,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d11",
@@ -171,10 +196,11 @@
    "origin": "detector",
    "det_type": "variable",
    "review": "accepted",
-   "type": null,
+   "type": "variable",
    "nadir_min": -20.392,
    "by": "mengning",
-   "flag": true
+   "src_rule": "variable",
+   "src_claude": null
   },
   {
    "id": "d12",
@@ -187,7 +213,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -17.675,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d13",
@@ -200,7 +228,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -15.692,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d14",
@@ -213,7 +243,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -13.858,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d15",
@@ -226,7 +258,9 @@
    "review": "accepted",
    "type": "late",
    "nadir_min": -11.175,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "late",
+   "src_claude": "late"
   },
   {
    "id": "d16",
@@ -237,9 +271,12 @@
    "origin": "detector",
    "det_type": "variable",
    "review": "accepted",
-   "type": "prolonged",
+   "type": null,
    "nadir_min": -9.292,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "prolonged",
+   "flag": true
   }
  ],
  "contractions": [
@@ -269,7 +306,7 @@
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "cm63",
@@ -279,7 +316,7 @@
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "cm64",
@@ -289,7 +326,7 @@
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c46",
@@ -437,37 +474,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-21T00:15:27.423119+00:00",
+ "updated": "2026-08-21T00:59:17.652777+00:00",
  "history": [
   {
-   "t": "2026-08-20T21:31:02.228456+00:00",
+   "t": "2026-08-21T00:59:17.652777+00:00",
    "by": "mengning",
-   "action": "first pass: 18 decels (12 variable, 3 late, 1 early, 1 unsure, 1 prolonged); 2 added, 0 detector events deleted; marked done"
-  },
-  {
-   "t": "2026-08-20T21:31:02.228456+00:00",
-   "by": "mengning",
-   "action": "note: First pass. Unstable record from -50 on: long jagged sub-baseline complexes with recapture artifacts (spikes to 160-190 inside d5/d15 windows), toco repeatedly clipped at 100 (c19, the -50 plateau, c41). Lates: d2 (gradual 87s under/after the clipped sustained contraction -50..-48, ambiguous but late-morphology), d9 (o2n 90s, +76s), d15 (o2n 81s, +85s). d1 early (shallow smooth sag, nadir at peak). d16 typed prolonged (118s plunge to 78, nearly 2 min). d11 unsure (gentle 41s sag, +62s lag, shape neither clean). Adds: dm42 -23.0..-22.68 (155->90 on c33 peak, gradual down + abrupt overshoot recovery -> variable), dm43 -41.75..-41.35 (sharp V to 87 during c23 plateau -> variable). Sub-threshold sags at -54.0 and -43.0 noted, not annotated."
-  },
-  {
-   "t": "2026-08-20T21:31:02.228456+00:00",
-   "by": "mengning",
-   "action": "schema update: unsure merged into unclassified (1 events)"
-  },
-  {
-   "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "mengning",
-   "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
-  },
-  {
-   "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "mengning",
-   "action": "uc prefill v2: replaced all 25 contractions with 18 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
-  },
-  {
-   "t": "2026-08-21T00:15:27.423119+00:00",
-   "by": "claude",
-   "action": "visual review of full toco strip: added 3 missed contraction(s) the detector rejected (signal-loss-adjacent, saturated, or >180 s footprint): -56.7..-54.0, -53.9..-53.1, -50.0..-48.2"
+   "action": "consensus seeding: 16 decel(s) agreed by the pipeline linker, the geometric rule and the visual pass -> type pre-filled for quick confirmation; 2 disagreed or had a single source -> left unclassified and flagged \u2691 for expert typing"
   }
  ]
 }

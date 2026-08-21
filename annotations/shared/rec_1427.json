@@ -17,7 +17,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -64.6,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d2",
@@ -30,7 +32,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -62.917,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "dm40",
@@ -43,7 +47,9 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -59.9,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d3",
@@ -57,6 +63,8 @@
    "type": null,
    "nadir_min": -58.967,
    "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": null,
    "flag": true
   },
   {
@@ -70,7 +78,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -57.5,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d7",
@@ -81,9 +91,12 @@
    "origin": "detector",
    "det_type": "late",
    "review": "accepted",
-   "type": "variable",
+   "type": null,
    "nadir_min": -48.883,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "late",
+   "src_claude": "variable",
+   "flag": true
   },
   {
    "id": "d8",
@@ -94,9 +107,12 @@
    "origin": "detector",
    "det_type": "untyped",
    "review": "accepted",
-   "type": "variable",
+   "type": null,
    "nadir_min": -46.617,
-   "by": "mengning"
+   "by": "mengning",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": "variable"
   },
   {
    "id": "d9",
@@ -109,7 +125,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -41.817,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d10",
@@ -122,7 +140,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -35.583,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d11",
@@ -133,9 +153,12 @@
    "origin": "detector",
    "det_type": "late",
    "review": "accepted",
-   "type": "variable",
+   "type": null,
    "nadir_min": -27.05,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "late",
+   "src_claude": "variable",
+   "flag": true
   },
   {
    "id": "d12",
@@ -148,7 +171,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.367,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d13",
@@ -161,7 +186,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.567,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d14",
@@ -172,9 +199,12 @@
    "origin": "detector",
    "det_type": "variable",
    "review": "accepted",
-   "type": "early",
+   "type": null,
    "nadir_min": -19.117,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "early",
+   "flag": true
   },
   {
    "id": "d15",
@@ -185,9 +215,12 @@
    "origin": "detector",
    "det_type": "early",
    "review": "accepted",
-   "type": "late",
+   "type": null,
    "nadir_min": -15.667,
-   "by": "mengning"
+   "by": "mengning",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": "late"
   },
   {
    "id": "d16",
@@ -200,7 +233,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -10.283,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d17",
@@ -213,7 +248,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -8.117,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d18",
@@ -224,9 +261,12 @@
    "origin": "detector",
    "det_type": "late",
    "review": "accepted",
-   "type": "variable",
+   "type": null,
    "nadir_min": -5.067,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "late",
+   "src_claude": "variable",
+   "flag": true
   },
   {
    "id": "d19",
@@ -237,9 +277,12 @@
    "origin": "detector",
    "det_type": "early",
    "review": "accepted",
-   "type": "variable",
+   "type": null,
    "nadir_min": -2.367,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "early",
+   "src_claude": "variable",
+   "flag": true
   }
  ],
  "contractions": [
@@ -418,32 +461,12 @@
    "by": "mengning"
   }
  ],
- "updated": "2026-08-20T23:25:55.776774+00:00",
+ "updated": "2026-08-21T00:59:17.652777+00:00",
  "history": [
   {
-   "t": "2026-08-20T21:46:31.060857+00:00",
+   "t": "2026-08-21T00:59:17.652777+00:00",
    "by": "mengning",
-   "action": "first pass: 18 decels (15 variable, 1 unsure, 1 early, 1 late); 1 added, 2 detector events deleted; marked done"
-  },
-  {
-   "t": "2026-08-20T21:46:31.060857+00:00",
-   "by": "mengning",
-   "action": "note: First pass. Two detector artifacts fixed: d6 DELETED (281s event bridging a 4.7-min signal gap, depth 17 - no verifiable decel; the giant clipped c23 contraction beneath it noted, possible hypertonus) and d4 DELETED (overlaps d3 over the same fragmented deep decel; d3's right edge extended to -58.2 to own the whole fragment cluster, typed unsure because most of its interior is missing signal). Added dm40 -60.35..-59.9 (clean V 140->100 missed by detector) -> variable. d14 early (shallow square sag, nadir at peak), d15 late (gradual, +56s). d8 variable+UC (toco dead). d1 truncated at record start. Everything else abrupt/jagged -> variable."
-  },
-  {
-   "t": "2026-08-20T21:46:31.060857+00:00",
-   "by": "mengning",
-   "action": "schema update: unsure merged into unclassified (1 events)"
-  },
-  {
-   "t": "2026-08-20T22:58:18.442545+00:00",
-   "by": "mengning",
-   "action": "1 ambiguous event(s) from the first pass flagged as \u2691 questions"
-  },
-  {
-   "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "mengning",
-   "action": "uc prefill v2: replaced all 20 contractions with 16 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
+   "action": "consensus seeding: 10 decel(s) agreed by the pipeline linker, the geometric rule and the visual pass -> type pre-filled for quick confirmation; 8 disagreed or had a single source -> left unclassified and flagged \u2691 for expert typing"
   }
  ]
 }

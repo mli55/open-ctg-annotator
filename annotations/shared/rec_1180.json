@@ -17,7 +17,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -77.017,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d2",
@@ -30,7 +32,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -75.45,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d3",
@@ -43,7 +47,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -73.883,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d4",
@@ -56,7 +62,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -72.75,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d5",
@@ -69,7 +77,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -69.25,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d6",
@@ -82,7 +92,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -66.667,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d7",
@@ -95,7 +107,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -65.1,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d8",
@@ -108,7 +122,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -63.683,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d9",
@@ -121,7 +137,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -61.867,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d10",
@@ -134,7 +152,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -60.633,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d11",
@@ -147,7 +167,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -58.633,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d12",
@@ -158,9 +180,12 @@
    "origin": "detector",
    "det_type": "early",
    "review": "accepted",
-   "type": "late",
+   "type": null,
    "nadir_min": -55.133,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "late",
+   "src_claude": "late",
+   "flag": true
   },
   {
    "id": "d13",
@@ -173,7 +198,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -37.067,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d14",
@@ -186,7 +213,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -35.067,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d15",
@@ -199,7 +228,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -31.75,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d16",
@@ -212,7 +243,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -30.15,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d17",
@@ -225,7 +258,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -28.817,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d18",
@@ -238,7 +273,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -27.4,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d19",
@@ -251,7 +288,9 @@
    "review": "accepted",
    "type": "early",
    "nadir_min": -25.767,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": null,
+   "src_claude": "early"
   },
   {
    "id": "d20",
@@ -264,7 +303,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -24.65,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d21",
@@ -277,7 +318,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -23.217,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d22",
@@ -290,7 +333,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -21.7,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d23",
@@ -303,7 +348,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -20.317,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d24",
@@ -316,7 +363,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -18.55,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "dm69",
@@ -329,7 +378,9 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -16.983,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "dm70",
@@ -342,7 +393,9 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -14.167,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d25",
@@ -355,7 +408,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -12.683,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d26",
@@ -368,7 +423,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -8.233,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d27",
@@ -381,7 +438,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -7.1,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d28",
@@ -392,9 +451,12 @@
    "origin": "detector",
    "det_type": "untyped",
    "review": "accepted",
-   "type": "variable",
+   "type": null,
    "nadir_min": -5.45,
-   "by": "mengning"
+   "by": "mengning",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": "variable"
   },
   {
    "id": "d29",
@@ -407,7 +469,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -4.167,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d30",
@@ -420,7 +484,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -3.033,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   },
   {
    "id": "d31",
@@ -431,9 +497,12 @@
    "origin": "detector",
    "det_type": "untyped",
    "review": "accepted",
-   "type": "variable",
+   "type": null,
    "nadir_min": -1.683,
-   "by": "mengning"
+   "by": "mengning",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": "variable"
   },
   {
    "id": "d32",
@@ -446,7 +515,9 @@
    "review": "accepted",
    "type": "variable",
    "nadir_min": -0.45,
-   "by": "mengning"
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
   }
  ],
  "contractions": [
@@ -458,7 +529,7 @@
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "cm102",
@@ -468,7 +539,7 @@
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c71",
@@ -586,7 +657,7 @@
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "claude"
+   "by": "mengning"
   },
   {
    "id": "c83",
@@ -752,27 +823,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-21T00:15:27.423119+00:00",
+ "updated": "2026-08-21T00:59:17.652777+00:00",
  "history": [
   {
-   "t": "2026-08-20T21:19:29.297792+00:00",
+   "t": "2026-08-21T00:59:17.652777+00:00",
    "by": "mengning",
-   "action": "first pass: 34 decels (32 variable, 1 late, 1 early); 2 added, 0 detector events deleted; marked done"
-  },
-  {
-   "t": "2026-08-20T21:19:29.297792+00:00",
-   "by": "mengning",
-   "action": "note: Claude first pass (exemplar record, pH 7.07). Recurrent deep decels (nadirs 65-85, depths 40-60) roughly one per contraction for 80 min. Blind morphology read: onset-to-nadir is 7-34s (abrupt by NICHD) with fast recoveries and nadirs at or just after the contraction peak (+0..+20s) - typed variable throughout, i.e. the recurrent-variable reading, NOT trains of early/late; exceptions d12 (o2n 38s, nadir +43s, slow recovery -> late) and d19 (o2n 34s, nadir +17s, gradual -> early, borderline). d27-d32 carry the UC flag (toco lost after -8). Second stage: between-decel FHR sits at 100-110 for minutes, so the baseline fall to ~105 is genuine, not detector error. Two detector misses added there: dm69 -17.15..-16.82 (nadir 72, on c62) and dm70 -14.4..-13.95 (nadir 78, on c64), both abrupt -> variable. Quiet zone -54..-41 has no qualifying decels (dips <15 bpm)."
-  },
-  {
-   "t": "2026-08-20T23:25:55.776774+00:00",
-   "by": "mengning",
-   "action": "uc prefill v2: replaced all 36 contractions with 30 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
-  },
-  {
-   "t": "2026-08-21T00:15:27.423119+00:00",
-   "by": "claude",
-   "action": "visual review of full toco strip: added 3 missed contraction(s) the detector rejected (signal-loss-adjacent, saturated, or >180 s footprint): -75.8..-74.0, -72.5..-70.6, -38.5..-37.8"
+   "action": "consensus seeding: 31 decel(s) agreed by the pipeline linker, the geometric rule and the visual pass -> type pre-filled for quick confirmation; 3 disagreed or had a single source -> left unclassified and flagged \u2691 for expert typing"
   }
  ]
 }
