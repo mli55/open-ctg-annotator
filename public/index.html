@@ -82,8 +82,8 @@
   #legend{flex:none; padding:7px 12px 9px; border-top:1px solid var(--line); font-size:10.5px;
     color:var(--dim); display:flex; flex-wrap:wrap; gap:3px 10px; align-items:center}
   .lg{display:inline-flex; gap:4px; align-items:center}
-  #credit{flex:none; padding:5px 12px 7px; font-size:9px; line-height:1.45; color:#aeaeb2;
-    border-top:1px solid var(--line)}
+  #credit{flex:none; padding:4px 4px 0; font-size:9px; color:#b9b9be; text-align:center;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   #panel .pad{padding:10px 12px; border-bottom:1px solid var(--line)}
   #selCard .t{font-size:12px; color:var(--dim); margin-bottom:6px}
   .typeGrid{display:flex; gap:4px; margin:6px 0}
@@ -150,6 +150,7 @@
     <canvas id="mini"></canvas>
     <canvas id="fhr"></canvas>
     <canvas id="uc"></canvas>
+    <div id="credit">Data: CTU-CHB Intrapartum CTG Database (Chudáček et al. 2014) via PhysioNet · ODC-By 1.0 · edits are recorded under your name, visible to the project team</div>
   </main>
   <aside id="panel">
     <div class="pad" id="selCard"><div class="t">No event selected — click one on the trace, or press <b>Tab</b> for the next pending</div></div>
@@ -172,7 +173,6 @@
       <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
       <span class="lg" style="color:var(--orange)">⚑ question</span>
     </div>
-    <div id="credit">Data: CTU-CHB Intrapartum CTG Database (Chudáček et al. 2014) via PhysioNet · ODC-By 1.0 · edits are recorded under your name, visible to the project team</div>
   </aside>
 </div>
 
