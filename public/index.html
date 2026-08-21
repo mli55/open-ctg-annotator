@@ -129,7 +129,6 @@
   <h1>Decel Annotator</h1>
   <span id="recTitle" style="color:var(--dim)"></span>
   <span class="sp"></span>
-  <button id="addBtn" title="Turn on, then drag on the FHR trace to draw a missed deceleration, or on the UC trace to draw a missed contraction. Shortcut: N, exit with Esc.">＋ Draw missed event</button>
   <button id="helpBtn" title="?">Shortcuts ?</button>
   <input id="annName" title="Your name — every edit is recorded under it" placeholder="your name">
   <span id="saveState"></span>
@@ -182,11 +181,11 @@
     <tr><td><kbd>1</kbd>–<kbd>4</kbd></td><td>Classify: early / late / variable / prolonged; press the active one again to clear it back to unclassified (dashed)</td></tr>
     <tr><td><kbd>Enter</kbd></td><td>Raise / clear a ⚑ question on the selected event — a spot the next reviewer should look at</td></tr>
     <tr><td><kbd>X</kbd> / <kbd>Del</kbd></td><td>Delete selected event (detector events go to a recoverable deleted list)</td></tr>
-    <tr><td><kbd>N</kbd></td><td>Add mode: drag on the FHR pane to draw a deceleration, on the UC pane a contraction</td></tr>
+    <tr><td>Drag on empty trace</td><td>Draw a new event: on the FHR pane a deceleration, on the UC pane a contraction (a short click just deselects)</td></tr>
     <tr><td><kbd>Tab</kbd> / <kbd>⇧Tab</kbd></td><td>Next / previous pending event</td></tr>
     <tr><td>Drag an edge of a selected event</td><td>Adjust onset/offset (select the event first; recorded as edited, original boundaries kept)</td></tr>
     <tr><td>Drag inside a selected event</td><td>Move the whole event</td></tr>
-    <tr><td>Wheel / <kbd>+</kbd><kbd>−</kbd> / <kbd>0</kbd></td><td>Zoom (0 = fit all); drag background or <kbd>←</kbd><kbd>→</kbd> to pan; double-click an event to zoom to it</td></tr>
+    <tr><td>Wheel / <kbd>+</kbd><kbd>−</kbd> / <kbd>0</kbd></td><td>Zoom (0 = fit all); pan with two-finger scroll, <kbd>←</kbd><kbd>→</kbd>, or the overview bar; double-click an event to zoom to it</td></tr>
     <tr><td><kbd>⌘Z</kbd> / <kbd>⇧⌘Z</kbd></td><td>Undo / redo</td></tr>
   </table>
   <div class="proto">
@@ -209,7 +208,7 @@ const S = {
   pilot:[], status:{}, annotator:'mengning',
   rid:null, rec:null, ann:null,
   tmin:0, tmax:1, view:{t0:0,t1:1},
-  sel:null, addMode:false, listTab:'decels',
+  sel:null, listTab:'decels',
   undo:[], redo:[], dirty:false, saveTimer:null,
   drag:null, mouse:null,
 };
@@ -255,7 +254,7 @@ async function loadRecord(rid){
   S.rid = rid; S.rec = rec; S.ann = ann || prefill(rec);
   if (!S.ann.history) S.ann.history = [];
   S.baseUpdated = ann ? (ann.updated ?? null) : null;
-  S.undo = []; S.redo = []; S.sel = null; setAddMode(false);
+  S.undo = []; S.redo = []; S.sel = null;
   const x = rec.strip.x;
   S.tmin = x[0]; S.tmax = x[x.length-1];
   S.view = {t0:S.tmin, t1:S.tmax};
@@ -676,12 +675,6 @@ $('annName').addEventListener('change', () => {
   localStorage.setItem('annotator', v);
   if (v) $('saveState').textContent = 'Hi ' + v + ' — edits will be recorded under this name';
 });
-function setAddMode(v){
-  S.addMode = v;
-  $('addBtn').classList.toggle('on', v);
-  $('addBtn').textContent = v ? 'Drawing — drag on a trace (Esc)' : '＋ Draw missed event';
-}
-$('addBtn').onclick = () => setAddMode(!S.addMode);
 document.querySelectorAll('#recFilter button').forEach(b => b.onclick = () => {
   S.recFilter = b.dataset.f;
   document.querySelectorAll('#recFilter button').forEach(x => x.classList.toggle('on', x === b));
@@ -746,11 +739,6 @@ function setupPane(id){
     ev.preventDefault();
     const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
     const t = px2t(px, w);
-    if (S.addMode){
-      if (!requireName()) return;
-      S.drag = {mode:'create', pane:id, t0:rt(t), t1:rt(t)};
-      return;
-    }
     const hit = hitTest(id, px, w);
     if (hit){
       const selected = S.sel && S.sel.id === hit.e.id;
@@ -768,7 +756,7 @@ function setupPane(id){
       renderAll();
     } else {
       S.sel = null;
-      S.drag = {mode:'pan', pane:id, t, v0:{...S.view}, x0:ev.clientX, w};
+      S.drag = {mode:'create', pane:id, t0:rt(t), t1:rt(t)};
       renderAll();
     }
   });
@@ -807,10 +795,10 @@ function setupPane(id){
     }
     $('cursorRead').textContent = read;
     if (!S.drag){
-      const hit = S.addMode ? null : hitTest(id, px, w);
+      const hit = hitTest(id, px, w);
       const hitSel = hit && S.sel && S.sel.id === hit.e.id;
-      c.style.cursor = S.addMode ? 'crosshair' :
-        hit ? (hit.mode !== 'body' && hitSel ? 'ew-resize' : 'pointer') : 'grab';
+      c.style.cursor =
+        hit ? (hit.mode !== 'body' && hitSel ? 'ew-resize' : 'pointer') : 'crosshair';
       return;
     }
     const d = S.drag;
@@ -892,13 +880,11 @@ window.addEventListener('keydown', ev => {
   if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
   if (k === 'Escape'){
     if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
-    if (S.addMode){ setAddMode(false); return; }
     S.sel = null; renderAll(); return; }
   if (k === 'Tab'){ ev.preventDefault(); jumpPending(ev.shiftKey ? -1 : 1); return; }
   if (k >= '1' && k <= '4'){ setType(TYPES[+k - 1]); return; }
   if (k === 'Enter'){ toggleFlag(); return; }
   if (k === 'x' || k === 'X' || k === 'Delete' || k === 'Backspace'){ ev.preventDefault(); deleteSel(); return; }
-  if (k === 'n' || k === 'N'){ setAddMode(!S.addMode); return; }
   const span = S.view.t1 - S.view.t0;
   if (k === 'ArrowLeft'){ S.view.t0 -= span*.2; S.view.t1 -= span*.2; clampView(); renderCanvases(); return; }
   if (k === 'ArrowRight'){ S.view.t0 += span*.2; S.view.t1 += span*.2; clampView(); renderCanvases(); return; }
