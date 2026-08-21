@@ -568,30 +568,25 @@ function drawTimeGrid(g, w, h, axisAt){
 function drawBaseline(g, w, h, ymin, ymax){
   const st = S.rec.strip;
   if (!st.base) return;
-  const gaps = st.base_gap || [];
-  const inGap = t => t != null && gaps.some(([a, b]) => t >= a && t <= b);
   const y2 = v => h - (v - ymin)/(ymax - ymin)*h;
-  for (const guessed of [false, true]){
-    if (guessed && !gaps.length) break;
-    g.strokeStyle = guessed ? 'rgba(42,120,214,.55)' : '#2a78d6';
-    g.lineWidth = guessed ? 1.8 : 2.2;
-    g.setLineDash(guessed ? [3,3] : []);
-    g.beginPath();
-    let pen = false;
-    for (let i = 0; i < st.x.length; i++){
-      const t = st.x[i];
-      if (t < S.view.t0 - 0.1 || t > S.view.t1 + 0.1){ pen = false; continue; }
-      const v = st.base[i];
-      /* One sample of overlap at each edge, so the dotted run meets the solid
-         one instead of leaving a hairline of background between them. */
-      const mine = guessed ? (inGap(t) || inGap(st.x[i-1]) || inGap(st.x[i+1]))
-                           : !inGap(t);
-      if (v == null || !mine){ pen = false; continue; }
-      const px = t2px(t, w), py = y2(v);
-      if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
-    }
-    g.stroke();
+  /* Dashed for its whole length, measured stretches and interpolated ones
+     alike. The baseline is an ESTIMATE everywhere -- a level fitted to the
+     stable parts of the trace, not a channel that was recorded -- and a solid
+     line claims otherwise. Marking only the interpolated runs as uncertain
+     implied the rest had been measured, which is the wrong distinction. */
+  g.strokeStyle = '#2a78d6'; g.lineWidth = 1.3;
+  g.setLineDash([5,4]);
+  g.beginPath();
+  let pen = false;
+  for (let i = 0; i < st.x.length; i++){
+    const t = st.x[i];
+    if (t < S.view.t0 - 0.1 || t > S.view.t1 + 0.1){ pen = false; continue; }
+    const v = st.base[i];
+    if (v == null){ pen = false; continue; }
+    const px = t2px(t, w), py = y2(v);
+    if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
   }
+  g.stroke();
   g.setLineDash([]);
 }
 function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
@@ -616,7 +611,7 @@ function eventRect(g, w, h, e, color, selected, handles){
      being read. What the outline used to carry is already carried elsewhere:
      the type by the fill colour, an open question by the flag, and selection
      by the strength of the fill plus its drag handles. */
-  g.fillStyle = color + (selected ? '5c' : '2e');
+  g.fillStyle = color + (selected ? '70' : '3d');
   g.fillRect(pa, 0, pb - pa, h);
   if (handles){
     g.fillStyle = color;
