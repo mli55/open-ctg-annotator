@@ -49,54 +49,35 @@
   button.on{background:var(--blue); border-color:var(--blue); color:#fff}
   canvas{display:block; width:100%; border:1px solid var(--line); border-radius:10px;
     background:var(--card); user-select:none; -webkit-user-select:none}
-  aside#recsWrap, aside#panel .pairHead, #evList, #recFilter{user-select:none; -webkit-user-select:none}
+  aside#recsWrap, #recFilter{user-select:none; -webkit-user-select:none}
   #mini{height:52px; margin-bottom:6px}
-  #fhr{flex:52 1 0; min-height:0}
+  #fhr{flex:56 1 0; min-height:0}
   #link{flex:none; height:34px; margin:2px 0; border:none; background:transparent;
     border-radius:0}
-  #uc{flex:30 1 0; min-height:0}
-  #pairs{flex:none; height:186px; margin-top:6px; display:flex; flex-direction:column;
-    border:1px solid var(--line); border-radius:10px; background:var(--card);
-    overflow:hidden}
+  #uc{flex:32 1 0; min-height:0}
+  #pairs{flex:none; height:96px; margin-top:6px}
   aside#panel{width:252px; flex:none; border-left:1px solid var(--line); background:var(--card);
     display:flex; flex-direction:column; min-height:0}
   .secTitle{font-size:10.5px; font-weight:600; color:var(--dim); text-transform:uppercase;
     letter-spacing:.5px; margin:0 12px 4px}
-  #panel #histWrap{flex:0 0 auto; max-height:24%; display:flex; flex-direction:column;
+  #panel #histWrap{flex:1 1 auto; min-height:0; display:flex; flex-direction:column;
     padding:8px 0 6px}
   #histList{overflow-y:auto; min-height:0; scrollbar-gutter:stable}
-  #histList::-webkit-scrollbar, #evList::-webkit-scrollbar, #recs::-webkit-scrollbar{width:12px}
-  #histList::-webkit-scrollbar-thumb, #evList::-webkit-scrollbar-thumb,
-  #recs::-webkit-scrollbar-thumb{
+  #histList::-webkit-scrollbar, #recs::-webkit-scrollbar{width:12px}
+  #histList::-webkit-scrollbar-thumb, #recs::-webkit-scrollbar-thumb{
     background:#c7c7cc; border-radius:6px; border:3px solid var(--card)}
-  #histList::-webkit-scrollbar-track, #evList::-webkit-scrollbar-track,
-  #recs::-webkit-scrollbar-track{background:transparent}
-  .pairHead{display:flex; padding:7px 20px 2px 12px; font-size:10.5px; font-weight:600;
-    color:var(--dim); text-transform:uppercase; letter-spacing:.5px}
-  .pairHead span{flex:1 1 50%; min-width:0}
-  .pairHead span:last-child{padding-left:6px}
-  .pairRow{display:flex}
-  .cell{flex:1 1 50%; display:flex; gap:5px; align-items:center; padding:3px 6px 3px 12px;
-    cursor:pointer; font-size:11.5px; line-height:1.5; font-variant-numeric:tabular-nums;
-    min-width:0; white-space:nowrap}
-  .cell:last-child{padding:3px 12px 3px 6px}
-  .cell:hover{background:#f2f2f7}
-  .cell.cur{background:#dbe9fe}
-  .pairRow.cur{background:#eef4ff; border-radius:6px}
-  .cell.miss{color:#c7c7cc; cursor:default; font-size:11px}
-  .cell.dropOK{outline:2px dashed var(--blue); outline-offset:-2px; background:#e8f0fe; border-radius:6px}
+  #histList::-webkit-scrollbar-track, #recs::-webkit-scrollbar-track{background:transparent}
   .pairGhost{position:fixed; z-index:99; pointer-events:none; background:var(--blue); color:#fff;
     font-size:11px; padding:2px 8px; border-radius:999px; box-shadow:0 2px 8px rgba(0,0,0,.25)}
-  body.pairing, body.pairing .cell{cursor:grabbing !important}
   .pairRowSel{display:flex; gap:8px; align-items:center; margin:6px 0 2px; font-size:11.5px}
   .pairRowSel .k{color:var(--dim); white-space:nowrap}
   .pairRowSel select{flex:1; min-width:0; font:inherit; font-size:11.5px; padding:2px 4px;
     border:1px solid var(--line); border-radius:6px; background:var(--card); color:var(--ink)}
-  .cell.miss:hover{background:none}
-  #legend{flex:none; padding:7px 12px 9px; border-top:1px solid var(--line); font-size:10.5px;
-    color:var(--dim); display:flex; flex-wrap:wrap; gap:3px 10px; align-items:center}
+  #footer{flex:none; display:flex; align-items:center; gap:14px; padding:5px 4px 0}
+  #legend{display:flex; flex-wrap:wrap; gap:3px 10px; align-items:center;
+    font-size:10px; color:var(--dim)}
   .lg{display:inline-flex; gap:4px; align-items:center}
-  #credit{flex:none; padding:4px 4px 0; font-size:9px; color:#b9b9be; text-align:center;
+  #credit{margin-left:auto; font-size:9px; color:#b9b9be;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   #panel .pad{padding:10px 12px; border-bottom:1px solid var(--line)}
   #selCard .t{font-size:12px; color:var(--dim); margin-bottom:6px}
@@ -122,7 +103,6 @@
     padding:5px 8px; font:inherit; font-size:12.5px; background:var(--paper); resize:vertical}
   #doneBtn{width:100%; font-weight:600}
   #doneBtn.done{background:var(--green); border-color:var(--green); color:#fff}
-  #evList{flex:1; overflow-y:auto; padding:0 0 6px; scrollbar-gutter:stable}
   .evRow{display:flex; gap:7px; align-items:center; padding:3px 8px; border-radius:7px;
     cursor:pointer; font-size:12px; font-variant-numeric:tabular-nums}
   .evRow:hover{background:#f2f2f7}
@@ -170,11 +150,18 @@
     <canvas id="fhr"></canvas>
     <canvas id="link"></canvas>
     <canvas id="uc"></canvas>
-    <div id="pairs">
-      <div class="pairHead"><span>Decels</span><span>Contractions</span></div>
-      <div id="evList"></div>
-    </div>
+    <canvas id="pairs"></canvas>
+    <div id="footer"><div id="legend">
+      <span class="lg"><span class="chip" style="background:#34c759"></span>early</span>
+      <span class="lg"><span class="chip" style="background:#ff3b30"></span>late</span>
+      <span class="lg"><span class="chip" style="background:#007aff"></span>variable</span>
+      <span class="lg"><span class="chip" style="background:#af52de"></span>prolonged</span>
+      <span style="flex-basis:100%;height:0"></span>
+      <span class="lg"><span class="chip" style="background:#fff;border:1.5px dashed #8e8e93"></span>unclassified</span>
+      <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
+      <span class="lg" style="color:var(--orange)">⚑ question</span></div>
     <div id="credit">Data: CTU-CHB Intrapartum CTG Database (Chudáček et al. 2014) via PhysioNet · ODC-By 1.0 · edits are recorded under your name, visible to the project team</div>
+    </div>
   </main>
   <aside id="panel">
     <div class="pad" id="selCard"><div class="t">No event selected — click one on the trace, or press <b>Tab</b> for the next pending</div></div>
@@ -184,16 +171,6 @@
     <div class="pad" id="histWrap">
       <div class="secTitle">History</div>
       <div id="histList"></div>
-    </div>
-    <div id="legend">
-      <span class="lg"><span class="chip" style="background:#34c759"></span>early</span>
-      <span class="lg"><span class="chip" style="background:#ff3b30"></span>late</span>
-      <span class="lg"><span class="chip" style="background:#007aff"></span>variable</span>
-      <span class="lg"><span class="chip" style="background:#af52de"></span>prolonged</span>
-      <span style="flex-basis:100%;height:0"></span>
-      <span class="lg"><span class="chip" style="background:#fff;border:1.5px dashed #8e8e93"></span>unclassified</span>
-      <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
-      <span class="lg" style="color:var(--orange)">⚑ question</span>
     </div>
   </aside>
 </div>
@@ -718,7 +695,8 @@ function drawMini(){
   g.font = '600 9px -apple-system'; g.fillStyle = '#aeaeb2'; g.textAlign = 'left';
   g.fillText('OVERVIEW', 8, 12);
 }
-function renderCanvases(){ if (!S.rec) return; drawFHR(); drawLinks(); drawUC(); drawMini(); }
+function renderCanvases(){ if (!S.rec) return;
+  drawFHR(); drawLinks(); drawUC(); drawPairs(); drawMini(); }
 
 /* ---------- panels ---------- */
 function renderRecs(){
@@ -1007,102 +985,70 @@ function setPair(did, target){   // target: 'auto' | 'none' | contraction id
   }, `${did}: paired → ${name(target)}`);
 }
 window.setPairSel = v => { if (S.sel && S.sel.list === 'decels') setPair(S.sel.id, v); };
-function cellEl(e, list, row){
-  const c = document.createElement('div');
-  if (!e){
-    c.className = 'cell miss';
-    c.textContent = (list === 'decels' ? '· no decel match' : '· no UC match')
-                    + (row && row.manual ? ' ✎' : '');
-    if (row && row.manual && list === 'contractions')
-      c.title = 'unpaired by hand — drag a contraction here to pair it';
-    if (row && row.d && list === 'contractions') c.dataset.dropDecel = row.d.id;
-    return c;
-  }
-  c.className = 'cell' + (S.sel?.id === e.id ? ' cur' : '');
-  const tcol = list === 'decels' ? (e.type ? TCOLOR[e.type] : 'var(--dim)') : 'var(--ink)';
-  c.innerHTML = `<span style="color:${tcol}">${fmtT(e.a)}</span>` +
-    `<span style="color:var(--dim)">${((e.b-e.a)*60).toFixed(0)}s</span>` +
-    (row && row.manual ? '<span style="color:var(--blue)" title="paired by hand">✎</span>' : '') +
-    (e.flag ? '<span style="color:var(--orange)">⚑</span>' : '');
-  if (e.by) c.title = 'last edit: ' + e.by;
-  c.onclick = () => {
-    if (S.pairDrag && S.pairDrag.moved) return;   // that mouseup was a drop, not a click
-    discardProvisional(e); S.sel = {list, id:e.id}; ensureVisible(e); renderAll(); };
-  // Re-pair by dragging: pick up either side, drop it on its partner-to-be.
-  // Pointer-based rather than HTML5 drag-and-drop: Safari refuses to start a
-  // native drag inside a user-select:none region, which this list is.
-  c.dataset.pairList = list; c.dataset.pairId = e.id;
-  c.addEventListener('mousedown', ev => {
-    if (ev.button !== 0) return;
-    S.pairDrag = {list, id: e.id, x0: ev.clientX, y0: ev.clientY, moved: false,
-                  label: fmtT(e.a) + ' ' + (list === 'decels' ? 'decel' : 'UC')};
-  });
-  return c;
-}
-/* one document-level pair of listeners drives every pair-drag */
-function pairTargetAt(x, y){
-  const cell = document.elementFromPoint(x, y)?.closest('#evList .cell');
-  const d = S.pairDrag;
-  if (!cell || !d) return null;
-  if (d.list === 'contractions'){
-    if (cell.dataset.pairList === 'decels' && cell.dataset.pairId)
-      return {did: cell.dataset.pairId, cid: d.id, cell};
-    if (cell.dataset.dropDecel)                    // the "no UC match" gap in a decel's row
-      return {did: cell.dataset.dropDecel, cid: d.id, cell};
-  } else if (cell.dataset.pairList === 'contractions' && cell.dataset.pairId){
-    return {did: d.id, cid: cell.dataset.pairId, cell};
-  }
-  return null;
-}
-document.addEventListener('mousemove', ev => {
-  const d = S.pairDrag;
-  if (!d) return;
-  if (!d.moved){
-    if (Math.hypot(ev.clientX - d.x0, ev.clientY - d.y0) < 5) return;
-    d.moved = true;
-    d.ghost = document.createElement('div');
-    d.ghost.className = 'pairGhost';
-    d.ghost.textContent = d.label + ' → pair…';
-    document.body.appendChild(d.ghost);
-    document.body.classList.add('pairing');
-  }
-  d.ghost.style.left = (ev.clientX + 12) + 'px';
-  d.ghost.style.top = (ev.clientY + 12) + 'px';
-  const hit = pairTargetAt(ev.clientX, ev.clientY);
-  if (d.hot && d.hot !== (hit && hit.cell)) d.hot.classList.remove('dropOK');
-  d.hot = hit ? hit.cell : null;
-  if (d.hot) d.hot.classList.add('dropOK');
-});
-document.addEventListener('mouseup', ev => {
-  const d = S.pairDrag;
-  if (!d) return;
-  if (d.moved){
-    const hit = pairTargetAt(ev.clientX, ev.clientY);
-    if (d.hot) d.hot.classList.remove('dropOK');
-    d.ghost.remove(); document.body.classList.remove('pairing');
-    if (hit && hit.did !== hit.cid) setPair(hit.did, hit.cid);
-    // keep S.pairDrag.moved until the click event this mouseup spawns has run
-    setTimeout(() => { S.pairDrag = null; }, 0);
-  } else S.pairDrag = null;
-});
-function renderList(){
-  const el = $('evList'); el.innerHTML = '';
-  let curRow = null;
-  for (const r of pairRows()){
-    const row = document.createElement('div');
-    row.className = 'pairRow';
-    if (S.sel && ((r.d && r.d.id === S.sel.id) || (r.c && r.c.id === S.sel.id))){
-      row.className += ' cur'; curRow = row;
+/* The paired list is a strip under the traces rather than a column of text:
+   the events are the same events, so they belong on the same time axis, one
+   lane of decelerations over one lane of contractions, each box under the
+   band it stands for. Reading down a column tells you what goes with what;
+   the old two-column list asked the reader to match ids by eye instead. */
+function drawPairs(){
+  const [g, w, h] = sizeCanvas($('pairs'));
+  g.clearRect(0, 0, w, h);
+  if (!S.rec || !S.ann) return;
+  const px = t => t2px(t, w);          // the traces' own mapping: aligned, not merely near
+  const lanes = [
+    {y: 22, hh: 26, items: S.ann.decels, list: 'decels', name: 'DECELS'},
+    {y: 60, hh: 26, items: S.ann.contractions, list: 'contractions', name: 'CONTRACTIONS'},
+  ];
+  drawTimeGrid(g, w, h, false);   // the axis is the one above; it is not repeated
+  for (const L of lanes){
+    for (const e of L.items){
+      const a = px(e.a), b = px(e.b);
+      if (b < -2 || a > w + 2) continue;
+      const isSel = S.sel?.list === L.list && S.sel.id === e.id;
+      const p = partnerOf(S.sel);
+      const isPair = p?.list === L.list && p.id === e.id;
+      const col = e.flag ? '#ff9500'
+                : L.list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93')
+                : '#00c7be';
+      const xa = Math.max(a, 0), xb = Math.min(b, w);
+      g.fillStyle = col + (isSel || isPair ? 'cc' : '55');
+      g.fillRect(xa, L.y, Math.max(2, xb - xa), L.hh);
+      const label = e.id + (xb - xa > 54 ? '  ' + ((e.b - e.a) * 60).toFixed(0) + 's' : '');
+      if (xb - xa > 22){
+        g.fillStyle = isSel || isPair ? '#fff' : '#1c1c1e';
+        g.font = '10px -apple-system'; g.textAlign = 'center';
+        g.fillText(label, (xa + xb) / 2, L.y + 17);
+        g.font = '600 9.5px -apple-system'; g.textAlign = 'left';
+      }
     }
-    row.appendChild(cellEl(r.d, 'decels', r));
-    row.appendChild(cellEl(r.c, 'contractions', r));
-    el.appendChild(row);
   }
-  if (curRow && S.sel?.id !== S._lastSelId)
-    curRow.scrollIntoView({block:'nearest'});
-  S._lastSelId = S.sel?.id ?? null;
+  // the pairing, redrawn here between the lanes
+  g.setLineDash([2,3]); g.lineWidth = 1;
+  for (const a of linkAnchors()){
+    const xd = px((a.d.a + a.d.b) / 2), xc = px((a.c.a + a.c.b) / 2);
+    if (Math.max(xd, xc) < 0 || Math.min(xd, xc) > w) continue;
+    const on = S.sel?.list === 'decels' && S.sel.id === a.d.id;
+    g.strokeStyle = on ? (TCOLOR[a.d.type || 'pending'] || '#8e8e93')
+                       : 'rgba(142,142,147,.32)';
+    g.lineWidth = on ? 1.6 : 1;
+    g.beginPath(); g.moveTo(xd, 48); g.lineTo(xc, 60); g.stroke();
+  }
+  g.setLineDash([]);
+  g.font = '600 9px -apple-system'; g.textAlign = 'left';
+  for (const L of lanes){
+    g.fillStyle = 'rgba(255,255,255,.82)'; g.fillRect(0, L.y, 74, 12);
+    g.fillStyle = '#aeaeb2'; g.fillText(L.name, 4, L.y + 9);
+  }
 }
-function renderAll(){ renderCanvases(); renderTop(); renderSel(); renderHist(); renderList(); renderRecs(); }
+function pairsHit(px_, py_){
+  const c = $('pairs'), r = c.getBoundingClientRect(), w = r.width;
+  const t = px2t(px_, w);
+  const L = py_ >= 22 && py_ <= 48 ? 'decels' : py_ >= 60 && py_ <= 86 ? 'contractions' : null;
+  if (!L) return null;
+  const e = S.ann[L].find(v => t >= v.a && t <= v.b);
+  return e ? {list: L, id: e.id, e} : null;
+}
+function renderAll(){ renderCanvases(); renderTop(); renderSel(); renderHist(); renderRecs(); }
 
 /* ---------- actions ---------- */
 window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') return;
@@ -1360,6 +1306,29 @@ window.addEventListener('mouseup', () => {
   }
 });
 setupPane('fhr'); setupPane('uc');
+(function setupPairs(){
+  const c = $('pairs');
+  c.addEventListener('mousedown', ev => {
+    if (!S.rec || !S.ann) return;
+    const r = c.getBoundingClientRect();
+    const h = pairsHit(ev.clientX - r.left, ev.clientY - r.top);
+    if (!h) return;
+    ev.preventDefault();
+    discardProvisional(h.e);
+    S.sel = {list: h.list, id: h.id};
+    renderAll();
+  });
+  c.addEventListener('mousemove', ev => {
+    const r = c.getBoundingClientRect();
+    c.style.cursor = pairsHit(ev.clientX - r.left, ev.clientY - r.top) ? 'pointer' : 'default';
+  });
+  c.addEventListener('dblclick', ev => {
+    const r = c.getBoundingClientRect();
+    const h = pairsHit(ev.clientX - r.left, ev.clientY - r.top);
+    if (!h) return;
+    S.view.t0 = h.e.a - 2; S.view.t1 = h.e.b + 2; clampView(); renderAll();
+  });
+})();
 (function trackPairDrag(){
   /* Tracked on the window: the tip is 11 px tall and the hand leaves it long
      before the drag is done. Positions are read off the UC pane, which shares
