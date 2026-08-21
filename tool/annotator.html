@@ -415,19 +415,26 @@ function panes(){ return {fhr:$('fhr'), uc:$('uc')}; }
    background to survive it, and a background over a trace is a hole in the
    data. Every pane maps time through t2px, so the gutter shifts them all
    together and they stay aligned with each other. */
-const AXW = 42, AXH = 20;
+const AXW = 58, AXH = 34;
 function t2px(t, w){ return AXW + (t - S.view.t0)/(S.view.t1 - S.view.t0)*(w - AXW); }
 function px2t(p, w){ return S.view.t0 + (p - AXW)/(w - AXW)*(S.view.t1 - S.view.t0); }
-function yAxis(g, w, h, ticks, y2){
-  g.strokeStyle = '#d8d8dc'; g.lineWidth = 1;
+function yAxis(g, w, h, ticks, y2, title){
+  g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
   g.beginPath(); g.moveTo(AXW - .5, 0); g.lineTo(AXW - .5, h); g.stroke();
-  g.font = '10px -apple-system'; g.textAlign = 'right';
+  g.font = '10.5px -apple-system'; g.textAlign = 'right';
   for (const v of ticks){
     const y = y2(v);
     if (y < 6 || y > h - 2) continue;
-    g.strokeStyle = '#d8d8dc';
-    g.beginPath(); g.moveTo(AXW - 4.5, y); g.lineTo(AXW - .5, y); g.stroke();
-    g.fillStyle = '#8e8e93'; g.fillText(String(Math.round(v)), AXW - 8, y + 3.5);
+    g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
+    g.beginPath(); g.moveTo(AXW - 5.5, y); g.lineTo(AXW - .5, y); g.stroke();
+    g.fillStyle = '#6d6d72'; g.fillText(String(Math.round(v)), AXW - 9, y + 3.5);
+  }
+  if (title){                    // the pane's name, stood on end beside its scale
+    g.save();
+    g.translate(13, h / 2); g.rotate(-Math.PI / 2);
+    g.font = '600 10.5px -apple-system'; g.textAlign = 'center';
+    g.fillStyle = '#8e8e93'; g.fillText(title, 0, 0);
+    g.restore();
   }
 }
 function clampView(){
@@ -474,26 +481,33 @@ function drawStage(g, w, h){
     g.strokeStyle = '#b5651d'; g.lineWidth = 2; g.setLineDash([6,4]);
     g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke(); g.setLineDash([]);
   }
-  g.font = '600 10px -apple-system'; g.textAlign = 'left';
-  // the stage it opens, named on the line; the one it closes, named quietly
-  const lab = '2nd stage', tw = g.measureText(lab).width;
-  const cx = Math.max(px + 3, 4);
-  g.fillStyle = '#b5651d'; g.fillRect(cx, 5, tw + 9, 14);
-  g.fillStyle = '#fff'; g.fillText(lab, cx + 4.5, 15.5);
-  if (px > 62){
-    const l1 = '1st stage', tw1 = g.measureText(l1).width;
-    g.fillStyle = 'rgba(255,255,255,.82)';
-    g.fillRect(px - tw1 - 12, 5, tw1 + 9, 14);
-    g.strokeStyle = 'rgba(181,101,29,.55)'; g.lineWidth = 1;
-    g.strokeRect(px - tw1 - 11.5, 5.5, tw1 + 8, 13);
-    g.fillStyle = '#b5651d'; g.fillText(l1, px - tw1 - 7.5, 15.5);
+}
+/* Named on the axis rather than over the trace: the stages are spans of TIME,
+   so they are read where time is read. Each gets the width it actually
+   occupies in view, which also says at a glance how much of what you are
+   looking at is second stage. */
+function drawStageAxis(g, w, y){
+  if (!S.rec || S.rec.ii_start == null) return;
+  const px = Math.min(Math.max(t2px(S.rec.ii_start, w), AXW), w);
+  const segs = [
+    {x0: AXW, x1: px, lab: '1st stage', fill: 'rgba(181,101,29,.14)', ink: '#8a5116'},
+    {x0: px, x1: w,   lab: '2nd stage', fill: '#b5651d',              ink: '#fff'},
+  ];
+  g.font = '600 9.5px -apple-system'; g.textAlign = 'center';
+  for (const sgm of segs){
+    const sw = sgm.x1 - sgm.x0;
+    if (sw < 2) continue;
+    g.fillStyle = sgm.fill; g.fillRect(sgm.x0, y, sw, 12);
+    if (sw > g.measureText(sgm.lab).width + 12){
+      g.fillStyle = sgm.ink; g.fillText(sgm.lab, sgm.x0 + sw / 2, y + 8.5);
+    }
   }
 }
 function drawTimeGrid(g, w, h, axisAt){
   const step = timeStep(S.view.t1 - S.view.t0);
   g.font = '10px -apple-system'; g.textAlign = 'center';
   if (axisAt != null){
-    g.strokeStyle = '#d8d8dc'; g.lineWidth = 1;
+    g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
     g.beginPath(); g.moveTo(AXW - .5, axisAt + .5); g.lineTo(w, axisAt + .5); g.stroke();
   }
   for (let t = Math.ceil(S.view.t0/step)*step; t <= S.view.t1; t += step){
@@ -502,9 +516,9 @@ function drawTimeGrid(g, w, h, axisAt){
     g.strokeStyle = '#ececf0'; g.lineWidth = 1;
     g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke();
     if (axisAt != null){
-      g.strokeStyle = '#d8d8dc';
+      g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
       g.beginPath(); g.moveTo(px, axisAt); g.lineTo(px, axisAt + 4); g.stroke();
-      g.fillStyle = '#8e8e93';
+      g.fillStyle = '#6d6d72'; g.font = '10.5px -apple-system';
       g.fillText(fmtT(t).replace(/:00$/, ''), px, axisAt + 14);
     }
   }
@@ -587,8 +601,6 @@ function partnerOf(sel){
     ? (r.c ? {list:'contractions', id:r.c.id} : null)
     : (r.d ? {list:'decels', id:r.d.id} : null);
 }
-function paneLabel(g, txt){ g.font = '600 11px -apple-system'; g.fillStyle = '#8e8e93';
-  g.textAlign = 'left'; g.fillText(txt, 8, 15); }
 function drawFHR(){
   const [g, w, h] = sizeCanvas($('fhr'));
   g.clearRect(0,0,w,h);
@@ -601,7 +613,7 @@ function drawFHR(){
   }
   drawTimeGrid(g, w, h, null);
   drawStage(g, w, h);
-  yAxis(g, w, h, yt, y2);
+  yAxis(g, w, h, yt, y2, 'FHR  bpm');
   const pFHR = partnerOf(S.sel);
   for (const d of S.ann.decels){
     const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
@@ -615,7 +627,6 @@ function drawFHR(){
   drawBaseline(g, w, h, ymin, ymax);
   drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
   drawLinkAnchor(g, w, h, 'fhr');
-  paneLabel(g, 'FHR — fetal heart rate (bpm)');
   const sel = getSel();
   if (sel && S.sel.list === 'decels'){
     const nt = nadirOf(sel);
@@ -746,7 +757,8 @@ function drawUC(){
   }
   drawTimeGrid(g, w, ph, ph);
   drawStage(g, w, ph);
-  yAxis(g, w, ph, yt, y2);
+  yAxis(g, w, ph, yt, y2, 'TOCO');
+  drawStageAxis(g, w, ph + 19);
   const pUC = partnerOf(S.sel);
   for (const c of S.ann.contractions){
     const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
@@ -759,7 +771,6 @@ function drawUC(){
   }
   drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1);
   drawLinkAnchor(g, w, ph, 'uc');
-  paneLabel(g, 'UC — uterine contractions (toco)');
 }
 function drawMini(){
   const [g, w, h] = sizeCanvas($('mini'));
