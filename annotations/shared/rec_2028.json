@@ -4,7 +4,7 @@
  "annotator": "mengning",
  "status": "done",
  "notes": "",
- "next_id": 35,
+ "next_id": 36,
  "decels": [
   {
    "id": "d1",
@@ -215,6 +215,16 @@
    "review": "pending"
   },
   {
+   "id": "cm35",
+   "a": -30.6,
+   "b": -29.9,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
+  },
+  {
    "id": "c29",
    "a": -28.57,
    "b": -27.83,
@@ -270,7 +280,7 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-20T23:25:55.776774+00:00",
+ "updated": "2026-08-21T00:15:27.423119+00:00",
  "history": [
   {
    "t": "2026-08-20T21:52:37.979888+00:00",
@@ -306,6 +316,11 @@
    "t": "2026-08-20T23:25:55.776774+00:00",
    "by": "mengning",
    "action": "uc prefill v2: replaced all 11 contractions with 10 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
+  },
+  {
+   "t": "2026-08-21T00:15:27.423119+00:00",
+   "by": "claude",
+   "action": "visual review of full toco strip: added 1 missed contraction(s) the detector rejected (signal-loss-adjacent, saturated, or >180 s footprint): -30.6..-29.9"
   }
  ]
 }

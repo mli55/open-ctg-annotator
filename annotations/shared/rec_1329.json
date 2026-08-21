@@ -4,7 +4,7 @@
  "annotator": "mengning",
  "status": "done",
  "notes": "",
- "next_id": 43,
+ "next_id": 49,
  "decels": [
   {
    "id": "d1",
@@ -336,6 +336,36 @@
  ],
  "contractions": [
   {
+   "id": "cm43",
+   "a": -74.4,
+   "b": -72.6,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
+  },
+  {
+   "id": "cm44",
+   "a": -72.5,
+   "b": -71.1,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
+  },
+  {
+   "id": "cm45",
+   "a": -68.0,
+   "b": -66.0,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
+  },
+  {
    "id": "c36",
    "a": -62.93,
    "b": -61.63,
@@ -381,6 +411,16 @@
    "review": "pending"
   },
   {
+   "id": "cm46",
+   "a": -48.5,
+   "b": -46.8,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
+  },
+  {
    "id": "c41",
    "a": -43.35,
    "b": -41.6,
@@ -388,6 +428,26 @@
    "b0": -41.6,
    "origin": "detector",
    "review": "pending"
+  },
+  {
+   "id": "cm47",
+   "a": -35.1,
+   "b": -32.8,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
+  },
+  {
+   "id": "cm48",
+   "a": -30.5,
+   "b": -27.8,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
   },
   {
    "id": "c42",
@@ -400,7 +460,7 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-20T23:25:55.776774+00:00",
+ "updated": "2026-08-21T00:15:27.423119+00:00",
  "history": [
   {
    "t": "2026-08-20T21:42:17.093735+00:00",
@@ -426,6 +486,11 @@
    "t": "2026-08-20T23:25:55.776774+00:00",
    "by": "mengning",
    "action": "uc prefill v2: replaced all 10 contractions with 7 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
+  },
+  {
+   "t": "2026-08-21T00:15:27.423119+00:00",
+   "by": "claude",
+   "action": "visual review of full toco strip: added 6 missed contraction(s) the detector rejected (signal-loss-adjacent, saturated, or >180 s footprint): -74.4..-72.6, -72.5..-71.1, -68.0..-66.0, -48.5..-46.8, -35.1..-32.8, -30.5..-27.8"
   }
  ]
 }

@@ -90,6 +90,13 @@ min_peak_sep 60 s, split_min_sep 120 s, valley_drop 4.0/0.20, prominence 5):
   overwrite is logged per record). Applied 2026-08-20 while all prior
   contraction reviews were test entries; the Claude first-pass archive in
   `decel_manual/claude/` still holds the v1 lists.
+- 2026-08-20 visual review (Claude, full strips of all 21 records): no
+  clear false positives among the 412 v2 events; 30 missed contractions
+  added by hand as `origin: manual / review: added / by: claude`
+  (signal-loss-adjacent, saturated, or >180 s footprint events the
+  detector rejects; logged per record in history). Known caveat for a
+  future prefill v3: max_dur 180 s cuts real 181-214 s events; 210-240 s
+  would recover ~8 of these automatically.
 
 The client only needs five endpoints (`/pilot.json`, `/data/rec_*.json`,
 `/ann/rec_*.json`, `/status`, `POST /save`), so for publishing to external

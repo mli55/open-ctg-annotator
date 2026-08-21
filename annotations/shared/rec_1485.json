@@ -623,7 +623,7 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-20T23:25:55.776774+00:00",
+ "updated": "2026-08-21T00:15:52.493068+00:00",
  "history": [
   {
    "t": "2026-08-20T21:49:06.291769+00:00",
@@ -633,7 +633,7 @@
   {
    "t": "2026-08-20T21:49:06.291769+00:00",
    "by": "mengning",
-   "action": "note: Claude first pass (exemplar record #2, pH 7.16). Repeated multi-minute depressions: -78..-70 is one ~8-min prolonged complex with partial recoveries that the detector split into d3-d7 - each piece typed variable on its jagged morphology, but the reviewer should consider reading them as a single prolonged event (>2min pieces d8 140s and d12 164s are typed prolonged). Terminal collapse from -7: baseline falls to ~85 with recurrent deep troughs (d21-d24). Added dm64 -1.5..-0.88 (trough at 60-65 between d23 and d24, missed) -> variable. d2 left untyped+UC (smooth gradual trough, toco missing); d1 variable+UC. Toco elsewhere shows clipped 75-plateaus but is readable. This is the record where typing agreement was lowest in decel_analysis; most events here are deep jagged variables rather than early/late."
+   "action": "note: First pass (exemplar record #2, pH 7.16). Repeated multi-minute depressions: -78..-70 is one ~8-min prolonged complex with partial recoveries that the detector split into d3-d7 - each piece typed variable on its jagged morphology, but the reviewer should consider reading them as a single prolonged event (>2min pieces d8 140s and d12 164s are typed prolonged). Terminal collapse from -7: baseline falls to ~85 with recurrent deep troughs (d21-d24). Added dm64 -1.5..-0.88 (trough at 60-65 between d23 and d24, missed) -> variable. d2 left untyped+UC (smooth gradual trough, toco missing); d1 variable+UC. Toco elsewhere shows clipped 75-plateaus but is readable. This is the record where typing agreement was lowest in decel_analysis; most events here are deep jagged variables rather than early/late."
   },
   {
    "t": "2026-08-20T21:49:06.291769+00:00",

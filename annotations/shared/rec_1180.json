@@ -4,7 +4,7 @@
  "annotator": "mengning",
  "status": "done",
  "notes": "",
- "next_id": 101,
+ "next_id": 104,
  "decels": [
   {
    "id": "d1",
@@ -451,6 +451,26 @@
  ],
  "contractions": [
   {
+   "id": "cm101",
+   "a": -75.8,
+   "b": -74.0,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
+  },
+  {
+   "id": "cm102",
+   "a": -72.5,
+   "b": -70.6,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
+  },
+  {
    "id": "c71",
    "a": -69.98,
    "b": -68.73,
@@ -557,6 +577,16 @@
    "b0": -38.19,
    "origin": "detector",
    "review": "pending"
+  },
+  {
+   "id": "cm103",
+   "a": -38.5,
+   "b": -37.8,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "claude"
   },
   {
    "id": "c83",
@@ -722,7 +752,7 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-20T23:25:55.776774+00:00",
+ "updated": "2026-08-21T00:15:27.423119+00:00",
  "history": [
   {
    "t": "2026-08-20T21:19:29.297792+00:00",
@@ -738,6 +768,11 @@
    "t": "2026-08-20T23:25:55.776774+00:00",
    "by": "mengning",
    "action": "uc prefill v2: replaced all 36 contractions with 30 from re-tuned detector (min_dur 30s, max_dur 180s, min_peak_sep 60s, split_min_sep 120s, valley_drop 4.0/0.20, min_prominence 5)"
+  },
+  {
+   "t": "2026-08-21T00:15:27.423119+00:00",
+   "by": "claude",
+   "action": "visual review of full toco strip: added 3 missed contraction(s) the detector rejected (signal-loss-adjacent, saturated, or >180 s footprint): -75.8..-74.0, -72.5..-70.6, -38.5..-37.8"
   }
  ]
 }
