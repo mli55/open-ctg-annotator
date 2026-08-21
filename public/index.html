@@ -397,6 +397,47 @@ function drawTimeGrid(g, w, h, labels){
     if (labels) g.fillText(fmtT(t).replace(/:00$/, ''), px, h - 4);
   }
 }
+/* The FHR baseline. It is not decoration: two of the typing criteria are
+   defined against it. A deceleration STARTS where the trace leaves the
+   baseline -- which is what onset-to-nadir, and so abrupt-vs-gradual, is
+   measured from -- and ENDS where it comes back to it, which is what
+   separates early (recovered by the end of the contraction) from late
+   (recovered after it). Depth is baseline minus nadir, never nadir alone.
+   Drawn under the trace so the FHR stays the foreground.
+   Where the baseline was interpolated rather than measured -- too little
+   accepted signal in the window -- it reads dotted and half-strength, the
+   same convention the analyzer uses: there it is a number, not a
+   measurement, and it should not carry the weight of one. Older record
+   files predate base_gap, so an absent field means "no gaps known". */
+function drawBaseline(g, w, h, ymin, ymax){
+  const st = S.rec.strip;
+  if (!st.base) return;
+  const gaps = st.base_gap || [];
+  const inGap = t => t != null && gaps.some(([a, b]) => t >= a && t <= b);
+  const y2 = v => h - (v - ymin)/(ymax - ymin)*h;
+  for (const guessed of [false, true]){
+    if (guessed && !gaps.length) break;
+    g.strokeStyle = guessed ? 'rgba(42,120,214,.55)' : '#2a78d6';
+    g.lineWidth = guessed ? 1.8 : 2.2;
+    g.setLineDash(guessed ? [3,3] : []);
+    g.beginPath();
+    let pen = false;
+    for (let i = 0; i < st.x.length; i++){
+      const t = st.x[i];
+      if (t < S.view.t0 - 0.1 || t > S.view.t1 + 0.1){ pen = false; continue; }
+      const v = st.base[i];
+      /* One sample of overlap at each edge, so the dotted run meets the solid
+         one instead of leaving a hairline of background between them. */
+      const mine = guessed ? (inGap(t) || inGap(st.x[i-1]) || inGap(st.x[i+1]))
+                           : !inGap(t);
+      if (v == null || !mine){ pen = false; continue; }
+      const px = t2px(t, w), py = y2(v);
+      if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
+    }
+    g.stroke();
+  }
+  g.setLineDash([]);
+}
 function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
   const {x} = S.rec.strip;
   g.strokeStyle = color; g.lineWidth = lw; g.beginPath();
@@ -462,6 +503,7 @@ function drawFHR(){
       if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 16); } }
   }
+  drawBaseline(g, w, h, ymin, ymax);
   drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
   paneLabel(g, 'FHR — fetal heart rate (bpm)');
   const sel = getSel();
