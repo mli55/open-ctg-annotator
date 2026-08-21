@@ -21,6 +21,17 @@
   header .sp{flex:1}
   #saveState{font-size:12px; color:var(--dim)}
   #annName.needsName{border-color:var(--orange); background:#fff8ef}
+  /* A refused edit has to be impossible to miss: the field the reviewer has
+     to fill goes red and moves, because a grey line of prose in a corner is
+     exactly what someone concentrating on a trace does not read. */
+  #annName.refused{border-color:var(--red); border-width:2px; background:var(--red);
+    color:#fff; font-weight:600; animation:refuse .42s ease}
+  #annName.refused::placeholder{color:#fff; opacity:.9}
+  @keyframes refuse{
+    0%,100%{transform:translateX(0)}
+    18%{transform:translateX(-5px)} 38%{transform:translateX(5px)}
+    58%{transform:translateX(-4px)} 78%{transform:translateX(4px)}
+  }
   #annName{border:1px solid var(--line); border-radius:6px; padding:2px 8px; width:110px;
     background:var(--card); font:inherit; font-size:12px}
   #app{flex:1; display:flex; min-height:0}
@@ -258,10 +269,13 @@ function requireName(){
   if (S.annotator) return true;
   const el = $('annName');
   el.focus(); el.select();
+  el.classList.remove('refused'); void el.offsetWidth;   // restart the animation
+  el.classList.add('refused');
   const st = $('saveState');
   st.style.color = 'var(--red)';
   st.textContent = 'Enter your name first — every edit is recorded under it';
-  setTimeout(() => { st.style.color = ''; }, 4000);
+  clearTimeout(S.refuseT);
+  S.refuseT = setTimeout(() => { el.classList.remove('refused'); st.style.color = ''; }, 3500);
   return false;
 }
 function logH(action){
