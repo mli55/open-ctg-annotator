@@ -467,15 +467,16 @@ function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
   }
   g.stroke();
 }
-function eventRect(g, w, h, e, color, selected, pending, handles){
+function eventRect(g, w, h, e, color, selected, handles){
   const pa = t2px(e.a, w), pb = t2px(e.b, w);
   if (pb < 0 || pa > w) return;
-  g.fillStyle = color + (selected ? '4d' : '2e');
+  /* Fill only, no outline. An outline on every band turned both panes into a
+     grid of boxes that competed with the trace -- and the trace is the thing
+     being read. What the outline used to carry is already carried elsewhere:
+     the type by the fill colour, an open question by the flag, and selection
+     by the strength of the fill plus its drag handles. */
+  g.fillStyle = color + (selected ? '5c' : '2e');
   g.fillRect(pa, 0, pb - pa, h);
-  g.strokeStyle = color; g.lineWidth = selected ? 2 : 1.2;
-  g.setLineDash(pending ? [4,3] : []);
-  g.strokeRect(pa + .5, .5, pb - pa - 1, h - 1);
-  g.setLineDash([]);
   if (handles){
     g.fillStyle = color;
     g.fillRect(pa - 2, h/2 - 12, 4, 24); g.fillRect(pb - 2, h/2 - 12, 4, 24);
@@ -512,8 +513,8 @@ function drawFHR(){
   for (const d of S.ann.decels){
     const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
     const isPair = pFHR?.list === 'decels' && pFHR.id === d.id;
-    eventRect(g, w, h, d, d.flag ? '#ff9500' : TCOLOR[d.type || 'pending'], isSel || isPair,
-              d.review === 'pending' || !d.type, isSel);
+    eventRect(g, w, h, d, d.flag ? '#ff9500' : TCOLOR[d.type || 'pending'],
+              isSel || isPair, isSel);
     if (d.flag){ const px = t2px(d.a, w);
       if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 16); } }
@@ -544,7 +545,7 @@ function drawUC(){
   for (const c of S.ann.contractions){
     const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
     const isPair = pUC?.list === 'contractions' && pUC.id === c.id;
-    eventRect(g, w, h, c, c.flag ? '#ff9500' : '#00c7be', isSel || isPair, c.review === 'pending', isSel);
+    eventRect(g, w, h, c, c.flag ? '#ff9500' : '#00c7be', isSel || isPair, isSel);
     if (c.flag){ const px = t2px(c.a, w);
       if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 14); } }
