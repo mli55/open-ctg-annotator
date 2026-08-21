@@ -181,7 +181,7 @@
     <tr><td><kbd>1</kbd>–<kbd>4</kbd></td><td>Classify: early / late / variable / prolonged; press the active one again to clear it back to unclassified (dashed)</td></tr>
     <tr><td><kbd>Enter</kbd></td><td>Raise / clear a ⚑ question on the selected event — a spot the next reviewer should look at</td></tr>
     <tr><td><kbd>X</kbd> / <kbd>Del</kbd></td><td>Delete selected event (detector events go to a recoverable deleted list)</td></tr>
-    <tr><td>Drag on empty trace</td><td>Draw a new event: on the FHR pane a deceleration, on the UC pane a contraction (a short click leaves your selection alone; <kbd>Esc</kbd> deselects)</td></tr>
+    <tr><td>Drag on empty trace</td><td>Draw a new event (FHR pane = deceleration, UC pane = contraction). The drawn region is provisional: classify it (1–4), flag it, or add a note to keep it — clicking anywhere else discards it. A short click on empty space just deselects.</td></tr>
     <tr><td><kbd>Tab</kbd> / <kbd>⇧Tab</kbd></td><td>Next / previous pending event</td></tr>
     <tr><td>Drag an edge of a selected event</td><td>Adjust onset/offset (select the event first; recorded as edited, original boundaries kept)</td></tr>
     <tr><td>Drag inside a selected event</td><td>Move the whole event</td></tr>
@@ -295,6 +295,21 @@ function fixSel(){ if (S.sel && !getSel()) S.sel = null; }
 function getSel(){ if (!S.sel) return null;
   return S.ann[S.sel.list].find(e => e.id === S.sel.id) || null; }
 function markEdited(e){ if (e.origin === 'detector' && e.review !== 'added') e.review = 'edited'; }
+function discardProvisional(except){
+  let removed = false;
+  for (const list of ['decels','contractions']){
+    const n = S.ann[list].length;
+    S.ann[list] = S.ann[list].filter(e => !e.provisional || (except && e.id === except.id));
+    if (S.ann[list].length !== n) removed = true;
+  }
+  if (removed && S.sel && !getSel()) S.sel = null;
+  return removed;
+}
+function commitProvisional(e){
+  if (!e.provisional) return;
+  delete e.provisional;
+  logH(`${e.id}: added ${fmtT(e.a)} → ${fmtT(e.b)}`);
+}
 
 function scheduleSave(){
   clearTimeout(S.saveTimer);
@@ -303,6 +318,8 @@ function scheduleSave(){
 }
 function savePayload(){
   const a = JSON.parse(JSON.stringify(S.ann));
+  a.decels = a.decels.filter(e => !e.provisional);
+  a.contractions = a.contractions.filter(e => !e.provisional);
   a.annotator = S.annotator;
   a.base_updated = S.baseUpdated;
   for (const d of a.decels) d.nadir_min = nadirOf(d);
@@ -618,7 +635,7 @@ function cellEl(e, list){
     `<span style="color:var(--dim)">${((e.b-e.a)*60).toFixed(0)}s</span>` +
     (e.flag ? '<span style="color:var(--orange)">⚑</span>' : '');
   if (e.by) c.title = 'last edit: ' + e.by;
-  c.onclick = () => { S.sel = {list, id:e.id}; ensureVisible(e); renderAll(); };
+  c.onclick = () => { discardProvisional(e); S.sel = {list, id:e.id}; ensureVisible(e); renderAll(); };
   return c;
 }
 function renderList(){
@@ -644,14 +661,19 @@ function renderAll(){ renderCanvases(); renderTop(); renderSel(); renderHist(); 
 window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') return;
   const nv = (t === 'unclassified' || e.type === t) ? null : t;
   if (nv === e.type) return;
-  mutate(() => { e.type = nv; e.by = S.annotator;
+  if (e.provisional && nv === null) return;
+  mutate(() => { commitProvisional(e); e.type = nv; e.by = S.annotator;
                  if (e.review === 'pending') e.review = 'accepted'; },
          `${e.id}: type → ${nv ?? 'unclassified'}`); };
 window.toggleFlag = () => { const e = getSel(); if (!e) return;
   const nv = !e.flag;
-  mutate(() => { e.flag = nv; e.by = S.annotator; },
+  mutate(() => { commitProvisional(e); e.flag = nv; e.by = S.annotator; },
          `${e.id}: ${nv ? 'question raised' : 'question cleared'}`); };
 window.deleteSel = () => { const e = getSel(); if (!e) return;
+  if (e.provisional){
+    S.ann[S.sel.list] = S.ann[S.sel.list].filter(v => v.id !== e.id);
+    S.sel = null; renderAll(); return;
+  }
   const list = S.sel.list;
   const ok = mutate(() => {
     S.ann[list] = S.ann[list].filter(v => v.id !== e.id);
@@ -665,7 +687,8 @@ $('notes').addEventListener('keydown', ev => {
     ev.preventDefault();
     const v = $('notes').value.trim();
     if (!v) return;
-    if (mutate(() => {}, 'note: ' + v)){ $('notes').value = ''; S.noteAuto = ''; }
+    const e = getSel();
+    if (mutate(() => { if (e) commitProvisional(e); }, 'note: ' + v)){ $('notes').value = ''; S.noteAuto = ''; }
   }
 });
 $('annName').addEventListener('change', () => {
@@ -700,6 +723,7 @@ function pendingSeq(){
   return d.concat(c);
 }
 function jumpPending(dir){
+  discardProvisional();
   const seq = pendingSeq();
   if (!seq.length) return;
   let i = 0;
@@ -744,6 +768,7 @@ function setupPane(id){
     const t = px2t(px, w);
     const hit = hitTest(id, px, w);
     if (hit){
+      discardProvisional(hit.e);
       const selected = S.sel && S.sel.id === hit.e.id;
       S.sel = {list:hit.list, id:hit.e.id};
       if (selected){  // first click only selects; drags need a selected event
@@ -758,7 +783,10 @@ function setupPane(id){
       }
       renderAll();
     } else {
+      discardProvisional();
+      S.sel = null;
       S.drag = {mode:'create', pane:id, t0:rt(t), t1:rt(t)};
+      renderAll();
     }
   });
   c.addEventListener('dblclick', ev => {
@@ -836,20 +864,21 @@ window.addEventListener('mouseup', () => {
   if (d.mode === 'create'){
     const a = Math.min(d.t0, d.t1), b = Math.max(d.t0, d.t1);
     if (b - a >= MINDUR){
+      if (!requireName()){ renderCanvases(); return; }
       const list = d.pane === 'fhr' ? 'decels' : 'contractions';
-      mutate(() => {
-        const nid = (d.pane === 'fhr' ? 'd' : 'c') + 'm' + (S.ann.next_id++);
-        const e = {id:nid, a, b, a0:null, b0:null, origin:'manual', review:'added',
-                   by:S.annotator};
-        if (list === 'decels'){ e.type = null; e.uc_unreadable = false; e.det_type = null; }
-        S.ann[list].push(e);
-        S.ann[list].sort((p, q) => p.a - q.a);
-        S.sel = {list, id:nid};
-      }, `added ${list === 'decels' ? 'decel' : 'contraction'} ${fmtT(a)}..${fmtT(b)}`);
+      const nid = (d.pane === 'fhr' ? 'd' : 'c') + 'm' + (S.ann.next_id++);
+      const e = {id:nid, a, b, a0:null, b0:null, origin:'manual', review:'added',
+                 by:S.annotator, provisional:true};
+      if (list === 'decels'){ e.type = null; e.det_type = null; }
+      S.ann[list].push(e);
+      S.ann[list].sort((p, q) => p.a - q.a);
+      S.sel = {list, id:nid};
+      renderAll();
     } else renderCanvases();
     return;
   }
   if (d.mode !== 'pan' && d.undoPushed){
+    if (d.e.provisional){ renderAll(); return; }
     logH(`${d.e.id}: ${d.mode === 'move' ? 'moved' : 'boundary'} ` +
          `${fmtT(d.origA)}..${fmtT(d.origB)} → ${fmtT(d.e.a)}..${fmtT(d.e.b)}`);
     S.ann.updated = new Date().toISOString();
@@ -881,7 +910,7 @@ window.addEventListener('keydown', ev => {
   if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
   if (k === 'Escape'){
     if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
-    S.sel = null; renderAll(); return; }
+    discardProvisional(); S.sel = null; renderAll(); return; }
   if (k === 'Tab'){ ev.preventDefault(); jumpPending(ev.shiftKey ? -1 : 1); return; }
   if (k >= '1' && k <= '4'){ setType(TYPES[+k - 1]); return; }
   if (k === 'Enter'){ toggleFlag(); return; }
