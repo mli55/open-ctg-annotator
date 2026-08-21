@@ -61,6 +61,9 @@
     letter-spacing:.5px; margin:0 12px 4px}
   #panel #histWrap{flex:1 1 auto; min-height:0; display:flex; flex-direction:column;
     padding:8px 0 6px}
+  .histHead{display:flex; align-items:center; gap:8px}
+  #noteOnly{margin-left:auto; margin-right:12px; padding:1px 8px; border-radius:999px;
+    font-size:10px; text-transform:none; letter-spacing:0; font-weight:500}
   #histList{overflow-y:auto; min-height:0; scrollbar-gutter:stable}
   #histList::-webkit-scrollbar, #recs::-webkit-scrollbar{width:12px}
   #histList::-webkit-scrollbar-thumb, #recs::-webkit-scrollbar-thumb{
@@ -177,7 +180,10 @@
       <div id="queueList"></div>
     </div>
     <div class="pad" id="histWrap">
-      <div class="secTitle">History</div>
+      <div class="secTitle histHead">History
+        <button id="noteOnly" onclick="toggleNoteOnly()"
+          title="Show only the notes reviewers have written">notes only</button>
+      </div>
       <div id="histList"></div>
     </div>
     <div id="legend">
@@ -642,9 +648,12 @@ function drawFHR(){
     g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w, y2(v)); g.stroke();
   }
   g.setLineDash([]);
+  /* Zoomed in, a band or a trace can start left of the first tick; without a
+     clip it runs out over the scale and reads as data at a heart rate the
+     axis says is something else. The plot is its own region. */
+  g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, h); g.clip();
   drawTimeGrid(g, w, h, null);
   drawStage(g, w, h);
-  yAxis(g, w, h, yt, y2, 'FHR  bpm');
   const pFHR = partnerOf(S.sel);
   for (const d of S.ann.decels){
     const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
@@ -656,8 +665,10 @@ function drawFHR(){
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 16); } }
   }
   drawBaseline(g, w, h, ymin, ymax);
-  drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
+  drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#ff2d6f', 1.1);
   drawLinkAnchor(g, w, h, 'fhr');
+  g.restore();
+  yAxis(g, w, h, yt, y2, 'FHR  bpm');
   const sel = getSel();
   if (sel && S.sel.list === 'decels'){
     const nt = nadirOf(sel);
@@ -749,6 +760,7 @@ function drawLinks(){
   const [g, w, h] = sizeCanvas($('link'));
   g.clearRect(0, 0, w, h);
   if (!S.rec || !S.ann) return;
+  g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, h); g.clip();
   const selId = selDecel()?.id ?? null;
   const drag = S.drag && S.drag.mode === 'pair' ? S.drag : null;
   let sel = null;
@@ -772,6 +784,7 @@ function drawLinks(){
   g.setLineDash([3,3]);
   g.beginPath(); g.moveTo(x0, 0); g.lineTo(x1 == null ? x0 : x1, h); g.stroke();
   g.setLineDash([]);
+  g.restore();
 }
 function linkGripHit(px, w){
   if (!S.sel || S.sel.list !== 'decels') return null;
@@ -794,10 +807,8 @@ function drawUC(){
   for (const v of yt){
     g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w, y2(v)); g.stroke();
   }
-  drawTimeGrid(g, w, ph, ph);
+  g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, ph); g.clip();
   drawStage(g, w, ph);
-  yAxis(g, w, ph, yt, y2, 'TOCO');
-  drawStageAxis(g, w, ph + 19);
   const pUC = partnerOf(S.sel);
   for (const c of S.ann.contractions){
     const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
@@ -810,6 +821,10 @@ function drawUC(){
   }
   drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1);
   drawLinkAnchor(g, w, ph, 'uc');
+  g.restore();
+  drawTimeGrid(g, w, ph, ph);
+  yAxis(g, w, ph, yt, y2, 'TOCO');
+  drawStageAxis(g, w, ph + 19);
 }
 function drawMini(){
   const [g, w, h] = sizeCanvas($('mini'));
@@ -847,17 +862,14 @@ function renderRecs(){
     if (f === 'flag' && !(st && st.n_flag > 0)) continue;
     const row = document.createElement('div');
     row.className = 'recRow' + (p.id === S.rid ? ' cur' : '');
-    let stTxt = '·', stStyle = 'color:var(--dim)', tip = '';
-    if (st){
-      if (st.n_flag > 0){
-        stTxt = '⚑' + st.n_flag;
-        stStyle = 'color:var(--orange);font-size:13px;font-weight:700';
-        tip = ` · ${st.n_flag} open question(s)`;
-      } else if (st.decels_done < st.decels || st.cons_done < st.cons){
-        const done = st.decels_done + st.cons_done, tot = st.decels + st.cons;
-        stTxt = `${done}/${tot}`;
-        tip = ' · events reviewed / total';
-      }
+    /* Only the flags. A reviewed-of-total ratio was on every row whether or
+       not it meant anything, so the one row that WAS asking for attention had
+       to compete with twenty that were not. */
+    let stTxt = '', stStyle = '', tip = '';
+    if (st && st.n_flag > 0){
+      stTxt = '⚑' + st.n_flag;
+      stStyle = 'color:var(--orange);font-size:13px;font-weight:700';
+      tip = ` · ${st.n_flag} flag(s)`;
     }
     row.innerHTML = `<span class="${p.hypoxia ? 'dotH' : 'dotN'}"></span>
       <span class="rid">${p.id}</span><span class="ph">${p.ph ?? ''}</span>
@@ -960,7 +972,7 @@ function esc(s){ const d = document.createElement('span'); d.textContent = s; re
 
 /* ---------- per-event morphology, computed live off the 1 Hz strip ----------
    The same quantities the model now carries as time-series channels (duration,
-   depth, time-to-nadir, recovery, in-decel variability, nadir lag
+   depth, time-to-nadir, recovery, nadir lag
    vs the contraction peak; contraction amplitude over resting tone, rise/fall,
    Montevideo contribution). Recomputed on every render, so dragging a boundary
    updates the numbers immediately. Raw measurements only -- no derived type
@@ -988,19 +1000,6 @@ function decMorph(e){
   out.ttn = nad - ia; out.rec = ib - nad; out.area = area;
   out.desc = out.depth / Math.max(out.ttn, 1);
   out.recs = out.depth / Math.max(out.rec, 1);
-  // in-decel variability: residual spread around an 11-s centred mean
-  if (ib - ia >= 20 && out.cov >= .5){
-    const res = [];
-    for (let i = ia; i <= ib; i++){
-      if (fhr[i] == null) continue;
-      let s2 = 0, c2 = 0;
-      for (let j = Math.max(ia, i - 5); j <= Math.min(ib, i + 5); j++)
-        if (fhr[j] != null){ s2 += fhr[j]; c2++; }
-      if (c2 >= 5) res.push(fhr[i] - s2 / c2);
-    }
-    const lo = pctl(res, .05), hi = pctl(res, .95);
-    if (lo != null) out.invar = hi - lo;
-  }
   // lag vs the paired contraction's peak
   const pid = partnerOf({list: 'decels', id: e.id});
   if (pid){
@@ -1077,7 +1076,6 @@ function morphRows(e, isD){
              ['Depth at nadir', fmtB(m.depth)],
              ['Fall / recovery rate', m.desc.toFixed(1) + ' / ' + m.recs.toFixed(1) + ' bpm/s'],
              ['Area below baseline', Math.round(m.area) + ' bpm·s']);
-      if (m.invar != null) r.push(['Variability inside', m.invar.toFixed(1) + ' bpm']);
       if (m.lag != null)
         r.push(['Nadir vs UC peak', (m.lag >= 0 ? '+' : '') + Math.round(m.lag) + ' s<i>' +
                 (m.lag >= 0 ? 'after peak' : 'before peak') + '</i>'],
@@ -1101,11 +1099,19 @@ function morphRows(e, isD){
     r.map(([k, v]) => `<span class="k">${k}</span><span class="v">${v}</span>`).join('') +
     '</div>';
 }
+/* The log holds two kinds of line: what the tool recorded (a type set, a
+   boundary dragged) and what a reviewer chose to SAY. The second kind is the
+   part another reviewer needs, and it is a handful of lines in a hundred, so
+   it gets a filter of its own. */
+window.toggleNoteOnly = () => { S.noteOnly = !S.noteOnly; renderHist(); };
 function renderHist(){
   const el = $('histList'); el.innerHTML = '';
-  const hs = [...(S.ann.history || [])].reverse();
+  $('noteOnly').classList.toggle('on', !!S.noteOnly);
+  let hs = [...(S.ann.history || [])].reverse();
+  if (S.noteOnly) hs = hs.filter(h => /^note: /.test(h.action || ''));
   if (!hs.length){
-    el.innerHTML = '<div class="hRow" style="color:var(--dim)">No history yet</div>';
+    el.innerHTML = `<div class="hRow" style="color:var(--dim)">${
+      S.noteOnly ? 'No notes yet' : 'No history yet'}</div>`;
     return;
   }
   for (const h of hs){
