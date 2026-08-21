@@ -51,8 +51,10 @@
     background:var(--card); user-select:none; -webkit-user-select:none}
   aside#recsWrap, aside#panel .pairHead, #evList, #recFilter{user-select:none; -webkit-user-select:none}
   #mini{height:52px; margin-bottom:6px}
-  #fhr{flex:65 1 0; min-height:0}
-  #uc{flex:35 1 0; min-height:0; margin-top:6px}
+  #fhr{flex:58 1 0; min-height:0}
+  #link{flex:none; height:34px; margin:2px 0; border:none; background:transparent;
+    border-radius:0}
+  #uc{flex:34 1 0; min-height:0}
   aside#panel{width:252px; flex:none; border-left:1px solid var(--line); background:var(--card);
     display:flex; flex-direction:column; min-height:0}
   .secTitle{font-size:10.5px; font-weight:600; color:var(--dim); text-transform:uppercase;
@@ -163,6 +165,7 @@
     </div>
     <canvas id="mini"></canvas>
     <canvas id="fhr"></canvas>
+    <canvas id="link"></canvas>
     <canvas id="uc"></canvas>
     <div id="credit">Data: CTU-CHB Intrapartum CTG Database (Chudáček et al. 2014) via PhysioNet · ODC-By 1.0 · edits are recorded under your name, visible to the project team</div>
   </main>
@@ -563,6 +566,66 @@ function drawFHR(){
     }
   }
 }
+/* The lane between the two traces carries the pairing: one line per
+   deceleration, from the middle of its band down to the middle of the
+   contraction it is being read against. That pairing is not decoration --
+   early vs late is the nadir's lag behind THIS peak -- so when the matcher
+   reaches for the neighbouring contraction the type is wrong with it, and the
+   only way to see that was to compare two lists of ids in the side panel.
+   Here the mistake is the one line that crosses the others.
+   Every line is drawn, faint, so the rhythm of the record is visible at a
+   glance; the selected one is drawn in its own colour with a grip on the
+   bottom end. Drag the grip: it snaps to the middle of whichever contraction
+   is under the cursor -- an anchor can only point at another anchor, never
+   into open toco -- and dropping it clear of them all unpairs. */
+function linkAnchors(){
+  const out = [];
+  for (const r of pairRows()){
+    if (!r.d || !r.c) continue;
+    out.push({d: r.d, c: r.c,
+              td: (r.d.a + r.d.b) / 2, tc: (r.c.a + r.c.b) / 2});
+  }
+  return out;
+}
+function drawLinks(){
+  const [g, w, h] = sizeCanvas($('link'));
+  g.clearRect(0, 0, w, h);
+  if (!S.rec || !S.ann) return;
+  const selId = S.sel && S.sel.list === 'decels' ? S.sel.id : null;
+  const drag = S.drag && S.drag.mode === 'pair' ? S.drag : null;
+  let sel = null;
+  for (const a of linkAnchors()){
+    if (a.d.id === selId){ sel = a; continue; }
+    const x0 = t2px(a.td, w), x1 = t2px(a.tc, w);
+    if (Math.max(x0, x1) < -20 || Math.min(x0, x1) > w + 20) continue;
+    g.strokeStyle = 'rgba(142,142,147,.38)'; g.lineWidth = 1;
+    g.beginPath(); g.moveTo(x0, 0); g.lineTo(x1, h); g.stroke();
+  }
+  // the selected pair last, so it sits over the rest
+  const d = selId ? getSel() : null;
+  if (!d) return;
+  const col = TCOLOR[d.type || 'pending'] || '#8e8e93';
+  const x0 = t2px((d.a + d.b) / 2, w);
+  let x1 = null;
+  if (drag) x1 = drag.t == null ? null : t2px(drag.t, w);
+  else if (sel) x1 = t2px(sel.tc, w);
+  g.strokeStyle = col; g.lineWidth = 2;
+  g.setLineDash(x1 == null ? [3,3] : []);
+  g.beginPath(); g.moveTo(x0, 0);
+  g.lineTo(x1 == null ? x0 : x1, h);
+  g.stroke(); g.setLineDash([]);
+  g.fillStyle = col;
+  g.beginPath(); g.arc(x0, 1.5, 2.5, 0, 7); g.fill();
+  if (x1 != null){ g.beginPath(); g.arc(x1, h - 3.5, 4.5, 0, 7); g.fill();
+    g.strokeStyle = '#fff'; g.lineWidth = 1.4; g.stroke(); }
+}
+function linkGripHit(px, w){
+  if (!S.sel || S.sel.list !== 'decels') return null;
+  const d = getSel(); if (!d) return null;
+  const a = linkAnchors().find(v => v.d.id === d.id);
+  const x1 = t2px(a ? a.tc : (d.a + d.b) / 2, w);
+  return Math.abs(px - x1) <= 9 ? {d, c: a ? a.c : null} : null;
+}
 function drawUC(){
   const [g, w, h] = sizeCanvas($('uc'));
   g.clearRect(0,0,w,h);
@@ -605,7 +668,7 @@ function drawMini(){
   g.font = '600 9px -apple-system'; g.fillStyle = '#aeaeb2'; g.textAlign = 'left';
   g.fillText('OVERVIEW', 8, 12);
 }
-function renderCanvases(){ if (!S.rec) return; drawFHR(); drawUC(); drawMini(); }
+function renderCanvases(){ if (!S.rec) return; drawFHR(); drawLinks(); drawUC(); drawMini(); }
 
 /* ---------- panels ---------- */
 function renderRecs(){
@@ -1204,6 +1267,11 @@ function drawCreate(c, d){
 window.addEventListener('mouseup', () => {
   const d = S.drag; S.drag = null;
   if (!d) return;
+  if (d.mode === 'pair'){
+    const target = d.target ?? d.from;
+    if (target !== d.from) setPair(d.did, target); else renderAll();
+    return;
+  }
   if (d.mode === 'create'){
     const a = Math.min(d.t0, d.t1), b = Math.max(d.t0, d.t1);
     if (b - a >= MINDUR){
@@ -1229,6 +1297,38 @@ window.addEventListener('mouseup', () => {
   }
 });
 setupPane('fhr'); setupPane('uc');
+(function setupLink(){
+  const c = $('link');
+  c.addEventListener('mousedown', ev => {
+    if (!S.rec || !S.ann) return;
+    const r = c.getBoundingClientRect(), px = ev.clientX - r.left;
+    const g = linkGripHit(px, r.width);
+    if (!g) return;
+    ev.preventDefault();
+    if (!requireName()) return;
+    S.drag = {mode:'pair', pane:'link', did: g.d.id,
+              from: g.c ? g.c.id : 'none', target: g.c ? g.c.id : 'none',
+              t: g.c ? (g.c.a + g.c.b) / 2 : null};
+    renderCanvases();
+  });
+  c.addEventListener('mousemove', ev => {
+    if (S.drag) return;
+    const r = c.getBoundingClientRect();
+    c.style.cursor = linkGripHit(ev.clientX - r.left, r.width) ? 'grab' : 'default';
+  });
+  /* Tracked on the window, not the lane: the lane is 34 px tall and the hand
+     drifts out of it long before the drag is finished. */
+  window.addEventListener('mousemove', ev => {
+    const d = S.drag;
+    if (!d || d.mode !== 'pair') return;
+    const r = c.getBoundingClientRect(), w = r.width;
+    const t = px2t(ev.clientX - r.left, w);
+    const hit = S.ann.contractions.find(v => t >= v.a && t <= v.b);
+    d.target = hit ? hit.id : 'none';
+    d.t = hit ? (hit.a + hit.b) / 2 : null;   // anchors only, never open toco
+    renderCanvases();
+  });
+})();
 
 $('mini').addEventListener('mousedown', ev => {
   const r = $('mini').getBoundingClientRect();
