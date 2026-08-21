@@ -181,7 +181,7 @@
     <tr><td><kbd>1</kbd>–<kbd>4</kbd></td><td>Classify: early / late / variable / prolonged; press the active one again to clear it back to unclassified (dashed)</td></tr>
     <tr><td><kbd>Enter</kbd></td><td>Raise / clear a ⚑ question on the selected event — a spot the next reviewer should look at</td></tr>
     <tr><td><kbd>X</kbd> / <kbd>Del</kbd></td><td>Delete selected event (detector events go to a recoverable deleted list)</td></tr>
-    <tr><td>Drag on empty trace</td><td>Draw a new event: on the FHR pane a deceleration, on the UC pane a contraction (a short click just deselects)</td></tr>
+    <tr><td>Drag on empty trace</td><td>Draw a new event: on the FHR pane a deceleration, on the UC pane a contraction (a short click leaves your selection alone; <kbd>Esc</kbd> deselects)</td></tr>
     <tr><td><kbd>Tab</kbd> / <kbd>⇧Tab</kbd></td><td>Next / previous pending event</td></tr>
     <tr><td>Drag an edge of a selected event</td><td>Adjust onset/offset (select the event first; recorded as edited, original boundaries kept)</td></tr>
     <tr><td>Drag inside a selected event</td><td>Move the whole event</td></tr>
@@ -377,7 +377,7 @@ function drawTimeGrid(g, w, h, labels){
   for (let t = Math.ceil(S.view.t0/step)*step; t <= S.view.t1; t += step){
     const px = t2px(t, w);
     g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke();
-    if (labels) g.fillText(t.toFixed(step < 1 ? 1 : 0), px, h - 4);
+    if (labels) g.fillText(fmtT(t).replace(/:00$/, ''), px, h - 4);
   }
 }
 function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
@@ -540,7 +540,10 @@ function renderTop(){
   $('progress').textContent =
     `Decels ${s.decels} · Contractions ${s.cons}`;
 }
-function fmtT(t){ return t.toFixed(2); }
+function fmtT(t){  // minutes-before-delivery shown as m:ss, e.g. -30:59
+  const s = Math.round(Math.abs(t)*60), m = Math.floor(s/60), ss = s%60;
+  return (t < 0 ? '-' : '') + m + ':' + String(ss).padStart(2,'0');
+}
 function renderSel(){
   const el = $('selCard'), e = getSel();
   const isD = e && S.sel.list === 'decels';
@@ -755,9 +758,7 @@ function setupPane(id){
       }
       renderAll();
     } else {
-      S.sel = null;
       S.drag = {mode:'create', pane:id, t0:rt(t), t1:rt(t)};
-      renderAll();
     }
   });
   c.addEventListener('dblclick', ev => {
@@ -791,7 +792,7 @@ function setupPane(id){
       let i = Math.round((t - x[0])*60);
       i = Math.max(0, Math.min(x.length-1, i));
       const v = id === 'fhr' ? fhr[i] : uc[i];
-      read = `t ${t.toFixed(2)}′  ${id === 'fhr' ? 'FHR' : 'UC'} ${v == null ? '—' : v.toFixed(0)}`;
+      read = `t ${fmtT(t)}  ${id === 'fhr' ? 'FHR' : 'UC'} ${v == null ? '—' : v.toFixed(0)}`;
     }
     $('cursorRead').textContent = read;
     if (!S.drag){
