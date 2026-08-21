@@ -153,3 +153,28 @@ cannot anchor the classification. Reviewers comment on the numbers through
 the existing note box (logged to History under their name). The model-side
 counterpart (34 new channels, feature set `morph`, AUROC and importance) is
 in `research_log/morph_channels_2026-08-21.html`.
+
+## Manual pairing (2026-08-21, LOCAL ONLY — not yet deployed)
+
+The decel↔contraction pairing in the side list is automatic (overlap or gap
+< 45 s, greedy), and sometimes wrong — a decel reads "no UC match" while its
+real contraction sits one row up, already claimed. Two ways to fix it:
+
+- **drag** one cell onto its partner in the paired list (either direction) —
+  pointer-based, not HTML5 drag-and-drop, because Safari refuses to start a
+  native drag inside this list's user-select:none region;
+- **select**: with a decel selected, the "Paired UC" dropdown in the card
+  offers automatic / no contraction / every contraction within ±3 min.
+
+Stored as `pair` on the decel (`<contraction id>` forced, `"none"` forced
+unmatched, absent = automatic), saved with the annotation, attributed and
+logged to History, undoable. A contraction claimed manually is released
+from any other decel (that decel falls back to automatic, logged). Manual
+rows show a ✎. The nadir-vs-peak lag in Measurements follows the manual
+pairing. Card layout (same date): measurements directly under the title,
+type buttons below them, duration dropped from the title.
+
+Deployment note: the Measurements panel + card layout ARE live on
+decel-review (Cloudflare) as of 2026-08-21; manual pairing is deliberately
+local pending review — sync with decel-review's
+`scripts/sync_from_research_log.sh` + `wrangler deploy` when approved.

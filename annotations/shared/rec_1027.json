@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1027,
- "annotator": "mengning",
+ "annotator": "a",
  "notes": "",
  "next_id": 43,
  "decels": [
@@ -348,8 +348,8 @@
   },
   {
    "id": "cm42",
-   "a": -56.0,
-   "b": -55.0,
+   "a": -56,
+   "b": -55,
    "a0": null,
    "b0": null,
    "origin": "manual",
@@ -367,12 +367,42 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-21T00:59:17.652777+00:00",
+ "updated": "2026-08-21T17:19:41.836Z",
  "history": [
   {
    "t": "2026-08-21T00:59:17.652777+00:00",
    "by": "mengning",
    "action": "consensus seeding: 10 decel(s) agreed by the pipeline linker, the geometric rule and the visual pass -> type pre-filled for quick confirmation; 9 disagreed or had a single source -> left unclassified and flagged \u2691 for expert typing"
+  },
+  {
+   "t": "2026-08-21T17:19:29.352Z",
+   "by": "a",
+   "action": "d7: paired \u2192 c38"
+  },
+  {
+   "t": "2026-08-21T17:19:30.459Z",
+   "by": "a",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-21T17:19:38.267Z",
+   "by": "a",
+   "action": "d4: paired \u2192 c37"
+  },
+  {
+   "t": "2026-08-21T17:19:39.937Z",
+   "by": "a",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-21T17:19:41.068Z",
+   "by": "a",
+   "action": "d4: paired \u2192 cm42"
+  },
+  {
+   "t": "2026-08-21T17:19:41.836Z",
+   "by": "a",
+   "action": "undo"
   }
  ]
 }

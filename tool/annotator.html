@@ -78,6 +78,14 @@
   .cell.cur{background:#dbe9fe}
   .pairRow.cur{background:#eef4ff; border-radius:6px}
   .cell.miss{color:#c7c7cc; cursor:default; font-size:11px}
+  .cell.dropOK{outline:2px dashed var(--blue); outline-offset:-2px; background:#e8f0fe; border-radius:6px}
+  .pairGhost{position:fixed; z-index:99; pointer-events:none; background:var(--blue); color:#fff;
+    font-size:11px; padding:2px 8px; border-radius:999px; box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  body.pairing, body.pairing .cell{cursor:grabbing !important}
+  .pairRowSel{display:flex; gap:8px; align-items:center; margin:6px 0 2px; font-size:11.5px}
+  .pairRowSel .k{color:var(--dim); white-space:nowrap}
+  .pairRowSel select{flex:1; min-width:0; font:inherit; font-size:11.5px; padding:2px 4px;
+    border:1px solid var(--line); border-radius:6px; background:var(--card); color:var(--ink)}
   .cell.miss:hover{background:none}
   #legend{flex:none; padding:7px 12px 9px; border-top:1px solid var(--line); font-size:10.5px;
     color:var(--dim); display:flex; flex-wrap:wrap; gap:3px 10px; align-items:center}
@@ -624,6 +632,7 @@ function renderSel(){
   }
   let html = `<div class="t">${isD ? 'Decel' : 'Contraction'} ${e.id} · ${fmtT(e.a)} → ${fmtT(e.b)}</div>`;
   html += morphRows(e, isD);
+  if (isD) html += pairControl(e);
   if (isD){
     html += '<div class="typeGrid">' + TYPES.map((t, i) =>
       `<button class="t${t[0].toUpperCase()+t.slice(1)}${(t === 'unclassified' ? !e.type : e.type === t) ? ' on' : ''}"
@@ -695,6 +704,24 @@ function decMorph(e){
     }
   }
   return out;
+}
+function pairControl(e){
+  const cs = [...S.ann.contractions].sort((p, q) => p.a - q.a)
+    .filter(c => Math.max(0, e.a - c.b, c.a - e.b) <= 3      // within 3 min…
+                 || c.id === e.pair);                        // …plus the current pair, however far
+  const cur = e.pair ?? 'auto';
+  const autoRow = pairRows().find(r => r.d && r.d.id === e.id && !r.manual);
+  const autoC = autoRow ? autoRow.c : null;
+  let opts = `<option value="auto"${cur === 'auto' ? ' selected' : ''}>automatic` +
+             (cur === 'auto' ? (autoC ? ` (${fmtT(autoC.a)})` : ' (no match)') : '') + `</option>` +
+             `<option value="none"${cur === 'none' ? ' selected' : ''}>no contraction</option>`;
+  for (const c of cs)
+    opts += `<option value="${c.id}"${cur === c.id ? ' selected' : ''}>` +
+            `${fmtT(c.a)} → ${fmtT(c.b)} (${((c.b - c.a) * 60).toFixed(0)} s)</option>`;
+  return `<div class="pairRowSel"><span class="k">Paired UC</span>` +
+         `<select onchange="setPairSel(this.value)" ` +
+         `title="Which contraction this deceleration answers to — feeds the paired list and the nadir-vs-peak lag. Or drag one cell onto the other in the list below.">` +
+         opts + `</select></div>`;
 }
 function ucPeak(c){
   const {uc} = S.rec.strip;
@@ -787,8 +814,16 @@ function renderHist(){
 function pairRows(){
   const ds = [...S.ann.decels].sort((p, q) => p.a - q.a);
   const cs = [...S.ann.contractions].sort((p, q) => p.a - q.a);
+  const byId = new Map(cs.map(c => [c.id, c]));
   const used = new Set(), rows = [];
+  // Manual pairings claim their contraction first, so the automatic matcher
+  // cannot give it away to a neighbour.
+  for (const d of ds)
+    if (d.pair && d.pair !== 'none' && byId.has(d.pair)) used.add(d.pair);
   for (const d of ds){
+    if (d.pair === 'none'){ rows.push({d, c: null, manual: true}); continue; }
+    if (d.pair && byId.has(d.pair)){
+      rows.push({d, c: byId.get(d.pair), manual: true}); continue; }
     let best = null, bd = 0.75;                 // pair if overlap or gap < 45 s
     for (const c of cs){
       if (used.has(c.id)) continue;
@@ -803,22 +838,110 @@ function pairRows(){
   rows.sort((r1, r2) => ((r1.d ? r1.d.a : r1.c.a) - (r2.d ? r2.d.a : r2.c.a)));
   return rows;
 }
-function cellEl(e, list){
+
+/* ---------- manual pairing ----------
+   The automatic matcher is greedy and blind: a decel can read "no UC match"
+   while its real contraction sits one row up, already claimed. `pair` on a
+   decel overrides it: a contraction id forces that pairing, 'none' forces
+   no match, absent means automatic. Set by dragging one cell onto its
+   partner in the paired list, or from the dropdown in the selection card.
+   Feeds everything pairing feeds: the paired columns AND the nadir-vs-peak
+   lag in the measurements. */
+function setPair(did, target){   // target: 'auto' | 'none' | contraction id
+  const d = S.ann.decels.find(v => v.id === did);
+  if (!d) return;
+  if ((d.pair ?? 'auto') === target) return;
+  const name = t => t === 'auto' ? 'automatic' : t === 'none' ? 'no contraction' : t;
+  mutate(() => {
+    if (target !== 'auto' && target !== 'none')
+      for (const o of S.ann.decels)
+        if (o.id !== did && o.pair === target){
+          delete o.pair;
+          logH(`${o.id}: pairing back to automatic (${target} re-paired to ${did})`);
+        }
+    if (target === 'auto') delete d.pair; else d.pair = target;
+    d.by = S.annotator;
+  }, `${did}: paired → ${name(target)}`);
+}
+window.setPairSel = v => { if (S.sel && S.sel.list === 'decels') setPair(S.sel.id, v); };
+function cellEl(e, list, row){
   const c = document.createElement('div');
   if (!e){
     c.className = 'cell miss';
-    c.textContent = list === 'decels' ? '· no decel match' : '· no UC match';
+    c.textContent = (list === 'decels' ? '· no decel match' : '· no UC match')
+                    + (row && row.manual ? ' ✎' : '');
+    if (row && row.manual && list === 'contractions')
+      c.title = 'unpaired by hand — drag a contraction here to pair it';
+    if (row && row.d && list === 'contractions') c.dataset.dropDecel = row.d.id;
     return c;
   }
   c.className = 'cell' + (S.sel?.id === e.id ? ' cur' : '');
   const tcol = list === 'decels' ? (e.type ? TCOLOR[e.type] : 'var(--dim)') : 'var(--ink)';
   c.innerHTML = `<span style="color:${tcol}">${fmtT(e.a)}</span>` +
     `<span style="color:var(--dim)">${((e.b-e.a)*60).toFixed(0)}s</span>` +
+    (row && row.manual ? '<span style="color:var(--blue)" title="paired by hand">✎</span>' : '') +
     (e.flag ? '<span style="color:var(--orange)">⚑</span>' : '');
   if (e.by) c.title = 'last edit: ' + e.by;
-  c.onclick = () => { discardProvisional(e); S.sel = {list, id:e.id}; ensureVisible(e); renderAll(); };
+  c.onclick = () => {
+    if (S.pairDrag && S.pairDrag.moved) return;   // that mouseup was a drop, not a click
+    discardProvisional(e); S.sel = {list, id:e.id}; ensureVisible(e); renderAll(); };
+  // Re-pair by dragging: pick up either side, drop it on its partner-to-be.
+  // Pointer-based rather than HTML5 drag-and-drop: Safari refuses to start a
+  // native drag inside a user-select:none region, which this list is.
+  c.dataset.pairList = list; c.dataset.pairId = e.id;
+  c.addEventListener('mousedown', ev => {
+    if (ev.button !== 0) return;
+    S.pairDrag = {list, id: e.id, x0: ev.clientX, y0: ev.clientY, moved: false,
+                  label: fmtT(e.a) + ' ' + (list === 'decels' ? 'decel' : 'UC')};
+  });
   return c;
 }
+/* one document-level pair of listeners drives every pair-drag */
+function pairTargetAt(x, y){
+  const cell = document.elementFromPoint(x, y)?.closest('#evList .cell');
+  const d = S.pairDrag;
+  if (!cell || !d) return null;
+  if (d.list === 'contractions'){
+    if (cell.dataset.pairList === 'decels' && cell.dataset.pairId)
+      return {did: cell.dataset.pairId, cid: d.id, cell};
+    if (cell.dataset.dropDecel)                    // the "no UC match" gap in a decel's row
+      return {did: cell.dataset.dropDecel, cid: d.id, cell};
+  } else if (cell.dataset.pairList === 'contractions' && cell.dataset.pairId){
+    return {did: d.id, cid: cell.dataset.pairId, cell};
+  }
+  return null;
+}
+document.addEventListener('mousemove', ev => {
+  const d = S.pairDrag;
+  if (!d) return;
+  if (!d.moved){
+    if (Math.hypot(ev.clientX - d.x0, ev.clientY - d.y0) < 5) return;
+    d.moved = true;
+    d.ghost = document.createElement('div');
+    d.ghost.className = 'pairGhost';
+    d.ghost.textContent = d.label + ' → pair…';
+    document.body.appendChild(d.ghost);
+    document.body.classList.add('pairing');
+  }
+  d.ghost.style.left = (ev.clientX + 12) + 'px';
+  d.ghost.style.top = (ev.clientY + 12) + 'px';
+  const hit = pairTargetAt(ev.clientX, ev.clientY);
+  if (d.hot && d.hot !== (hit && hit.cell)) d.hot.classList.remove('dropOK');
+  d.hot = hit ? hit.cell : null;
+  if (d.hot) d.hot.classList.add('dropOK');
+});
+document.addEventListener('mouseup', ev => {
+  const d = S.pairDrag;
+  if (!d) return;
+  if (d.moved){
+    const hit = pairTargetAt(ev.clientX, ev.clientY);
+    if (d.hot) d.hot.classList.remove('dropOK');
+    d.ghost.remove(); document.body.classList.remove('pairing');
+    if (hit && hit.did !== hit.cid) setPair(hit.did, hit.cid);
+    // keep S.pairDrag.moved until the click event this mouseup spawns has run
+    setTimeout(() => { S.pairDrag = null; }, 0);
+  } else S.pairDrag = null;
+});
 function renderList(){
   const el = $('evList'); el.innerHTML = '';
   let curRow = null;
@@ -828,8 +951,8 @@ function renderList(){
     if (S.sel && ((r.d && r.d.id === S.sel.id) || (r.c && r.c.id === S.sel.id))){
       row.className += ' cur'; curRow = row;
     }
-    row.appendChild(cellEl(r.d, 'decels'));
-    row.appendChild(cellEl(r.c, 'contractions'));
+    row.appendChild(cellEl(r.d, 'decels', r));
+    row.appendChild(cellEl(r.c, 'contractions', r));
     el.appendChild(row);
   }
   if (curRow && S.sel?.id !== S._lastSelId)
