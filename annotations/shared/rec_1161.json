@@ -1,0 +1,186 @@
+{
+ "schema": 1,
+ "record_id": 1161,
+ "annotator": "detector",
+ "status": "open",
+ "notes": "",
+ "next_id": 18,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -22.27,
+   "b": -21.35,
+   "a0": -22.27,
+   "b0": -21.35,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -22.1,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d2",
+   "a": -17.73,
+   "b": -17.33,
+   "a0": -17.73,
+   "b0": -17.33,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -17.367,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d3",
+   "a": -14.48,
+   "b": -13.5,
+   "a0": -14.48,
+   "b0": -13.5,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -14.038,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d4",
+   "a": -0.31,
+   "b": -0.0,
+   "a0": -0.31,
+   "b0": -0.0,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -0.046,
+   "det_prolonged": 0
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c5",
+   "a": -60.78,
+   "b": -59.03,
+   "a0": -60.78,
+   "b0": -59.03,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c6",
+   "a": -57.39,
+   "b": -56.29,
+   "a0": -57.39,
+   "b0": -56.29,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c7",
+   "a": -54.5,
+   "b": -52.46,
+   "a0": -54.5,
+   "b0": -52.46,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c8",
+   "a": -50.98,
+   "b": -49.49,
+   "a0": -50.98,
+   "b0": -49.49,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c9",
+   "a": -49.48,
+   "b": -47.28,
+   "a0": -49.48,
+   "b0": -47.28,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c10",
+   "a": -42.41,
+   "b": -40.28,
+   "a0": -42.41,
+   "b0": -40.28,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c11",
+   "a": -35.98,
+   "b": -34.78,
+   "a0": -35.98,
+   "b0": -34.78,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c12",
+   "a": -28.09,
+   "b": -27.27,
+   "a0": -28.09,
+   "b0": -27.27,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c13",
+   "a": -26.4,
+   "b": -24.2,
+   "a0": -26.4,
+   "b0": -24.2,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c14",
+   "a": -17.38,
+   "b": -14.89,
+   "a0": -17.38,
+   "b0": -14.89,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c15",
+   "a": -10.34,
+   "b": -8.08,
+   "a0": -10.34,
+   "b0": -8.08,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c16",
+   "a": -6.07,
+   "b": -3.08,
+   "a0": -6.07,
+   "b0": -3.08,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c17",
+   "a": -0.93,
+   "b": -0.0,
+   "a0": -0.93,
+   "b0": -0.0,
+   "origin": "detector",
+   "review": "pending"
+  }
+ ],
+ "deleted": [],
+ "updated": "2026-08-21T23:42:39.343046+00:00",
+ "history": [
+  {
+   "t": "2026-08-21T23:42:39.343046+00:00",
+   "by": "detector",
+   "action": "v3 prefill: 4 decelerations and 13 contractions detected against a WMFB baseline (the same baseline the page draws); every type left for the reviewer"
+  }
+ ]
+}

@@ -1,0 +1,363 @@
+{
+ "schema": 1,
+ "record_id": 1346,
+ "annotator": "detector",
+ "status": "open",
+ "notes": "",
+ "next_id": 36,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -61.92,
+   "b": -61.23,
+   "a0": -61.92,
+   "b0": -61.23,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -61.446,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d2",
+   "a": -58.75,
+   "b": -56.64,
+   "a0": -58.75,
+   "b0": -56.64,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -57.208,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d3",
+   "a": -32.08,
+   "b": -31.56,
+   "a0": -32.08,
+   "b0": -31.56,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -31.921,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d4",
+   "a": -18.05,
+   "b": -16.6,
+   "a0": -18.05,
+   "b0": -16.6,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -17.704,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d5",
+   "a": -11.58,
+   "b": -10.6,
+   "a0": -11.58,
+   "b0": -10.6,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -10.679,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d6",
+   "a": -4.83,
+   "b": -4.36,
+   "a0": -4.83,
+   "b0": -4.36,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -4.771,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d7",
+   "a": -4.19,
+   "b": -2.89,
+   "a0": -4.19,
+   "b0": -2.89,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -2.979,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d8",
+   "a": -2.37,
+   "b": -1.56,
+   "a0": -2.37,
+   "b0": -1.56,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -2.171,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d9",
+   "a": -0.54,
+   "b": -0.0,
+   "a0": -0.54,
+   "b0": -0.0,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -0.042,
+   "det_prolonged": 0
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c10",
+   "a": -60.23,
+   "b": -59.37,
+   "a0": -60.23,
+   "b0": -59.37,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c11",
+   "a": -59.17,
+   "b": -57.88,
+   "a0": -59.17,
+   "b0": -57.88,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c12",
+   "a": -57.55,
+   "b": -56.9,
+   "a0": -57.55,
+   "b0": -56.9,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c13",
+   "a": -54.66,
+   "b": -52.28,
+   "a0": -54.66,
+   "b0": -52.28,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c14",
+   "a": -51.85,
+   "b": -50.95,
+   "a0": -51.85,
+   "b0": -50.95,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c15",
+   "a": -48.1,
+   "b": -47.01,
+   "a0": -48.1,
+   "b0": -47.01,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c16",
+   "a": -47.01,
+   "b": -46.29,
+   "a0": -47.01,
+   "b0": -46.29,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c17",
+   "a": -45.56,
+   "b": -44.77,
+   "a0": -45.56,
+   "b0": -44.77,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c18",
+   "a": -44.77,
+   "b": -43.45,
+   "a0": -44.77,
+   "b0": -43.45,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c19",
+   "a": -42.96,
+   "b": -42.11,
+   "a0": -42.96,
+   "b0": -42.11,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c20",
+   "a": -39.99,
+   "b": -39.49,
+   "a0": -39.99,
+   "b0": -39.49,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c21",
+   "a": -38.94,
+   "b": -37.17,
+   "a0": -38.94,
+   "b0": -37.17,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c22",
+   "a": -37.16,
+   "b": -36.31,
+   "a0": -37.16,
+   "b0": -36.31,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c23",
+   "a": -29.47,
+   "b": -28.39,
+   "a0": -29.47,
+   "b0": -28.39,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c24",
+   "a": -27.85,
+   "b": -27.1,
+   "a0": -27.85,
+   "b0": -27.1,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c25",
+   "a": -26.84,
+   "b": -24.12,
+   "a0": -26.84,
+   "b0": -24.12,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c26",
+   "a": -23.57,
+   "b": -22.99,
+   "a0": -23.57,
+   "b0": -22.99,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c27",
+   "a": -21.48,
+   "b": -20.28,
+   "a0": -21.48,
+   "b0": -20.28,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c28",
+   "a": -20.27,
+   "b": -18.21,
+   "a0": -20.27,
+   "b0": -18.21,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c29",
+   "a": -15.67,
+   "b": -13.52,
+   "a0": -15.67,
+   "b0": -13.52,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c30",
+   "a": -13.24,
+   "b": -11.94,
+   "a0": -13.24,
+   "b0": -11.94,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c31",
+   "a": -11.94,
+   "b": -11.01,
+   "a0": -11.94,
+   "b0": -11.01,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c32",
+   "a": -8.9,
+   "b": -6.61,
+   "a0": -8.9,
+   "b0": -6.61,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c33",
+   "a": -4.87,
+   "b": -3.33,
+   "a0": -4.87,
+   "b0": -3.33,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c34",
+   "a": -3.33,
+   "b": -2.6,
+   "a0": -3.33,
+   "b0": -2.6,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c35",
+   "a": -1.06,
+   "b": -0.1,
+   "a0": -1.06,
+   "b0": -0.1,
+   "origin": "detector",
+   "review": "pending"
+  }
+ ],
+ "deleted": [],
+ "updated": "2026-08-21T23:42:39.343046+00:00",
+ "history": [
+  {
+   "t": "2026-08-21T23:42:39.343046+00:00",
+   "by": "detector",
+   "action": "v3 prefill: 9 decelerations and 26 contractions detected against a WMFB baseline (the same baseline the page draws); every type left for the reviewer"
+  }
+ ]
+}

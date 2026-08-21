@@ -1,0 +1,399 @@
+{
+ "schema": 1,
+ "record_id": 1379,
+ "annotator": "detector",
+ "status": "open",
+ "notes": "",
+ "next_id": 39,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -54.69,
+   "b": -53.6,
+   "a0": -54.69,
+   "b0": -53.6,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -54.2,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d2",
+   "a": -51.07,
+   "b": -50.38,
+   "a0": -51.07,
+   "b0": -50.38,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -50.917,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d3",
+   "a": -33.5,
+   "b": -33.11,
+   "a0": -33.5,
+   "b0": -33.11,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -33.196,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d4",
+   "a": -31.69,
+   "b": -30.68,
+   "a0": -31.69,
+   "b0": -30.68,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -30.979,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d5",
+   "a": -27.96,
+   "b": -26.97,
+   "a0": -27.96,
+   "b0": -26.97,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -27.667,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d6",
+   "a": -26.4,
+   "b": -25.73,
+   "a0": -26.4,
+   "b0": -25.73,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -25.788,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d7",
+   "a": -22.23,
+   "b": -21.3,
+   "a0": -22.23,
+   "b0": -21.3,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -21.929,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d8",
+   "a": -18.51,
+   "b": -17.59,
+   "a0": -18.51,
+   "b0": -17.59,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -18.354,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d9",
+   "a": -16.81,
+   "b": -16.0,
+   "a0": -16.81,
+   "b0": -16.0,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -16.646,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d10",
+   "a": -14.62,
+   "b": -13.28,
+   "a0": -14.62,
+   "b0": -13.28,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -14.342,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d11",
+   "a": -10.64,
+   "b": -9.48,
+   "a0": -10.64,
+   "b0": -9.48,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -10.217,
+   "det_prolonged": 0
+  },
+  {
+   "id": "d12",
+   "a": -8.12,
+   "b": -7.56,
+   "a0": -8.12,
+   "b0": -7.56,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -8.046,
+   "det_prolonged": 0
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c13",
+   "a": -64.91,
+   "b": -63.72,
+   "a0": -64.91,
+   "b0": -63.72,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c14",
+   "a": -62.73,
+   "b": -61.64,
+   "a0": -62.73,
+   "b0": -61.64,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c15",
+   "a": -61.24,
+   "b": -60.16,
+   "a0": -61.24,
+   "b0": -60.16,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c16",
+   "a": -58.81,
+   "b": -57.65,
+   "a0": -58.81,
+   "b0": -57.65,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c17",
+   "a": -56.05,
+   "b": -54.5,
+   "a0": -56.05,
+   "b0": -54.5,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c18",
+   "a": -49.06,
+   "b": -47.98,
+   "a0": -49.06,
+   "b0": -47.98,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c19",
+   "a": -46.89,
+   "b": -45.58,
+   "a0": -46.89,
+   "b0": -45.58,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c20",
+   "a": -43.36,
+   "b": -42.34,
+   "a0": -43.36,
+   "b0": -42.34,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c21",
+   "a": -42.34,
+   "b": -40.35,
+   "a0": -42.34,
+   "b0": -40.35,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c22",
+   "a": -38.67,
+   "b": -37.51,
+   "a0": -38.67,
+   "b0": -37.51,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c23",
+   "a": -37.51,
+   "b": -36.0,
+   "a0": -37.51,
+   "b0": -36.0,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c24",
+   "a": -35.42,
+   "b": -33.82,
+   "a0": -35.42,
+   "b0": -33.82,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c25",
+   "a": -33.82,
+   "b": -32.49,
+   "a0": -33.82,
+   "b0": -32.49,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c26",
+   "a": -32.48,
+   "b": -31.65,
+   "a0": -32.48,
+   "b0": -31.65,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c27",
+   "a": -28.57,
+   "b": -26.82,
+   "a0": -28.57,
+   "b0": -26.82,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c28",
+   "a": -26.81,
+   "b": -25.83,
+   "a0": -26.81,
+   "b0": -25.83,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c29",
+   "a": -25.83,
+   "b": -24.16,
+   "a0": -25.83,
+   "b0": -24.16,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c30",
+   "a": -22.62,
+   "b": -21.06,
+   "a0": -22.62,
+   "b0": -21.06,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c31",
+   "a": -19.41,
+   "b": -17.88,
+   "a0": -19.41,
+   "b0": -17.88,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c32",
+   "a": -17.87,
+   "b": -16.11,
+   "a0": -17.87,
+   "b0": -16.11,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c33",
+   "a": -14.71,
+   "b": -11.99,
+   "a0": -14.71,
+   "b0": -11.99,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c34",
+   "a": -11.55,
+   "b": -10.91,
+   "a0": -11.55,
+   "b0": -10.91,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c35",
+   "a": -10.25,
+   "b": -8.07,
+   "a0": -10.25,
+   "b0": -8.07,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c36",
+   "a": -7.7,
+   "b": -5.85,
+   "a0": -7.7,
+   "b0": -5.85,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c37",
+   "a": -4.65,
+   "b": -2.62,
+   "a0": -4.65,
+   "b0": -2.62,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c38",
+   "a": -2.61,
+   "b": -2.02,
+   "a0": -2.61,
+   "b0": -2.02,
+   "origin": "detector",
+   "review": "pending"
+  }
+ ],
+ "deleted": [],
+ "updated": "2026-08-21T23:42:39.343046+00:00",
+ "history": [
+  {
+   "t": "2026-08-21T23:42:39.343046+00:00",
+   "by": "detector",
+   "action": "v3 prefill: 12 decelerations and 26 contractions detected against a WMFB baseline (the same baseline the page draws); every type left for the reviewer"
+  }
+ ]
+}
