@@ -20,7 +20,6 @@
   header h1{font-size:15px; font-weight:600}
   header .sp{flex:1}
   #saveState{font-size:12px; color:var(--dim)}
-  #nameHint{font-size:11.5px; color:var(--orange); white-space:nowrap}
   #annName.needsName{border-color:var(--orange); background:#fff8ef}
   #annName{border:1px solid var(--line); border-radius:6px; padding:2px 8px; width:110px;
     background:var(--card); font:inherit; font-size:12px}
@@ -147,7 +146,6 @@
   <span id="recTitle" style="color:var(--dim)"></span>
   <span class="sp"></span>
   <input id="annName" title="Your name — every edit is recorded under it" placeholder="your name">
-  <span id="nameHint">← name required to mark up</span>
   <span id="saveState"></span>
 </header>
 <div id="app">
@@ -240,14 +238,12 @@ async function boot(){
   renderRecs();
   if (S.pilot.length) loadRecord(S.pilot[0].id);
 }
-/* Viewing is open, editing is not. A reviewer who has not typed a name finds
-   that out when their first edit silently fails, so the gate says so twice:
-   standing, next to the field, before anything is attempted -- and again, in
-   words, at the moment an edit is refused. */
+/* Viewing is open, editing is not. Until a name is entered the field carries
+   a standing tint -- enough to draw the eye to where to type, without a line
+   of prose saying what the refusal message will say in full the moment an
+   edit is actually attempted. */
 function syncNameHint(){
-  const has = !!S.annotator;
-  $('nameHint').style.display = has ? 'none' : '';
-  $('annName').classList.toggle('needsName', !has);
+  $('annName').classList.toggle('needsName', !S.annotator);
 }
 function requireName(){
   if (S.annotator) return true;
