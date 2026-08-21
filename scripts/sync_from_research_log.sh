@@ -9,6 +9,8 @@ cp "$SRC"/annotator.html public/index.html
 cp "$SRC"/serve.py "$SRC"/claude_pass.py "$SRC"/make_pilot_list.py "$SRC"/README.md tool/
 cp "$SRC"/pilot.json tool/pilot.json
 cp "$SRC"/pilot.json public/pilot.json
+# the CTU expert reference overlay travels with the page
+mkdir -p public/expert
 rsync -a --delete "$ANN/shared/" annotations/shared/
 rsync -a --delete "$ANN/claude/" annotations/claude/
 echo "synced; review with git diff, then commit"

@@ -14,9 +14,12 @@
    "b0": -37.9,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -38.571,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 19.2
   },
   {
    "id": "d2",
@@ -28,7 +31,11 @@
    "review": "pending",
    "type": null,
    "nadir_min": -7.288,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "prolonged",
+   "nadir_lag_s": 11.8,
+   "flag": true
   },
   {
    "id": "d3",
@@ -38,9 +45,12 @@
    "b0": -3.62,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "early",
    "nadir_min": -4.496,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "early",
+   "src_rule": "early",
+   "nadir_lag_s": -2.0
   },
   {
    "id": "d4",
@@ -52,7 +62,11 @@
    "review": "pending",
    "type": null,
    "nadir_min": -0.096,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": null,
+   "src_rule": null,
+   "nadir_lag_s": null,
+   "flag": true
   }
  ],
  "contractions": [
@@ -355,12 +369,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-21T23:42:39.343046+00:00",
+ "updated": "2026-08-21T23:48:23.448299+00:00",
  "history": [
   {
-   "t": "2026-08-21T23:42:39.343046+00:00",
+   "t": "2026-08-21T23:48:23.448299+00:00",
    "by": "detector",
-   "action": "v3 prefill: 4 decelerations and 33 contractions detected against a WMFB baseline (the same baseline the page draws); every type left for the reviewer"
+   "action": "v3 prefill: 4 decelerations and 33 contractions detected against a WMFB baseline. 2 typed where the pipeline linker and the geometric rule agreed; 2 left unclassified and flagged where they did not, so the expert types those unanchored"
   }
  ]
 }

@@ -16,7 +16,11 @@
    "review": "pending",
    "type": null,
    "nadir_min": -74.504,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": null,
+   "nadir_lag_s": -62.5,
+   "flag": true
   },
   {
    "id": "d2",
@@ -26,9 +30,12 @@
    "b0": -56.12,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -56.462,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 148.5
   },
   {
    "id": "d3",
@@ -38,9 +45,12 @@
    "b0": -21.52,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -21.721,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 106.2
   },
   {
    "id": "d4",
@@ -52,7 +62,11 @@
    "review": "pending",
    "type": null,
    "nadir_min": -12.183,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": null,
+   "src_rule": "prolonged",
+   "nadir_lag_s": -65.0,
+   "flag": true
   },
   {
    "id": "d5",
@@ -62,9 +76,12 @@
    "b0": -6.24,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -6.575,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "late",
+   "src_rule": "late",
+   "nadir_lag_s": 45.0
   },
   {
    "id": "d6",
@@ -74,9 +91,12 @@
    "b0": -4.18,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -4.408,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 71.0
   }
  ],
  "contractions": [
@@ -280,12 +300,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-21T23:42:39.343046+00:00",
+ "updated": "2026-08-21T23:48:23.448299+00:00",
  "history": [
   {
-   "t": "2026-08-21T23:42:39.343046+00:00",
+   "t": "2026-08-21T23:48:23.448299+00:00",
    "by": "detector",
-   "action": "v3 prefill: 6 decelerations and 22 contractions detected against a WMFB baseline (the same baseline the page draws); every type left for the reviewer"
+   "action": "v3 prefill: 6 decelerations and 22 contractions detected against a WMFB baseline. 4 typed where the pipeline linker and the geometric rule agreed; 2 left unclassified and flagged where they did not, so the expert types those unanchored"
   }
  ]
 }

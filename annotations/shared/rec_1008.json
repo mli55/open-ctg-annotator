@@ -14,9 +14,12 @@
    "b0": -65.84,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -66.338,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 32.0
   },
   {
    "id": "d2",
@@ -28,7 +31,11 @@
    "review": "pending",
    "type": null,
    "nadir_min": -56.496,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": null,
+   "src_rule": null,
+   "nadir_lag_s": -62.0,
+   "flag": true
   },
   {
    "id": "d3",
@@ -40,7 +47,11 @@
    "review": "pending",
    "type": null,
    "nadir_min": -46.617,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": null,
+   "src_rule": null,
+   "nadir_lag_s": null,
+   "flag": true
   },
   {
    "id": "d4",
@@ -50,9 +61,12 @@
    "b0": -41.44,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -41.5,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 104.0
   },
   {
    "id": "d5",
@@ -62,9 +76,12 @@
    "b0": -37.88,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -38.108,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "late",
+   "src_rule": "late",
+   "nadir_lag_s": 66.8
   },
   {
    "id": "d6",
@@ -76,7 +93,11 @@
    "review": "pending",
    "type": null,
    "nadir_min": -36.083,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "early",
+   "src_rule": "late",
+   "nadir_lag_s": 8.0,
+   "flag": true
   },
   {
    "id": "d7",
@@ -88,7 +109,11 @@
    "review": "pending",
    "type": null,
    "nadir_min": -31.417,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": null,
+   "src_rule": "variable",
+   "nadir_lag_s": -81.5,
+   "flag": true
   },
   {
    "id": "d8",
@@ -98,9 +123,12 @@
    "b0": -29.6,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -29.692,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 22.0
   },
   {
    "id": "d9",
@@ -110,9 +138,12 @@
    "b0": -28.63,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -29.2,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 51.5
   },
   {
    "id": "d10",
@@ -122,9 +153,12 @@
    "b0": -26.16,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -26.521,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": -18.0
   },
   {
    "id": "d11",
@@ -134,9 +168,12 @@
    "b0": -25.33,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -25.487,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 44.0
   },
   {
    "id": "d12",
@@ -146,9 +183,12 @@
    "b0": -18.33,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -18.475,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "late",
+   "src_rule": "late",
+   "nadir_lag_s": 42.8
   },
   {
    "id": "d13",
@@ -158,9 +198,12 @@
    "b0": -17.04,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -17.271,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": -5.2
   },
   {
    "id": "d14",
@@ -170,9 +213,12 @@
    "b0": -15.98,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -16.392,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 47.5
   },
   {
    "id": "d15",
@@ -182,9 +228,12 @@
    "b0": -13.76,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -14.496,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": 55.8
   },
   {
    "id": "d16",
@@ -194,9 +243,12 @@
    "b0": -1.02,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -1.346,
-   "det_prolonged": 0
+   "det_prolonged": 0,
+   "src_linker": "variable",
+   "src_rule": "variable",
+   "nadir_lag_s": -34.5
   }
  ],
  "contractions": [
@@ -418,12 +470,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-21T23:42:39.343046+00:00",
+ "updated": "2026-08-21T23:48:23.448299+00:00",
  "history": [
   {
-   "t": "2026-08-21T23:42:39.343046+00:00",
+   "t": "2026-08-21T23:48:23.448299+00:00",
    "by": "detector",
-   "action": "v3 prefill: 16 decelerations and 24 contractions detected against a WMFB baseline (the same baseline the page draws); every type left for the reviewer"
+   "action": "v3 prefill: 16 decelerations and 24 contractions detected against a WMFB baseline. 12 typed where the pipeline linker and the geometric rule agreed; 4 left unclassified and flagged where they did not, so the expert types those unanchored"
   }
  ]
 }

@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Decel Annotator</title>
+<title>Deceleration Annotator</title>
+<meta name="description" content="Expert review of fetal heart rate decelerations on the CTU-CHB intrapartum database: segmentation, the contraction each is read against, and typing.">
+<meta property="og:title" content="Deceleration Annotator">
+<meta property="og:description" content="Expert review of fetal heart rate decelerations on the CTU-CHB intrapartum database: segmentation, the contraction each is read against, and typing.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root{
@@ -20,7 +25,7 @@
   header h1{font-size:15px; font-weight:600}
   header .sp{flex:1}
   #saveState{font-size:12px; color:var(--dim)}
-  #hideBtn{font-size:12px; padding:3px 9px}
+  #hideBtn, #expertBtn{font-size:12px; padding:3px 9px}
   #annName.needsName{border-color:var(--orange); background:#fff8ef}
   /* A refused edit has to be impossible to miss: the field the reviewer has
      to fill goes red and moves, because a grey line of prose in a corner is
@@ -160,11 +165,13 @@
 </head>
 <body>
 <header>
-  <h1>Decel Annotator</h1>
+  <h1>Deceleration Annotator</h1>
   <span class="meta" id="recMeta"></span>
   <span id="progress"></span>
   <button id="hideBtn" onclick="toggleBands()"
-    title="Hide every band, to read the trace on its own (H)">hide labels</button>
+    title="Hide our bands, to read the trace on its own (H)">hide labels</button>
+  <button id="expertBtn" onclick="toggleExpert()"
+    title="Overlay the CTU expert reference, outlined (E)">CTU expert</button>
   <span class="sp"></span>
   <span id="cursorRead"></span>
   <input id="annName" title="Your name — every edit is recorded under it" placeholder="your name">
@@ -307,7 +314,8 @@ async function loadRecord(rid){
   let ann = null;
   const r = await fetch(api('/ann/rec_'+rid+'.json'));
   if (r.ok) ann = await r.json();
-  S.rid = rid; S.rec = rec; S.ann = ann || prefill(rec);
+  S.rid = rid; S.rec = rec;
+  if (S.showExpert) await loadExpert(rid); S.ann = ann || prefill(rec);
   if (!S.ann.history) S.ann.history = [];
   S.baseUpdated = ann ? (ann.updated ?? null) : null;
   S.undo = []; S.redo = []; S.sel = null;
@@ -336,7 +344,11 @@ async function loadRecord(rid){
   S.tmin = x[0]; S.tmax = x[x.length-1];
   S.view = {t0:S.tmin, t1:S.tmax};
   $('notes').value = '';
-  $('recMeta').innerHTML = `<b>rec ${rid}</b> · pH ${rec.ph ?? '?'} · ` +
+  /* pH is not a top-level field on the record -- it lives in the outcome
+     table, and the pilot index carries it too. Read whichever is there. */
+  const ph = S.pilot?.find(p => p.id === rid)?.ph ?? rec.ph ??
+    (rec.meta?.['Outcome measures'] || []).find(r => r[0] === 'pH')?.[1] ?? '?';
+  $('recMeta').innerHTML = `<b>rec ${rid}</b> · pH ${ph} · ` +
     (rec.hypoxia ? '<span style="color:var(--red)">hypoxia</span>' : 'normal') +
     ` · ${((S.tmax-S.tmin)).toFixed(0)} min` +
     (rec.ii_start != null ? ` · stage II ${rec.ii_start.toFixed(0)}′` : '');
@@ -657,6 +669,29 @@ function partnerOf(sel){
     ? (r.c ? {list:'contractions', id:r.c.id} : null)
     : (r.d ? {list:'decels', id:r.d.id} : null);
 }
+/* The CTU reference read the same records. Drawn as an outline rather than a
+   fill, so it can sit over our bands without either hiding the other: ours
+   says where WE put the event, theirs where THEY did, and the disagreement is
+   the gap between the two edges. */
+async function loadExpert(rid){
+  if (S.expertCache?.rid === rid) return;
+  try {
+    const r = await fetch(api('/expert/rec_' + rid + '.json'));
+    S.expertCache = r.ok ? {rid, ...(await r.json())} : {rid, decels: [], contractions: []};
+  } catch { S.expertCache = {rid, decels: [], contractions: []}; }
+}
+function drawExpert(g, w, h, list){
+  if (!S.showExpert || !S.expertCache) return;
+  const items = S.expertCache[list] || [];
+  for (const e of items){
+    const pa = t2px(e.a, w), pb = t2px(e.b, w);
+    if (pb < AXW || pa > w) continue;
+    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#00c7be';
+    g.strokeStyle = col; g.lineWidth = 1.6; g.setLineDash([4,3]);
+    g.strokeRect(pa + .5, 4.5, Math.max(pb - pa - 1, 1), h - 9);
+    g.setLineDash([]);
+  }
+}
 function drawFHR(){
   const [g, w, h] = sizeCanvas($('fhr'));
   g.clearRect(0,0,w,h);
@@ -690,6 +725,7 @@ function drawFHR(){
       if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 16); } }
   }
+  drawExpert(g, w, h, 'decels');
   drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
   drawBaseline(g, w, h, ymin, ymax);
   drawLinkAnchor(g, w, h, 'fhr');
@@ -845,6 +881,7 @@ function drawUC(){
       if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 14); } }
   }
+  drawExpert(g, w, ph, 'contractions');
   drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1);
   drawLinkAnchor(g, w, ph, 'uc');
   g.restore();
@@ -1234,6 +1271,12 @@ window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') r
                  if (cleared) delete e.flag; },
          `${e.id}: type → ${nv ?? 'unclassified'}` +
          (cleared ? ' (question cleared)' : '')); };
+window.toggleExpert = async () => {
+  S.showExpert = !S.showExpert;
+  $('expertBtn').classList.toggle('on', !!S.showExpert);
+  if (S.showExpert && S.rid != null) await loadExpert(S.rid);
+  renderCanvases();
+};
 window.toggleBands = () => {
   S.hideBands = !S.hideBands;
   $('hideBtn').textContent = S.hideBands ? 'show labels' : 'hide labels';
@@ -1538,6 +1581,7 @@ window.addEventListener('keydown', ev => {
   if ((ev.metaKey || ev.ctrlKey) && k.toLowerCase() === 'z'){
     ev.preventDefault(); ev.shiftKey ? redo() : undo(); return; }
   if (k.toLowerCase() === 'h'){ toggleBands(); return; }
+  if (k.toLowerCase() === 'e'){ toggleExpert(); return; }
   if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
   if (k === 'Escape'){
     if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
