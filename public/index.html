@@ -539,7 +539,7 @@ function renderTop(){
   if (!S.ann) return;
   const s = localStatus();
   $('progress').textContent =
-    `Decels ${s.decels_done}/${s.decels} · Contractions ${s.cons_done}/${s.cons}`;
+    `Decels ${s.decels} · Contractions ${s.cons}`;
 }
 function fmtT(t){ return t.toFixed(2); }
 function renderSel(){
