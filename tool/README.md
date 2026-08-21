@@ -154,7 +154,7 @@ the existing note box (logged to History under their name). The model-side
 counterpart (34 new channels, feature set `morph`, AUROC and importance) is
 in `research_log/morph_channels_2026-08-21.html`.
 
-## Manual pairing (2026-08-21, LOCAL ONLY — not yet deployed)
+## Manual pairing (2026-08-21)
 
 The decel↔contraction pairing in the side list is automatic (overlap or gap
 < 45 s, greedy), and sometimes wrong — a decel reads "no UC match" while its
@@ -174,7 +174,5 @@ rows show a ✎. The nadir-vs-peak lag in Measurements follows the manual
 pairing. Card layout (same date): measurements directly under the title,
 type buttons below them, duration dropped from the title.
 
-Deployment note: the Measurements panel + card layout ARE live on
-decel-review (Cloudflare) as of 2026-08-21; manual pairing is deliberately
-local pending review — sync with decel-review's
-`scripts/sync_from_research_log.sh` + `wrangler deploy` when approved.
+Deployment note: Measurements panel, card layout and manual pairing are
+all live on decel-review (GitHub + Cloudflare) as of 2026-08-21.
