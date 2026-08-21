@@ -133,3 +133,23 @@ The client only needs five endpoints (`/pilot.json`, `/data/rec_*.json`,
 `/ann/rec_*.json`, `/status`, `POST /save`), so for publishing to external
 experts the static page can stay as-is and any small hosted backend
 implementing these routes can replace `serve.py`.
+
+## Measurements panel (2026-08-21)
+
+Selecting any event now shows a **Measurements** block in the side card — the
+same morphological quantities the model reads as per-minute channels
+(8/20 meeting ask), computed live off the 1 Hz strip so they follow the
+boundaries while you drag them:
+
+- decel: duration, depth at nadir, onset→nadir, nadir→end, fall/recovery
+  rates, area below baseline, in-decel variability, overshoot within 60 s
+  after the end, and (when a contraction pairs within 45 s) the nadir-vs-UC-
+  peak lag and onset-vs-onset lag;
+- contraction: duration, intensity over resting tone (p10 of the 2 min
+  before onset), rise/fall, area over tone, and the rest gaps either side.
+
+Raw geometry only — deliberately no derived type suggestion, so the panel
+cannot anchor the classification. Reviewers comment on the numbers through
+the existing note box (logged to History under their name). The model-side
+counterpart (34 new channels, feature set `morph`, AUROC and importance) is
+in `research_log/morph_channels_2026-08-21.html`.

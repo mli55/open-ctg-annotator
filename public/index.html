@@ -94,6 +94,13 @@
   button.tVariable.on{background:var(--blue); border-color:var(--blue); color:#fff}
   button.tProlonged.on{background:var(--purple); border-color:var(--purple); color:#fff}
   button.tUnclassified.on{background:var(--gray); border-color:var(--gray); color:#fff}
+  .morph{display:grid; grid-template-columns:auto 1fr; gap:1px 12px; margin:7px 0 2px;
+    font-size:11.5px; line-height:1.5; font-variant-numeric:tabular-nums}
+  .morph .k{color:var(--dim); white-space:nowrap}
+  .morph .v{text-align:right; white-space:nowrap}
+  .morph .v i{font-style:normal; color:var(--dim); font-size:10.5px; margin-left:4px}
+  .morphHead{font-size:10.5px; font-weight:600; color:var(--dim); text-transform:uppercase;
+    letter-spacing:.5px; margin-top:9px}
   .rowBtns{display:flex; gap:6px; margin-top:6px}
   .rowBtns button{flex:1; font-size:12.5px}
   label.chk{display:flex; gap:6px; align-items:center; font-size:12.5px; margin-top:6px; cursor:pointer}
@@ -615,8 +622,8 @@ function renderSel(){
     el.innerHTML = '<div class="t">No event selected — click one on the trace, or press <b>Tab</b> for the next pending</div>';
     return;
   }
-  let html = `<div class="t">${isD ? 'Decel' : 'Contraction'} ${e.id} · ${fmtT(e.a)} → ${fmtT(e.b)}
-     (${((e.b - e.a)*60).toFixed(0)} s)</div>`;
+  let html = `<div class="t">${isD ? 'Decel' : 'Contraction'} ${e.id} · ${fmtT(e.a)} → ${fmtT(e.b)}</div>`;
+  html += morphRows(e, isD);
   if (isD){
     html += '<div class="typeGrid">' + TYPES.map((t, i) =>
       `<button class="t${t[0].toUpperCase()+t.slice(1)}${(t === 'unclassified' ? !e.type : e.type === t) ? ' on' : ''}"
@@ -629,6 +636,138 @@ function renderSel(){
   el.innerHTML = html;
 }
 function esc(s){ const d = document.createElement('span'); d.textContent = s; return d.innerHTML; }
+
+/* ---------- per-event morphology, computed live off the 1 Hz strip ----------
+   The same quantities the model now carries as time-series channels (duration,
+   depth, time-to-nadir, recovery, in-decel variability, overshoot, nadir lag
+   vs the contraction peak; contraction amplitude over resting tone, rise/fall,
+   Montevideo contribution). Recomputed on every render, so dragging a boundary
+   updates the numbers immediately. Raw measurements only -- no derived type
+   suggestion, so nothing here anchors the classification. */
+function idxOf(t){ const x = S.rec.strip.x;
+  return Math.max(0, Math.min(x.length - 1, Math.round((t - x[0]) * 60))); }
+function pctl(arr, q){
+  const v = arr.filter(Number.isFinite).sort((a, b) => a - b);
+  if (!v.length) return null;
+  return v[Math.max(0, Math.min(v.length - 1, Math.floor(q * (v.length - 1))))];
+}
+function decMorph(e){
+  const {x, fhr, base} = S.rec.strip;
+  const ia = idxOf(e.a), ib = idxOf(e.b), out = {dur: (e.b - e.a) * 60};
+  let nad = -1, nv = Infinity, area = 0, nOK = 0;
+  for (let i = ia; i <= ib; i++){
+    if (fhr[i] == null || base[i] == null) continue;
+    nOK++;
+    if (fhr[i] < nv){ nv = fhr[i]; nad = i; }
+    area += Math.max(0, base[i] - fhr[i]);
+  }
+  if (nad < 0 || nOK < 3) return out;              // unreadable span
+  out.cov = nOK / (ib - ia + 1);
+  out.depth = base[nad] - fhr[nad];
+  out.ttn = nad - ia; out.rec = ib - nad; out.area = area;
+  out.desc = out.depth / Math.max(out.ttn, 1);
+  out.recs = out.depth / Math.max(out.rec, 1);
+  // in-decel variability: residual spread around an 11-s centred mean
+  if (ib - ia >= 20 && out.cov >= .5){
+    const res = [];
+    for (let i = ia; i <= ib; i++){
+      if (fhr[i] == null) continue;
+      let s2 = 0, c2 = 0;
+      for (let j = Math.max(ia, i - 5); j <= Math.min(ib, i + 5); j++)
+        if (fhr[j] != null){ s2 += fhr[j]; c2++; }
+      if (c2 >= 5) res.push(fhr[i] - s2 / c2);
+    }
+    const lo = pctl(res, .05), hi = pctl(res, .95);
+    if (lo != null) out.invar = hi - lo;
+  }
+  // overshoot: FHR above baseline within 60 s after the end
+  let ov = 0;
+  for (let i = ib + 1; i <= Math.min(S.rec.strip.x.length - 1, ib + 60); i++)
+    if (fhr[i] != null && base[i] != null) ov = Math.max(ov, fhr[i] - base[i]);
+  if (ov >= 15) out.overshoot = ov;
+  // lag vs the paired contraction's peak
+  const pid = partnerOf({list: 'decels', id: e.id});
+  if (pid){
+    const c = S.ann.contractions.find(v => v.id === pid.id);
+    if (c){
+      const pk = ucPeak(c);
+      if (pk != null){ out.lag = nad - pk; out.onlag = (e.a - c.a) * 60; }
+    }
+  }
+  return out;
+}
+function ucPeak(c){
+  const {uc} = S.rec.strip;
+  const ia = idxOf(c.a), ib = idxOf(c.b);
+  let pk = null, pv = -Infinity;
+  for (let i = ia; i <= ib; i++)
+    if (uc[i] != null && uc[i] > pv){ pv = uc[i]; pk = i; }
+  return pk;
+}
+function ucMorph(e){
+  const {x, uc} = S.rec.strip;
+  const ia = idxOf(e.a), ib = idxOf(e.b), out = {dur: (e.b - e.a) * 60};
+  const seg = [];
+  for (let i = ia; i <= ib; i++) if (uc[i] != null) seg.push(uc[i]);
+  if (seg.length < 3 || seg.length < (ib - ia + 1) * .5) return out;
+  const pk = ucPeak(e);
+  // resting tone: p10 of the two minutes before onset, else the span's own p10
+  const pre = [];
+  for (let i = Math.max(0, ia - 120); i < ia; i++) if (uc[i] != null) pre.push(uc[i]);
+  const tone = pre.length >= 30 ? pctl(pre, .10) : pctl(seg, .10);
+  if (pk != null && tone != null){
+    out.amp = uc[pk] - tone; out.tone = tone;
+    out.rise = pk - ia; out.fall = ib - pk;
+    out.sym = out.rise / Math.max((ib - ia), 1);
+    let area = 0;
+    for (let i = ia; i <= ib; i++) if (uc[i] != null) area += Math.max(0, uc[i] - tone);
+    out.area = area;
+  }
+  // rest gaps to the neighbouring contractions (the reoxygenation window)
+  const cs = [...S.ann.contractions].sort((p, q) => p.a - q.a);
+  const k = cs.findIndex(v => v.id === e.id);
+  if (k > 0 && (e.a - cs[k-1].b) * 60 <= 900) out.restPrev = (e.a - cs[k-1].b) * 60;
+  if (k >= 0 && k < cs.length - 1 && (cs[k+1].a - e.b) * 60 <= 900)
+    out.restNext = (cs[k+1].a - e.b) * 60;
+  return out;
+}
+const fmtS = v => v == null ? '—' : Math.round(v) + ' s';
+const fmtB = v => v == null ? '—' : v.toFixed(0) + ' bpm';
+function morphRows(e, isD){
+  const r = [];
+  if (isD){
+    const m = decMorph(e);
+    r.push(['Duration', fmtS(m.dur)]);
+    if (m.depth != null){
+      r.push(['Onset → nadir / → end', Math.round(m.ttn) + ' / ' + Math.round(m.rec) + ' s'],
+             ['Depth at nadir', fmtB(m.depth)],
+             ['Fall / recovery rate', m.desc.toFixed(1) + ' / ' + m.recs.toFixed(1) + ' bpm/s'],
+             ['Area below baseline', Math.round(m.area) + ' bpm·s']);
+      if (m.invar != null) r.push(['Variability inside', m.invar.toFixed(1) + ' bpm']);
+      r.push(['Overshoot after', m.overshoot != null ? '+' + m.overshoot.toFixed(0) + ' bpm' : 'none']);
+      if (m.lag != null)
+        r.push(['Nadir vs UC peak', (m.lag >= 0 ? '+' : '') + Math.round(m.lag) + ' s<i>' +
+                (m.lag >= 0 ? 'after peak' : 'before peak') + '</i>'],
+               ['Onset vs UC onset', (m.onlag >= 0 ? '+' : '') + Math.round(m.onlag) + ' s']);
+      else r.push(['Nadir vs UC peak', '—<i>no UC match</i>']);
+      if (m.cov != null && m.cov < .8)
+        r.push(['Readable', Math.round(m.cov * 100) + '% of span']);
+    } else r.push(['Signal', 'unreadable in span']);
+  } else {
+    const m = ucMorph(e);
+    r.push(['Duration', fmtS(m.dur)]);
+    if (m.amp != null){
+      r.push(['Intensity over tone', m.amp.toFixed(0) + ' u<i>tone ' + m.tone.toFixed(0) + '</i>'],
+             ['Rise / fall', Math.round(m.rise) + ' / ' + Math.round(m.fall) + ' s'],
+             ['Area over tone', Math.round(m.area) + ' u·s']);
+    } else r.push(['Toco', 'unreadable in span']);
+    if (m.restPrev != null) r.push(['Rest before', fmtS(m.restPrev)]);
+    if (m.restNext != null) r.push(['Rest after', fmtS(m.restNext)]);
+  }
+  return '<div class="morph" title="Objective measurements off the 1 Hz strip — they follow the boundaries as you drag. The model reads the same quantities as per-minute channels.">' +
+    r.map(([k, v]) => `<span class="k">${k}</span><span class="v">${v}</span>`).join('') +
+    '</div>';
+}
 function renderHist(){
   const el = $('histList'); el.innerHTML = '';
   const hs = [...(S.ann.history || [])].reverse();
@@ -891,6 +1030,7 @@ function setupPane(id){
     }
     markEdited(e);
     renderCanvases();
+    renderSel();          // the measurement panel follows the drag live
   });
   c.addEventListener('mouseleave', () => { $('cursorRead').textContent = ''; });
 }
