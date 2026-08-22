@@ -570,6 +570,14 @@ function niceStep(span, want){
    and a dashed boundary through the trace. Both were dark lines crossing the
    thing being read, to say something that the band under the time axis
    already says, in the place where time is read. */
+function drawStageBoundary(g, w, h){
+  if (!S.rec || S.rec.ii_start == null) return;
+  const px = t2px(S.rec.ii_start, w);
+  if (px < AXW || px > w) return;
+  g.strokeStyle = '#b5651d'; g.lineWidth = 1.4; g.setLineDash([6,5]);
+  g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke();
+  g.setLineDash([]);
+}
 function drawStageAxis(g, w, y){
   if (!S.rec || S.rec.ii_start == null) return;
   const px = Math.min(Math.max(t2px(S.rec.ii_start, w), AXW), w);
@@ -632,13 +640,15 @@ function drawTimeGrid(g, w, h, axisAt){
    see how much of a deceleration's depth belongs to the fetus and how much to
    the estimator. Colours are far apart on purpose -- five thin lines over a
    trace need to be told apart at a glance. */
-const BL_IN_USE = 'wmfb';
+const BL_IN_USE = 'ours';
+/* Bright on purpose: these are thin lines drawn over a near-black trace, and
+   the muted set disappeared into it. */
 const BL_METHODS = [
-  ['wmfb',    '#0b6fa4', 'WMFB'],
-  ['jimenez', '#b8860b', 'Jimenez'],
-  ['taylor',  '#6a3d9a', 'Taylor'],
-  ['jingyi',  '#d1332e', 'ctg-analyzer'],
-  ['ours',    '#1d8348', 'Ours'],
+  ['ours',    '#ff2d6f', 'Ours'],
+  ['wmfb',    '#1f8ef1', 'WMFB'],
+  ['jimenez', '#f5a623', 'Jimenez'],
+  ['taylor',  '#b06ae8', 'Taylor'],
+  ['jingyi',  '#ff7043', 'ctg-analyzer'],
 ];
 async function loadBaselines(rid){
   if (S.blCache?.rid === rid) return;
@@ -817,6 +827,7 @@ function drawFHR(){
      axis says is something else. The plot is its own region. */
   g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, h); g.clip();
   drawTimeGrid(g, w, h, null);
+  drawStageBoundary(g, w, h);
   const pFHR = partnerOf(S.sel);
   for (const d of S.ann.decels){
     const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
@@ -986,6 +997,7 @@ function drawUC(){
   drawLinkAnchor(g, w, ph, 'uc');
   g.restore();
   drawTimeGrid(g, w, ph, ph);
+  drawStageBoundary(g, w, ph);
   yAxis(g, w, ph, yt, y2, 'TOCO');
   drawStageAxis(g, w, ph + 19);
 }
