@@ -30,7 +30,14 @@
      width. */
   #viewBtns{position:absolute; left:50%; transform:translateX(-50%);
     display:flex; gap:6px}
-  #hideBtn, #expertBtn, #baseBtn, #blCmpBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
+  #hideBtn, #expertBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
+  #blPicker{display:flex; align-items:center; gap:4px; font-size:11px; color:var(--dim)}
+  #blPicker button{font-size:10.5px; padding:2px 7px; border-radius:999px; line-height:1.4;
+    border:1px solid var(--line); background:var(--card); color:var(--dim)}
+  #blPicker button .sw{display:inline-block; width:7px; height:7px; border-radius:2px;
+    margin-right:4px; vertical-align:-1px; opacity:.35}
+  #blPicker button.on{color:var(--ink); border-color:#c7c7cc; background:#f2f2f7}
+  #blPicker button.on .sw{opacity:1}
   #annName.needsName{border-color:var(--orange); background:#fff8ef}
   /* A refused edit has to be impossible to miss: the field the reviewer has
      to fill goes red and moves, because a grey line of prose in a corner is
@@ -179,10 +186,7 @@
   <span id="viewBtns">
     <button id="hideBtn" onclick="toggleBands()"
       title="Hide our bands, to read the trace on its own (H)">hide labels</button>
-    <button id="baseBtn" onclick="toggleBaseline()"
-      title="Hide the estimated baseline, to judge the trace without it (B)">hide baseline</button>
-    <button id="blCmpBtn" onclick="toggleBaselineCompare()"
-      title="Draw several published baseline estimators at once, to see where they disagree (C)">compare baselines</button>
+    <span id="blPicker" title="Which baseline estimators to draw. The baseline is a judgement, not a measurement, and the published methods disagree — pick more than one to see by how much.">baseline</span>
     <button id="expertBtn" onclick="toggleExpert()"
       title="Overlay the CTU expert reference, outlined (E)">CTU expert</button>
   </span>
@@ -285,9 +289,11 @@ const S = {
 
 /* ---------- data ---------- */
 async function boot(){
+  S.blShow = new Set([BL_IN_USE]);
   S.annotator = localStorage.getItem('annotator') || '';
   $('annName').value = S.annotator;
   syncNameHint();
+  buildBaselinePicker();
   S.pilot = (await (await fetch(api('/pilot.json'))).json()).records;
   S.status = await (await fetch(api('/status'))).json();
   renderRecs();
@@ -341,7 +347,7 @@ async function loadRecord(rid){
   if (r.ok) ann = await r.json();
   S.rid = rid; S.rec = rec;
   if (S.showExpert) await loadExpert(rid);
-  if (S.blCompare) await loadBaselines(rid); S.ann = ann || prefill(rec);
+  await loadBaselines(rid); S.ann = ann || prefill(rec);
   if (!S.ann.history) S.ann.history = [];
   S.baseUpdated = ann ? (ann.updated ?? null) : null;
   S.undo = []; S.redo = []; S.sel = null;
@@ -615,28 +621,39 @@ function drawTimeGrid(g, w, h, axisAt){
    says how much of a deceleration's depth is the fetus and how much is the
    estimator. wmfb is the one everything else here is computed against; the
    others are for comparison only. */
+/* Which estimator is drawn is a choice, not a setting: the baseline is a
+   judgement about which parts of the trace are the resting level, and these
+   five published methods disagree -- sometimes by tens of bpm. One is what
+   everything else is computed against; the rest are here so a reviewer can
+   see how much of a deceleration's depth belongs to the fetus and how much to
+   the estimator. Colours are far apart on purpose -- five thin lines over a
+   trace need to be told apart at a glance. */
+const BL_IN_USE = 'jimenez';
 const BL_METHODS = [
-  ['wmfb',    '#2a78d6', 'WMFB'],
-  ['mantel',  '#007aff', 'Mantel'],
-  ['jimenez', '#34c759', 'Jimenez'],
-  ['cazares', '#00c7be', 'Cazares'],
-  ['taylor',  '#af52de', 'Taylor'],
+  ['wmfb',    '#0b6fa4', 'WMFB'],
+  ['mantel',  '#d1332e', 'Mantel'],
+  ['jimenez', '#b8860b', 'Jimenez'],
+  ['cazares', '#1d8348', 'Cazares'],
+  ['taylor',  '#6a3d9a', 'Taylor'],
 ];
 async function loadBaselines(rid){
   if (S.blCache?.rid === rid) return;
+  S.blCache = null;
   try {
     const r = await fetch(api('/baselines/rec_' + rid + '.json'));
     S.blCache = r.ok ? {rid, data: await r.json()} : {rid, data: {}};
   } catch { S.blCache = {rid, data: {}}; }
 }
-function drawBaselineCompare(g, w, h, ymin, ymax){
-  if (!S.blCompare || !S.blCache?.data) return;
+function drawBaselines(g, w, h, ymin, ymax){
+  if (!S.blCache?.data || !S.blShow?.size) return;
   const st = S.rec.strip, y2 = v => h - (v - ymin)/(ymax - ymin)*h;
   let ky = 14;
   for (const [key, col, label] of BL_METHODS){
+    if (!S.blShow.has(key)) continue;
     const arr = S.blCache.data[key];
     if (!arr) continue;
-    g.strokeStyle = col; g.lineWidth = 1.4; g.beginPath();
+    g.strokeStyle = col; g.lineWidth = key === BL_IN_USE ? 1.9 : 1.3;
+    g.beginPath();
     let pen = false;
     for (let i = 0; i < st.x.length && i < arr.length; i++){
       const t = st.x[i];
@@ -647,10 +664,12 @@ function drawBaselineCompare(g, w, h, ymin, ymax){
       if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
     }
     g.stroke();
-    g.fillStyle = col; g.fillRect(AXW + 8, ky - 7, 14, 2.5);
-    g.font = '10px -apple-system'; g.textAlign = 'left';
-    g.fillText(label, AXW + 26, ky - 3);
-    ky += 13;
+    if (S.blShow.size > 1){          // a key is only worth the space when there is a choice to read
+      g.fillStyle = col; g.fillRect(AXW + 8, ky - 7, 14, 2.5);
+      g.font = '10px -apple-system'; g.textAlign = 'left';
+      g.fillText(label + (key === BL_IN_USE ? ' (in use)' : ''), AXW + 26, ky - 3);
+      ky += 13;
+    }
   }
 }
 function drawBaseline(g, w, h, ymin, ymax){
@@ -803,8 +822,7 @@ function drawFHR(){
   }
   drawExpert(g, w, h, 'decels');
   drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
-  if (S.blCompare) drawBaselineCompare(g, w, h, ymin, ymax);
-  else drawBaseline(g, w, h, ymin, ymax);
+  drawBaselines(g, w, h, ymin, ymax);
   drawLinkAnchor(g, w, h, 'fhr');
   g.restore();
   yAxis(g, w, h, yt, y2, 'FHR  bpm');
@@ -1322,6 +1340,7 @@ window.setPairSel = v => { if (S.sel && S.sel.list === 'decels') setPair(S.sel.i
    height, which lets a reviewer reach a pairing without first finding one of
    its ends on a trace. */
 function laneHit(px, py, w, h){
+  if (S.hideBands) return null;
   let best = null, bd = 7;
   for (const a of linkAnchors()){
     const x0 = t2px(a.td, w), x1 = t2px(a.tc, w);
@@ -1349,18 +1368,22 @@ window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') r
                  if (cleared) delete e.flag; },
          `${e.id}: type → ${nv ?? 'unclassified'}` +
          (cleared ? ' (question cleared)' : '')); };
-window.toggleBaseline = () => {
-  S.hideBase = !S.hideBase;
-  $('baseBtn').textContent = S.hideBase ? 'show baseline' : 'hide baseline';
-  $('baseBtn').classList.toggle('on', !!S.hideBase);
-  renderCanvases();
-};
-window.toggleBaselineCompare = async () => {
-  S.blCompare = !S.blCompare;
-  $('blCmpBtn').classList.toggle('on', !!S.blCompare);
-  if (S.blCompare && S.rid != null) await loadBaselines(S.rid);
-  renderCanvases();
-};
+
+function buildBaselinePicker(){
+  const el = $('blPicker');
+  el.innerHTML = 'baseline';
+  for (const [key, col, label] of BL_METHODS){
+    const b = document.createElement('button');
+    b.className = S.blShow.has(key) ? 'on' : '';
+    b.innerHTML = `<span class="sw" style="background:${col}"></span>${label}`;
+    b.title = key === BL_IN_USE ? label + ' — the one detection is computed against' : label;
+    b.onclick = () => {
+      S.blShow.has(key) ? S.blShow.delete(key) : S.blShow.add(key);
+      buildBaselinePicker(); renderCanvases();
+    };
+    el.appendChild(b);
+  }
+}
 window.toggleExpert = async () => {
   S.showExpert = !S.showExpert;
   $('expertBtn').classList.toggle('on', !!S.showExpert);
@@ -1475,6 +1498,10 @@ function setupPane(id){
     ev.preventDefault();
     const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
     if (px < AXW) return;                 // the scale gutter is not a drawing surface
+    /* With the labels hidden the panes are for reading the trace, not for
+       pointing at events: selecting one that cannot be seen, or drawing a new
+       one over bands that are not shown, is a decision made blind. */
+    if (S.hideBands){ S.drag = {mode:'pan', pane:id, t, v0:{...S.view}, x0:ev.clientX, w}; return; }
     const t = px2t(px, w);
     if (id === 'uc'){
       const d0 = ucAnchorHit(px, ev.clientY - r.top, w);
@@ -1688,8 +1715,9 @@ window.addEventListener('keydown', ev => {
     ev.shiftKey ? redo() : undo(); return; }
   if (k.toLowerCase() === 'h'){ toggleBands(); return; }
   if (k.toLowerCase() === 'e'){ toggleExpert(); return; }
-  if (k.toLowerCase() === 'b'){ toggleBaseline(); return; }
-  if (k.toLowerCase() === 'c'){ toggleBaselineCompare(); return; }
+  if (k.toLowerCase() === 'b'){          // B cycles the one in use on and off
+    S.blShow.has(BL_IN_USE) ? S.blShow.delete(BL_IN_USE) : S.blShow.add(BL_IN_USE);
+    buildBaselinePicker(); renderCanvases(); return; }
   if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
   if (k === 'Escape'){
     if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
