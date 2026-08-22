@@ -13,19 +13,24 @@
   :root{
     --paper:#f2f2f7; --card:#ffffff; --line:#e5e5ea; --ink:#1c1c1e; --dim:#8e8e93;
     --blue:#007aff; --green:#34c759; --red:#ff3b30; --orange:#ff9500;
-    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#00c7be;
+    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#79aeaa;
   }
   *{box-sizing:border-box; margin:0}
   html,body{height:100%}
   body{background:var(--paper); color:var(--ink);
     font:14px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",sans-serif;
     display:flex; flex-direction:column; overflow:hidden}
-  header{display:flex; align-items:center; gap:14px; padding:8px 14px;
+  header{position:relative; display:flex; align-items:center; gap:14px; padding:8px 14px;
     background:#f9f9fb; border-bottom:1px solid var(--line); flex:none}
   header h1{font-size:15px; font-weight:600}
   header .sp{flex:1}
   #saveState{font-size:12px; color:var(--dim)}
-  #hideBtn, #expertBtn{font-size:12px; padding:3px 9px}
+  /* Centred against the header, not against what is left over: two equal flex
+     spacers only balance the REMAINDER, and the two sides are not the same
+     width. */
+  #viewBtns{position:absolute; left:50%; transform:translateX(-50%);
+    display:flex; gap:6px}
+  #hideBtn, #expertBtn, #baseBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
   #annName.needsName{border-color:var(--orange); background:#fff8ef}
   /* A refused edit has to be impossible to miss: the field the reviewer has
      to fill goes red and moves, because a grey line of prose in a corner is
@@ -167,11 +172,15 @@
 <header>
   <h1>Deceleration Annotator</h1>
   <span class="meta" id="recMeta"></span>
-  <span id="progress"></span>
-  <button id="hideBtn" onclick="toggleBands()"
-    title="Hide our bands, to read the trace on its own (H)">hide labels</button>
-  <button id="expertBtn" onclick="toggleExpert()"
-    title="Overlay the CTU expert reference, outlined (E)">CTU expert</button>
+  <span class="sp"></span>
+  <span id="viewBtns">
+    <button id="hideBtn" onclick="toggleBands()"
+      title="Hide our bands, to read the trace on its own (H)">hide labels</button>
+    <button id="baseBtn" onclick="toggleBaseline()"
+      title="Hide the estimated baseline, to judge the trace without it (B)">hide baseline</button>
+    <button id="expertBtn" onclick="toggleExpert()"
+      title="Overlay the CTU expert reference, outlined (E)">CTU expert</button>
+  </span>
   <span class="sp"></span>
   <span id="cursorRead"></span>
   <input id="annName" title="Your name — every edit is recorded under it" placeholder="your name">
@@ -214,7 +223,7 @@
       <span class="lg"><span class="chip" style="background:#af52de"></span>prolonged</span>
       <span style="flex-basis:100%;height:0"></span>
       <span class="lg"><span class="chip" style="background:#ff2d6f"></span>baseline</span>
-      <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
+      <span class="lg"><span class="chip" style="background:#79aeaa"></span>contraction</span>
       <span class="lg" style="color:var(--orange)">⚑ question</span>
     </div>
   </aside>
@@ -530,25 +539,10 @@ function niceStep(span, want){
    floating next to it was neither. The stage it opens is tinted for its whole
    length, in the analyzer's own labour-stage colour, and the caption sits in
    a chip ON the line. */
-function drawStage(g, w, h){
-  if (!S.rec || S.rec.ii_start == null) return;
-  const px = t2px(S.rec.ii_start, w);
-  if (px > w) return;
-  /* A wash over the whole stage drowned the trace and every band in it. The
-     extent is marked instead by a rule along the ceiling -- it says how far
-     the stage runs without taking the plot away from what is drawn in it. */
-  const x0 = Math.max(px, 0);
-  g.fillStyle = '#b5651d';
-  g.fillRect(x0, 0, w - x0, 3);
-  if (px >= 0 && px <= w){
-    g.strokeStyle = '#b5651d'; g.lineWidth = 2; g.setLineDash([6,4]);
-    g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke(); g.setLineDash([]);
-  }
-}
-/* Named on the axis rather than over the trace: the stages are spans of TIME,
-   so they are read where time is read. Each gets the width it actually
-   occupies in view, which also says at a glance how much of what you are
-   looking at is second stage. */
+/* The stage used to be marked in the panes too -- a rule along the ceiling
+   and a dashed boundary through the trace. Both were dark lines crossing the
+   thing being read, to say something that the band under the time axis
+   already says, in the place where time is read. */
 function drawStageAxis(g, w, y){
   if (!S.rec || S.rec.ii_start == null) return;
   const px = Math.min(Math.max(t2px(S.rec.ii_start, w), AXW), w);
@@ -600,7 +594,10 @@ function drawTimeGrid(g, w, h, axisAt){
    files predate base_gap, so an absent field means "no gaps known". */
 function drawBaseline(g, w, h, ymin, ymax){
   const st = S.rec.strip;
-  if (!st.base) return;
+  /* The baseline is an estimate, and estimates are worth doubting: a reviewer
+     deciding whether a deceleration is really a departure from it needs to be
+     able to take it away and look again. */
+  if (!st.base || S.hideBase) return;
   const y2 = v => h - (v - ymin)/(ymax - ymin)*h;
   /* Dashed for its whole length, measured stretches and interpolated ones
      alike. The baseline is an ESTIMATE everywhere -- a level fitted to the
@@ -683,12 +680,18 @@ async function loadExpert(rid){
 function drawExpert(g, w, h, list){
   if (!S.showExpert || !S.expertCache) return;
   const items = S.expertCache[list] || [];
+  /* Outlined, not filled, and in the same colours the legend gives our own
+     types -- so a band and its outline being the same colour means the two
+     readings agree on what it is, and the outline sitting beside the band
+     rather than on it is exactly the disagreement about where. Full height,
+     like the band it is being compared with: a shorter one would read as a
+     different KIND of mark rather than the same mark from another reader. */
   for (const e of items){
     const pa = t2px(e.a, w), pb = t2px(e.b, w);
     if (pb < AXW || pa > w) continue;
-    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#00c7be';
+    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#79aeaa';
     g.strokeStyle = col; g.lineWidth = 1.6; g.setLineDash([4,3]);
-    g.strokeRect(pa + .5, 4.5, Math.max(pb - pa - 1, 1), h - 9);
+    g.strokeRect(pa + .8, .8, Math.max(pb - pa - 1.6, 1), h - 1.6);
     g.setLineDash([]);
   }
 }
@@ -714,14 +717,13 @@ function drawFHR(){
      axis says is something else. The plot is its own region. */
   g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, h); g.clip();
   drawTimeGrid(g, w, h, null);
-  drawStage(g, w, h);
   const pFHR = partnerOf(S.sel);
   for (const d of S.ann.decels){
     const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
     const isPair = pFHR?.list === 'decels' && pFHR.id === d.id;
     eventRect(g, w, h, d, d.flag ? '#ff9500' : TCOLOR[d.type || 'pending'],
               isSel || isPair, isSel);
-    if (d.flag){ const px = t2px(d.a, w);
+    if (d.flag && !S.hideBands){ const px = t2px(d.a, w);
       if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 16); } }
   }
@@ -826,8 +828,13 @@ function drawLinks(){
   const selId = selDecel()?.id ?? null;
   const drag = S.drag && S.drag.mode === 'pair' ? S.drag : null;
   let sel = null;
+  /* The pairings are labelling too, so they go with the bands -- all but the
+     one belonging to the selected event, kept for the same reason its band
+     is: hiding the labels is for reading the trace, not for losing your
+     place in it. */
   for (const a of linkAnchors()){
     if (a.d.id === selId){ sel = a; continue; }
+    if (S.hideBands) continue;
     const x0 = t2px(a.td, w), x1 = t2px(a.tc, w);
     if (Math.max(x0, x1) < -20 || Math.min(x0, x1) > w + 20) continue;
     g.strokeStyle = 'rgba(120,120,128,.55)'; g.lineWidth = 1.2; g.setLineDash([3,3]);
@@ -870,14 +877,13 @@ function drawUC(){
     g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w, y2(v)); g.stroke();
   }
   g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, ph); g.clip();
-  drawStage(g, w, ph);
   const pUC = partnerOf(S.sel);
   for (const c of S.ann.contractions){
     const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
     const isPair = (pUC?.list === 'contractions' && pUC.id === c.id) ||
                    (S.drag?.mode === 'pair' && S.drag.target === c.id);
-    eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#00c7be', isSel || isPair, isSel);
-    if (c.flag){ const px = t2px(c.a, w);
+    eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#79aeaa', isSel || isPair, isSel);
+    if (c.flag && !S.hideBands){ const px = t2px(c.a, w);
       if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
         g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 14); } }
   }
@@ -945,8 +951,8 @@ function renderRecs(){
 function renderTop(){
   if (!S.ann) return;
   const s = localStatus();
-  $('progress').textContent =
-    `Decels ${s.decels} · Contractions ${s.cons}`;
+  const el = $('progress');       // the counts live on the record card now
+  if (el) el.textContent = `Decels ${s.decels} · Contractions ${s.cons}`;
 }
 function fmtT(t){  // minutes-before-delivery shown as m:ss, e.g. -30:59
   const s = Math.round(Math.abs(t)*60), m = Math.floor(s/60), ss = s%60;
@@ -1019,7 +1025,7 @@ function renderQueue(){
   if (!items.length){ el.innerHTML = ''; return; }
   el.innerHTML = items.map(v => {
     const dash = !v.e.flag && v.list === 'decels';
-    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#00c7be');
+    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#79aeaa');
     return `<div class="qRow${S.sel?.id === v.e.id ? ' cur' : ''}" data-l="${v.list}" data-i="${v.e.id}">` +
       `<span class="chip" style="background:${bg}${dash ? ';border:1.5px dashed #8e8e93' : ''}"></span>` +
       `<span>${v.e.id}</span><span class="qt">${fmtT(v.e.a)}</span></div>`;
@@ -1271,6 +1277,12 @@ window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') r
                  if (cleared) delete e.flag; },
          `${e.id}: type → ${nv ?? 'unclassified'}` +
          (cleared ? ' (question cleared)' : '')); };
+window.toggleBaseline = () => {
+  S.hideBase = !S.hideBase;
+  $('baseBtn').textContent = S.hideBase ? 'show baseline' : 'hide baseline';
+  $('baseBtn').classList.toggle('on', !!S.hideBase);
+  renderCanvases();
+};
 window.toggleExpert = async () => {
   S.showExpert = !S.showExpert;
   $('expertBtn').classList.toggle('on', !!S.showExpert);
@@ -1582,6 +1594,7 @@ window.addEventListener('keydown', ev => {
     ev.preventDefault(); ev.shiftKey ? redo() : undo(); return; }
   if (k.toLowerCase() === 'h'){ toggleBands(); return; }
   if (k.toLowerCase() === 'e'){ toggleExpert(); return; }
+  if (k.toLowerCase() === 'b'){ toggleBaseline(); return; }
   if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
   if (k === 'Escape'){
     if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
