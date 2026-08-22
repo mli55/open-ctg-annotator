@@ -513,9 +513,9 @@ function panes(){ return {fhr:$('fhr'), uc:$('uc')}; }
    background to survive it, and a background over a trace is a hole in the
    data. Every pane maps time through t2px, so the gutter shifts them all
    together and they stay aligned with each other. */
-const AXW = 58, AXH = 34;
-function t2px(t, w){ return AXW + (t - S.view.t0)/(S.view.t1 - S.view.t0)*(w - AXW); }
-function px2t(p, w){ return S.view.t0 + (p - AXW)/(w - AXW)*(S.view.t1 - S.view.t0); }
+const AXW = 58, AXH = 34, AXR = 8;
+function t2px(t, w){ return AXW + (t - S.view.t0)/(S.view.t1 - S.view.t0)*(w - AXW - AXR); }
+function px2t(p, w){ return S.view.t0 + (p - AXW)/(w - AXW - AXR)*(S.view.t1 - S.view.t0); }
 function yAxis(g, w, h, ticks, y2, title){
   g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
   g.beginPath(); g.moveTo(AXW - .5, 0); g.lineTo(AXW - .5, h); g.stroke();
@@ -529,8 +529,8 @@ function yAxis(g, w, h, ticks, y2, title){
   }
   if (title){                    // the pane's name, stood on end beside its scale
     g.save();
-    g.translate(13, h / 2); g.rotate(-Math.PI / 2);
-    g.font = '600 10.5px -apple-system'; g.textAlign = 'center';
+    g.translate(15, h / 2); g.rotate(-Math.PI / 2);
+    g.font = '700 16px -apple-system'; g.textAlign = 'center';
     g.fillStyle = '#8e8e93'; g.fillText(title, 0, 0);
     g.restore();
   }
@@ -1011,7 +1011,7 @@ function drawMini(){
   const [g, w, h] = sizeCanvas($('mini'));
   g.clearRect(0,0,w,h);
   const {x, fhr} = S.rec.strip;
-  const tx = t => AXW + (t - S.tmin)/(S.tmax - S.tmin)*(w - AXW);
+  const tx = t => AXW + (t - S.tmin)/(S.tmax - S.tmin)*(w - AXW - AXR);
   /* No label bands up here: with several hundred events they turned the
      overview into a barcode. It answers two questions -- what does the whole
      record look like, and where am I -- so it carries the trace, and a tinted
@@ -1040,8 +1040,11 @@ function drawMini(){
     g.strokeStyle = '#fff'; g.lineWidth = 1.4;
     g.beginPath(); g.moveTo(px, h/2 - 5); g.lineTo(px, h/2 + 5); g.stroke();
   }
-  g.font = '600 9px -apple-system'; g.fillStyle = '#aeaeb2'; g.textAlign = 'left';
-  g.fillText('OVERVIEW', 8, 12);
+  g.save();
+  g.translate(13, h / 2); g.rotate(-Math.PI / 2);
+  g.font = '600 9.5px -apple-system'; g.textAlign = 'center';
+  g.fillStyle = '#8e8e93'; g.fillText('TIMELINE', 0, 0);
+  g.restore();
 }
 function renderCanvases(){ if (!S.rec) return; drawFHR(); drawLinks(); drawUC(); drawMini(); }
 
@@ -1774,8 +1777,8 @@ setupPane('fhr'); setupPane('uc');
 
 (function setupMini(){
   const c = $('mini');
-  const t_of = (r, cx) => S.tmin + (cx - r.left - AXW)/(r.width - AXW)*(S.tmax - S.tmin);
-  const px_of = (r, t) => r.left + AXW + (t - S.tmin)/(S.tmax - S.tmin)*(r.width - AXW);
+  const t_of = (r, cx) => S.tmin + (cx - r.left - AXW)/(r.width - AXW - AXR)*(S.tmax - S.tmin);
+  const px_of = (r, t) => r.left + AXW + (t - S.tmin)/(S.tmax - S.tmin)*(r.width - AXW - AXR);
   const zone = (r, cx) => {
     const x0 = px_of(r, S.view.t0), x1 = px_of(r, S.view.t1);
     if (Math.abs(cx - x0) <= 7) return 'left';
