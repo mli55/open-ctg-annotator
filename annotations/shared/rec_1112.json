@@ -4,24 +4,67 @@
  "annotator": "detector",
  "status": "open",
  "notes": "",
- "next_id": 43,
+ "next_id": 44,
  "decels": [
   {
    "id": "d1",
-   "a": -45.24,
-   "b": -44.75,
-   "a0": -45.24,
-   "b0": -44.75,
+   "a": -38.41,
+   "b": -38.1,
+   "a0": -38.41,
+   "b0": -38.1,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -44.871,
+   "nadir_min": -38.179,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -154.0
+   "nadir_lag_s": -19.0
   },
   {
    "id": "d2",
+   "a": -33.35,
+   "b": -32.59,
+   "a0": -33.35,
+   "b0": -32.59,
+   "origin": "detector",
+   "review": "pending",
+   "type": "late",
+   "nadir_min": -32.767,
+   "src_rule": "late",
+   "src_linker": "late",
+   "nadir_lag_s": 60.0
+  },
+  {
+   "id": "d3",
+   "a": -31.09,
+   "b": -30.38,
+   "a0": -31.09,
+   "b0": -30.38,
+   "origin": "detector",
+   "review": "pending",
+   "type": "variable",
+   "nadir_min": -30.808,
+   "src_rule": "variable",
+   "src_linker": "variable",
+   "nadir_lag_s": -45.0
+  },
+  {
+   "id": "d4",
+   "a": -29.76,
+   "b": -28.9,
+   "a0": -29.76,
+   "b0": -28.9,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -28.958,
+   "src_rule": null,
+   "src_linker": "late",
+   "nadir_lag_s": -62.0,
+   "flag": true
+  },
+  {
+   "id": "d5",
    "a": -27.8,
    "b": -27.29,
    "a0": -27.8,
@@ -29,60 +72,60 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -27.35,
+   "nadir_min": -27.696,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 13.0
   },
   {
-   "id": "d3",
+   "id": "d6",
    "a": -25.8,
-   "b": -24.72,
+   "b": -25.27,
    "a0": -25.8,
-   "b0": -24.72,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -25.308,
-   "src_rule": "variable",
-   "src_linker": "variable",
-   "nadir_lag_s": -40.0
-  },
-  {
-   "id": "d4",
-   "a": -23.8,
-   "b": -22.75,
-   "a0": -23.8,
-   "b0": -22.75,
+   "b0": -25.27,
    "origin": "detector",
    "review": "pending",
    "type": null,
-   "nadir_min": -23.45,
-   "src_rule": null,
-   "src_linker": "variable",
-   "nadir_lag_s": -22.0,
+   "nadir_min": -25.304,
+   "src_rule": "variable",
+   "src_linker": "late",
+   "nadir_lag_s": 40.0,
    "flag": true
   },
   {
-   "id": "d5",
-   "a": -20.29,
+   "id": "d7",
+   "a": -23.59,
+   "b": -23.06,
+   "a0": -23.59,
+   "b0": -23.06,
+   "origin": "detector",
+   "review": "pending",
+   "type": "variable",
+   "nadir_min": -23.104,
+   "src_rule": "variable",
+   "src_linker": "variable",
+   "nadir_lag_s": -22.0
+  },
+  {
+   "id": "d8",
+   "a": -20.27,
    "b": -19.57,
-   "a0": -20.29,
+   "a0": -20.27,
    "b0": -19.57,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -20.042,
+   "nadir_min": -20.0,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 71.0
   },
   {
-   "id": "d6",
-   "a": -16.64,
-   "b": -15.62,
-   "a0": -16.64,
-   "b0": -15.62,
+   "id": "d9",
+   "a": -16.63,
+   "b": -15.6,
+   "a0": -16.63,
+   "b0": -15.6,
    "origin": "detector",
    "review": "pending",
    "type": "late",
@@ -92,67 +135,39 @@
    "nadir_lag_s": 43.0
   },
   {
-   "id": "d7",
+   "id": "d10",
    "a": -14.72,
-   "b": -13.92,
+   "b": -13.9,
    "a0": -14.72,
-   "b0": -13.92,
+   "b0": -13.9,
    "origin": "detector",
    "review": "pending",
    "type": "late",
-   "nadir_min": -14.083,
+   "nadir_min": -14.087,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 72.0
   },
   {
-   "id": "d8",
-   "a": -13.4,
-   "b": -12.71,
-   "a0": -13.4,
-   "b0": -12.71,
+   "id": "d11",
+   "a": -13.45,
+   "b": -12.73,
+   "a0": -13.45,
+   "b0": -12.73,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -13.017,
+   "nadir_min": -13.021,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -60.0
   },
   {
-   "id": "d9",
-   "a": -10.39,
-   "b": -9.6,
-   "a0": -10.39,
-   "b0": -9.6,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -10.079,
-   "src_rule": "variable",
-   "src_linker": "variable",
-   "nadir_lag_s": 36.0
-  },
-  {
-   "id": "d10",
-   "a": -8.81,
-   "b": -8.28,
-   "a0": -8.81,
-   "b0": -8.28,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -8.754,
-   "src_rule": "variable",
-   "src_linker": "variable",
-   "nadir_lag_s": 28.0
-  },
-  {
-   "id": "d11",
-   "a": -6.88,
-   "b": -6.2,
-   "a0": -6.88,
-   "b0": -6.2,
+   "id": "d12",
+   "a": -6.87,
+   "b": -6.09,
+   "a0": -6.87,
+   "b0": -6.09,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
@@ -162,29 +177,29 @@
    "nadir_lag_s": -24.0
   },
   {
-   "id": "d12",
-   "a": -5.12,
-   "b": -4.73,
-   "a0": -5.12,
-   "b0": -4.73,
+   "id": "d13",
+   "a": -5.39,
+   "b": -4.7,
+   "a0": -5.39,
+   "b0": -4.7,
    "origin": "detector",
    "review": "pending",
-   "type": "variable",
+   "type": "early",
    "nadir_min": -4.854,
-   "src_rule": "variable",
-   "src_linker": "variable",
+   "src_rule": "early",
+   "src_linker": "early",
    "nadir_lag_s": -7.0
   },
   {
-   "id": "d13",
-   "a": -1.19,
+   "id": "d14",
+   "a": -1.16,
    "b": -0.47,
-   "a0": -1.19,
+   "a0": -1.16,
    "b0": -0.47,
    "origin": "detector",
    "review": "pending",
    "type": "late",
-   "nadir_min": -0.608,
+   "nadir_min": -0.571,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 62.0
@@ -192,7 +207,7 @@
  ],
  "contractions": [
   {
-   "id": "c14",
+   "id": "c15",
    "a": -65.55,
    "b": -63.69,
    "a0": -65.55,
@@ -201,7 +216,7 @@
    "review": "pending"
   },
   {
-   "id": "c15",
+   "id": "c16",
    "a": -62.67,
    "b": -61.48,
    "a0": -62.67,
@@ -210,7 +225,7 @@
    "review": "pending"
   },
   {
-   "id": "c16",
+   "id": "c17",
    "a": -59.62,
    "b": -57.62,
    "a0": -59.62,
@@ -219,7 +234,7 @@
    "review": "pending"
   },
   {
-   "id": "c17",
+   "id": "c18",
    "a": -55.96,
    "b": -54.7,
    "a0": -55.96,
@@ -228,7 +243,7 @@
    "review": "pending"
   },
   {
-   "id": "c18",
+   "id": "c19",
    "a": -51.85,
    "b": -50.6,
    "a0": -51.85,
@@ -237,7 +252,7 @@
    "review": "pending"
   },
   {
-   "id": "c19",
+   "id": "c20",
    "a": -49.4,
    "b": -48.17,
    "a0": -49.4,
@@ -246,7 +261,7 @@
    "review": "pending"
   },
   {
-   "id": "c20",
+   "id": "c21",
    "a": -47.75,
    "b": -45.51,
    "a0": -47.75,
@@ -255,7 +270,7 @@
    "review": "pending"
   },
   {
-   "id": "c21",
+   "id": "c22",
    "a": -44.52,
    "b": -42.27,
    "a0": -44.52,
@@ -264,7 +279,7 @@
    "review": "pending"
   },
   {
-   "id": "c22",
+   "id": "c23",
    "a": -41.05,
    "b": -39.95,
    "a0": -41.05,
@@ -273,7 +288,7 @@
    "review": "pending"
   },
   {
-   "id": "c23",
+   "id": "c24",
    "a": -38.38,
    "b": -37.16,
    "a0": -38.38,
@@ -282,7 +297,7 @@
    "review": "pending"
   },
   {
-   "id": "c24",
+   "id": "c25",
    "a": -35.58,
    "b": -34.17,
    "a0": -35.58,
@@ -291,7 +306,7 @@
    "review": "pending"
   },
   {
-   "id": "c25",
+   "id": "c26",
    "a": -34.07,
    "b": -33.41,
    "a0": -34.07,
@@ -300,7 +315,7 @@
    "review": "pending"
   },
   {
-   "id": "c26",
+   "id": "c27",
    "a": -32.45,
    "b": -31.47,
    "a0": -32.45,
@@ -309,7 +324,7 @@
    "review": "pending"
   },
   {
-   "id": "c27",
+   "id": "c28",
    "a": -30.48,
    "b": -29.71,
    "a0": -30.48,
@@ -318,7 +333,7 @@
    "review": "pending"
   },
   {
-   "id": "c28",
+   "id": "c29",
    "a": -29.03,
    "b": -27.73,
    "a0": -29.03,
@@ -327,7 +342,7 @@
    "review": "pending"
   },
   {
-   "id": "c29",
+   "id": "c30",
    "a": -27.09,
    "b": -25.76,
    "a0": -27.09,
@@ -336,7 +351,7 @@
    "review": "pending"
   },
   {
-   "id": "c30",
+   "id": "c31",
    "a": -24.87,
    "b": -24.17,
    "a0": -24.87,
@@ -345,7 +360,7 @@
    "review": "pending"
   },
   {
-   "id": "c31",
+   "id": "c32",
    "a": -23.58,
    "b": -21.85,
    "a0": -23.58,
@@ -354,7 +369,7 @@
    "review": "pending"
   },
   {
-   "id": "c32",
+   "id": "c33",
    "a": -21.76,
    "b": -19.95,
    "a0": -21.76,
@@ -363,7 +378,7 @@
    "review": "pending"
   },
   {
-   "id": "c33",
+   "id": "c34",
    "a": -18.69,
    "b": -17.65,
    "a0": -18.69,
@@ -372,7 +387,7 @@
    "review": "pending"
   },
   {
-   "id": "c34",
+   "id": "c35",
    "a": -17.32,
    "b": -16.6,
    "a0": -17.32,
@@ -381,7 +396,7 @@
    "review": "pending"
   },
   {
-   "id": "c35",
+   "id": "c36",
    "a": -15.42,
    "b": -14.41,
    "a0": -15.42,
@@ -390,7 +405,7 @@
    "review": "pending"
   },
   {
-   "id": "c36",
+   "id": "c37",
    "a": -12.22,
    "b": -11.35,
    "a0": -12.22,
@@ -399,7 +414,7 @@
    "review": "pending"
   },
   {
-   "id": "c37",
+   "id": "c38",
    "a": -11.35,
    "b": -9.75,
    "a0": -11.35,
@@ -408,7 +423,7 @@
    "review": "pending"
   },
   {
-   "id": "c38",
+   "id": "c39",
    "a": -9.74,
    "b": -8.67,
    "a0": -9.74,
@@ -417,7 +432,7 @@
    "review": "pending"
   },
   {
-   "id": "c39",
+   "id": "c40",
    "a": -6.45,
    "b": -5.42,
    "a0": -6.45,
@@ -426,7 +441,7 @@
    "review": "pending"
   },
   {
-   "id": "c40",
+   "id": "c41",
    "a": -5.42,
    "b": -4.37,
    "a0": -5.42,
@@ -435,7 +450,7 @@
    "review": "pending"
   },
   {
-   "id": "c41",
+   "id": "c42",
    "a": -3.05,
    "b": -2.52,
    "a0": -3.05,
@@ -444,7 +459,7 @@
    "review": "pending"
   },
   {
-   "id": "c42",
+   "id": "c43",
    "a": -1.84,
    "b": -1.12,
    "a0": -1.84,
@@ -454,12 +469,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-22T00:36:40.619509+00:00",
+ "updated": "2026-08-22T00:58:22.603053+00:00",
  "history": [
   {
-   "t": "2026-08-22T00:36:40.619509+00:00",
+   "t": "2026-08-22T00:58:22.603053+00:00",
    "by": "detector",
-   "action": "v4 prefill against a Jimenez baseline: 13 decelerations, 29 contractions. 12 typed where the pipeline linker and the geometric rule agreed; 1 left unclassified and flagged"
+   "action": "v5 prefill against the WMFB baseline: 14 decelerations, 29 contractions. 12 typed where the pipeline linker and the geometric rule agreed; 2 left unclassified and flagged"
   }
  ]
 }

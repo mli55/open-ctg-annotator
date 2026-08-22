@@ -30,8 +30,9 @@
      width. */
   #viewBtns{position:absolute; left:50%; transform:translateX(-50%);
     display:flex; gap:6px}
-  #hideBtn, #expertBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
-  #blPicker{display:flex; align-items:center; gap:4px; font-size:11px; color:var(--dim)}
+  #hideBtn, #expertBtn, #baseBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
+  #blPicker{display:none; align-items:center; gap:4px; font-size:11px; color:var(--dim)}
+  #blPicker.open{display:flex}
   #blPicker button{font-size:10.5px; padding:2px 7px; border-radius:999px; line-height:1.4;
     border:1px solid var(--line); background:var(--card); color:var(--dim)}
   #blPicker button .sw{display:inline-block; width:7px; height:7px; border-radius:2px;
@@ -186,7 +187,9 @@
   <span id="viewBtns">
     <button id="hideBtn" onclick="toggleBands()"
       title="Hide our bands, to read the trace on its own (H)">hide labels</button>
-    <span id="blPicker" title="Which baseline estimators to draw. The baseline is a judgement, not a measurement, and the published methods disagree — pick more than one to see by how much.">baseline</span>
+    <button id="baseBtn" onclick="toggleBaseline()"
+      title="Show the baseline, and choose which estimator (B)">show baseline</button>
+    <span id="blPicker"></span>
     <button id="expertBtn" onclick="toggleExpert()"
       title="Overlay the CTU expert reference, outlined (E)">CTU expert</button>
   </span>
@@ -290,6 +293,7 @@ const S = {
 /* ---------- data ---------- */
 async function boot(){
   S.blShow = new Set([BL_IN_USE]);
+  S.blOn = false;
   S.annotator = localStorage.getItem('annotator') || '';
   $('annName').value = S.annotator;
   syncNameHint();
@@ -628,13 +632,13 @@ function drawTimeGrid(g, w, h, axisAt){
    see how much of a deceleration's depth belongs to the fetus and how much to
    the estimator. Colours are far apart on purpose -- five thin lines over a
    trace need to be told apart at a glance. */
-const BL_IN_USE = 'jimenez';
+const BL_IN_USE = 'wmfb';
 const BL_METHODS = [
   ['wmfb',    '#0b6fa4', 'WMFB'],
-  ['mantel',  '#d1332e', 'Mantel'],
   ['jimenez', '#b8860b', 'Jimenez'],
-  ['cazares', '#1d8348', 'Cazares'],
   ['taylor',  '#6a3d9a', 'Taylor'],
+  ['jingyi',  '#d1332e', 'ctg-analyzer'],
+  ['ours',    '#1d8348', 'Ours'],
 ];
 async function loadBaselines(rid){
   if (S.blCache?.rid === rid) return;
@@ -645,7 +649,7 @@ async function loadBaselines(rid){
   } catch { S.blCache = {rid, data: {}}; }
 }
 function drawBaselines(g, w, h, ymin, ymax){
-  if (!S.blCache?.data || !S.blShow?.size) return;
+  if (!S.blOn || !S.blCache?.data || !S.blShow?.size) return;
   const st = S.rec.strip, y2 = v => h - (v - ymin)/(ymax - ymin)*h;
   let ky = 14;
   for (const [key, col, label] of BL_METHODS){
@@ -1369,9 +1373,21 @@ window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') r
          `${e.id}: type → ${nv ?? 'unclassified'}` +
          (cleared ? ' (question cleared)' : '')); };
 
+/* The estimators are a second question, and it is only worth asking once the
+   first is answered: the picker stays out of the header until the baseline is
+   actually being drawn. */
+window.toggleBaseline = () => {
+  S.blOn = !S.blOn;
+  if (S.blOn && !S.blShow.size) S.blShow.add(BL_IN_USE);
+  buildBaselinePicker(); renderCanvases();
+};
 function buildBaselinePicker(){
   const el = $('blPicker');
-  el.innerHTML = 'baseline';
+  el.classList.toggle('open', !!S.blOn);
+  $('baseBtn').textContent = S.blOn ? 'hide baseline' : 'show baseline';
+  $('baseBtn').classList.toggle('on', !!S.blOn);
+  el.innerHTML = '';
+  if (!S.blOn) return;
   for (const [key, col, label] of BL_METHODS){
     const b = document.createElement('button');
     b.className = S.blShow.has(key) ? 'on' : '';
@@ -1715,9 +1731,7 @@ window.addEventListener('keydown', ev => {
     ev.shiftKey ? redo() : undo(); return; }
   if (k.toLowerCase() === 'h'){ toggleBands(); return; }
   if (k.toLowerCase() === 'e'){ toggleExpert(); return; }
-  if (k.toLowerCase() === 'b'){          // B cycles the one in use on and off
-    S.blShow.has(BL_IN_USE) ? S.blShow.delete(BL_IN_USE) : S.blShow.add(BL_IN_USE);
-    buildBaselinePicker(); renderCanvases(); return; }
+  if (k.toLowerCase() === 'b'){ toggleBaseline(); return; }
   if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
   if (k === 'Escape'){
     if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
