@@ -115,6 +115,9 @@
   #queueWrap{flex:0 1 auto; min-height:0; display:flex; flex-direction:column;
     max-height:30%; padding:8px 0 6px}
   #queueList{overflow-y:auto; min-height:0; scrollbar-gutter:stable}
+  /* With four or more waiting, the queue must show at least four -- a list
+     crushed to two rows reads as two rows of work. */
+  #queueList:has(.qRow:nth-child(4)){min-height:88px}
   #queueList::-webkit-scrollbar{width:12px}
   #queueList::-webkit-scrollbar-thumb{background:#c7c7cc; border-radius:6px;
     border:3px solid var(--card)}
