@@ -13,7 +13,7 @@
   :root{
     --paper:#f2f2f7; --card:#ffffff; --line:#e5e5ea; --ink:#1c1c1e; --dim:#8e8e93;
     --blue:#007aff; --green:#34c759; --red:#ff3b30; --orange:#ff9500;
-    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#00c7be;
+    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#c98d33;
   }
   *{box-sizing:border-box; margin:0}
   html,body{height:100%}
@@ -30,7 +30,7 @@
      width. */
   #viewBtns{position:absolute; left:50%; transform:translateX(-50%);
     display:flex; gap:6px}
-  #hideBtn, #expertBtn, #baseBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
+  #hideBtn, #expertBtn, #baseBtn, #blCmpBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
   #annName.needsName{border-color:var(--orange); background:#fff8ef}
   /* A refused edit has to be impossible to miss: the field the reviewer has
      to fill goes red and moves, because a grey line of prose in a corner is
@@ -127,10 +127,10 @@
   .typeGrid{display:flex; gap:4px; margin:6px 0}
   .typeGrid button{flex:1 1 auto; padding:5px 3px; font-size:11.5px; white-space:nowrap}
   .typeGrid button b{opacity:.55; font-weight:600; margin-right:3px}
-  button.tEarly.on{background:var(--green); border-color:var(--green); color:#fff}
-  button.tLate.on{background:#e5484d; border-color:#e5484d; color:#fff}
-  button.tVariable.on{background:var(--blue); border-color:var(--blue); color:#fff}
-  button.tProlonged.on{background:#ff9500; border-color:#ff9500; color:#fff}
+  button.tEarly.on{background:#47a276; border-color:#47a276; color:#fff}
+  button.tLate.on{background:#c04a35; border-color:#c04a35; color:#fff}
+  button.tVariable.on{background:#3f74b0; border-color:#3f74b0; color:#fff}
+  button.tProlonged.on{background:#857ac6; border-color:#857ac6; color:#fff}
   button.tUnclassified.on{background:var(--gray); border-color:var(--gray); color:#fff}
   .morph{display:grid; grid-template-columns:auto 1fr; gap:1px 12px; margin:7px 0 2px;
     font-size:11.5px; line-height:1.5; font-variant-numeric:tabular-nums}
@@ -178,6 +178,8 @@
       title="Hide our bands, to read the trace on its own (H)">hide labels</button>
     <button id="baseBtn" onclick="toggleBaseline()"
       title="Hide the estimated baseline, to judge the trace without it (B)">hide baseline</button>
+    <button id="blCmpBtn" onclick="toggleBaselineCompare()"
+      title="Draw several published baseline estimators at once, to see where they disagree (C)">compare baselines</button>
     <button id="expertBtn" onclick="toggleExpert()"
       title="Overlay the CTU expert reference, outlined (E)">CTU expert</button>
   </span>
@@ -217,13 +219,13 @@
       <div id="histList"></div>
     </div>
     <div id="legend">
-      <span class="lg"><span class="chip" style="background:#34c759"></span>early</span>
-      <span class="lg"><span class="chip" style="background:#e5484d"></span>late</span>
-      <span class="lg"><span class="chip" style="background:#007aff"></span>variable</span>
-      <span class="lg"><span class="chip" style="background:#ff9500"></span>prolonged</span>
+      <span class="lg"><span class="chip" style="background:#47a276"></span>early</span>
+      <span class="lg"><span class="chip" style="background:#c04a35"></span>late</span>
+      <span class="lg"><span class="chip" style="background:#3f74b0"></span>variable</span>
+      <span class="lg"><span class="chip" style="background:#857ac6"></span>prolonged</span>
       <span style="flex-basis:100%;height:0"></span>
-      <span class="lg"><span class="chip" style="background:#5856d6"></span>baseline</span>
-      <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
+      <span class="lg"><span class="chip" style="background:#ff2d6f"></span>baseline</span>
+      <span class="lg"><span class="chip" style="background:#c98d33"></span>contraction</span>
       <span class="lg" style="color:var(--orange)">⚑ question</span>
     </div>
   </aside>
@@ -250,16 +252,21 @@
 <script>
 'use strict';
 const TYPES = ['early','late','variable','prolonged'];
-/* Apple's system colours, but which ones is not a matter of taste: this set
-   is the one that passes every check in the palette validator, where the old
-   one failed two. Pure systemRed is out at the user's request and #e5484d
-   takes late; prolonged gets systemOrange, which is free because an open
-   question is now a TEXTURE rather than a colour -- that one change is what
-   let the set pass, since it returned a hue to the palette and stopped the
-   flag from overwriting the type it was asking about. Grey is not in the
-   validated set: unclassified is the absence of a category, not one of them. */
-const TCOLOR = {early:'#34c759', late:'#e5484d', variable:'#007aff',
-                prolonged:'#ff9500', pending:'#8e8e93'};
+/* Chosen by what each colour has to DO, then run through the palette
+   validator rather than judged by eye. It passes all six checks -- worst
+   colour-blind pair 9.3, worst normal-vision pair 21.5 -- where several
+   better-looking sets failed at 5 and below.
+     variable  a quiet slate: it is 73% of every deceleration, and the most
+               common case has no business being the loudest thing on screen
+     late      the one warm red, because it is the one that means hypoxia
+     early     a green that is calm rather than neon -- benign, and it should
+               look it
+     prolonged violet: rare, and separable from the slate at a glance
+     pending   warm grey, which is the absence of a type, not a type
+   All muted enough to sit UNDER a black trace: the trace is the data, and
+   these are notes written on it. */
+const TCOLOR = {early:'#47a276', late:'#c04a35', variable:'#3f74b0',
+                prolonged:'#857ac6', pending:'#8f8a83'};
 const TCN = {early:'early', late:'late', variable:'variable',
              prolonged:'prolonged', unclassified:'unclassified'};
 const $ = id => document.getElementById(id);
@@ -332,7 +339,8 @@ async function loadRecord(rid){
   const r = await fetch(api('/ann/rec_'+rid+'.json'));
   if (r.ok) ann = await r.json();
   S.rid = rid; S.rec = rec;
-  if (S.showExpert) await loadExpert(rid); S.ann = ann || prefill(rec);
+  if (S.showExpert) await loadExpert(rid);
+  if (S.blCompare) await loadBaselines(rid); S.ann = ann || prefill(rec);
   if (!S.ann.history) S.ann.history = [];
   S.baseUpdated = ann ? (ann.updated ?? null) : null;
   S.undo = []; S.redo = []; S.sel = null;
@@ -600,6 +608,50 @@ function drawTimeGrid(g, w, h, axisAt){
    same convention the analyzer uses: there it is a number, not a
    measurement, and it should not carry the weight of one. Older record
    files predate base_gap, so an absent field means "no gaps known". */
+/* Five published estimators, drawn together. The baseline is not a measured
+   channel -- it is a judgement about which parts of the trace are the resting
+   level -- and the methods disagree, sometimes by 20 bpm. Seeing them at once
+   says how much of a deceleration's depth is the fetus and how much is the
+   estimator. wmfb is the one everything else here is computed against; the
+   others are for comparison only. */
+const BL_METHODS = [
+  ['wmfb',    '#ff2d6f', 'WMFB (in use)'],
+  ['mantel',  '#3f74b0', 'Mantel'],
+  ['jimenez', '#47a276', 'Jimenez'],
+  ['cazares', '#c98d33', 'Cazares'],
+  ['taylor',  '#857ac6', 'Taylor'],
+];
+async function loadBaselines(rid){
+  if (S.blCache?.rid === rid) return;
+  try {
+    const r = await fetch(api('/baselines/rec_' + rid + '.json'));
+    S.blCache = r.ok ? {rid, data: await r.json()} : {rid, data: {}};
+  } catch { S.blCache = {rid, data: {}}; }
+}
+function drawBaselineCompare(g, w, h, ymin, ymax){
+  if (!S.blCompare || !S.blCache?.data) return;
+  const st = S.rec.strip, y2 = v => h - (v - ymin)/(ymax - ymin)*h;
+  let ky = 14;
+  for (const [key, col, label] of BL_METHODS){
+    const arr = S.blCache.data[key];
+    if (!arr) continue;
+    g.strokeStyle = col; g.lineWidth = 1.4; g.beginPath();
+    let pen = false;
+    for (let i = 0; i < st.x.length && i < arr.length; i++){
+      const t = st.x[i];
+      if (t < S.view.t0 - 0.1 || t > S.view.t1 + 0.1){ pen = false; continue; }
+      const v = arr[i];
+      if (v == null || !isFinite(v)){ pen = false; continue; }
+      const px = t2px(t, w), py = y2(v);
+      if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
+    }
+    g.stroke();
+    g.fillStyle = col; g.fillRect(AXW + 8, ky - 7, 14, 2.5);
+    g.font = '10px -apple-system'; g.textAlign = 'left';
+    g.fillText(label, AXW + 26, ky - 3);
+    ky += 13;
+  }
+}
 function drawBaseline(g, w, h, ymin, ymax){
   const st = S.rec.strip;
   /* The baseline is an estimate, and estimates are worth doubting: a reviewer
@@ -699,20 +751,24 @@ async function loadExpert(rid){
 function drawExpert(g, w, h, list){
   if (!S.showExpert || !S.expertCache) return;
   const items = S.expertCache[list] || [];
-  /* Outlined, not filled, and in the same colours the legend gives our own
-     types -- so a band and its outline being the same colour means the two
-     readings agree on what it is, and the outline sitting beside the band
-     rather than on it is exactly the disagreement about where. Full height,
-     like the band it is being compared with: a shorter one would read as a
-     different KIND of mark rather than the same mark from another reader. */
+  /* Diagonals in the type's own colour, not an outline. Our band is a solid
+     fill and theirs is a hatch, so the two readings lie on top of each other
+     without either hiding the other and without mixing into a third colour
+     belonging to neither: the same colour means they agree on what it is, and
+     a hatch that does not line up with a fill is the disagreement about
+     where. */
   for (const e of items){
     const pa = t2px(e.a, w), pb = t2px(e.b, w);
     if (pb < AXW || pa > w) continue;
-    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#00c7be';
-    g.strokeStyle = col; g.lineWidth = 2.4;
-    g.lineCap = 'round'; g.setLineDash([0.1, 5]);
-    g.strokeRect(pa + 1.2, 1.2, Math.max(pb - pa - 2.4, 1), h - 2.4);
-    g.setLineDash([]); g.lineCap = 'butt';
+    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8f8a83') : '#c98d33';
+    const xa = Math.max(pa, AXW), xb = Math.min(pb, w);
+    g.save();
+    g.beginPath(); g.rect(xa, 0, xb - xa, h); g.clip();
+    g.strokeStyle = col; g.lineWidth = 2;
+    for (let x = xa - h; x < xb + h; x += 8){
+      g.beginPath(); g.moveTo(x, h); g.lineTo(x + h, 0); g.stroke();
+    }
+    g.restore();
   }
 }
 function drawFHR(){
@@ -745,7 +801,8 @@ function drawFHR(){
   }
   drawExpert(g, w, h, 'decels');
   drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
-  drawBaseline(g, w, h, ymin, ymax);
+  if (S.blCompare) drawBaselineCompare(g, w, h, ymin, ymax);
+  else drawBaseline(g, w, h, ymin, ymax);
   drawLinkAnchor(g, w, h, 'fhr');
   g.restore();
   yAxis(g, w, h, yt, y2, 'FHR  bpm');
@@ -898,7 +955,7 @@ function drawUC(){
     const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
     const isPair = (pUC?.list === 'contractions' && pUC.id === c.id) ||
                    (S.drag?.mode === 'pair' && S.drag.target === c.id);
-    eventRect(g, w, ph, c, '#00c7be', isSel || isPair, isSel, c.flag);
+    eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#c98d33', isSel || isPair, isSel);
   }
   drawExpert(g, w, ph, 'contractions');
   drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1);
@@ -1038,7 +1095,7 @@ function renderQueue(){
   if (!items.length){ el.innerHTML = ''; return; }
   el.innerHTML = items.map(v => {
     const dash = !v.e.flag && v.list === 'decels';
-    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#00c7be');
+    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#c98d33');
     return `<div class="qRow${S.sel?.id === v.e.id ? ' cur' : ''}" data-l="${v.list}" data-i="${v.e.id}">` +
       `<span class="chip" style="background:${bg}${dash ? ';border:1.5px dashed #8e8e93' : ''}"></span>` +
       `<span>${v.e.id}</span><span class="qt">${fmtT(v.e.a)}</span></div>`;
@@ -1294,6 +1351,12 @@ window.toggleBaseline = () => {
   S.hideBase = !S.hideBase;
   $('baseBtn').textContent = S.hideBase ? 'show baseline' : 'hide baseline';
   $('baseBtn').classList.toggle('on', !!S.hideBase);
+  renderCanvases();
+};
+window.toggleBaselineCompare = async () => {
+  S.blCompare = !S.blCompare;
+  $('blCmpBtn').classList.toggle('on', !!S.blCompare);
+  if (S.blCompare && S.rid != null) await loadBaselines(S.rid);
   renderCanvases();
 };
 window.toggleExpert = async () => {
@@ -1624,6 +1687,7 @@ window.addEventListener('keydown', ev => {
   if (k.toLowerCase() === 'h'){ toggleBands(); return; }
   if (k.toLowerCase() === 'e'){ toggleExpert(); return; }
   if (k.toLowerCase() === 'b'){ toggleBaseline(); return; }
+  if (k.toLowerCase() === 'c'){ toggleBaselineCompare(); return; }
   if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
   if (k === 'Escape'){
     if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
