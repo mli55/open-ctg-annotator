@@ -1500,7 +1500,10 @@ function setupPane(id){
   c.addEventListener('mouseleave', () => { $('cursorRead').textContent = ''; });
 }
 function drawCreate(c, d){
-  const [g, w, h] = sizeCanvas(c);
+  const [g, w, h0] = sizeCanvas(c);
+  // the UC pane gives its foot to the shared time axis; a band drawn over it
+  // would sit where no toco is plotted
+  const h = c.id === 'uc' ? h0 - AXH : h0;
   const pa = t2px(Math.min(d.t0, d.t1), w), pb = t2px(Math.max(d.t0, d.t1), w);
   g.fillStyle = 'rgba(0,122,255,.18)'; g.fillRect(pa, 0, pb - pa, h);
   g.strokeStyle = '#007aff'; g.setLineDash([4,3]); g.strokeRect(pa, 0, pb - pa, h); g.setLineDash([]);
@@ -1519,12 +1522,22 @@ window.addEventListener('mouseup', () => {
       if (!requireName()){ renderCanvases(); return; }
       const list = d.pane === 'fhr' ? 'decels' : 'contractions';
       const nid = (d.pane === 'fhr' ? 'd' : 'c') + 'm' + (S.ann.next_id++);
+      /* A drawn deceleration stays provisional until it is typed, flagged or
+         noted -- the drag alone does not say what it is, and an untyped band
+         left lying about is worse than none. A contraction has nothing to
+         say beyond where it is, so the drag IS the whole statement and it
+         commits on release. */
       const e = {id:nid, a, b, a0:null, b0:null, origin:'manual', review:'added',
-                 by:S.annotator, provisional:true};
-      if (list === 'decels'){ e.type = null; e.det_type = null; }
+                 by:S.annotator};
+      if (list === 'decels'){ e.type = null; e.det_type = null; e.provisional = true; }
       S.ann[list].push(e);
       S.ann[list].sort((p, q) => p.a - q.a);
       S.sel = {list, id:nid};
+      if (list === 'contractions'){
+        logH(`${nid}: added ${fmtT(a)} → ${fmtT(b)}`);
+        S.ann.updated = new Date().toISOString();
+        S.dirty = true; scheduleSave();
+      }
       renderAll();
     } else renderCanvases();
     return;
