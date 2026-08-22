@@ -1027,8 +1027,19 @@ function drawMini(){
     if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
   }
   g.stroke();
+  /* The viewport wears trimmer handles, the way iOS trims a clip: a pill on
+     each edge that resizes the window, a body that pans it. */
+  const bx0 = tx(S.view.t0), bx1 = tx(S.view.t1);
   g.strokeStyle = '#007aff'; g.lineWidth = 1.5;
-  g.strokeRect(tx(S.view.t0) + .5, .5, tx(S.view.t1) - tx(S.view.t0) - 1, h - 1);
+  g.strokeRect(bx0 + .5, .5, bx1 - bx0 - 1, h - 1);
+  for (const px of [bx0, bx1]){
+    g.fillStyle = '#007aff';
+    g.beginPath();
+    g.roundRect(px - 3.5, h/2 - 11, 7, 22, 3.5);
+    g.fill();
+    g.strokeStyle = '#fff'; g.lineWidth = 1.4;
+    g.beginPath(); g.moveTo(px, h/2 - 5); g.lineTo(px, h/2 + 5); g.stroke();
+  }
   g.font = '600 9px -apple-system'; g.fillStyle = '#aeaeb2'; g.textAlign = 'left';
   g.fillText('OVERVIEW', 8, 12);
 }
@@ -1761,18 +1772,54 @@ setupPane('fhr'); setupPane('uc');
   });
 })();
 
-$('mini').addEventListener('mousedown', ev => {
-  const r = $('mini').getBoundingClientRect();
-  const move = e2 => {
-    const frac = (e2.clientX - r.left - AXW)/(r.width - AXW);   // same gutter as the panes
-    const t = S.tmin + frac*(S.tmax - S.tmin), span = S.view.t1 - S.view.t0;
-    S.view.t0 = t - span/2; S.view.t1 = t + span/2;
-    clampView(); renderCanvases();
+(function setupMini(){
+  const c = $('mini');
+  const t_of = (r, cx) => S.tmin + (cx - r.left - AXW)/(r.width - AXW)*(S.tmax - S.tmin);
+  const px_of = (r, t) => r.left + AXW + (t - S.tmin)/(S.tmax - S.tmin)*(r.width - AXW);
+  const zone = (r, cx) => {
+    const x0 = px_of(r, S.view.t0), x1 = px_of(r, S.view.t1);
+    if (Math.abs(cx - x0) <= 7) return 'left';
+    if (Math.abs(cx - x1) <= 7) return 'right';
+    return cx > x0 && cx < x1 ? 'body' : 'outside';
   };
-  move(ev);
-  const up = () => { removeEventListener('mousemove', move); removeEventListener('mouseup', up); };
-  addEventListener('mousemove', move); addEventListener('mouseup', up);
-});
+  c.addEventListener('mousemove', ev => {
+    if (S.miniDrag) return;
+    const z = zone(c.getBoundingClientRect(), ev.clientX);
+    c.style.cursor = z === 'body' ? 'grab' : (z === 'outside' ? 'pointer' : 'ew-resize');
+  });
+  c.addEventListener('mousedown', ev => {
+    if (!S.rec) return;
+    ev.preventDefault();
+    const r = c.getBoundingClientRect();
+    let z = zone(r, ev.clientX);
+    /* A press inside the box picks it up where it stands -- no jump to centre
+       on the cursor, which threw away the position being held. A press
+       outside is a jump: that is what outside means. */
+    if (z === 'outside'){
+      const t = t_of(r, ev.clientX), span = S.view.t1 - S.view.t0;
+      S.view.t0 = t - span/2; S.view.t1 = t + span/2;
+      clampView(); renderCanvases();
+      z = 'body';
+    }
+    const grab = t_of(r, ev.clientX) - S.view.t0;
+    S.miniDrag = true;
+    const move = e2 => {
+      const t = t_of(r, e2.clientX);
+      if (z === 'body'){
+        const span = S.view.t1 - S.view.t0;
+        S.view.t0 = t - grab; S.view.t1 = t - grab + span;
+      } else if (z === 'left'){
+        S.view.t0 = Math.min(t, S.view.t1 - 0.5);
+      } else {
+        S.view.t1 = Math.max(t, S.view.t0 + 0.5);
+      }
+      clampView(); renderCanvases();
+    };
+    const up = () => { S.miniDrag = false;
+      removeEventListener('mousemove', move); removeEventListener('mouseup', up); };
+    addEventListener('mousemove', move); addEventListener('mouseup', up);
+  });
+})();
 
 /* ---------- keyboard ---------- */
 window.addEventListener('keydown', ev => {
