@@ -12,8 +12,8 @@
 <style>
   :root{
     --paper:#f2f2f7; --card:#ffffff; --line:#e5e5ea; --ink:#1c1c1e; --dim:#8e8e93;
-    --blue:#007aff; --green:#34c759; --red:#ff3b30; --orange:#c2185b;
-    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#eda100;
+    --blue:#007aff; --green:#34c759; --red:#ff3b30; --orange:#ff9500;
+    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#00c7be;
   }
   *{box-sizing:border-box; margin:0}
   html,body{height:100%}
@@ -135,10 +135,12 @@
   .typeGrid{display:flex; gap:4px; margin:6px 0}
   .typeGrid button{flex:1 1 auto; padding:5px 3px; font-size:11.5px; white-space:nowrap}
   .typeGrid button b{opacity:.55; font-weight:600; margin-right:3px}
-  button.tEarly.on{background:#ffd166; border-color:#ffd166; color:#fff}
-  button.tLate.on{background:#d4402e; border-color:#d4402e; color:#fff}
-  button.tVariable.on{background:#f2913c; border-color:#f2913c; color:#fff}
-  button.tProlonged.on{background:#76161f; border-color:#76161f; color:#fff}
+  button.tEarly.on{background:#34c759; border-color:#34c759; color:#fff}
+  button.tLate.on{background:#ff3b30; border-color:#ff3b30; color:#fff}
+  button.tVariable.on{background:#007aff; border-color:#007aff; color:#fff}
+  button.tProlonged.on{background:#af52de; border-color:#af52de; color:#fff}
+  .tNA{color:var(--gray)}
+  .tNA.on{background:var(--gray); border-color:var(--gray); color:#fff}
   button.tUnclassified.on{background:var(--gray); border-color:var(--gray); color:#fff}
   .morph{display:grid; grid-template-columns:auto 1fr; gap:1px 12px; margin:7px 0 2px;
     font-size:11.5px; line-height:1.5; font-variant-numeric:tabular-nums}
@@ -229,10 +231,10 @@
       <div id="histList"></div>
     </div>
     <div id="legend">
-      <span class="lg"><span class="chip" style="background:#ffd166"></span>early</span>
-      <span class="lg"><span class="chip" style="background:#d4402e"></span>late</span>
-      <span class="lg"><span class="chip" style="background:#f2913c"></span>variable</span>
-      <span class="lg"><span class="chip" style="background:#76161f"></span>prolonged</span>
+      <span class="lg"><span class="chip" style="background:#34c759"></span>early</span>
+      <span class="lg"><span class="chip" style="background:#ff3b30"></span>late</span>
+      <span class="lg"><span class="chip" style="background:#007aff"></span>variable</span>
+      <span class="lg"><span class="chip" style="background:#af52de"></span>prolonged</span>
       <span style="flex-basis:100%;height:0"></span>
       <span class="lg"><span class="chip" style="background:#ff2d6f"></span>baseline</span>
       <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
@@ -262,19 +264,8 @@
 <script>
 'use strict';
 const TYPES = ['early','late','variable','prolonged'];
-/* The analyzer's concern ramp, widened. Its ORDER is the point: pale yellow
-   for early, orange for variable, red for late, dark maroon for prolonged --
-   the legend reads the way the worry does, and depth of colour is depth of
-   concern. Grey sits past the end of the ramp rather than inside it, because
-   an untyped event has not earned a low position on it, it has earned none.
-   Two steps are wider here than in the analyzer: variable and late were 6.4
-   apart in normal vision, and those are the two that most need telling apart
-   at a glance -- variable is 73% of all decelerations, late is the one that
-   means hypoxia. Widened they clear 15.3, and 13.3 under colour blindness.
-   The ramp fails the validator's lightness band by design: running light to
-   dark is what makes it a ramp rather than a set. */
-const TCOLOR = {early:'#ffd166', late:'#d4402e', variable:'#f2913c',
-                prolonged:'#76161f', pending:'#9a9790'};
+const TCOLOR = {early:'#34c759', late:'#ff3b30', variable:'#007aff', na:'#8e8e93',
+                prolonged:'#af52de', pending:'#8e8e93'};
 const TCN = {early:'early', late:'late', variable:'variable',
              prolonged:'prolonged', unclassified:'unclassified'};
 const $ = id => document.getElementById(id);
@@ -710,6 +701,7 @@ function drawBaseline(g, w, h, ymin, ymax){
     if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
   }
   g.stroke();
+  g.setLineDash([]);
 }
 function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
   const {x} = S.rec.strip;
@@ -725,7 +717,7 @@ function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
   }
   g.stroke();
 }
-function eventRect(g, w, h, e, color, selected, handles, flagged){
+function eventRect(g, w, h, e, color, selected, handles){
   /* Every judgement here is made against the trace, and the bands are drawn
      over it. Sooner or later a reviewer needs to see what the trace looks
      like with nothing laid on top -- especially when deciding whether a band
@@ -741,19 +733,6 @@ function eventRect(g, w, h, e, color, selected, handles, flagged){
      but on exactly one band it is the cheapest mark there is. */
   g.fillStyle = color + '70';
   g.fillRect(pa, 0, pb - pa, h);
-  if (flagged){
-    /* Hatched, not recoloured. An orange band said "someone asked about this"
-       by throwing away what it was -- the one thing the reviewer coming to
-       answer the question needs to know. Diagonals sit over the type instead
-       of replacing it, and cost the palette no hue. */
-    g.save();
-    g.beginPath(); g.rect(pa, 0, pb - pa, h); g.clip();
-    g.strokeStyle = 'rgba(60,60,67,.34)'; g.lineWidth = 1.5;
-    for (let x = pa - h; x < pb + h; x += 9){
-      g.beginPath(); g.moveTo(x, h); g.lineTo(x + h, 0); g.stroke();
-    }
-    g.restore();
-  }
   if (selected){
     g.strokeStyle = color; g.lineWidth = 2;
     g.strokeRect(pa + 1, 1, Math.max(pb - pa - 2, 1), h - 2);
@@ -794,7 +773,7 @@ function drawExpert(g, w, h, list){
   for (const e of items){
     const pa = t2px(e.a, w), pb = t2px(e.b, w);
     if (pb < AXW || pa > w) continue;
-    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#9a9790') : '#eda100';
+    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#00c7be';
     const xa = Math.max(pa, AXW), xb = Math.min(pb, w);
     g.save();
     g.beginPath(); g.rect(xa, 0, xb - xa, h); g.clip();
@@ -830,9 +809,9 @@ function drawFHR(){
   drawStageBoundary(g, w, h);
   const pFHR = partnerOf(S.sel);
   for (const d of S.ann.decels){
-    const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
+    const isSel = mselHas('decels', d.id);
     const isPair = pFHR?.list === 'decels' && pFHR.id === d.id;
-    eventRect(g, w, h, d, d.flag ? '#c2185b' : TCOLOR[d.type || 'pending'],
+    eventRect(g, w, h, d, d.flag ? '#ff9500' : TCOLOR[d.type || 'pending'],
               isSel || isPair, isSel);
   }
   drawExpert(g, w, h, 'decels');
@@ -877,6 +856,16 @@ function linkAnchors(){
 /* A pairing has two ends, and picking either one is a way of asking about the
    same pairing -- so the anchors answer from the contraction side too, and
    the tip over the toco stays draggable whichever end the reviewer clicked. */
+/* Shift-click grows the selection instead of replacing it. One event stays
+   the primary -- the card describes it -- but a type, a flag, N/A or delete
+   applies to everything selected, because "these six are all variable" is one
+   decision, not six. */
+function msel(){ return S.msel && S.msel.length ? S.msel : (S.sel ? [S.sel] : []); }
+function mselHas(list, id){ return msel().some(v => v.list === list && v.id === id); }
+function mselEvents(list){
+  return msel().filter(v => !list || v.list === list)
+               .map(v => S.ann[v.list].find(e => e.id === v.id)).filter(Boolean);
+}
 function selDecel(){
   if (!S.sel || !S.ann) return null;
   if (S.sel.list === 'decels') return getSel();
@@ -914,6 +903,15 @@ function ucAnchorHit(px, py, w){
   const d = selDecel(); if (!d) return null;
   const t = pairAnchorT();
   return Math.abs(px - t2px(t == null ? (d.a + d.b) / 2 : t, w)) <= 9 ? d : null;
+}
+/* Either end starts the same drag. The pairing is one thing with two ends,
+   and which one the hand happens to land on should not decide whether it can
+   be moved -- the free end is always the contraction side, since the decel
+   end is the event being paired. */
+function fhrAnchorHit(px, py, h, w){
+  if (py < h - 12) return null;
+  const d = selDecel(); if (!d) return null;
+  return Math.abs(px - t2px((d.a + d.b) / 2, w)) <= 9 ? d : null;
 }
 /* Within this much of a contraction the tip is taken by it. Pairing is a
    judgement about which contraction, not about where exactly the cursor
@@ -987,13 +985,13 @@ function drawUC(){
   g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, ph); g.clip();
   const pUC = partnerOf(S.sel);
   for (const c of S.ann.contractions){
-    const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
+    const isSel = mselHas('contractions', c.id);
     const isPair = (pUC?.list === 'contractions' && pUC.id === c.id) ||
                    (S.drag?.mode === 'pair' && S.drag.target === c.id);
-    eventRect(g, w, ph, c, c.flag ? '#c2185b' : '#eda100', isSel || isPair, isSel);
+    eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#00c7be', isSel || isPair, isSel);
   }
   drawExpert(g, w, ph, 'contractions');
-  drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#2f7fd0', 1.1);
+  drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1.1);
   drawLinkAnchor(g, w, ph, 'uc');
   g.restore();
   drawTimeGrid(g, w, ph, ph);
@@ -1073,7 +1071,9 @@ function renderSel(){
     box.value = ref; S.noteAuto = ref;
   }
   if (!e){ el.innerHTML = recordCard(); return; }
-  let html = `<div class="t">${isD ? 'Decel' : 'Contraction'} ${e.id} · ${fmtT(e.a)} → ${fmtT(e.b)}</div>`;
+  const extra = msel().length - 1;
+  let html = `<div class="t">${isD ? 'Decel' : 'Contraction'} ${e.id} · ${fmtT(e.a)} → ${fmtT(e.b)}${
+    extra > 0 ? ` <b style="color:var(--blue)">+${extra} selected</b>` : ''}</div>`;
   html += morphRows(e, isD);
   if (isD) html += pairControl(e);
   if (isD){
@@ -1083,8 +1083,10 @@ function renderSel(){
   }
   html += `<div class="rowBtns">
     <button onclick="toggleFlag()" style="color:var(--orange)"
-      title="Mark this event as a question the next reviewer should look at (⏎)">${e.flag ? '⚑ Remove flag' : '⚑ Raise a flag'}</button>
-    <button onclick="deleteSel()" style="color:var(--red)">Delete ✕</button></div>`;
+      title="Mark this event as a question the next reviewer should look at (⏎)">${e.flag ? '⚑ Remove flag' : '⚑ Raise a flag'}</button>` +
+    (isD ? `<button onclick="setType('na')" class="tNA${e.type === 'na' ? ' on' : ''}"
+      title="Classification not applicable — e.g. the toco is unreadable, so early vs late cannot be judged. A decision in its own right, unlike leaving the event untyped.">N/A</button>` : '') +
+    `<button onclick="deleteSel()" style="color:var(--red)">Delete ✕</button></div>`;
   el.innerHTML = html;
 }
 /* What the panel says before anything is picked. "No event selected" is true
@@ -1131,7 +1133,7 @@ function renderQueue(){
   if (!items.length){ el.innerHTML = ''; return; }
   el.innerHTML = items.map(v => {
     const dash = !v.e.flag && v.list === 'decels';
-    const bg = v.e.flag ? '#c2185b' : (dash ? '#fff' : '#eda100');
+    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#00c7be');
     return `<div class="qRow${S.sel?.id === v.e.id ? ' cur' : ''}" data-l="${v.list}" data-i="${v.e.id}">` +
       `<span class="chip" style="background:${bg}${dash ? ';border:1.5px dashed #8e8e93' : ''}"></span>` +
       `<span>${v.e.id}</span><span class="qt">${fmtT(v.e.a)}</span></div>`;
@@ -1371,19 +1373,17 @@ function renderAll(){ renderCanvases(); renderTop(); renderSel(); renderQueue();
 /* ---------- actions ---------- */
 window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') return;
   const nv = (t === 'unclassified' || e.type === t) ? null : t;
-  if (nv === e.type) return;
-  if (e.provisional && nv === null) return;
+  const targets = mselEvents('decels').filter(v => v.type !== nv && !(v.provisional && nv === null));
+  if (!targets.length) return;
   /* Typing a flagged event answers the question the flag was raised for, so
-     the flag goes with it in the same action. Otherwise every reviewed event
-     keeps a stale ⚑, the flagged filter stops meaning "still needs a
-     decision", and the log carries two lines for one decision. Enter
-     re-raises it if the reviewer still wants the next person to look. */
-  const cleared = nv && e.flag;
-  mutate(() => { commitProvisional(e); e.type = nv; e.by = S.annotator;
-                 if (e.review === 'pending') e.review = 'accepted';
-                 if (cleared) delete e.flag; },
-         `${e.id}: type → ${nv ?? 'unclassified'}` +
-         (cleared ? ' (question cleared)' : '')); };
+     the flag goes with it in the same action. */
+  const cleared = nv ? targets.filter(v => v.flag).length : 0;
+  mutate(() => { for (const v of targets){
+                   commitProvisional(v); v.type = nv; v.by = S.annotator;
+                   if (v.review === 'pending') v.review = 'accepted';
+                   if (nv && v.flag) delete v.flag; } },
+         `${targets.map(v => v.id).join(',')}: type → ${nv ?? 'unclassified'}` +
+         (cleared ? ` (${cleared} question${cleared > 1 ? 's' : ''} cleared)` : '')); };
 
 /* The estimators are a second question, and it is only worth asking once the
    first is answered: the picker stays out of the header until the baseline is
@@ -1425,21 +1425,31 @@ window.toggleBands = () => {
   renderCanvases();
 };
 window.toggleFlag = () => { const e = getSel(); if (!e) return;
-  const nv = !e.flag;
-  mutate(() => { commitProvisional(e); e.flag = nv; e.by = S.annotator; },
-         `${e.id}: ${nv ? 'question raised' : 'question cleared'}`); };
+  const targets = mselEvents();
+  const nv = targets.some(v => !v.flag);      // any unflagged -> flag them all
+  mutate(() => { for (const v of targets){
+                   commitProvisional(v);
+                   if (nv) v.flag = true; else delete v.flag;
+                   v.by = S.annotator; } },
+         `${targets.map(v => v.id).join(',')}: ${nv ? 'question raised' : 'question cleared'}`); };
 window.deleteSel = () => { const e = getSel(); if (!e) return;
-  if (e.provisional){
-    S.ann[S.sel.list] = S.ann[S.sel.list].filter(v => v.id !== e.id);
-    S.sel = null; renderAll(); return;
+  const sel = msel();
+  const real = sel.filter(v => !S.ann[v.list].find(x => x.id === v.id)?.provisional);
+  for (const v of sel){                       // provisionals just evaporate
+    const x = S.ann[v.list].find(x => x.id === v.id);
+    if (x?.provisional) S.ann[v.list] = S.ann[v.list].filter(y => y.id !== v.id);
   }
-  const list = S.sel.list;
+  if (!real.length){ S.sel = null; S.msel = null; renderAll(); return; }
   const ok = mutate(() => {
-    S.ann[list] = S.ann[list].filter(v => v.id !== e.id);
-    if (e.origin === 'detector')
-      S.ann.deleted.push({list, ...e, review:'deleted', by:S.annotator});
-  }, `${e.id}: deleted`);
-  if (ok){ S.sel = null; renderAll(); } };
+    for (const v of real){
+      const x = S.ann[v.list].find(y => y.id === v.id);
+      if (!x) continue;
+      S.ann[v.list] = S.ann[v.list].filter(y => y.id !== v.id);
+      if (x.origin === 'detector')
+        S.ann.deleted.push({list: v.list, ...x, review:'deleted', by:S.annotator});
+    }
+  }, `${real.map(v => v.id).join(',')}: deleted`);
+  if (ok){ S.sel = null; S.msel = null; renderAll(); } };
 
 $('notes').addEventListener('keydown', ev => {
   if (ev.key === 'Enter' && !ev.shiftKey){
@@ -1531,6 +1541,17 @@ function setupPane(id){
        one over bands that are not shown, is a decision made blind. */
     if (S.hideBands){ S.drag = {mode:'pan', pane:id, t, v0:{...S.view}, x0:ev.clientX, w}; return; }
     const t = px2t(px, w);
+    if (id === 'fhr'){
+      const d0 = fhrAnchorHit(px, ev.clientY - r.top, r.height, w);
+      if (d0){
+        if (!requireName()){ renderAll(); return; }
+        const a = linkAnchors().find(v => v.d.id === d0.id);
+        S.drag = {mode:'pair', pane:'fhr', did: d0.id,
+                  from: a ? a.c.id : 'none', target: a ? a.c.id : 'none',
+                  t: a ? a.tc : null};
+        renderCanvases(); return;
+      }
+    }
     if (id === 'uc'){
       const d0 = ucAnchorHit(px, ev.clientY - r.top, w);
       if (d0){                        // the tip sits over the band it points at
@@ -1543,10 +1564,19 @@ function setupPane(id){
       }
     }
     const hit = hitTest(id, px, w);
+    if (hit && ev.shiftKey && S.sel){
+      const k = {list:hit.list, id:hit.e.id};
+      S.msel = msel().slice();
+      const i = S.msel.findIndex(v => v.list === k.list && v.id === k.id);
+      if (i >= 0 && !(S.sel.list === k.list && S.sel.id === k.id)) S.msel.splice(i, 1);
+      else if (i < 0) S.msel.push(k);
+      renderAll(); return;
+    }
     if (hit){
       discardProvisional(hit.e);
       const selected = S.sel && S.sel.id === hit.e.id;
       S.sel = {list:hit.list, id:hit.e.id};
+      S.msel = null;
       if (selected){  // first click only selects; drags need a selected event
         if (!requireName()) { renderAll(); return; }
         if (hit.mode !== 'body'){
@@ -1560,7 +1590,7 @@ function setupPane(id){
       renderAll();
     } else {
       discardProvisional();
-      S.sel = null;
+      S.sel = null; S.msel = null;
       S.drag = {mode:'create', pane:id, t0:rt(t), t1:rt(t)};
       renderAll();
     }
@@ -1602,6 +1632,8 @@ function setupPane(id){
     if (!S.drag){
       if (px < AXW){ c.style.cursor = 'default'; return; }
       if (id === 'uc' && ucAnchorHit(px, ev.clientY - r.top, w)){
+        c.style.cursor = 'grab'; return; }
+      if (id === 'fhr' && fhrAnchorHit(px, ev.clientY - r.top, r.height, w)){
         c.style.cursor = 'grab'; return; }
       const hit = hitTest(id, px, w);
       const hitSel = hit && S.sel && S.sel.id === hit.e.id;
@@ -1747,7 +1779,7 @@ window.addEventListener('keydown', ev => {
   if (k === '?'){ $('help').style.display = $('help').style.display === 'flex' ? 'none' : 'flex'; return; }
   if (k === 'Escape'){
     if ($('help').style.display === 'flex'){ $('help').style.display = 'none'; return; }
-    discardProvisional(); S.sel = null; renderAll(); return; }
+    discardProvisional(); S.sel = null; S.msel = null; renderAll(); return; }
   if (k === 'Tab'){ ev.preventDefault(); jumpPending(ev.shiftKey ? -1 : 1); return; }
   if (k >= '1' && k <= '4'){ setType(TYPES[+k - 1]); return; }
   if (k === 'Enter'){ toggleFlag(); return; }
