@@ -1,24 +1,11 @@
 {
  "schema": 1,
  "record_id": 1499,
- "annotator": "Mengning",
+ "annotator": "Justin",
  "status": "open",
  "notes": "",
  "next_id": 60,
  "decels": [
-  {
-   "id": "d42",
-   "a": -82.38,
-   "b": -82.02,
-   "a0": -82.38,
-   "b0": -82.02,
-   "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -82.083,
-   "det_pass": 2,
-   "flag": true
-  },
   {
    "id": "d43",
    "a": -81.95,
@@ -27,10 +14,9 @@
    "b0": -81.68,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -81.75,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d44",
@@ -40,10 +26,9 @@
    "b0": -80.85,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -81.25,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d45",
@@ -53,10 +38,9 @@
    "b0": -79.82,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -80.067,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d1",
@@ -66,12 +50,11 @@
    "b0": -77.15,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -78.05,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   },
   {
    "id": "d46",
@@ -81,10 +64,9 @@
    "b0": -76.55,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -76.817,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d2",
@@ -94,25 +76,11 @@
    "b0": -73.02,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -75.3,
    "src_rule": "prolonged",
    "src_linker": null,
-   "nadir_lag_s": -181,
-   "flag": true
-  },
-  {
-   "id": "d47",
-   "a": -72.47,
-   "b": -72.23,
-   "a0": -72.47,
-   "b0": -72.23,
-   "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -72.317,
-   "det_pass": 2,
-   "flag": true
+   "nadir_lag_s": -181
   },
   {
    "id": "d48",
@@ -122,24 +90,24 @@
    "b0": -71.98,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -72.083,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d3",
    "a": -70.97,
-   "b": -69.28,
+   "b": -67.13333333333334,
    "a0": -70.97,
    "b0": -69.28,
    "origin": "detector",
-   "review": "pending",
+   "review": "edited",
    "type": "variable",
-   "nadir_min": -70.517,
+   "nadir_min": -68.967,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -89
+   "nadir_lag_s": -89,
+   "by": "Justin"
   },
   {
    "id": "d6",
@@ -149,12 +117,11 @@
    "b0": -65.19,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -66.867,
    "src_rule": "prolonged",
    "src_linker": null,
-   "nadir_lag_s": 130,
-   "flag": true
+   "nadir_lag_s": 130
   },
   {
    "id": "d7",
@@ -177,13 +144,13 @@
    "a0": -61.28,
    "b0": -58.15,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "early",
    "nadir_min": -59.183,
    "src_rule": "prolonged",
    "src_linker": "early",
    "nadir_lag_s": 54,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d9",
@@ -193,12 +160,11 @@
    "b0": -50.79,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -51.683,
    "src_rule": "prolonged",
    "src_linker": null,
-   "nadir_lag_s": 123,
-   "flag": true
+   "nadir_lag_s": 123
   },
   {
    "id": "d10",
@@ -222,12 +188,11 @@
    "b0": -45.03,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -47.633,
    "src_rule": "prolonged",
    "src_linker": null,
-   "nadir_lag_s": -151,
-   "flag": true
+   "nadir_lag_s": -151
   },
   {
    "id": "d49",
@@ -237,10 +202,9 @@
    "b0": -42.93,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -42.983,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d12",
@@ -264,10 +228,9 @@
    "b0": -37.2,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -37.333,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d13",
@@ -291,10 +254,9 @@
    "b0": -34.92,
    "origin": "detector",
    "review": "pending",
-   "type": null,
-   "nadir_min": -35.0,
-   "det_pass": 2,
-   "flag": true
+   "type": "variable",
+   "nadir_min": -35,
+   "det_pass": 2
   },
   {
    "id": "d52",
@@ -304,10 +266,9 @@
    "b0": -34.05,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -34.517,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d53",
@@ -317,10 +278,9 @@
    "b0": -31.17,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -31.467,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d14",
@@ -344,10 +304,9 @@
    "b0": -26.85,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -27.25,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d55",
@@ -357,10 +316,9 @@
    "b0": -25.02,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -25.05,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d15",
@@ -398,10 +356,9 @@
    "b0": -20.03,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -20.1,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d17",
@@ -425,10 +382,9 @@
    "b0": -14.5,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -14.7,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d18",
@@ -438,12 +394,11 @@
    "b0": -13.95,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -14.15,
    "src_rule": "variable",
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   },
   {
    "id": "d58",
@@ -453,10 +408,9 @@
    "b0": -11.52,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -11.667,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d19",
@@ -466,12 +420,11 @@
    "b0": -10.41,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "early",
    "nadir_min": -10.75,
    "src_rule": null,
    "src_linker": "early",
-   "nadir_lag_s": 18,
-   "flag": true
+   "nadir_lag_s": 18
   },
   {
    "id": "d59",
@@ -481,10 +434,9 @@
    "b0": -7.27,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -7.617,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d20",
@@ -508,12 +460,11 @@
    "b0": -3.52,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "early",
    "nadir_min": -4.417,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": -122,
-   "flag": true
+   "nadir_lag_s": -122
   },
   {
    "id": "d22",
@@ -742,8 +693,59 @@
    "nadir_lag_s": 4,
    "flag": true,
    "by": "Mengning"
+  },
+  {
+   "list": "decels",
+   "id": "d42",
+   "a": -82.38,
+   "b": -82.02,
+   "a0": -82.38,
+   "b0": -82.02,
+   "origin": "detector",
+   "review": "deleted",
+   "type": null,
+   "nadir_min": -82.083,
+   "det_pass": 2,
+   "flag": true,
+   "by": "Justin"
+  },
+  {
+   "list": "decels",
+   "id": "d47",
+   "a": -72.47,
+   "b": -72.23,
+   "a0": -72.47,
+   "b0": -72.23,
+   "origin": "detector",
+   "review": "deleted",
+   "type": null,
+   "nadir_min": -72.317,
+   "det_pass": 2,
+   "flag": true,
+   "by": "Justin"
   }
  ],
- "updated": "2026-08-22T01:30:18.210519+00:00",
- "history": []
+ "updated": "2026-08-22T02:08:57.158605+00:00",
+ "history": [
+  {
+   "t": "2026-08-22T01:50:51.840Z",
+   "by": "Justin",
+   "action": "d42: deleted"
+  },
+  {
+   "t": "2026-08-22T01:52:10.364Z",
+   "by": "Justin",
+   "action": "d3: boundary -70:58..-69:17 \u2192 -70:58..-67:08"
+  },
+  {
+   "t": "2026-08-22T01:52:30.767Z",
+   "by": "Justin",
+   "action": "d47: deleted"
+  },
+  {
+   "t": "2026-08-22T01:52:41.041Z",
+   "by": "Justin",
+   "action": "d8: type \u2192 early (1 question cleared)"
+  }
+ ]
 }

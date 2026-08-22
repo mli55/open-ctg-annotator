@@ -1,6 +1,6 @@
 {
- "generated": "quality selection 2026-08-21",
- "n": 25,
+ "generated": "quality selection 2026-08-21, trimmed to 10 on 2026-08-21 (all reviewer-annotated records kept)",
+ "n": 10,
  "records": [
   {
    "id": 1008,
@@ -30,57 +30,12 @@
    "reason": "quality-selected 2026-08-21"
   },
   {
-   "id": 1097,
-   "hypoxia": 1,
-   "ph": 7.18,
-   "dur_min": 70.0,
-   "n_decel": 12,
-   "n_contraction": 21,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
    "id": 1112,
    "hypoxia": 1,
    "ph": 7.19,
    "dur_min": 70.0,
    "n_decel": 16,
    "n_contraction": 39,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1118,
-   "hypoxia": 1,
-   "ph": 7.09,
-   "dur_min": 70.0,
-   "n_decel": 15,
-   "n_contraction": 22,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1127,
-   "hypoxia": 0,
-   "ph": 7.35,
-   "dur_min": 70.0,
-   "n_decel": 19,
-   "n_contraction": 44,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1153,
-   "hypoxia": 0,
-   "ph": 7.29,
-   "dur_min": 70.0,
-   "n_decel": 20,
-   "n_contraction": 34,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1161,
-   "hypoxia": 1,
-   "ph": 7.12,
-   "dur_min": 65.0,
-   "n_decel": 4,
-   "n_contraction": 15,
    "reason": "quality-selected 2026-08-21"
   },
   {
@@ -93,69 +48,6 @@
    "reason": "quality-selected 2026-08-21"
   },
   {
-   "id": 1249,
-   "hypoxia": 1,
-   "ph": 7.15,
-   "dur_min": 65.0,
-   "n_decel": 25,
-   "n_contraction": 21,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1315,
-   "hypoxia": 1,
-   "ph": 7.19,
-   "dur_min": 65.0,
-   "n_decel": 4,
-   "n_contraction": 51,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1337,
-   "hypoxia": 0,
-   "ph": 7.23,
-   "dur_min": 65.0,
-   "n_decel": 11,
-   "n_contraction": 24,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1341,
-   "hypoxia": 1,
-   "ph": 7.14,
-   "dur_min": 65.0,
-   "n_decel": 12,
-   "n_contraction": 34,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1346,
-   "hypoxia": 0,
-   "ph": 7.31,
-   "dur_min": 65.0,
-   "n_decel": 9,
-   "n_contraction": 36,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1370,
-   "hypoxia": 1,
-   "ph": 7.03,
-   "dur_min": 75.0,
-   "n_decel": 9,
-   "n_contraction": 33,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1379,
-   "hypoxia": 0,
-   "ph": 7.27,
-   "dur_min": 65.0,
-   "n_decel": 14,
-   "n_contraction": 30,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
    "id": 1385,
    "hypoxia": 0,
    "ph": 7.23,
@@ -165,39 +57,12 @@
    "reason": "quality-selected 2026-08-21"
   },
   {
-   "id": 1391,
-   "hypoxia": 0,
-   "ph": 7.21,
-   "dur_min": 70.0,
-   "n_decel": 10,
-   "n_contraction": 27,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1484,
-   "hypoxia": 0,
-   "ph": 7.21,
-   "dur_min": 80.0,
-   "n_decel": 12,
-   "n_contraction": 22,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
    "id": 1485,
    "hypoxia": 1,
    "ph": 7.16,
    "dur_min": 85.079,
    "n_decel": 24,
    "n_contraction": 39,
-   "reason": "quality-selected 2026-08-21"
-  },
-  {
-   "id": 1486,
-   "hypoxia": 1,
-   "ph": 7.19,
-   "dur_min": 65.0,
-   "n_decel": 14,
-   "n_contraction": 34,
    "reason": "quality-selected 2026-08-21"
   },
   {

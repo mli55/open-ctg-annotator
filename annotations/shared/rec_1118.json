@@ -14,10 +14,9 @@
    "b0": -64.33,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -64.767,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d46",
@@ -27,10 +26,9 @@
    "b0": -63.85,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -64.05,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d47",
@@ -40,10 +38,9 @@
    "b0": -63.43,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -63.5,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d43",
@@ -53,7 +50,7 @@
    "b0": -61.07,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -61.417,
    "det_pass": 2
   },
@@ -65,10 +62,9 @@
    "b0": -60.78,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -60.9,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d49",
@@ -78,10 +74,9 @@
    "b0": -59.03,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -59.167,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d1",
@@ -91,12 +86,11 @@
    "b0": -56.89,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -57.379,
    "src_rule": null,
    "src_linker": "late",
-   "nadir_lag_s": -74,
-   "flag": true
+   "nadir_lag_s": -74
   },
   {
    "id": "d2",
@@ -120,10 +114,9 @@
    "b0": -54.15,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -54.3,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d51",
@@ -133,10 +126,9 @@
    "b0": -53.63,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -53.933,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d44",
@@ -146,7 +138,7 @@
    "b0": -52.7,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -53.283,
    "det_pass": 2
   },
@@ -158,12 +150,11 @@
    "b0": -50.36,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -50.571,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   },
   {
    "id": "d4",
@@ -173,12 +164,11 @@
    "b0": -47.61,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -47.704,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   },
   {
    "id": "d5",
@@ -188,12 +178,11 @@
    "b0": -45.68,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -46.417,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   },
   {
    "id": "d6",
@@ -203,12 +192,11 @@
    "b0": -44.42,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -44.487,
    "src_rule": "variable",
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   },
   {
    "id": "d52",
@@ -218,10 +206,9 @@
    "b0": -43.58,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -43.617,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d53",
@@ -231,10 +218,9 @@
    "b0": -41.62,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -41.783,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d7",
@@ -244,12 +230,11 @@
    "b0": -39.67,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -39.812,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": -88,
-   "flag": true
+   "nadir_lag_s": -88
   },
   {
    "id": "d54",
@@ -259,10 +244,9 @@
    "b0": -39.13,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -39.317,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d55",
@@ -272,10 +256,9 @@
    "b0": -38.52,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -38.933,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d56",
@@ -285,10 +268,9 @@
    "b0": -38.12,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -38.267,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d57",
@@ -298,10 +280,9 @@
    "b0": -36.93,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -37.05,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d8",
@@ -311,12 +292,11 @@
    "b0": -35.46,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -35.712,
    "src_rule": "late",
    "src_linker": null,
-   "nadir_lag_s": 72,
-   "flag": true
+   "nadir_lag_s": 72
   },
   {
    "id": "d58",
@@ -326,10 +306,9 @@
    "b0": -35.18,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -35.2,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d59",
@@ -339,10 +318,9 @@
    "b0": -34.68,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -35.017,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d60",
@@ -352,10 +330,9 @@
    "b0": -34.1,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -34.2,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d9",
@@ -379,12 +356,11 @@
    "b0": -30.58,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -30.729,
    "src_rule": "late",
    "src_linker": "early",
-   "nadir_lag_s": 20,
-   "flag": true
+   "nadir_lag_s": 20
   },
   {
    "id": "d11",
@@ -408,12 +384,11 @@
    "b0": -25.97,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -28.358,
    "src_rule": "prolonged",
    "src_linker": "variable",
-   "nadir_lag_s": 53,
-   "flag": true
+   "nadir_lag_s": 53
   },
   {
    "id": "d61",
@@ -423,10 +398,9 @@
    "b0": -25.17,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -25.3,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d62",
@@ -436,10 +410,9 @@
    "b0": -24.78,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -24.833,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d13",
@@ -463,10 +436,9 @@
    "b0": -23.08,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -23.367,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d64",
@@ -476,10 +448,9 @@
    "b0": -22.65,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -22.9,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d14",
@@ -489,12 +460,11 @@
    "b0": -21.59,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -21.908,
    "src_rule": "late",
    "src_linker": "early",
-   "nadir_lag_s": 24,
-   "flag": true
+   "nadir_lag_s": 24
   },
   {
    "id": "d15",
@@ -518,12 +488,11 @@
    "b0": -16.33,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -17.729,
    "src_rule": "prolonged",
    "src_linker": null,
-   "nadir_lag_s": -52,
-   "flag": true
+   "nadir_lag_s": -52
   },
   {
    "id": "d65",
@@ -533,10 +502,9 @@
    "b0": -16.03,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -16.117,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d17",
@@ -574,12 +542,11 @@
    "b0": -10.11,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -10.821,
    "src_rule": "prolonged",
    "src_linker": "early",
-   "nadir_lag_s": 108,
-   "flag": true
+   "nadir_lag_s": 108
   },
   {
    "id": "d66",
@@ -589,10 +556,9 @@
    "b0": -8.97,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -9.083,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d20",
@@ -616,10 +582,9 @@
    "b0": -6.27,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -6.483,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d68",
@@ -629,10 +594,9 @@
    "b0": -5.88,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -5.933,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d21",
@@ -656,12 +620,11 @@
    "b0": -1.8,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -2.412,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   },
   {
    "id": "d23",
@@ -671,12 +634,11 @@
    "b0": 0,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -0.287,
    "src_rule": "variable",
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   }
  ],
  "contractions": [
@@ -853,6 +815,6 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-22T01:30:18.210519+00:00",
+ "updated": "2026-08-22T02:08:57.158605+00:00",
  "history": []
 }

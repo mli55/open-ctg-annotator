@@ -14,10 +14,9 @@
    "b0": -69.38,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -69.567,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d1",
@@ -41,12 +40,11 @@
    "b0": -65.58,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -66.067,
    "src_rule": null,
    "src_linker": "late",
-   "nadir_lag_s": 17,
-   "flag": true
+   "nadir_lag_s": 17
   },
   {
    "id": "d3",
@@ -56,12 +54,11 @@
    "b0": -61.77,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -62.7,
    "src_rule": "late",
    "src_linker": "variable",
-   "nadir_lag_s": 26,
-   "flag": true
+   "nadir_lag_s": 26
   },
   {
    "id": "d4",
@@ -127,7 +124,7 @@
    "b0": -50.02,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -50.267,
    "det_pass": 2
   },
@@ -153,10 +150,9 @@
    "b0": -47.23,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -47.533,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d9",
@@ -166,12 +162,11 @@
    "b0": -44.36,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "early",
    "nadir_min": -45.371,
    "src_rule": null,
    "src_linker": "early",
-   "nadir_lag_s": 14,
-   "flag": true
+   "nadir_lag_s": 14
   },
   {
    "id": "d10",
@@ -223,10 +218,9 @@
    "b0": -32.08,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -32.183,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d56",
@@ -236,10 +230,9 @@
    "b0": -30.95,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -31.417,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d13",
@@ -277,12 +270,11 @@
    "b0": -23.08,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -23.783,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "nadir_lag_s": null
   },
   {
    "id": "d16",
@@ -334,7 +326,7 @@
    "b0": -14.25,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -15.233,
    "det_pass": 2
   },
@@ -346,7 +338,7 @@
    "b0": -11.93,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -12.117,
    "det_pass": 2
   },
@@ -428,10 +420,9 @@
    "b0": -0.32,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -0.4,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   }
  ],
  "contractions": [
@@ -671,6 +662,6 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-22T01:30:18.210519+00:00",
+ "updated": "2026-08-22T02:08:57.158605+00:00",
  "history": []
 }

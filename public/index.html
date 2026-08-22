@@ -25,12 +25,17 @@
   header h1{font-size:15px; font-weight:600}
   header .sp{flex:1}
   #saveState{font-size:12px; color:var(--dim)}
+  #conflictBar{align-items:center; justify-content:center; gap:12px; padding:7px 14px;
+    background:var(--red); color:#fff; font-size:13px; font-weight:500}
+  #conflictBar button{background:#fff; color:var(--red); border:none; font-weight:600;
+    font-size:12.5px; padding:3px 10px}
   /* Centred against the header, not against what is left over: two equal flex
      spacers only balance the REMAINDER, and the two sides are not the same
      width. */
   #viewBtns{position:absolute; left:50%; transform:translateX(-50%);
     display:flex; gap:6px}
   #hideBtn, #expertBtn, #baseBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
+  #helpBtn{font-size:12px; padding:3px 9px; white-space:nowrap}
   #blPicker{display:none; align-items:center; gap:4px; font-size:11px; color:var(--dim)}
   #blPicker.open{display:flex}
   #blPicker button{font-size:10.5px; padding:2px 7px; border-radius:999px; line-height:1.4;
@@ -176,11 +181,25 @@
   .hRow{padding:3px 12px; font-size:11.5px; line-height:1.5}
   .hRow b{color:var(--blue); margin-right:5px}
   .hRow .ht{color:var(--dim); margin-right:7px; font-variant-numeric:tabular-nums}
+  .hRow.hLink{cursor:pointer; border-radius:6px}
+  .hRow.hLink:hover{background:#f2f2f7}
   .tabs button{padding:2px 10px; font-size:12px; border-radius:999px}
   #help{position:fixed; inset:0; background:rgba(44,42,39,.45); display:none;
     align-items:center; justify-content:center; z-index:9}
-  #help .box{background:var(--card); border-radius:14px; padding:22px 26px; max-width:640px;
-    max-height:80vh; overflow:auto; font-size:13px}
+  #help .box{background:var(--card); border-radius:14px; padding:26px 32px; max-width:780px;
+    max-height:85vh; overflow:auto; font-size:14px; line-height:1.55}
+  .shGrid{display:grid; grid-template-columns:150px 1fr; gap:10px 20px;
+    align-items:baseline; margin:12px 0 4px}
+  .shHead{grid-column:1 / -1; font-size:11.5px; font-weight:700; color:var(--blue);
+    text-transform:uppercase; letter-spacing:.7px; margin-top:14px;
+    padding-bottom:4px; border-bottom:1px solid var(--line)}
+  .shHead:first-child{margin-top:0}
+  .shK{white-space:nowrap; color:var(--ink); font-weight:500}
+  .shGrid span:not(.shK){color:#48484a}
+  #help kbd{background:#f2f2f7; border:1px solid #e0e0e4; border-bottom-width:2px;
+    border-radius:5px; padding:1px 6px; font-size:12.5px}
+  #help .proto{margin-top:16px; padding-top:12px; border-top:1px solid var(--line);
+    font-size:12.5px; line-height:1.6}
   #help h2{font-size:15px; margin-bottom:10px}
   #help table{border-collapse:collapse; margin:8px 0}
   #help td{padding:2px 12px 2px 0; vertical-align:top}
@@ -201,12 +220,17 @@
     <span id="blPicker"></span>
     <button id="expertBtn" onclick="toggleExpert()"
       title="Overlay the CTU expert reference, outlined (E)">CTU expert</button>
+    <button id="helpBtn" onclick="$('help').style.display='flex'" title="Keyboard shortcuts (?)">shortcuts</button>
   </span>
   <span class="sp"></span>
   <span id="cursorRead"></span>
   <input id="annName" title="Your name — every edit is recorded under it" placeholder="your name">
   <span id="saveState"></span>
 </header>
+<div id="conflictBar" style="display:none">
+  This record changed on the server since you loaded it — your recent edits here can't be saved.
+  <button onclick="loadRecord(S.rid)">Reload the record</button>
+</div>
 <div id="app">
   <aside id="recsWrap">
     <div id="recFilter">
@@ -244,7 +268,7 @@
       <span class="lg"><span class="chip" style="background:#af52de"></span>prolonged</span>
       <span style="flex-basis:100%;height:0"></span>
       <span class="lg"><span class="chip" style="background:#ff2d6f"></span>baseline</span>
-      <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
+      <span class="lg"><span class="chip" style="background:#00877f"></span>contraction</span>
       <span class="lg"><span class="chip flagChip">⚑</span>question</span>
     </div>
   </aside>
@@ -252,19 +276,25 @@
 
 <div id="help"><div class="box">
   <h2>Shortcuts</h2>
-  <table>
-    <tr><td><kbd>1</kbd>–<kbd>4</kbd></td><td>Classify: early / late / variable / prolonged; press the active one again to clear it back to unclassified (dashed)</td></tr>
-    <tr><td><kbd>Enter</kbd></td><td>Raise / clear a ⚑ question on the selected event — a spot the next reviewer should look at</td></tr>
-    <tr><td><kbd>X</kbd> / <kbd>Del</kbd></td><td>Delete selected event (detector events go to a recoverable deleted list)</td></tr>
-    <tr><td>Drag on empty trace</td><td>Draw a new event (FHR pane = deceleration, UC pane = contraction). The drawn region is provisional: classify it (1–4), flag it, or add a note to keep it — clicking anywhere else discards it. A short click on empty space just deselects.</td></tr>
-    <tr><td><kbd>Tab</kbd> / <kbd>⇧Tab</kbd></td><td>Next / previous pending event</td></tr>
-    <tr><td>Drag an edge of a selected event</td><td>Adjust onset/offset (select the event first; recorded as edited, original boundaries kept)</td></tr>
-    <tr><td>Drag inside a selected event</td><td>Move the whole event</td></tr>
-    <tr><td>Wheel / <kbd>+</kbd><kbd>−</kbd> / <kbd>0</kbd></td><td>Zoom (0 = fit all); pan with two-finger scroll, <kbd>←</kbd><kbd>→</kbd>, or the overview bar; double-click an event to zoom to it</td></tr>
-    <tr><td><kbd>⌘Z</kbd> / <kbd>⇧⌘Z</kbd></td><td>Undo / redo</td></tr>
-  </table>
+  <div class="shGrid">
+    <div class="shHead">Classify &amp; edit</div>
+    <span class="shK"><kbd>1</kbd>–<kbd>4</kbd></span><span>Type the selected decel: early / late / variable / prolonged. Press the active one again to clear.</span>
+    <span class="shK">N/A</span><span>Classification not applicable (e.g. unreadable toco) — it leaves the queue.</span>
+    <span class="shK"><kbd>Enter</kbd></span><span>Raise / clear a ⚑ question for the next reviewer.</span>
+    <span class="shK"><kbd>X</kbd> <kbd>Del</kbd></span><span>Delete — detector events are recoverable.</span>
+    <span class="shK"><kbd>⇧</kbd>&thinsp;click</span><span>Add to the selection; one action then applies to all, as one undo step.</span>
+    <span class="shK"><kbd>⌘Z</kbd> <kbd>⇧⌘Z</kbd></span><span>Undo / redo.</span>
+
+    <div class="shHead">On the trace</div>
+    <span class="shK">drag edge · inside</span><span>Adjust the selected event's onset/offset · move it whole.</span>
+    <span class="shK">empty trace</span><span>Drag to draw a new event — FHR pane a deceleration, UC pane a contraction.</span>
+
+    <div class="shHead">Navigate &amp; view</div>
+    <span class="shK"><kbd>Tab</kbd> <kbd>⇧Tab</kbd></span><span>Next / previous event needing a decision.</span>
+    <span class="shK"><kbd>H</kbd> <kbd>B</kbd> <kbd>E</kbd></span><span>Hide labels · show baselines · overlay the CTU expert reference.</span>
+  </div>
   <div class="proto">
-    Typing criteria (NICHD/FIGO): <b>early</b> mirrors the contraction, gradual, nadir aligned with the peak; <b>late</b> gradual but onset/nadir/recovery shifted after the contraction (nadir past the peak); <b>variable</b> abrupt drop and recovery (&lt;30 s to nadir), variable shape, inconsistent relation to contractions; <b>prolonged</b> below baseline ≥2 min and &lt;10 min. Leave an event <b>unclassified</b> (dashed) when you cannot decide or classification is not applicable (e.g. the contraction channel is unreadable, so early vs late cannot be judged). Detector prefill provides intervals only: <b>all classification is yours</b>. Annotations are one shared copy: enter <b>your name</b> (top right) before editing — every action is attributed and listed in the record&rsquo;s History panel.
+    Typing (NICHD/FIGO): <b>early</b> gradual, mirrors the contraction, nadir at its peak · <b>late</b> gradual, shifted after it, nadir past the peak · <b>variable</b> abrupt (&lt;30 s to nadir), variable shape · <b>prolonged</b> ≥2 min. One shared copy — enter your name (top right) before editing; every action is attributed.
   </div>
 </div></div>
 
@@ -348,6 +378,7 @@ async function loadRecord(rid){
   let ann = null;
   const r = await fetch(api('/ann/rec_'+rid+'.json'));
   if (r.ok) ann = await r.json();
+  S.conflict = false; $('conflictBar').style.display = 'none';
   S.rid = rid; S.rec = rec;
   if (S.showExpert) await loadExpert(rid);
   await loadBaselines(rid); S.ann = ann || prefill(rec);
@@ -467,12 +498,17 @@ function savePayload(){
   return a;
 }
 async function saveNow(){
-  if (!S.ann) return;
+  if (!S.ann || S.conflict) return;
   clearTimeout(S.saveTimer);
   try{
     const r = await fetch(api('/save'), {method:'POST', body:JSON.stringify(savePayload())});
     if (r.status === 409){
-      $('saveState').textContent = '⚠ Conflict: someone else changed this record — reload it';
+      /* A dead end unless it is loud: the little grey line went unread, the
+         autosave kept ramming the same conflict, and everything since load
+         was stranded. Autosave pauses until the record is reloaded. */
+      S.conflict = true;
+      $('conflictBar').style.display = 'flex';
+      $('saveState').textContent = '';
       return;
     }
     if (!r.ok) throw new Error(r.status);
@@ -530,7 +566,7 @@ function yAxis(g, w, h, ticks, y2, title){
   if (title){                    // the pane's name, stood on end beside its scale
     g.save();
     g.translate(15, h / 2); g.rotate(-Math.PI / 2);
-    g.font = '700 16px -apple-system'; g.textAlign = 'center';
+    g.font = '16px -apple-system'; g.textAlign = 'center';
     g.fillStyle = '#8e8e93'; g.fillText(title, 0, 0);
     g.restore();
   }
@@ -781,7 +817,7 @@ function drawExpert(g, w, h, list){
   for (const e of items){
     const pa = t2px(e.a, w), pb = t2px(e.b, w);
     if (pb < AXW || pa > w) continue;
-    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#00c7be';
+    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#00877f';
     const xa = Math.max(pa, AXW), xb = Math.min(pb, w);
     g.save();
     g.beginPath(); g.rect(xa, 0, xb - xa, h); g.clip();
@@ -996,7 +1032,7 @@ function drawUC(){
     const isSel = mselHas('contractions', c.id);
     const isPair = (pUC?.list === 'contractions' && pUC.id === c.id) ||
                    (S.drag?.mode === 'pair' && S.drag.target === c.id);
-    eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#00c7be', isSel || isPair, isSel);
+    eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#00877f', isSel || isPair, isSel);
   }
   drawExpert(g, w, ph, 'contractions');
   drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1.1);
@@ -1018,7 +1054,7 @@ function drawMini(){
      box for the part of it the panes are showing. */
   g.fillStyle = 'rgba(0,122,255,.08)';
   g.fillRect(tx(S.view.t0), 0, tx(S.view.t1) - tx(S.view.t0), h);
-  g.strokeStyle = '#8a857c'; g.lineWidth = .8; g.beginPath();
+  g.strokeStyle = '#1c1c1e'; g.lineWidth = .8; g.beginPath();
   let pen = false;
   for (let i = 0; i < x.length; i += 3){
     const v = fhr[i];
@@ -1040,11 +1076,10 @@ function drawMini(){
     g.strokeStyle = '#fff'; g.lineWidth = 1.4;
     g.beginPath(); g.moveTo(px, h/2 - 5); g.lineTo(px, h/2 + 5); g.stroke();
   }
-  g.save();
-  g.translate(13, h / 2); g.rotate(-Math.PI / 2);
-  g.font = '600 9.5px -apple-system'; g.textAlign = 'center';
-  g.fillStyle = '#8e8e93'; g.fillText('TIMELINE', 0, 0);
-  g.restore();
+  g.font = '11px -apple-system'; g.textAlign = 'left';
+  g.fillStyle = '#8e8e93';
+  g.fillText('TIME', 10, h / 2 - 3);
+  g.fillText('LINE', 10, h / 2 + 9);
 }
 function renderCanvases(){ if (!S.rec) return; drawFHR(); drawLinks(); drawUC(); drawMini(); }
 
@@ -1157,7 +1192,7 @@ function renderQueue(){
   if (!items.length){ el.innerHTML = ''; return; }
   el.innerHTML = items.map(v => {
     const dash = !v.e.flag && v.list === 'decels';
-    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#00c7be');
+    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#00877f');
     return `<div class="qRow${S.sel?.id === v.e.id ? ' cur' : ''}" data-l="${v.list}" data-i="${v.e.id}">` +
       `<span class="chip" style="background:${bg}${dash ? ';border:1.5px dashed #8e8e93' : ''}"></span>` +
       `<span>${v.e.id}</span><span class="qt">${fmtT(v.e.a)}</span></div>`;
@@ -1321,6 +1356,26 @@ function renderHist(){
     const d = new Date(h.t);
     const ts = isNaN(d) ? '' : d.toLocaleDateString([], {month:'numeric', day:'numeric'});
     row.innerHTML = `<span class="ht">${ts}</span><b>${esc(h.by || '?')}</b> ${esc(h.action || '')}`;
+    /* A log line about an event is a way of pointing at it: clicking the line
+       selects what it changed, if it still exists to select. */
+    const m = /^([a-z]*\d+(?:,[a-z]*\d+)*):/.exec(h.action || '');
+    if (m){
+      const ids = m[1].split(',');
+      const found = ids.map(id =>
+        S.ann.decels.find(e => e.id === id) ? {list:'decels', id} :
+        S.ann.contractions.find(e => e.id === id) ? {list:'contractions', id} : null)
+        .filter(Boolean);
+      if (found.length){
+        row.classList.add('hLink');
+        row.onclick = () => {
+          S.sel = found[0];
+          S.msel = found.length > 1 ? found : null;
+          const e = getSel();
+          if (e) ensureVisible(e);
+          renderAll();
+        };
+      }
+    }
     el.appendChild(row);
   }
 }
@@ -1520,16 +1575,26 @@ function jumpPending(dir){
   discardProvisional();
   const seq = pendingSeq();
   if (!seq.length) return;
-  let i = 0;
-  if (S.sel){
-    const cur = getSel();
-    i = seq.findIndex(s => s.e.a > (cur ? cur.a : -1e9));
+  /* Forward means the first pending after the current position, backward the
+     last one before it -- "next minus one" landed back on the current event,
+     which is why Shift-Tab used to go nowhere. Both directions wrap. */
+  const cur = S.sel ? getSel() : null;
+  const at = cur ? cur.a : null;
+  let i;
+  if (at == null){
+    i = dir < 0 ? seq.length - 1 : 0;
+  } else if (dir > 0){
+    i = seq.findIndex(v => v.e.a > at);
     if (i < 0) i = 0;
-    if (dir < 0) i = (i - 1 + seq.length) % seq.length;
-  } else if (dir < 0) i = seq.length - 1;
-  const s = seq[i];
-  S.sel = {list:s.list, id:s.e.id};
-  ensureVisible(s.e); renderAll();
+  } else {
+    i = -1;
+    for (let k = 0; k < seq.length; k++) if (seq[k].e.a < at) i = k;
+    if (i < 0) i = seq.length - 1;
+  }
+  const v = seq[i];
+  S.sel = {list:v.list, id:v.e.id};
+  S.msel = null;
+  ensureVisible(v.e); renderAll();
 }
 
 /* ---------- mouse ---------- */

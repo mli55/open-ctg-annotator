@@ -14,10 +14,9 @@
    "b0": -68.4,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -68.433,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d39",
@@ -27,10 +26,9 @@
    "b0": -65.4,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -65.517,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d40",
@@ -40,10 +38,9 @@
    "b0": -63.88,
    "origin": "detector",
    "review": "pending",
-   "type": null,
-   "nadir_min": -64.0,
-   "det_pass": 2,
-   "flag": true
+   "type": "variable",
+   "nadir_min": -64,
+   "det_pass": 2
   },
   {
    "id": "d1",
@@ -67,10 +64,9 @@
    "b0": -59.22,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -59.483,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d2",
@@ -94,12 +90,11 @@
    "b0": -54.31,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -55.908,
    "src_rule": "prolonged",
    "src_linker": "late",
-   "nadir_lag_s": -63,
-   "flag": true
+   "nadir_lag_s": -63
   },
   {
    "id": "d4",
@@ -109,12 +104,11 @@
    "b0": -51.56,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -51.854,
    "src_rule": "prolonged",
    "src_linker": "early",
-   "nadir_lag_s": 3,
-   "flag": true
+   "nadir_lag_s": 3
   },
   {
    "id": "d5",
@@ -124,12 +118,11 @@
    "b0": -48.25,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -48.758,
    "src_rule": "prolonged",
    "src_linker": null,
-   "nadir_lag_s": 37,
-   "flag": true
+   "nadir_lag_s": 37
   },
   {
    "id": "d6",
@@ -139,12 +132,11 @@
    "b0": -46.84,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -47.312,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": -44,
-   "flag": true
+   "nadir_lag_s": -44
   },
   {
    "id": "d7",
@@ -182,10 +174,9 @@
    "b0": -40.73,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -41.7,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d9",
@@ -209,10 +200,9 @@
    "b0": -37.23,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -37.567,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d44",
@@ -222,10 +212,9 @@
    "b0": -35.77,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -35.8,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d45",
@@ -235,10 +224,9 @@
    "b0": -34.07,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "early",
    "nadir_min": -34.167,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d46",
@@ -248,10 +236,9 @@
    "b0": -32.57,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -32.6,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d47",
@@ -261,10 +248,9 @@
    "b0": -24.55,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "early",
    "nadir_min": -24.65,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d48",
@@ -274,10 +260,9 @@
    "b0": -23.35,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -23.533,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d49",
@@ -287,10 +272,9 @@
    "b0": -22.98,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -23.033,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d50",
@@ -300,10 +284,9 @@
    "b0": -21.82,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -21.833,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d51",
@@ -313,10 +296,9 @@
    "b0": -18.48,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -18.55,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d52",
@@ -326,10 +308,9 @@
    "b0": -15.07,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -15.083,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d53",
@@ -339,10 +320,9 @@
    "b0": -14.47,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -14.85,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d54",
@@ -352,10 +332,9 @@
    "b0": -10.5,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "na",
    "nadir_min": -10.617,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d55",
@@ -365,10 +344,9 @@
    "b0": -9.57,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "variable",
    "nadir_min": -9.95,
-   "det_pass": 2,
-   "flag": true
+   "det_pass": 2
   },
   {
    "id": "d10",
@@ -378,12 +356,11 @@
    "b0": -7.35,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "late",
    "nadir_min": -7.487,
    "src_rule": "late",
    "src_linker": null,
-   "nadir_lag_s": 95,
-   "flag": true
+   "nadir_lag_s": 95
   },
   {
    "id": "d11",
@@ -421,12 +398,11 @@
    "b0": -0.74,
    "origin": "detector",
    "review": "pending",
-   "type": null,
+   "type": "prolonged",
    "nadir_min": -4.692,
    "src_rule": "prolonged",
    "src_linker": "variable",
-   "nadir_lag_s": 20,
-   "flag": true
+   "nadir_lag_s": 20
   }
  ],
  "contractions": [
@@ -648,6 +624,6 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-22T01:30:18.210519+00:00",
+ "updated": "2026-08-22T02:08:57.158605+00:00",
  "history": []
 }

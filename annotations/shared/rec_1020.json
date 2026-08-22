@@ -1,25 +1,23 @@
 {
  "schema": 1,
  "record_id": 1020,
- "annotator": "detector",
+ "annotator": "Justin",
  "status": "open",
  "notes": "",
- "next_id": 47,
+ "next_id": 57,
  "decels": [
   {
-   "id": "d1",
-   "a": -68.47,
-   "b": -68.15,
-   "a0": -68.47,
-   "b0": -68.15,
-   "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -68.325,
-   "src_rule": "variable",
-   "src_linker": null,
-   "nadir_lag_s": null,
-   "flag": true
+   "id": "dm51",
+   "a": -68.81666666666666,
+   "b": -67.73333333333333,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin",
+   "type": "variable",
+   "det_type": null,
+   "nadir_min": -68.317
   },
   {
    "id": "d2",
@@ -30,7 +28,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -65.088,
+   "nadir_min": -65.083,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -138
@@ -44,23 +42,23 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -59.721,
+   "nadir_min": -59.717,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 7
   },
   {
-   "id": "d39",
-   "a": -59.38,
-   "b": -57.5,
-   "a0": -59.38,
-   "b0": -57.5,
-   "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -59.317,
-   "det_pass": 2,
-   "flag": true
+   "id": "dm52",
+   "a": -57.61666666666667,
+   "b": -56.483333333333334,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin",
+   "type": "early",
+   "det_type": null,
+   "nadir_min": -57.317
   },
   {
    "id": "d4",
@@ -71,7 +69,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -56.188,
+   "nadir_min": -56.183,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 51
@@ -83,11 +81,11 @@
    "a0": -54.68,
    "b0": -53.97,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "early",
    "nadir_min": -54.033,
    "det_pass": 2,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d5",
@@ -96,13 +94,13 @@
    "a0": -52.26,
    "b0": -51.74,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -52.108,
+   "review": "accepted",
+   "type": "early",
+   "nadir_min": -52.1,
    "src_rule": "variable",
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d6",
@@ -113,7 +111,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -49.358,
+   "nadir_min": -49.367,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 1
@@ -127,7 +125,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -46.829,
+   "nadir_min": -46.833,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": null
@@ -139,11 +137,11 @@
    "a0": -45.23,
    "b0": -44.63,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "early",
    "nadir_min": -44.917,
    "det_pass": 2,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d8",
@@ -168,7 +166,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -39.808,
+   "nadir_min": -39.817,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -3
@@ -180,10 +178,11 @@
    "a0": -37.45,
    "b0": -37.1,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "late",
    "nadir_min": -37.317,
-   "det_pass": 2
+   "det_pass": 2,
+   "by": "Justin"
   },
   {
    "id": "d10",
@@ -194,7 +193,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -34.592,
+   "nadir_min": -34.6,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 0
@@ -208,7 +207,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -31.508,
+   "nadir_min": -31.517,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 44
@@ -220,11 +219,11 @@
    "a0": -29.93,
    "b0": -29.48,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "early",
    "nadir_min": -29.7,
    "det_pass": 2,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d12",
@@ -249,7 +248,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -24.692,
+   "nadir_min": -24.583,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 66
@@ -261,11 +260,24 @@
    "a0": -22.17,
    "b0": -21.92,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "early",
    "nadir_min": -22.083,
    "det_pass": 2,
-   "flag": true
+   "by": "Justin"
+  },
+  {
+   "id": "dm54",
+   "a": -20.5,
+   "b": -19.8,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin",
+   "type": "early",
+   "det_type": null,
+   "nadir_min": -20.15
   },
   {
    "id": "d14",
@@ -276,7 +288,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -18.025,
+   "nadir_min": -18.017,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 2
@@ -288,11 +300,11 @@
    "a0": -17.58,
    "b0": -16.65,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "variable",
    "nadir_min": -17.283,
    "det_pass": 2,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d45",
@@ -301,11 +313,37 @@
    "a0": -16.05,
    "b0": -15.58,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "variable",
    "nadir_min": -15.933,
    "det_pass": 2,
-   "flag": true
+   "by": "Justin"
+  },
+  {
+   "id": "dm55",
+   "a": -13.583333333333334,
+   "b": -13.05,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin",
+   "type": "variable",
+   "det_type": null,
+   "nadir_min": -13.3
+  },
+  {
+   "id": "dm56",
+   "a": -11.766666666666667,
+   "b": -10.966666666666667,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin",
+   "type": "variable",
+   "det_type": null,
+   "nadir_min": -11.367
   },
   {
    "id": "d46",
@@ -314,11 +352,11 @@
    "a0": -10.73,
    "b0": -10.1,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "variable",
    "nadir_min": -10.4,
    "det_pass": 2,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d15",
@@ -327,13 +365,13 @@
    "a0": -9.77,
    "b0": -9,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -9.108,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -9.117,
    "src_rule": null,
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d16",
@@ -344,7 +382,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -6.987,
+   "nadir_min": -6.983,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 41
@@ -356,13 +394,13 @@
    "a0": -6.21,
    "b0": -4.44,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -5.554,
+   "review": "accepted",
+   "type": "early",
+   "nadir_min": -5.55,
    "src_rule": null,
    "src_linker": "early",
    "nadir_lag_s": 14,
-   "flag": true
+   "by": "Justin"
   },
   {
    "id": "d18",
@@ -371,16 +409,26 @@
    "a0": -3.88,
    "b0": -1.14,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -3.825,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -3.833,
    "src_rule": "prolonged",
    "src_linker": "variable",
    "nadir_lag_s": -88,
-   "flag": true
+   "by": "Justin"
   }
  ],
  "contractions": [
+  {
+   "id": "cm50",
+   "a": -65.95,
+   "b": -64.51666666666667,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin"
+  },
   {
    "id": "c19",
    "a": -63.25,
@@ -407,6 +455,26 @@
    "b0": -56.73,
    "origin": "detector",
    "review": "pending"
+  },
+  {
+   "id": "cm48",
+   "a": -55.15,
+   "b": -53.666666666666664,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin"
+  },
+  {
+   "id": "cm49",
+   "a": -52.733333333333334,
+   "b": -51.3,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin"
   },
   {
    "id": "c22",
@@ -490,6 +558,16 @@
    "review": "pending"
   },
   {
+   "id": "cm53",
+   "a": -24.85,
+   "b": -21.383333333333333,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Justin"
+  },
+  {
    "id": "c31",
    "a": -20.44,
    "b": -19.45,
@@ -553,7 +631,201 @@
    "review": "pending"
   }
  ],
- "deleted": [],
- "updated": "2026-08-22T01:30:18.210519+00:00",
- "history": []
+ "deleted": [
+  {
+   "list": "decels",
+   "id": "d1",
+   "a": -68.47,
+   "b": -68.15,
+   "a0": -68.47,
+   "b0": -68.15,
+   "origin": "detector",
+   "review": "deleted",
+   "type": null,
+   "nadir_min": -68.325,
+   "src_rule": "variable",
+   "src_linker": null,
+   "nadir_lag_s": null,
+   "flag": true,
+   "by": "Justin"
+  },
+  {
+   "list": "decels",
+   "id": "d39",
+   "a": -59.38,
+   "b": -57.5,
+   "a0": -59.38,
+   "b0": -57.5,
+   "origin": "detector",
+   "review": "deleted",
+   "type": null,
+   "nadir_min": -59.317,
+   "det_pass": 2,
+   "flag": true,
+   "by": "Justin"
+  }
+ ],
+ "updated": "2026-08-22T02:08:57.158605+00:00",
+ "history": [
+  {
+   "t": "2026-08-22T01:41:58.114Z",
+   "by": "Justin",
+   "action": "d1: deleted"
+  },
+  {
+   "t": "2026-08-22T01:42:16.431Z",
+   "by": "Justin",
+   "action": "dm47: added -68:46 \u2192 -67:50"
+  },
+  {
+   "t": "2026-08-22T01:42:16.431Z",
+   "by": "Justin",
+   "action": "dm47: type \u2192 prolonged"
+  },
+  {
+   "t": "2026-08-22T01:42:17.846Z",
+   "by": "Justin",
+   "action": "dm47: deleted"
+  },
+  {
+   "t": "2026-08-22T01:42:34.346Z",
+   "by": "Justin",
+   "action": "d39: deleted"
+  },
+  {
+   "t": "2026-08-22T01:42:43.569Z",
+   "by": "Justin",
+   "action": "cm48: added -55:09 \u2192 -53:40"
+  },
+  {
+   "t": "2026-08-22T01:42:45.654Z",
+   "by": "Justin",
+   "action": "cm49: added -52:44 \u2192 -51:18"
+  },
+  {
+   "t": "2026-08-22T01:42:48.423Z",
+   "by": "Justin",
+   "action": "cm50: added -65:57 \u2192 -64:31"
+  },
+  {
+   "t": "2026-08-22T01:42:53.090Z",
+   "by": "Justin",
+   "action": "dm51: added -68:49 \u2192 -67:44"
+  },
+  {
+   "t": "2026-08-22T01:42:53.090Z",
+   "by": "Justin",
+   "action": "dm51: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T01:43:00.965Z",
+   "by": "Justin",
+   "action": "dm52: added -57:37 \u2192 -56:58"
+  },
+  {
+   "t": "2026-08-22T01:43:00.965Z",
+   "by": "Justin",
+   "action": "dm52: type \u2192 early"
+  },
+  {
+   "t": "2026-08-22T01:43:07.619Z",
+   "by": "Justin",
+   "action": "dm52: boundary -57:37..-56:58 \u2192 -57:37..-56:29"
+  },
+  {
+   "t": "2026-08-22T01:43:12.394Z",
+   "by": "Justin",
+   "action": "d40: type \u2192 early (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:43:15.402Z",
+   "by": "Justin",
+   "action": "d5: type \u2192 early (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:43:18.445Z",
+   "by": "Justin",
+   "action": "d41: type \u2192 early (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:43:23.183Z",
+   "by": "Justin",
+   "action": "d38: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T01:43:38.947Z",
+   "by": "Justin",
+   "action": "cm53: added -24:51 \u2192 -21:23"
+  },
+  {
+   "t": "2026-08-22T01:43:57.320Z",
+   "by": "Justin",
+   "action": "d42: type \u2192 early (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:44:02.699Z",
+   "by": "Justin",
+   "action": "d43: type \u2192 early (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:44:06.783Z",
+   "by": "Justin",
+   "action": "dm54: added -20:30 \u2192 -19:48"
+  },
+  {
+   "t": "2026-08-22T01:44:06.783Z",
+   "by": "Justin",
+   "action": "dm54: type \u2192 early"
+  },
+  {
+   "t": "2026-08-22T01:44:12.827Z",
+   "by": "Justin",
+   "action": "dm55: added -13:35 \u2192 -13:03"
+  },
+  {
+   "t": "2026-08-22T01:44:12.827Z",
+   "by": "Justin",
+   "action": "dm55: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T01:44:16.156Z",
+   "by": "Justin",
+   "action": "dm56: added -11:46 \u2192 -10:58"
+  },
+  {
+   "t": "2026-08-22T01:44:16.156Z",
+   "by": "Justin",
+   "action": "dm56: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T01:44:18.137Z",
+   "by": "Justin",
+   "action": "d46: type \u2192 variable (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:44:28.404Z",
+   "by": "Justin",
+   "action": "d44: type \u2192 variable (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:44:32.030Z",
+   "by": "Justin",
+   "action": "d45: type \u2192 variable (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:44:35.088Z",
+   "by": "Justin",
+   "action": "d15: type \u2192 variable (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:44:39.457Z",
+   "by": "Justin",
+   "action": "d17: type \u2192 early (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T01:44:42.074Z",
+   "by": "Justin",
+   "action": "d18: type \u2192 variable (1 question cleared)"
+  }
+ ]
 }
