@@ -4,40 +4,82 @@
  "annotator": "detector",
  "status": "open",
  "notes": "",
- "next_id": 29,
+ "next_id": 32,
  "decels": [
   {
    "id": "d1",
-   "a": -63.92,
-   "b": -63.13,
-   "a0": -63.92,
-   "b0": -63.13,
+   "a": -64.0,
+   "b": -62.77,
+   "a0": -64.0,
+   "b0": -62.77,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
    "nadir_min": -63.567,
-   "det_prolonged": 0,
-   "src_linker": "variable",
    "src_rule": "variable",
-   "nadir_lag_s": -31.2
+   "src_linker": "variable",
+   "nadir_lag_s": -32.0
   },
   {
    "id": "d2",
-   "a": -39.88,
-   "b": -39.48,
-   "a0": -39.88,
-   "b0": -39.48,
+   "a": -60.17,
+   "b": -58.94,
+   "a0": -60.17,
+   "b0": -58.94,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -60.062,
+   "src_rule": "late",
+   "src_linker": "variable",
+   "nadir_lag_s": 54.0,
+   "flag": true
+  },
+  {
+   "id": "d3",
+   "a": -49.2,
+   "b": -48.9,
+   "a0": -49.2,
+   "b0": -48.9,
+   "origin": "detector",
+   "review": "pending",
+   "type": "variable",
+   "nadir_min": -49.196,
+   "src_rule": "variable",
+   "src_linker": "variable",
+   "nadir_lag_s": 38.0
+  },
+  {
+   "id": "d4",
+   "a": -48.4,
+   "b": -45.71,
+   "a0": -48.4,
+   "b0": -45.71,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -47.633,
+   "src_rule": "prolonged",
+   "src_linker": null,
+   "nadir_lag_s": -151.0,
+   "flag": true
+  },
+  {
+   "id": "d5",
+   "a": -39.9,
+   "b": -39.45,
+   "a0": -39.9,
+   "b0": -39.45,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
    "nadir_min": -39.742,
-   "det_prolonged": 0,
-   "src_linker": "variable",
    "src_rule": "variable",
-   "nadir_lag_s": 11.5
+   "src_linker": "variable",
+   "nadir_lag_s": 11.0
   },
   {
-   "id": "d3",
+   "id": "d6",
    "a": -30.83,
    "b": -30.17,
    "a0": -30.83,
@@ -46,120 +88,115 @@
    "review": "pending",
    "type": "variable",
    "nadir_min": -30.55,
-   "det_prolonged": 0,
-   "src_linker": "variable",
    "src_rule": "variable",
-   "nadir_lag_s": 23.2
+   "src_linker": "variable",
+   "nadir_lag_s": 23.0
   },
   {
-   "id": "d4",
+   "id": "d7",
    "a": -24.76,
-   "b": -24.13,
+   "b": -24.15,
    "a0": -24.76,
-   "b0": -24.13,
+   "b0": -24.15,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
    "nadir_min": -24.425,
-   "det_prolonged": 0,
-   "src_linker": "variable",
    "src_rule": "variable",
-   "nadir_lag_s": -108.5
+   "src_linker": "variable",
+   "nadir_lag_s": null
   },
   {
-   "id": "d5",
-   "a": -19.88,
+   "id": "d8",
+   "a": -19.86,
    "b": -19.42,
-   "a0": -19.88,
+   "a0": -19.86,
    "b0": -19.42,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -19.667,
-   "det_prolonged": 0,
-   "src_linker": "variable",
+   "nadir_min": -19.604,
    "src_rule": "variable",
-   "nadir_lag_s": 177.0
+   "src_linker": "variable",
+   "nadir_lag_s": null
   },
   {
-   "id": "d6",
-   "a": -11.07,
-   "b": -10.44,
-   "a0": -11.07,
-   "b0": -10.44,
+   "id": "d9",
+   "a": -14.27,
+   "b": -13.85,
+   "a0": -14.27,
+   "b0": -13.85,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -14.146,
+   "src_rule": "variable",
+   "src_linker": null,
+   "nadir_lag_s": null,
+   "flag": true
+  },
+  {
+   "id": "d10",
+   "a": -11.05,
+   "b": -10.41,
+   "a0": -11.05,
+   "b0": -10.41,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
    "nadir_min": -10.746,
-   "det_prolonged": 0,
-   "src_linker": "variable",
    "src_rule": "variable",
+   "src_linker": "variable",
    "nadir_lag_s": 18.0
   },
   {
-   "id": "d7",
+   "id": "d11",
    "a": -7.1,
-   "b": -6.3,
+   "b": -6.24,
    "a0": -7.1,
-   "b0": -6.3,
+   "b0": -6.24,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
    "nadir_min": -6.958,
-   "det_prolonged": 0,
-   "src_linker": "variable",
    "src_rule": "variable",
-   "nadir_lag_s": 9.2
+   "src_linker": "variable",
+   "nadir_lag_s": 9.0
   },
   {
-   "id": "d8",
-   "a": -4.59,
-   "b": -4.03,
-   "a0": -4.59,
-   "b0": -4.03,
+   "id": "d12",
+   "a": -5.21,
+   "b": -4.3,
+   "a0": -5.21,
+   "b0": -4.3,
    "origin": "detector",
    "review": "pending",
-   "type": "variable",
-   "nadir_min": -4.421,
-   "det_prolonged": 0,
+   "type": null,
+   "nadir_min": -5.058,
+   "src_rule": null,
    "src_linker": "variable",
-   "src_rule": "variable",
-   "nadir_lag_s": -109.8
+   "nadir_lag_s": -122.0,
+   "flag": true
   },
   {
-   "id": "d9",
-   "a": -2.99,
-   "b": -1.89,
-   "a0": -2.99,
-   "b0": -1.89,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -2.537,
-   "det_prolonged": 0,
-   "src_linker": "variable",
-   "src_rule": "variable",
-   "nadir_lag_s": 3.2
-  },
-  {
-   "id": "d10",
-   "a": -1.33,
+   "id": "d13",
+   "a": -3.07,
    "b": -0.0,
-   "a0": -1.33,
+   "a0": -3.07,
    "b0": -0.0,
    "origin": "detector",
    "review": "pending",
-   "type": "variable",
-   "nadir_min": -0.958,
-   "det_prolonged": 0,
-   "src_linker": "variable",
-   "src_rule": "variable",
-   "nadir_lag_s": 98.0
+   "type": null,
+   "nadir_min": -0.154,
+   "src_rule": "prolonged",
+   "src_linker": null,
+   "nadir_lag_s": 85.0,
+   "flag": true
   }
  ],
  "contractions": [
   {
-   "id": "c11",
+   "id": "c14",
    "a": -85.0,
    "b": -82.26,
    "a0": -85.0,
@@ -168,7 +205,7 @@
    "review": "pending"
   },
   {
-   "id": "c12",
+   "id": "c15",
    "a": -73.08,
    "b": -71.17,
    "a0": -73.08,
@@ -177,7 +214,7 @@
    "review": "pending"
   },
   {
-   "id": "c13",
+   "id": "c16",
    "a": -69.38,
    "b": -68.06,
    "a0": -69.38,
@@ -186,7 +223,7 @@
    "review": "pending"
   },
   {
-   "id": "c14",
+   "id": "c17",
    "a": -64.24,
    "b": -62.52,
    "a0": -64.24,
@@ -195,7 +232,7 @@
    "review": "pending"
   },
   {
-   "id": "c15",
+   "id": "c18",
    "a": -60.85,
    "b": -59.9,
    "a0": -60.85,
@@ -204,7 +241,7 @@
    "review": "pending"
   },
   {
-   "id": "c16",
+   "id": "c19",
    "a": -54.35,
    "b": -52.0,
    "a0": -54.35,
@@ -213,7 +250,7 @@
    "review": "pending"
   },
   {
-   "id": "c17",
+   "id": "c20",
    "a": -50.07,
    "b": -49.55,
    "a0": -50.07,
@@ -222,7 +259,7 @@
    "review": "pending"
   },
   {
-   "id": "c18",
+   "id": "c21",
    "a": -46.15,
    "b": -44.16,
    "a0": -46.15,
@@ -231,7 +268,7 @@
    "review": "pending"
   },
   {
-   "id": "c19",
+   "id": "c22",
    "a": -43.35,
    "b": -42.4,
    "a0": -43.35,
@@ -240,7 +277,7 @@
    "review": "pending"
   },
   {
-   "id": "c20",
+   "id": "c23",
    "a": -40.11,
    "b": -38.9,
    "a0": -40.11,
@@ -249,7 +286,7 @@
    "review": "pending"
   },
   {
-   "id": "c21",
+   "id": "c24",
    "a": -37.91,
    "b": -35.8,
    "a0": -37.91,
@@ -258,7 +295,7 @@
    "review": "pending"
   },
   {
-   "id": "c22",
+   "id": "c25",
    "a": -33.25,
    "b": -32.11,
    "a0": -33.25,
@@ -267,7 +304,7 @@
    "review": "pending"
   },
   {
-   "id": "c23",
+   "id": "c26",
    "a": -31.75,
    "b": -30.23,
    "a0": -31.75,
@@ -276,7 +313,7 @@
    "review": "pending"
   },
   {
-   "id": "c24",
+   "id": "c27",
    "a": -28.33,
    "b": -26.75,
    "a0": -28.33,
@@ -285,7 +322,7 @@
    "review": "pending"
   },
   {
-   "id": "c25",
+   "id": "c28",
    "a": -23.34,
    "b": -21.06,
    "a0": -23.34,
@@ -294,7 +331,7 @@
    "review": "pending"
   },
   {
-   "id": "c26",
+   "id": "c29",
    "a": -11.19,
    "b": -10.22,
    "a0": -11.19,
@@ -303,7 +340,7 @@
    "review": "pending"
   },
   {
-   "id": "c27",
+   "id": "c30",
    "a": -8.78,
    "b": -6.5,
    "a0": -8.78,
@@ -312,7 +349,7 @@
    "review": "pending"
   },
   {
-   "id": "c28",
+   "id": "c31",
    "a": -4.28,
    "b": -2.09,
    "a0": -4.28,
@@ -322,12 +359,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-21T23:48:23.448299+00:00",
+ "updated": "2026-08-22T00:36:40.619509+00:00",
  "history": [
   {
-   "t": "2026-08-21T23:48:23.448299+00:00",
+   "t": "2026-08-22T00:36:40.619509+00:00",
    "by": "detector",
-   "action": "v3 prefill: 10 decelerations and 18 contractions detected against a WMFB baseline. 10 typed where the pipeline linker and the geometric rule agreed; 0 left unclassified and flagged where they did not, so the expert types those unanchored"
+   "action": "v4 prefill against a Jimenez baseline: 13 decelerations, 18 contractions. 8 typed where the pipeline linker and the geometric rule agreed; 5 left unclassified and flagged"
   }
  ]
 }

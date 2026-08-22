@@ -12,8 +12,8 @@
 <style>
   :root{
     --paper:#f2f2f7; --card:#ffffff; --line:#e5e5ea; --ink:#1c1c1e; --dim:#8e8e93;
-    --blue:#007aff; --green:#34c759; --red:#ff3b30; --orange:#ff9500;
-    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#c98d33;
+    --blue:#007aff; --green:#34c759; --red:#ff3b30; --orange:#c2185b;
+    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#eda100;
   }
   *{box-sizing:border-box; margin:0}
   html,body{height:100%}
@@ -127,10 +127,10 @@
   .typeGrid{display:flex; gap:4px; margin:6px 0}
   .typeGrid button{flex:1 1 auto; padding:5px 3px; font-size:11.5px; white-space:nowrap}
   .typeGrid button b{opacity:.55; font-weight:600; margin-right:3px}
-  button.tEarly.on{background:#47a276; border-color:#47a276; color:#fff}
-  button.tLate.on{background:#c04a35; border-color:#c04a35; color:#fff}
-  button.tVariable.on{background:#3f74b0; border-color:#3f74b0; color:#fff}
-  button.tProlonged.on{background:#857ac6; border-color:#857ac6; color:#fff}
+  button.tEarly.on{background:#ffd166; border-color:#ffd166; color:#fff}
+  button.tLate.on{background:#d4402e; border-color:#d4402e; color:#fff}
+  button.tVariable.on{background:#f2913c; border-color:#f2913c; color:#fff}
+  button.tProlonged.on{background:#76161f; border-color:#76161f; color:#fff}
   button.tUnclassified.on{background:var(--gray); border-color:var(--gray); color:#fff}
   .morph{display:grid; grid-template-columns:auto 1fr; gap:1px 12px; margin:7px 0 2px;
     font-size:11.5px; line-height:1.5; font-variant-numeric:tabular-nums}
@@ -219,14 +219,14 @@
       <div id="histList"></div>
     </div>
     <div id="legend">
-      <span class="lg"><span class="chip" style="background:#47a276"></span>early</span>
-      <span class="lg"><span class="chip" style="background:#c04a35"></span>late</span>
-      <span class="lg"><span class="chip" style="background:#3f74b0"></span>variable</span>
-      <span class="lg"><span class="chip" style="background:#857ac6"></span>prolonged</span>
+      <span class="lg"><span class="chip" style="background:#ffd166"></span>early</span>
+      <span class="lg"><span class="chip" style="background:#d4402e"></span>late</span>
+      <span class="lg"><span class="chip" style="background:#f2913c"></span>variable</span>
+      <span class="lg"><span class="chip" style="background:#76161f"></span>prolonged</span>
       <span style="flex-basis:100%;height:0"></span>
-      <span class="lg"><span class="chip" style="background:#ff2d6f"></span>baseline</span>
-      <span class="lg"><span class="chip" style="background:#c98d33"></span>contraction</span>
-      <span class="lg" style="color:var(--orange)">⚑ question</span>
+      <span class="lg"><span class="chip" style="background:#2a78d6"></span>baseline</span>
+      <span class="lg"><span class="chip" style="background:#eda100"></span>contraction</span>
+      <span class="lg"><span class="chip" style="background:#c2185b"></span>⚑ question</span>
     </div>
   </aside>
 </div>
@@ -252,21 +252,19 @@
 <script>
 'use strict';
 const TYPES = ['early','late','variable','prolonged'];
-/* Chosen by what each colour has to DO, then run through the palette
-   validator rather than judged by eye. It passes all six checks -- worst
-   colour-blind pair 9.3, worst normal-vision pair 21.5 -- where several
-   better-looking sets failed at 5 and below.
-     variable  a quiet slate: it is 73% of every deceleration, and the most
-               common case has no business being the loudest thing on screen
-     late      the one warm red, because it is the one that means hypoxia
-     early     a green that is calm rather than neon -- benign, and it should
-               look it
-     prolonged violet: rare, and separable from the slate at a glance
-     pending   warm grey, which is the absence of a type, not a type
-   All muted enough to sit UNDER a black trace: the trace is the data, and
-   these are notes written on it. */
-const TCOLOR = {early:'#47a276', late:'#c04a35', variable:'#3f74b0',
-                prolonged:'#857ac6', pending:'#8f8a83'};
+/* The analyzer's concern ramp, widened. Its ORDER is the point: pale yellow
+   for early, orange for variable, red for late, dark maroon for prolonged --
+   the legend reads the way the worry does, and depth of colour is depth of
+   concern. Grey sits past the end of the ramp rather than inside it, because
+   an untyped event has not earned a low position on it, it has earned none.
+   Two steps are wider here than in the analyzer: variable and late were 6.4
+   apart in normal vision, and those are the two that most need telling apart
+   at a glance -- variable is 73% of all decelerations, late is the one that
+   means hypoxia. Widened they clear 15.3, and 13.3 under colour blindness.
+   The ramp fails the validator's lightness band by design: running light to
+   dark is what makes it a ramp rather than a set. */
+const TCOLOR = {early:'#ffd166', late:'#d4402e', variable:'#f2913c',
+                prolonged:'#76161f', pending:'#9a9790'};
 const TCN = {early:'early', late:'late', variable:'variable',
              prolonged:'prolonged', unclassified:'unclassified'};
 const $ = id => document.getElementById(id);
@@ -615,11 +613,11 @@ function drawTimeGrid(g, w, h, axisAt){
    estimator. wmfb is the one everything else here is computed against; the
    others are for comparison only. */
 const BL_METHODS = [
-  ['wmfb',    '#ff2d6f', 'WMFB (in use)'],
-  ['mantel',  '#3f74b0', 'Mantel'],
-  ['jimenez', '#47a276', 'Jimenez'],
-  ['cazares', '#c98d33', 'Cazares'],
-  ['taylor',  '#857ac6', 'Taylor'],
+  ['wmfb',    '#2a78d6', 'WMFB (in use)'],
+  ['mantel',  '#f2913c', 'Mantel'],
+  ['jimenez', '#ffd166', 'Jimenez'],
+  ['cazares', '#eda100', 'Cazares'],
+  ['taylor',  '#76161f', 'Taylor'],
 ];
 async function loadBaselines(rid){
   if (S.blCache?.rid === rid) return;
@@ -659,12 +657,12 @@ function drawBaseline(g, w, h, ymin, ymax){
      able to take it away and look again. */
   if (!st.base || S.hideBase) return;
   const y2 = v => h - (v - ymin)/(ymax - ymin)*h;
-  /* One solid line for its whole length. It is an estimate everywhere -- a
-     level fitted to the stable parts of the trace, not a channel that was
-     recorded -- but it is the thing every deceleration is measured against,
-     and a line that has to be traced through gaps is harder to judge a
-     departure from than one that is simply there. */
-  g.strokeStyle = '#5856d6'; g.lineWidth = 1.6;
+  /* Dashed for its whole length, measured stretches and interpolated ones
+     alike. The baseline is an ESTIMATE everywhere -- a level fitted to the
+     stable parts of the trace, not a channel that was recorded -- and a solid
+     line claims otherwise. Marking only the interpolated runs as uncertain
+     implied the rest had been measured, which is the wrong distinction. */
+  g.strokeStyle = '#2a78d6'; g.lineWidth = 1.6;
   g.beginPath();
   let pen = false;
   for (let i = 0; i < st.x.length; i++){
@@ -760,7 +758,7 @@ function drawExpert(g, w, h, list){
   for (const e of items){
     const pa = t2px(e.a, w), pb = t2px(e.b, w);
     if (pb < AXW || pa > w) continue;
-    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8f8a83') : '#c98d33';
+    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#9a9790') : '#eda100';
     const xa = Math.max(pa, AXW), xb = Math.min(pb, w);
     g.save();
     g.beginPath(); g.rect(xa, 0, xb - xa, h); g.clip();
@@ -797,7 +795,8 @@ function drawFHR(){
   for (const d of S.ann.decels){
     const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
     const isPair = pFHR?.list === 'decels' && pFHR.id === d.id;
-    eventRect(g, w, h, d, TCOLOR[d.type || 'pending'], isSel || isPair, isSel, d.flag);
+    eventRect(g, w, h, d, d.flag ? '#c2185b' : TCOLOR[d.type || 'pending'],
+              isSel || isPair, isSel);
   }
   drawExpert(g, w, h, 'decels');
   drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
@@ -955,10 +954,10 @@ function drawUC(){
     const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
     const isPair = (pUC?.list === 'contractions' && pUC.id === c.id) ||
                    (S.drag?.mode === 'pair' && S.drag.target === c.id);
-    eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#c98d33', isSel || isPair, isSel);
+    eventRect(g, w, ph, c, c.flag ? '#c2185b' : '#eda100', isSel || isPair, isSel);
   }
   drawExpert(g, w, ph, 'contractions');
-  drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1);
+  drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#2f7fd0', 1.1);
   drawLinkAnchor(g, w, ph, 'uc');
   g.restore();
   drawTimeGrid(g, w, ph, ph);
@@ -1095,7 +1094,7 @@ function renderQueue(){
   if (!items.length){ el.innerHTML = ''; return; }
   el.innerHTML = items.map(v => {
     const dash = !v.e.flag && v.list === 'decels';
-    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#c98d33');
+    const bg = v.e.flag ? '#c2185b' : (dash ? '#fff' : '#eda100');
     return `<div class="qRow${S.sel?.id === v.e.id ? ' cur' : ''}" data-l="${v.list}" data-i="${v.e.id}">` +
       `<span class="chip" style="background:${bg}${dash ? ';border:1.5px dashed #8e8e93' : ''}"></span>` +
       `<span>${v.e.id}</span><span class="qt">${fmtT(v.e.a)}</span></div>`;

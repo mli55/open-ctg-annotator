@@ -4,56 +4,39 @@
  "annotator": "detector",
  "status": "open",
  "notes": "",
- "next_id": 38,
+ "next_id": 37,
  "decels": [
   {
    "id": "d1",
-   "a": -38.74,
-   "b": -37.9,
-   "a0": -38.74,
-   "b0": -37.9,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -38.571,
-   "det_prolonged": 0,
-   "src_linker": "variable",
-   "src_rule": "variable",
-   "nadir_lag_s": 19.2
-  },
-  {
-   "id": "d2",
-   "a": -7.74,
-   "b": -5.58,
-   "a0": -7.74,
-   "b0": -5.58,
+   "a": -7.95,
+   "b": -6.77,
+   "a0": -7.95,
+   "b0": -6.77,
    "origin": "detector",
    "review": "pending",
    "type": null,
    "nadir_min": -7.288,
-   "det_prolonged": 0,
-   "src_linker": "variable",
-   "src_rule": "prolonged",
-   "nadir_lag_s": 11.8,
+   "src_rule": null,
+   "src_linker": "early",
+   "nadir_lag_s": 12.0,
    "flag": true
   },
   {
-   "id": "d3",
-   "a": -5.14,
-   "b": -3.62,
-   "a0": -5.14,
-   "b0": -3.62,
+   "id": "d2",
+   "a": -4.7,
+   "b": -4.4,
+   "a0": -4.7,
+   "b0": -4.4,
    "origin": "detector",
    "review": "pending",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -4.496,
-   "det_prolonged": 0,
-   "src_linker": "early",
-   "src_rule": "early",
+   "src_rule": "variable",
+   "src_linker": "variable",
    "nadir_lag_s": -2.0
   },
   {
-   "id": "d4",
+   "id": "d3",
    "a": -0.95,
    "b": -0.0,
    "a0": -0.95,
@@ -62,16 +45,15 @@
    "review": "pending",
    "type": null,
    "nadir_min": -0.096,
-   "det_prolonged": 0,
-   "src_linker": null,
    "src_rule": null,
+   "src_linker": null,
    "nadir_lag_s": null,
    "flag": true
   }
  ],
  "contractions": [
   {
-   "id": "c5",
+   "id": "c4",
    "a": -64.45,
    "b": -63.25,
    "a0": -64.45,
@@ -80,7 +62,7 @@
    "review": "pending"
   },
   {
-   "id": "c6",
+   "id": "c5",
    "a": -62.27,
    "b": -61.24,
    "a0": -62.27,
@@ -89,7 +71,7 @@
    "review": "pending"
   },
   {
-   "id": "c7",
+   "id": "c6",
    "a": -60.79,
    "b": -59.89,
    "a0": -60.79,
@@ -98,7 +80,7 @@
    "review": "pending"
   },
   {
-   "id": "c8",
+   "id": "c7",
    "a": -59.32,
    "b": -58.31,
    "a0": -59.32,
@@ -107,7 +89,7 @@
    "review": "pending"
   },
   {
-   "id": "c9",
+   "id": "c8",
    "a": -57.23,
    "b": -56.22,
    "a0": -57.23,
@@ -116,7 +98,7 @@
    "review": "pending"
   },
   {
-   "id": "c10",
+   "id": "c9",
    "a": -55.71,
    "b": -54.84,
    "a0": -55.71,
@@ -125,7 +107,7 @@
    "review": "pending"
   },
   {
-   "id": "c11",
+   "id": "c10",
    "a": -53.37,
    "b": -52.4,
    "a0": -53.37,
@@ -134,7 +116,7 @@
    "review": "pending"
   },
   {
-   "id": "c12",
+   "id": "c11",
    "a": -51.66,
    "b": -50.98,
    "a0": -51.66,
@@ -143,7 +125,7 @@
    "review": "pending"
   },
   {
-   "id": "c13",
+   "id": "c12",
    "a": -50.04,
    "b": -49.23,
    "a0": -50.04,
@@ -152,7 +134,7 @@
    "review": "pending"
   },
   {
-   "id": "c14",
+   "id": "c13",
    "a": -49.23,
    "b": -48.12,
    "a0": -49.23,
@@ -161,7 +143,7 @@
    "review": "pending"
   },
   {
-   "id": "c15",
+   "id": "c14",
    "a": -47.49,
    "b": -46.83,
    "a0": -47.49,
@@ -170,7 +152,7 @@
    "review": "pending"
   },
   {
-   "id": "c16",
+   "id": "c15",
    "a": -46.06,
    "b": -45.2,
    "a0": -46.06,
@@ -179,7 +161,7 @@
    "review": "pending"
   },
   {
-   "id": "c17",
+   "id": "c16",
    "a": -45.04,
    "b": -44.11,
    "a0": -45.04,
@@ -188,7 +170,7 @@
    "review": "pending"
   },
   {
-   "id": "c18",
+   "id": "c17",
    "a": -43.34,
    "b": -42.63,
    "a0": -43.34,
@@ -197,7 +179,7 @@
    "review": "pending"
   },
   {
-   "id": "c19",
+   "id": "c18",
    "a": -42.3,
    "b": -41.66,
    "a0": -42.3,
@@ -206,7 +188,7 @@
    "review": "pending"
   },
   {
-   "id": "c20",
+   "id": "c19",
    "a": -39.35,
    "b": -38.25,
    "a0": -39.35,
@@ -215,7 +197,7 @@
    "review": "pending"
   },
   {
-   "id": "c21",
+   "id": "c20",
    "a": -38.24,
    "b": -37.48,
    "a0": -38.24,
@@ -224,7 +206,7 @@
    "review": "pending"
   },
   {
-   "id": "c22",
+   "id": "c21",
    "a": -32.95,
    "b": -32.17,
    "a0": -32.95,
@@ -233,7 +215,7 @@
    "review": "pending"
   },
   {
-   "id": "c23",
+   "id": "c22",
    "a": -31.78,
    "b": -30.72,
    "a0": -31.78,
@@ -242,7 +224,7 @@
    "review": "pending"
   },
   {
-   "id": "c24",
+   "id": "c23",
    "a": -29.29,
    "b": -27.98,
    "a0": -29.29,
@@ -251,7 +233,7 @@
    "review": "pending"
   },
   {
-   "id": "c25",
+   "id": "c24",
    "a": -27.77,
    "b": -25.73,
    "a0": -27.77,
@@ -260,7 +242,7 @@
    "review": "pending"
   },
   {
-   "id": "c26",
+   "id": "c25",
    "a": -24.69,
    "b": -23.96,
    "a0": -24.69,
@@ -269,7 +251,7 @@
    "review": "pending"
   },
   {
-   "id": "c27",
+   "id": "c26",
    "a": -23.4,
    "b": -22.47,
    "a0": -23.4,
@@ -278,7 +260,7 @@
    "review": "pending"
   },
   {
-   "id": "c28",
+   "id": "c27",
    "a": -22.15,
    "b": -21.54,
    "a0": -22.15,
@@ -287,7 +269,7 @@
    "review": "pending"
   },
   {
-   "id": "c29",
+   "id": "c28",
    "a": -20.02,
    "b": -19.15,
    "a0": -20.02,
@@ -296,7 +278,7 @@
    "review": "pending"
   },
   {
-   "id": "c30",
+   "id": "c29",
    "a": -16.75,
    "b": -15.96,
    "a0": -16.75,
@@ -305,7 +287,7 @@
    "review": "pending"
   },
   {
-   "id": "c31",
+   "id": "c30",
    "a": -15.78,
    "b": -14.61,
    "a0": -15.78,
@@ -314,7 +296,7 @@
    "review": "pending"
   },
   {
-   "id": "c32",
+   "id": "c31",
    "a": -13.52,
    "b": -13.03,
    "a0": -13.52,
@@ -323,7 +305,7 @@
    "review": "pending"
   },
   {
-   "id": "c33",
+   "id": "c32",
    "a": -11.34,
    "b": -10.49,
    "a0": -11.34,
@@ -332,7 +314,7 @@
    "review": "pending"
   },
   {
-   "id": "c34",
+   "id": "c33",
    "a": -9.55,
    "b": -8.69,
    "a0": -9.55,
@@ -341,7 +323,7 @@
    "review": "pending"
   },
   {
-   "id": "c35",
+   "id": "c34",
    "a": -8.14,
    "b": -7.29,
    "a0": -8.14,
@@ -350,7 +332,7 @@
    "review": "pending"
   },
   {
-   "id": "c36",
+   "id": "c35",
    "a": -5.25,
    "b": -3.69,
    "a0": -5.25,
@@ -359,7 +341,7 @@
    "review": "pending"
   },
   {
-   "id": "c37",
+   "id": "c36",
    "a": -3.36,
    "b": -2.72,
    "a0": -3.36,
@@ -369,12 +351,12 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-21T23:48:23.448299+00:00",
+ "updated": "2026-08-22T00:36:40.619509+00:00",
  "history": [
   {
-   "t": "2026-08-21T23:48:23.448299+00:00",
+   "t": "2026-08-22T00:36:40.619509+00:00",
    "by": "detector",
-   "action": "v3 prefill: 4 decelerations and 33 contractions detected against a WMFB baseline. 2 typed where the pipeline linker and the geometric rule agreed; 2 left unclassified and flagged where they did not, so the expert types those unanchored"
+   "action": "v4 prefill against a Jimenez baseline: 3 decelerations, 33 contractions. 1 typed where the pipeline linker and the geometric rule agreed; 2 left unclassified and flagged"
   }
  ]
 }
