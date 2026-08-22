@@ -116,8 +116,10 @@
     max-height:30%; padding:8px 0 6px}
   #queueList{overflow-y:auto; min-height:0; scrollbar-gutter:stable}
   /* With four or more waiting, the queue must show at least four -- a list
-     crushed to two rows reads as two rows of work. */
-  #queueList:has(.qRow:nth-child(4)){min-height:88px}
+     crushed to two rows reads as two rows of work. The minimum goes on the
+     WRAP: a minimum on the scrolling child just makes it overflow its box
+     into whatever sits below. */
+  #queueWrap:has(.qRow:nth-child(4)){min-height:122px}
   #queueList::-webkit-scrollbar{width:12px}
   #queueList::-webkit-scrollbar-thumb{background:#c7c7cc; border-radius:6px;
     border:3px solid var(--card)}
@@ -221,12 +223,12 @@
   </main>
   <aside id="panel">
     <div class="pad" id="selCard"><div class="t">No event selected — click one on the trace, or press <b>Tab</b> for the next pending</div></div>
-    <div class="pad">
-      <textarea id="notes" placeholder="Add a note… (Enter to log it to History)"></textarea>
-    </div>
     <div class="pad" id="queueWrap">
       <div class="secTitle">Needs a decision</div>
       <div id="queueList"></div>
+    </div>
+    <div class="pad">
+      <textarea id="notes" placeholder="Add a note… (Enter to log it to History)"></textarea>
     </div>
     <div class="pad" id="histWrap">
       <div class="secTitle histHead">History
@@ -290,6 +292,7 @@ const S = {
 async function boot(){
   S.blShow = new Set([BL_IN_USE]);
   S.blOn = false;
+  S.noteOnly = true;      // the log opens on what reviewers SAID, not what the tool recorded
   S.annotator = localStorage.getItem('annotator') || '';
   $('annName').value = S.annotator;
   syncNameHint();
