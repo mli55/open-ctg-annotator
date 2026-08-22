@@ -4,13 +4,13 @@
  "annotator": "detector",
  "status": "open",
  "notes": "",
- "next_id": 43,
+ "next_id": 51,
  "decels": [
   {
    "id": "d1",
-   "a": -75.0,
+   "a": -75,
    "b": -73.9,
-   "a0": -75.0,
+   "a0": -75,
    "b0": -73.9,
    "origin": "detector",
    "review": "pending",
@@ -18,7 +18,7 @@
    "nadir_min": -74.504,
    "src_rule": null,
    "src_linker": "variable",
-   "nadir_lag_s": -62.0,
+   "nadir_lag_s": -62,
    "flag": true
   },
   {
@@ -33,7 +33,7 @@
    "nadir_min": -68.942,
    "src_rule": "late",
    "src_linker": null,
-   "nadir_lag_s": 89.0,
+   "nadir_lag_s": 89,
    "flag": true
   },
   {
@@ -52,6 +52,19 @@
    "flag": true
   },
   {
+   "id": "d43",
+   "a": -61.13,
+   "b": -60.07,
+   "a0": -61.13,
+   "b0": -60.07,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -61.117,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
    "id": "d4",
    "a": -57.02,
    "b": -56.09,
@@ -63,7 +76,20 @@
    "nadir_min": -56.462,
    "src_rule": "late",
    "src_linker": null,
-   "nadir_lag_s": 148.0,
+   "nadir_lag_s": 148,
+   "flag": true
+  },
+  {
+   "id": "d44",
+   "a": -52.63,
+   "b": -51.05,
+   "a0": -52.63,
+   "b0": -51.05,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -52.033,
+   "det_pass": 2,
    "flag": true
   },
   {
@@ -78,22 +104,22 @@
    "nadir_min": -49.575,
    "src_rule": "early",
    "src_linker": "variable",
-   "nadir_lag_s": -14.0,
+   "nadir_lag_s": -14,
    "flag": true
   },
   {
    "id": "d6",
    "a": -45.67,
-   "b": -45.0,
+   "b": -45,
    "a0": -45.67,
-   "b0": -45.0,
+   "b0": -45,
    "origin": "detector",
    "review": "pending",
    "type": "variable",
    "nadir_min": -45.571,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -87.0
+   "nadir_lag_s": -87
   },
   {
    "id": "d7",
@@ -107,7 +133,33 @@
    "nadir_min": -40.533,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 83.0
+   "nadir_lag_s": 83
+  },
+  {
+   "id": "d45",
+   "a": -39.73,
+   "b": -39.35,
+   "a0": -39.73,
+   "b0": -39.35,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -39.7,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d46",
+   "a": -38.65,
+   "b": -38.08,
+   "a0": -38.65,
+   "b0": -38.08,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -38.35,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d8",
@@ -136,7 +188,7 @@
    "nadir_min": -30.679,
    "src_rule": "variable",
    "src_linker": null,
-   "nadir_lag_s": -31.0,
+   "nadir_lag_s": -31,
    "flag": true
   },
   {
@@ -151,7 +203,7 @@
    "nadir_min": -25.875,
    "src_rule": null,
    "src_linker": "early",
-   "nadir_lag_s": -73.0,
+   "nadir_lag_s": -73,
    "flag": true
   },
   {
@@ -166,7 +218,7 @@
    "nadir_min": -24.212,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": -44.0,
+   "nadir_lag_s": -44,
    "flag": true
   },
   {
@@ -181,7 +233,20 @@
    "nadir_min": -21.767,
    "src_rule": "late",
    "src_linker": null,
-   "nadir_lag_s": 103.0,
+   "nadir_lag_s": 103,
+   "flag": true
+  },
+  {
+   "id": "d47",
+   "a": -20.28,
+   "b": -19.27,
+   "a0": -20.28,
+   "b0": -19.27,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -20.0,
+   "det_pass": 2,
    "flag": true
   },
   {
@@ -211,7 +276,7 @@
    "nadir_min": -14.808,
    "src_rule": "variable",
    "src_linker": null,
-   "nadir_lag_s": -91.0,
+   "nadir_lag_s": -91,
    "flag": true
   },
   {
@@ -226,7 +291,7 @@
    "nadir_min": -12.229,
    "src_rule": "prolonged",
    "src_linker": null,
-   "nadir_lag_s": -64.0,
+   "nadir_lag_s": -64,
    "flag": true
   },
   {
@@ -241,7 +306,7 @@
    "nadir_min": -9.075,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -53.0
+   "nadir_lag_s": -53
   },
   {
    "id": "d17",
@@ -255,7 +320,20 @@
    "nadir_min": -6.575,
    "src_rule": "late",
    "src_linker": "late",
-   "nadir_lag_s": 46.0
+   "nadir_lag_s": 46
+  },
+  {
+   "id": "d48",
+   "a": -5.72,
+   "b": -5.52,
+   "a0": -5.72,
+   "b0": -5.52,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -5.583,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d18",
@@ -269,7 +347,33 @@
    "nadir_min": -4.183,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 70.0
+   "nadir_lag_s": 70
+  },
+  {
+   "id": "d49",
+   "a": -3.8,
+   "b": -3.6,
+   "a0": -3.8,
+   "b0": -3.6,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -3.8,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d50",
+   "a": -2.95,
+   "b": -2.75,
+   "a0": -2.95,
+   "b0": -2.75,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -2.95,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d19",
@@ -283,7 +387,7 @@
    "nadir_min": -1.808,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -23.0
+   "nadir_lag_s": -23
   },
   {
    "id": "d20",
@@ -297,7 +401,7 @@
    "nadir_min": -1.338,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 6.0
+   "nadir_lag_s": 6
   }
  ],
  "contractions": [
@@ -501,6 +605,6 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-22T01:03:08.723147+00:00",
+ "updated": "2026-08-22T01:30:18.210519+00:00",
  "history": []
 }

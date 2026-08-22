@@ -1,10 +1,10 @@
 {
  "schema": 1,
  "record_id": 1180,
- "annotator": "detector",
+ "annotator": "qa",
  "status": "open",
  "notes": "",
- "next_id": 64,
+ "next_id": 91,
  "decels": [
   {
    "id": "d1",
@@ -15,7 +15,7 @@
    "origin": "detector",
    "review": "pending",
    "type": null,
-   "nadir_min": -78.242,
+   "nadir_min": -78.25,
    "src_rule": "variable",
    "src_linker": null,
    "nadir_lag_s": null,
@@ -30,7 +30,7 @@
    "origin": "detector",
    "review": "pending",
    "type": null,
-   "nadir_min": -77.004,
+   "nadir_min": -77.017,
    "src_rule": "variable",
    "src_linker": null,
    "nadir_lag_s": null,
@@ -43,13 +43,13 @@
    "a0": -75.9,
    "b0": -75.24,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
+   "review": "accepted",
+   "type": "variable",
    "nadir_min": -75.45,
    "src_rule": "variable",
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true
+   "by": "Mengning"
   },
   {
    "id": "d4",
@@ -58,13 +58,13 @@
    "a0": -74.33,
    "b0": -73.7,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -73.871,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -73.883,
    "src_rule": "variable",
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true
+   "by": "Mengning"
   },
   {
    "id": "d5",
@@ -73,13 +73,13 @@
    "a0": -73.2,
    "b0": -72.47,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -72.754,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -72.75,
    "src_rule": "variable",
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true
+   "by": "Mengning"
   },
   {
    "id": "d6",
@@ -93,7 +93,20 @@
    "nadir_min": -69.25,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 16.0
+   "nadir_lag_s": 16
+  },
+  {
+   "id": "d76",
+   "a": -68.78,
+   "b": -68.22,
+   "a0": -68.78,
+   "b0": -68.22,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -68.683,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d7",
@@ -104,10 +117,23 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -66.662,
+   "nadir_min": -66.667,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 20.0
+   "nadir_lag_s": 20
+  },
+  {
+   "id": "d77",
+   "a": -66.28,
+   "b": -65.92,
+   "a0": -66.28,
+   "b0": -65.92,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -66.067,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d8",
@@ -118,10 +144,10 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -65.108,
+   "nadir_min": -65.1,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -68.0
+   "nadir_lag_s": -68
   },
   {
    "id": "d9",
@@ -132,10 +158,23 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -63.688,
+   "nadir_min": -63.683,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 17.0
+   "nadir_lag_s": 17
+  },
+  {
+   "id": "d78",
+   "a": -63.23,
+   "b": -62.63,
+   "a0": -63.23,
+   "b0": -62.63,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -62.783,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d10",
@@ -146,10 +185,23 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -61.783,
+   "nadir_min": -61.867,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 4.0
+   "nadir_lag_s": 4
+  },
+  {
+   "id": "d79",
+   "a": -61.3,
+   "b": -61.12,
+   "a0": -61.3,
+   "b0": -61.12,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -61.233,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d11",
@@ -160,10 +212,10 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -60.629,
+   "nadir_min": -60.633,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 7.0
+   "nadir_lag_s": 7
   },
   {
    "id": "d12",
@@ -174,24 +226,127 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -58.625,
+   "nadir_min": -58.633,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 9.0
+   "nadir_lag_s": 9
   },
   {
    "id": "d13",
-   "a": -56.64,
+   "a": -56.11666666666667,
    "b": -54.58,
    "a0": -56.64,
    "b0": -54.58,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -55.142,
+   "review": "edited",
+   "type": "late",
+   "nadir_min": -55.133,
    "src_rule": "prolonged",
    "src_linker": null,
-   "nadir_lag_s": 131.0,
+   "nadir_lag_s": 131,
+   "by": "Mengning"
+  },
+  {
+   "id": "d80",
+   "a": -53.22,
+   "b": -52.48,
+   "a0": -53.22,
+   "b0": -52.48,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -53.033,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d81",
+   "a": -51.68,
+   "b": -50.88,
+   "a0": -51.68,
+   "b0": -50.88,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -51.083,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d82",
+   "a": -49.48,
+   "b": -49.08,
+   "a0": -49.48,
+   "b0": -49.08,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -49.4,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d83",
+   "a": -46.92,
+   "b": -46.52,
+   "a0": -46.92,
+   "b0": -46.52,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -46.717,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d84",
+   "a": -43.12,
+   "b": -42.82,
+   "a0": -43.12,
+   "b0": -42.82,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -42.9,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d85",
+   "a": -40.72,
+   "b": -40.48,
+   "a0": -40.72,
+   "b0": -40.48,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -40.567,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d73",
+   "a": -39.83,
+   "b": -38.55,
+   "a0": -39.83,
+   "b0": -38.55,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -39.733,
+   "det_pass": 2
+  },
+  {
+   "id": "d86",
+   "a": -38.32,
+   "b": -38.07,
+   "a0": -38.32,
+   "b0": -38.07,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -38.15,
+   "det_pass": 2,
    "flag": true
   },
   {
@@ -203,7 +358,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -37.071,
+   "nadir_min": -37.067,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": null
@@ -215,27 +370,66 @@
    "a0": -35.57,
    "b0": -34.77,
    "origin": "detector",
-   "review": "pending",
-   "type": "early",
-   "nadir_min": -35.071,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -35.067,
    "src_rule": "early",
    "src_linker": "early",
-   "nadir_lag_s": -8.0
+   "nadir_lag_s": -8,
+   "by": "Mengning"
   },
   {
-   "id": "d16",
-   "a": -32.21,
-   "b": -29.81,
-   "a0": -32.21,
-   "b0": -29.81,
+   "id": "d87",
+   "a": -34.5,
+   "b": -33.97,
+   "a0": -34.5,
+   "b0": -33.97,
    "origin": "detector",
    "review": "pending",
    "type": null,
-   "nadir_min": -30.146,
+   "nadir_min": -34.35,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d74",
+   "a": -33.75,
+   "b": -33.43,
+   "a0": -33.75,
+   "b0": -33.43,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -33.6,
+   "det_pass": 2
+  },
+  {
+   "id": "d16",
+   "a": -32.31666666666667,
+   "b": -31.25,
+   "a0": -32.21,
+   "b0": -29.81,
+   "origin": "detector",
+   "review": "edited",
+   "type": "variable",
+   "nadir_min": -31.75,
    "src_rule": "prolonged",
    "src_linker": "early",
-   "nadir_lag_s": -16.0,
-   "flag": true
+   "nadir_lag_s": -16,
+   "by": "Mengning"
+  },
+  {
+   "id": "dm64",
+   "a": -30.583333333333332,
+   "b": -29.933333333333334,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Mengning",
+   "type": "variable",
+   "det_type": null,
+   "nadir_min": -30.15
   },
   {
    "id": "d17",
@@ -246,10 +440,10 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -28.812,
+   "nadir_min": -28.817,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 6.0
+   "nadir_lag_s": 6
   },
   {
    "id": "d18",
@@ -258,12 +452,13 @@
    "a0": -28.1,
    "b0": -27.11,
    "origin": "detector",
-   "review": "pending",
-   "type": "early",
-   "nadir_min": -27.413,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -27.4,
    "src_rule": "early",
    "src_linker": "early",
-   "nadir_lag_s": 10.0
+   "nadir_lag_s": 10,
+   "by": "Mengning"
   },
   {
    "id": "d19",
@@ -272,13 +467,13 @@
    "a0": -26.9,
    "b0": -25.56,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -25.737,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -25.767,
    "src_rule": null,
    "src_linker": "early",
-   "nadir_lag_s": 17.0,
-   "flag": true
+   "nadir_lag_s": 17,
+   "by": "Mengning"
   },
   {
    "id": "d20",
@@ -289,10 +484,10 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -24.646,
+   "nadir_min": -24.65,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 16.0
+   "nadir_lag_s": 16
   },
   {
    "id": "d21",
@@ -301,13 +496,13 @@
    "a0": -23.96,
    "b0": -22.9,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -23.212,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -23.217,
    "src_rule": null,
    "src_linker": "early",
-   "nadir_lag_s": 17.0,
-   "flag": true
+   "nadir_lag_s": 17,
+   "by": "Mengning"
   },
   {
    "id": "d22",
@@ -321,7 +516,7 @@
    "nadir_min": -21.7,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -82.0
+   "nadir_lag_s": -82
   },
   {
    "id": "d23",
@@ -332,25 +527,38 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -20.325,
+   "nadir_min": -20.317,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 1.0
+   "nadir_lag_s": 1
   },
   {
    "id": "d24",
-   "a": -19.39,
-   "b": -16.8,
+   "a": -19.266666666666666,
+   "b": -17.793333333333333,
    "a0": -19.39,
    "b0": -16.8,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -18.558,
+   "review": "edited",
+   "type": "early",
+   "nadir_min": -18.55,
    "src_rule": "prolonged",
    "src_linker": "early",
-   "nadir_lag_s": 1.0,
-   "flag": true
+   "nadir_lag_s": 1,
+   "by": "Mengning"
+  },
+  {
+   "id": "dm66",
+   "a": -17.383333333333333,
+   "b": -16.65,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Mengning",
+   "type": "variable",
+   "det_type": null,
+   "nadir_min": -16.983
   },
   {
    "id": "d25",
@@ -361,10 +569,23 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -16.029,
+   "nadir_min": -16,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -29.0
+   "nadir_lag_s": -29
+  },
+  {
+   "id": "d88",
+   "a": -15.02,
+   "b": -14.5,
+   "a0": -15.02,
+   "b0": -14.5,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -14.9,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d26",
@@ -375,10 +596,23 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -14.175,
+   "nadir_min": -14.167,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -3.0
+   "nadir_lag_s": -3
+  },
+  {
+   "id": "d89",
+   "a": -13.57,
+   "b": -13.12,
+   "a0": -13.57,
+   "b0": -13.12,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -13.533,
+   "det_pass": 2,
+   "flag": true
   },
   {
    "id": "d27",
@@ -389,55 +623,123 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -12.688,
+   "nadir_min": -12.683,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 6.0
+   "nadir_lag_s": 6
+  },
+  {
+   "id": "d90",
+   "a": -12.22,
+   "b": -11.63,
+   "a0": -12.22,
+   "b0": -11.63,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -12.217,
+   "det_pass": 2,
+   "flag": true
+  },
+  {
+   "id": "d75",
+   "a": -11.17,
+   "b": -10.92,
+   "a0": -11.17,
+   "b0": -10.92,
+   "origin": "detector",
+   "review": "pending",
+   "type": null,
+   "nadir_min": -11.1,
+   "det_pass": 2
   },
   {
    "id": "d28",
    "a": -10.66,
-   "b": -9.05,
+   "b": -10.216666666666667,
    "a0": -10.66,
    "b0": -9.05,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -9.292,
+   "review": "edited",
+   "type": "variable",
+   "nadir_min": -10.533,
    "src_rule": "variable",
    "src_linker": "late",
-   "nadir_lag_s": -36.0,
-   "flag": true
+   "nadir_lag_s": -36,
+   "by": "Mengning",
+   "pair": "none"
+  },
+  {
+   "id": "dm67",
+   "a": -10.15,
+   "b": -9.583333333333334,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Mengning",
+   "type": "variable",
+   "det_type": null,
+   "pair": "none",
+   "nadir_min": -9.9
+  },
+  {
+   "id": "dm68",
+   "a": -9.5,
+   "b": -9.033333333333333,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Mengning",
+   "type": "variable",
+   "det_type": null,
+   "pair": "none",
+   "nadir_min": -9.3
   },
   {
    "id": "d29",
-   "a": -8.7,
-   "b": -6.79,
+   "a": -8.783333333333333,
+   "b": -7.883333333333334,
    "a0": -8.7,
    "b0": -6.79,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -7.096,
+   "review": "edited",
+   "type": "early",
+   "nadir_min": -8.233,
    "src_rule": "variable",
    "src_linker": "late",
-   "nadir_lag_s": 8.0,
-   "flag": true
+   "nadir_lag_s": 8,
+   "by": "Mengning",
+   "pair": "c63"
+  },
+  {
+   "id": "dm71",
+   "a": -7.716666666666667,
+   "b": -6.666666666666667,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Mengning",
+   "type": "na",
+   "det_type": null,
+   "nadir_min": -7.1
   },
   {
    "id": "d30",
-   "a": -6.55,
+   "a": -6.2,
    "b": -5.4,
    "a0": -6.55,
    "b0": -5.4,
    "origin": "detector",
-   "review": "pending",
-   "type": null,
-   "nadir_min": -5.446,
+   "review": "edited",
+   "type": "na",
+   "nadir_min": -5.45,
    "src_rule": null,
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true
+   "by": "Mengning"
   },
   {
    "id": "d31",
@@ -448,7 +750,7 @@
    "origin": "detector",
    "review": "pending",
    "type": null,
-   "nadir_min": -4.171,
+   "nadir_min": -4.167,
    "src_rule": null,
    "src_linker": null,
    "nadir_lag_s": null,
@@ -456,33 +758,49 @@
   },
   {
    "id": "d32",
-   "a": -3.67,
-   "b": -3.06,
+   "a": -3.45,
+   "b": -2.533333333333333,
    "a0": -3.67,
    "b0": -3.06,
    "origin": "detector",
-   "review": "pending",
+   "review": "edited",
    "type": null,
-   "nadir_min": -3.058,
+   "nadir_min": -3.033,
    "src_rule": null,
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true
+   "flag": true,
+   "by": "Mengning"
   },
   {
    "id": "d33",
-   "a": -2.64,
-   "b": -0.23,
+   "a": -2.433333333333333,
+   "b": -1.3666666666666667,
    "a0": -2.64,
    "b0": -0.23,
    "origin": "detector",
-   "review": "pending",
+   "review": "edited",
    "type": null,
-   "nadir_min": -0.454,
+   "nadir_min": -1.683,
    "src_rule": "prolonged",
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true
+   "flag": true,
+   "by": "Mengning"
+  },
+  {
+   "id": "dm72",
+   "a": -1.0833333333333333,
+   "b": -0.1,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Mengning",
+   "type": null,
+   "det_type": null,
+   "flag": true,
+   "nadir_min": -0.45
   }
  ],
  "contractions": [
@@ -758,6 +1076,6 @@
   }
  ],
  "deleted": [],
- "updated": "2026-08-22T01:03:08.723147+00:00",
+ "updated": "2026-08-22T01:30:18.210519+00:00",
  "history": []
 }
