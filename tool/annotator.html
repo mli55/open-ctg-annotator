@@ -13,7 +13,7 @@
   :root{
     --paper:#f2f2f7; --card:#ffffff; --line:#e5e5ea; --ink:#1c1c1e; --dim:#8e8e93;
     --blue:#007aff; --green:#34c759; --red:#ff3b30; --orange:#ff9500;
-    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#79aeaa;
+    --purple:#af52de; --teal:#5ac8fa; --gray:#8e8e93; --uc:#00c7be;
   }
   *{box-sizing:border-box; margin:0}
   html,body{height:100%}
@@ -128,9 +128,9 @@
   .typeGrid button{flex:1 1 auto; padding:5px 3px; font-size:11.5px; white-space:nowrap}
   .typeGrid button b{opacity:.55; font-weight:600; margin-right:3px}
   button.tEarly.on{background:var(--green); border-color:var(--green); color:#fff}
-  button.tLate.on{background:var(--red); border-color:var(--red); color:#fff}
+  button.tLate.on{background:#e5484d; border-color:#e5484d; color:#fff}
   button.tVariable.on{background:var(--blue); border-color:var(--blue); color:#fff}
-  button.tProlonged.on{background:var(--purple); border-color:var(--purple); color:#fff}
+  button.tProlonged.on{background:#ff9500; border-color:#ff9500; color:#fff}
   button.tUnclassified.on{background:var(--gray); border-color:var(--gray); color:#fff}
   .morph{display:grid; grid-template-columns:auto 1fr; gap:1px 12px; margin:7px 0 2px;
     font-size:11.5px; line-height:1.5; font-variant-numeric:tabular-nums}
@@ -218,12 +218,12 @@
     </div>
     <div id="legend">
       <span class="lg"><span class="chip" style="background:#34c759"></span>early</span>
-      <span class="lg"><span class="chip" style="background:#ff3b30"></span>late</span>
+      <span class="lg"><span class="chip" style="background:#e5484d"></span>late</span>
       <span class="lg"><span class="chip" style="background:#007aff"></span>variable</span>
-      <span class="lg"><span class="chip" style="background:#af52de"></span>prolonged</span>
+      <span class="lg"><span class="chip" style="background:#ff9500"></span>prolonged</span>
       <span style="flex-basis:100%;height:0"></span>
-      <span class="lg"><span class="chip" style="background:#ff2d6f"></span>baseline</span>
-      <span class="lg"><span class="chip" style="background:#79aeaa"></span>contraction</span>
+      <span class="lg"><span class="chip" style="background:#5856d6"></span>baseline</span>
+      <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
       <span class="lg" style="color:var(--orange)">⚑ question</span>
     </div>
   </aside>
@@ -250,8 +250,16 @@
 <script>
 'use strict';
 const TYPES = ['early','late','variable','prolonged'];
-const TCOLOR = {early:'#34c759', late:'#ff3b30', variable:'#007aff',
-                prolonged:'#af52de', pending:'#8e8e93'};
+/* Apple's system colours, but which ones is not a matter of taste: this set
+   is the one that passes every check in the palette validator, where the old
+   one failed two. Pure systemRed is out at the user's request and #e5484d
+   takes late; prolonged gets systemOrange, which is free because an open
+   question is now a TEXTURE rather than a colour -- that one change is what
+   let the set pass, since it returned a hue to the palette and stopped the
+   flag from overwriting the type it was asking about. Grey is not in the
+   validated set: unclassified is the absence of a category, not one of them. */
+const TCOLOR = {early:'#34c759', late:'#e5484d', variable:'#007aff',
+                prolonged:'#ff9500', pending:'#8e8e93'};
 const TCN = {early:'early', late:'late', variable:'variable',
              prolonged:'prolonged', unclassified:'unclassified'};
 const $ = id => document.getElementById(id);
@@ -599,13 +607,12 @@ function drawBaseline(g, w, h, ymin, ymax){
      able to take it away and look again. */
   if (!st.base || S.hideBase) return;
   const y2 = v => h - (v - ymin)/(ymax - ymin)*h;
-  /* Dashed for its whole length, measured stretches and interpolated ones
-     alike. The baseline is an ESTIMATE everywhere -- a level fitted to the
-     stable parts of the trace, not a channel that was recorded -- and a solid
-     line claims otherwise. Marking only the interpolated runs as uncertain
-     implied the rest had been measured, which is the wrong distinction. */
-  g.strokeStyle = '#ff2d6f'; g.lineWidth = 1.3;
-  g.setLineDash([5,4]);
+  /* One solid line for its whole length. It is an estimate everywhere -- a
+     level fitted to the stable parts of the trace, not a channel that was
+     recorded -- but it is the thing every deceleration is measured against,
+     and a line that has to be traced through gaps is harder to judge a
+     departure from than one that is simply there. */
+  g.strokeStyle = '#5856d6'; g.lineWidth = 1.6;
   g.beginPath();
   let pen = false;
   for (let i = 0; i < st.x.length; i++){
@@ -617,7 +624,6 @@ function drawBaseline(g, w, h, ymin, ymax){
     if (pen) g.lineTo(px, py); else { g.moveTo(px, py); pen = true; }
   }
   g.stroke();
-  g.setLineDash([]);
 }
 function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
   const {x} = S.rec.strip;
@@ -633,7 +639,7 @@ function drawSignal(g, w, h, arr, ymin, ymax, color, lw){
   }
   g.stroke();
 }
-function eventRect(g, w, h, e, color, selected, handles){
+function eventRect(g, w, h, e, color, selected, handles, flagged){
   /* Every judgement here is made against the trace, and the bands are drawn
      over it. Sooner or later a reviewer needs to see what the trace looks
      like with nothing laid on top -- especially when deciding whether a band
@@ -649,6 +655,19 @@ function eventRect(g, w, h, e, color, selected, handles){
      but on exactly one band it is the cheapest mark there is. */
   g.fillStyle = color + '70';
   g.fillRect(pa, 0, pb - pa, h);
+  if (flagged){
+    /* Hatched, not recoloured. An orange band said "someone asked about this"
+       by throwing away what it was -- the one thing the reviewer coming to
+       answer the question needs to know. Diagonals sit over the type instead
+       of replacing it, and cost the palette no hue. */
+    g.save();
+    g.beginPath(); g.rect(pa, 0, pb - pa, h); g.clip();
+    g.strokeStyle = 'rgba(60,60,67,.34)'; g.lineWidth = 1.5;
+    for (let x = pa - h; x < pb + h; x += 9){
+      g.beginPath(); g.moveTo(x, h); g.lineTo(x + h, 0); g.stroke();
+    }
+    g.restore();
+  }
   if (selected){
     g.strokeStyle = color; g.lineWidth = 2;
     g.strokeRect(pa + 1, 1, Math.max(pb - pa - 2, 1), h - 2);
@@ -689,10 +708,11 @@ function drawExpert(g, w, h, list){
   for (const e of items){
     const pa = t2px(e.a, w), pb = t2px(e.b, w);
     if (pb < AXW || pa > w) continue;
-    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#79aeaa';
-    g.strokeStyle = col; g.lineWidth = 1.6; g.setLineDash([4,3]);
-    g.strokeRect(pa + .8, .8, Math.max(pb - pa - 1.6, 1), h - 1.6);
-    g.setLineDash([]);
+    const col = list === 'decels' ? (TCOLOR[e.type || 'pending'] || '#8e8e93') : '#00c7be';
+    g.strokeStyle = col; g.lineWidth = 2.4;
+    g.lineCap = 'round'; g.setLineDash([0.1, 5]);
+    g.strokeRect(pa + 1.2, 1.2, Math.max(pb - pa - 2.4, 1), h - 2.4);
+    g.setLineDash([]); g.lineCap = 'butt';
   }
 }
 function drawFHR(){
@@ -721,11 +741,7 @@ function drawFHR(){
   for (const d of S.ann.decels){
     const isSel = S.sel?.list === 'decels' && S.sel.id === d.id;
     const isPair = pFHR?.list === 'decels' && pFHR.id === d.id;
-    eventRect(g, w, h, d, d.flag ? '#ff9500' : TCOLOR[d.type || 'pending'],
-              isSel || isPair, isSel);
-    if (d.flag && !S.hideBands){ const px = t2px(d.a, w);
-      if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
-        g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 16); } }
+    eventRect(g, w, h, d, TCOLOR[d.type || 'pending'], isSel || isPair, isSel, d.flag);
   }
   drawExpert(g, w, h, 'decels');
   drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
@@ -882,10 +898,7 @@ function drawUC(){
     const isSel = S.sel?.list === 'contractions' && S.sel.id === c.id;
     const isPair = (pUC?.list === 'contractions' && pUC.id === c.id) ||
                    (S.drag?.mode === 'pair' && S.drag.target === c.id);
-    eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#79aeaa', isSel || isPair, isSel);
-    if (c.flag && !S.hideBands){ const px = t2px(c.a, w);
-      if (px > -20 && px < w + 20){ g.fillStyle = '#ff9500';
-        g.font = '600 13px -apple-system'; g.textAlign = 'left'; g.fillText('⚑', px + 3, 14); } }
+    eventRect(g, w, ph, c, '#00c7be', isSel || isPair, isSel, c.flag);
   }
   drawExpert(g, w, ph, 'contractions');
   drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1);
@@ -1025,7 +1038,7 @@ function renderQueue(){
   if (!items.length){ el.innerHTML = ''; return; }
   el.innerHTML = items.map(v => {
     const dash = !v.e.flag && v.list === 'decels';
-    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#79aeaa');
+    const bg = v.e.flag ? '#ff9500' : (dash ? '#fff' : '#00c7be');
     return `<div class="qRow${S.sel?.id === v.e.id ? ' cur' : ''}" data-l="${v.list}" data-i="${v.e.id}">` +
       `<span class="chip" style="background:${bg}${dash ? ';border:1.5px dashed #8e8e93' : ''}"></span>` +
       `<span>${v.e.id}</span><span class="qt">${fmtT(v.e.a)}</span></div>`;
@@ -1520,6 +1533,7 @@ window.addEventListener('mouseup', () => {
     const a = Math.min(d.t0, d.t1), b = Math.max(d.t0, d.t1);
     if (b - a >= MINDUR){
       if (!requireName()){ renderCanvases(); return; }
+      pushUndo();          // its own step, or undo swallows the one before it too
       const list = d.pane === 'fhr' ? 'decels' : 'contractions';
       const nid = (d.pane === 'fhr' ? 'd' : 'c') + 'm' + (S.ann.next_id++);
       /* A drawn deceleration stays provisional until it is typed, flagged or
@@ -1604,7 +1618,9 @@ window.addEventListener('keydown', ev => {
   if (!S.ann) return;
   const k = ev.key;
   if ((ev.metaKey || ev.ctrlKey) && k.toLowerCase() === 'z'){
-    ev.preventDefault(); ev.shiftKey ? redo() : undo(); return; }
+    ev.preventDefault();
+    if (ev.repeat) return;      // one keystroke, one step
+    ev.shiftKey ? redo() : undo(); return; }
   if (k.toLowerCase() === 'h'){ toggleBands(); return; }
   if (k.toLowerCase() === 'e'){ toggleExpert(); return; }
   if (k.toLowerCase() === 'b'){ toggleBaseline(); return; }
