@@ -151,6 +151,9 @@
   .evRow:hover{background:#f2f2f7}
   .evRow.cur{background:#e8f0fe}
   .chip{width:9px; height:9px; border-radius:3px; flex:none}
+  .flagChip{width:auto; min-width:13px; height:13px; background:#ff9500; color:#fff;
+    display:inline-flex; align-items:center; justify-content:center;
+    font-size:9px; line-height:1; padding:0 2px}
   .evRow .rv{margin-left:auto; font-size:11px}
   .tabs{display:flex; gap:4px; padding:8px 12px 0}
   .hRow{padding:3px 12px; font-size:11.5px; line-height:1.5}
@@ -224,9 +227,9 @@
       <span class="lg"><span class="chip" style="background:#f2913c"></span>variable</span>
       <span class="lg"><span class="chip" style="background:#76161f"></span>prolonged</span>
       <span style="flex-basis:100%;height:0"></span>
-      <span class="lg"><span class="chip" style="background:#2a78d6"></span>baseline</span>
-      <span class="lg"><span class="chip" style="background:#eda100"></span>contraction</span>
-      <span class="lg"><span class="chip" style="background:#c2185b"></span>⚑ question</span>
+      <span class="lg"><span class="chip" style="background:#ff2d6f"></span>baseline</span>
+      <span class="lg"><span class="chip" style="background:#00c7be"></span>contraction</span>
+      <span class="lg"><span class="chip flagChip">⚑</span>question</span>
     </div>
   </aside>
 </div>
@@ -613,11 +616,11 @@ function drawTimeGrid(g, w, h, axisAt){
    estimator. wmfb is the one everything else here is computed against; the
    others are for comparison only. */
 const BL_METHODS = [
-  ['wmfb',    '#2a78d6', 'WMFB (in use)'],
-  ['mantel',  '#f2913c', 'Mantel'],
-  ['jimenez', '#ffd166', 'Jimenez'],
-  ['cazares', '#eda100', 'Cazares'],
-  ['taylor',  '#76161f', 'Taylor'],
+  ['wmfb',    '#2a78d6', 'WMFB'],
+  ['mantel',  '#007aff', 'Mantel'],
+  ['jimenez', '#34c759', 'Jimenez'],
+  ['cazares', '#00c7be', 'Cazares'],
+  ['taylor',  '#af52de', 'Taylor'],
 ];
 async function loadBaselines(rid){
   if (S.blCache?.rid === rid) return;
@@ -662,7 +665,7 @@ function drawBaseline(g, w, h, ymin, ymax){
      stable parts of the trace, not a channel that was recorded -- and a solid
      line claims otherwise. Marking only the interpolated runs as uncertain
      implied the rest had been measured, which is the wrong distinction. */
-  g.strokeStyle = '#2a78d6'; g.lineWidth = 1.6;
+  g.strokeStyle = '#ff2d6f'; g.lineWidth = 1.6;
   g.beginPath();
   let pen = false;
   for (let i = 0; i < st.x.length; i++){
