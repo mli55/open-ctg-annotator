@@ -1012,10 +1012,12 @@ function drawMini(){
   g.clearRect(0,0,w,h);
   const {x, fhr} = S.rec.strip;
   const tx = t => AXW + (t - S.tmin)/(S.tmax - S.tmin)*(w - AXW);
-  for (const d of S.ann.decels){
-    g.fillStyle = TCOLOR[d.type || 'pending'] + '66';
-    g.fillRect(tx(d.a), 0, Math.max(tx(d.b) - tx(d.a), 2), h);
-  }
+  /* No label bands up here: with several hundred events they turned the
+     overview into a barcode. It answers two questions -- what does the whole
+     record look like, and where am I -- so it carries the trace, and a tinted
+     box for the part of it the panes are showing. */
+  g.fillStyle = 'rgba(0,122,255,.08)';
+  g.fillRect(tx(S.view.t0), 0, tx(S.view.t1) - tx(S.view.t0), h);
   g.strokeStyle = '#8a857c'; g.lineWidth = .8; g.beginPath();
   let pen = false;
   for (let i = 0; i < x.length; i += 3){
