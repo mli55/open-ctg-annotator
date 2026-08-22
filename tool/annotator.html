@@ -246,7 +246,7 @@
     <div id="credit">Data: CTU-CHB Intrapartum CTG Database (Chudáček et al. 2014) via PhysioNet · ODC-By 1.0 · edits are recorded under your name, visible to the project team</div>
   </main>
   <aside id="panel">
-    <div class="pad" id="selCard"><div class="t">No event selected — click one on the trace, or press <b>Tab</b> for the next pending</div></div>
+    <div class="pad" id="selCard"><div class="t">No event selected — click one on the trace, or press <b>Tab</b> to walk the decelerations</div></div>
     <div class="pad" id="queueWrap">
       <div class="secTitle">Needs a decision</div>
       <div id="queueList"></div>
@@ -290,7 +290,7 @@
     <span class="shK">empty trace</span><span>Drag to draw a new event — FHR pane a deceleration, UC pane a contraction.</span>
 
     <div class="shHead">Navigate &amp; view</div>
-    <span class="shK"><kbd>Tab</kbd> <kbd>⇧Tab</kbd></span><span>Next / previous event needing a decision.</span>
+    <span class="shK"><kbd>Tab</kbd> <kbd>⇧Tab</kbd></span><span>Next / previous deceleration.</span>
     <span class="shK"><kbd>H</kbd> <kbd>B</kbd> <kbd>E</kbd></span><span>Hide labels · show baselines · overlay the CTU expert reference.</span>
   </div>
   <div class="proto">
@@ -1176,7 +1176,7 @@ function recordCard(){
     row('Peak rate', per10 + ' / 10 min', per10 > 5 ? 'var(--red)' : '') +
     row('Baseline', bmin === bmax ? bmin + ' bpm' : `${bmin}–${bmax} bpm`) +
     (flags ? row('Flags', '⚑ ' + flags, 'var(--orange)') : '') +
-    `<div class="t" style="margin:8px 0 0">Click an event, or press <b>Tab</b> for the next one needing a decision</div>`;
+    `<div class="t" style="margin:8px 0 0">Click an event, or press <b>Tab</b> to walk the decelerations</div>`;
 }
 /* The work that is actually left: everything still carrying a question, or a
    deceleration nobody has typed. It disappears when the record is done, which
@@ -1572,30 +1572,30 @@ function pendingSeq(){
   return d.concat(c);
 }
 function jumpPending(dir){
+  /* Tab walks the deceleration bands in time order. It used to walk only the
+     needs-a-decision queue, which read as broken the moment the queue was
+     nearly empty -- the key is for moving along the FHR pane, not the queue. */
   discardProvisional();
-  const seq = pendingSeq();
+  const seq = [...S.ann.decels].sort((p, q) => p.a - q.a);
   if (!seq.length) return;
-  /* Forward means the first pending after the current position, backward the
-     last one before it -- "next minus one" landed back on the current event,
-     which is why Shift-Tab used to go nowhere. Both directions wrap. */
   const cur = S.sel ? getSel() : null;
   const at = cur ? cur.a : null;
   let i;
   if (at == null){
     i = dir < 0 ? seq.length - 1 : 0;
   } else if (dir > 0){
-    i = seq.findIndex(v => v.e.a > at);
+    i = seq.findIndex(e => e.a > at);
     if (i < 0) i = 0;
   } else {
     i = -1;
-    for (let k = 0; k < seq.length; k++) if (seq[k].e.a < at) i = k;
+    for (let k = 0; k < seq.length; k++) if (seq[k].a < at) i = k;
     if (i < 0) i = seq.length - 1;
   }
-  const v = seq[i];
-  S.sel = {list:v.list, id:v.e.id};
+  S.sel = {list:'decels', id:seq[i].id};
   S.msel = null;
-  ensureVisible(v.e); renderAll();
+  ensureVisible(seq[i]); renderAll();
 }
+
 
 /* ---------- mouse ---------- */
 function hitTest(pane, px, w){
