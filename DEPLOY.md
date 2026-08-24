@@ -11,14 +11,40 @@ One-time setup (~10 minutes):
 4. Seed it with the current annotations:
    python3 ../scripts/seed_kv.py
    wrangler kv bulk put seed.json --namespace-id <the id> --remote
-5. Set the two access secrets (invent two long random strings):
-   wrangler secret put ACCESS_KEY     # goes into the expert link
-   wrangler secret put ADMIN_KEY      # for /export only
+5. Set the admin secret (nothing else is needed to let readers in):
+   wrangler secret put ADMIN_KEY      # for /export only — never handed out
 6. Deploy:
    wrangler deploy
    -> prints https://decel-review.<account>.workers.dev
 
-Give experts:  https://decel-review.<account>.workers.dev/?key=<ACCESS_KEY>
+Send the mailing list ONE plain link, no key:
+   https://decel-review.<account>.workers.dev/
+
+Who a reader is comes from the name they type at the top right, and that name
+is what decides which blind copy is theirs. Nobody is ever shown anybody
+else's blind marks, and before a name is entered nothing blind is served at
+all. The reader's browser remembers the name, so coming back to finish picks
+their own work up where they left it. The trade this makes for one-link
+simplicity: anyone with the URL can open the page, and a reader who types
+somebody else's exact name would land in that person's set. The strips are
+public PhysioNet data, and nobody has a reason to guess a colleague's name,
+so this is a fair trade — but it is a trade, not an oversight.
+
+If per-person links are ever wanted instead, set an ACCESS_KEYS secret — a
+JSON object {"<random key>": "reader-id", ...} — and hand each reader
+.../?key=<their key>. The page then asks /config, shows that id fixed in the
+header and offers no name field, and the id is enforced server-side. Setting
+ACCESS_KEYS (or a single shared ACCESS_KEY) also closes the site to anyone
+without a key. Record any keys in .keys.local (gitignored), never in a
+committed file.
+
+Blind records (BLIND_IDS in worker/wrangler.toml, picked in research_log
+blind_lock.json): served with no baseline, no expert overlay and no prefilled
+events, and listed first so readers land on them. Annotations live one copy
+per reader under ann_blind/<reader>/rec_N. Never seed KV for blind ids
+(seed_kv.py only seeds shared pilot records that have annotation files, so the
+default flow is already safe). /export returns the shared rec_N keys plus
+every ann_blind/<reader>/rec_N set separately.
 
 Maintenance:
 - Pull live annotations back for backup/analysis:

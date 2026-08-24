@@ -2,3 +2,6 @@
 worker/seed.json
 node_modules/
 .keys.local
+worker/.dev.vars
+worker/.wrangler/
+.wrangler/

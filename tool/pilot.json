@@ -1,6 +1,6 @@
 {
- "generated": "quality selection 2026-08-21, trimmed to 10 on 2026-08-21 (all reviewer-annotated records kept)",
- "n": 10,
+ "generated": "2026-08-24",
+ "n": 13,
  "records": [
   {
    "id": 1008,
@@ -91,6 +91,27 @@
    "n_decel": 16,
    "n_contraction": 27,
    "reason": "quality-selected 2026-08-21"
+  },
+  {
+   "id": 9001,
+   "label": "blind#1",
+   "new": true,
+   "blind": true,
+   "reason": "blind protocol 2026-08-24: read the strip blind \u2014 no baseline, no prefilled events, no outcome shown; picked on coverage statistics only (seed 20260825)"
+  },
+  {
+   "id": 9002,
+   "label": "blind#2",
+   "new": true,
+   "blind": true,
+   "reason": "blind protocol 2026-08-24: read the strip blind \u2014 no baseline, no prefilled events, no outcome shown; picked on coverage statistics only (seed 20260825)"
+  },
+  {
+   "id": 9003,
+   "label": "blind#3",
+   "new": true,
+   "blind": true,
+   "reason": "blind protocol 2026-08-24: read the strip blind \u2014 no baseline, no prefilled events, no outcome shown; picked on coverage statistics only (seed 20260825)"
   }
  ]
 }

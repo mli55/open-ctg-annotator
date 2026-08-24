@@ -31,12 +31,39 @@ def slim_record(d):
             ph = row[1]
     return {
         "record_id": d.get("record_id"),
+        "blind": d.get("blind"),
         "hypoxia": d.get("hypoxia"),
         "ph": ph,
         "ii_start": d.get("ii_start"),
         "cov": d.get("cov"),
         "strip": d.get("strip"),
         "events": d.get("events"),
+    }
+
+
+def blind_ids():
+    """Records annotated blind: one copy per annotator, never shared."""
+    try:
+        pj = json.loads((HERE / "pilot.json").read_text())
+        return {int(r["id"]) for r in pj.get("records", []) if r.get("blind")}
+    except Exception:
+        return set()
+
+
+def status_of(f, out):
+    try:
+        a = json.loads(f.read_text())
+    except Exception:
+        return
+    decels = a.get("decels", [])
+    cons = a.get("contractions", [])
+    out[str(a.get("record_id"))] = {
+        "decels_done": sum(1 for e in decels if e.get("review") != "pending"),
+        "decels": len(decels),
+        "cons_done": sum(1 for e in cons if e.get("review") != "pending"),
+        "cons": len(cons),
+        "n_flag": sum(1 for e in decels + cons if e.get("flag")),
+        "updated": a.get("updated"),
     }
 
 
@@ -62,6 +89,12 @@ class Handler(BaseHTTPRequestHandler):
         qname = (parse_qs(u.query).get("annotator") or [cfg.annotator])[0]
         if not NAME_RE.match(qname):
             qname = cfg.annotator
+        # The reader is whoever NAMED themselves. Falling back to the server's
+        # default here would hand an unnamed visitor somebody else's blind
+        # copy, which is the one thing the blind sets must never do.
+        # Case-folded: "Jake" and "jake" are one reader on two machines.
+        given = (parse_qs(u.query).get("annotator") or [None])[0]
+        reader = given.lower() if given and NAME_RE.match(given) else None
         if path in ("/", "/index.html"):
             self._send(200, (HERE / "annotator.html").read_bytes(),
                        "text/html; charset=utf-8")
@@ -72,28 +105,22 @@ class Handler(BaseHTTPRequestHandler):
             else:
                 self._send(404, {"error": "run make_pilot_list.py first"})
         elif path == "/config":
-            self._send(200, {"annotator": cfg.annotator})
+            # ?annotator=NAME stands in for a doctor's personal key: it fixes
+            # the identity the way a deployed key does, so the locked header
+            # can be exercised locally
+            q = parse_qs(u.query)
+            self._send(200, {"annotator": qname, "locked": "annotator" in q})
         elif path == "/status":
             out = {}
             d = cfg.ann_dir / "shared"
             if d.is_dir():
                 for f in d.glob("rec_*.json"):
-                    try:
-                        a = json.loads(f.read_text())
-                    except Exception:
-                        continue
-                    decels = a.get("decels", [])
-                    done_d = sum(1 for e in decels
-                                 if e.get("review") != "pending")
-                    cons = a.get("contractions", [])
-                    out[str(a.get("record_id"))] = {
-                        "decels_done": done_d, "decels": len(decels),
-                        "cons_done": sum(1 for e in cons
-                                         if e.get("review") != "pending"),
-                        "cons": len(cons),
-                        "n_flag": sum(1 for e in decels + cons if e.get("flag")),
-                        "updated": a.get("updated"),
-                    }
+                    status_of(f, out)
+            # blind records: only the asking reader's own copies
+            b = cfg.ann_dir / "blind" / reader if reader else None
+            if b and b.is_dir():
+                for f in b.glob("rec_*.json"):
+                    status_of(f, out)
             self._send(200, out)
         elif path.startswith("/data/"):
             m = REC_RE.match(path[len("/data/"):])
@@ -107,9 +134,26 @@ class Handler(BaseHTTPRequestHandler):
             m = REC_RE.match(path[len("/ann/"):])
             if not m:
                 return self._send(400, {"error": "bad record path"})
-            f = cfg.ann_dir / "shared" / f"rec_{m.group(1)}.json"
+            if int(m.group(1)) in blind_ids():
+                if not reader:      # nobody named -> no blind copy is theirs
+                    return self._send(404, {"error": "not annotated yet"})
+                sub = ("blind", reader)
+            else:
+                sub = ("shared",)
+            f = cfg.ann_dir.joinpath(*sub) / f"rec_{m.group(1)}.json"
             if not f.exists():
                 return self._send(404, {"error": "not annotated yet"})
+            self._send(200, f.read_bytes())
+        elif path.startswith("/baselines/") or path.startswith("/expert/"):
+            # comparison overlays travel as siblings of the data dir, the
+            # same layout the deployed site serves them from
+            sub = path.split("/", 2)[1]
+            m = REC_RE.match(path[len(sub) + 2:])
+            if not m:
+                return self._send(400, {"error": "bad record path"})
+            f = cfg.data_dir.parent / sub / f"rec_{m.group(1)}.json"
+            if not f.exists():
+                return self._send(404, {"error": "no such file"})
             self._send(200, f.read_bytes())
         else:
             self._send(404, {"error": "not found"})
@@ -128,7 +172,10 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as e:
             return self._send(400, {"error": str(e)})
         base = ann.pop("base_updated", None)
-        d = cfg.ann_dir / "shared"
+        # blind records are saved per annotator, never into the shared copy:
+        # one doctor's read must not seed or overwrite another's
+        d = cfg.ann_dir / "blind" / name.lower() if rid in blind_ids() \
+            else cfg.ann_dir / "shared"
         d.mkdir(parents=True, exist_ok=True)
         dest = d / f"rec_{rid}.json"
         if dest.exists():

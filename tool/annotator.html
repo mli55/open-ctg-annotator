@@ -58,6 +58,12 @@
   }
   #annName{border:1px solid var(--line); border-radius:6px; padding:2px 8px; width:110px;
     background:var(--card); font:inherit; font-size:12px}
+  /* The reader id, when the link settles it. It states a fact rather than
+     asking for one, so it is a label and not a field: no border to type into,
+     no placeholder, nothing to clear. */
+  #annWho{display:none; font-size:12px; font-weight:600; color:var(--ink);
+    background:var(--paper); border-radius:6px; padding:2px 9px; white-space:nowrap}
+  #annWho.on{display:inline-block}
   #app{flex:1; display:flex; min-height:0}
   aside#recsWrap{width:172px; flex:none; display:flex; flex-direction:column;
     border-right:1px solid var(--line); background:var(--card)}
@@ -71,8 +77,19 @@
   .recRow .rid{font-weight:600; font-variant-numeric:tabular-nums}
   .recRow .ph{color:var(--dim); font-size:11px}
   .recRow .st{margin-left:auto; font-size:10.5px; font-variant-numeric:tabular-nums}
+  /* Records seeded by the learned guideline and not yet looked at. The badge
+     sits at the right end of the row, so a reviewer scanning the list sees
+     which strips are still waiting without opening any of them. */
+  .recRow .new{margin-left:auto; background:var(--green); color:#fff;
+    font-size:9px; font-weight:700; letter-spacing:.4px; line-height:1;
+    padding:3px 5px 2.5px; border-radius:4px; align-self:center}
+  .recRow .st + .new{margin-left:6px}
   .dotH{display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--red)}
   .dotN{display:inline-block; width:7px; height:7px; border-radius:50%; background:#c9c4ba}
+  /* A blind record's outcome is deliberately withheld, and the dot must not
+     claim one either way: hollow, unlike both the red and the filled grey. */
+  .dotB{display:inline-block; width:7px; height:7px; border-radius:50%;
+    background:transparent; border:1.5px solid #8e8e93}
   main{flex:1; display:flex; flex-direction:column; min-width:0; padding:8px 10px 10px}
   header .meta{font-size:13px}
   header .meta b{font-weight:600}
@@ -225,6 +242,7 @@
   <span class="sp"></span>
   <span id="cursorRead"></span>
   <input id="annName" title="Your name — every edit is recorded under it" placeholder="your name">
+  <span id="annWho"></span>
   <span id="saveState"></span>
 </header>
 <div id="conflictBar" style="display:none">
@@ -294,7 +312,7 @@
     <span class="shK"><kbd>H</kbd> <kbd>B</kbd> <kbd>E</kbd></span><span>Hide labels · show baselines · overlay the CTU expert reference.</span>
   </div>
   <div class="proto">
-    Typing (NICHD/FIGO): <b>early</b> gradual, mirrors the contraction, nadir at its peak · <b>late</b> gradual, shifted after it, nadir past the peak · <b>variable</b> abrupt (&lt;30 s to nadir), variable shape · <b>prolonged</b> ≥2 min. One shared copy — enter your name (top right) before editing; every action is attributed.
+    Typing (NICHD/FIGO): <b>early</b> gradual, mirrors the contraction, nadir at its peak · <b>late</b> gradual, shifted after it, nadir past the peak · <b>variable</b> abrupt (&lt;30 s to nadir), variable shape · <b>prolonged</b> ≥2 min. <span id="protoAttr">One shared copy — enter your name (top right) before editing; every action is attributed.</span>
   </div>
 </div></div>
 
@@ -323,14 +341,54 @@ async function boot(){
   S.blShow = new Set([BL_IN_USE]);
   S.blOn = false;
   S.noteOnly = true;      // the log opens on what reviewers SAID, not what the tool recorded
-  S.annotator = localStorage.getItem('annotator') || '';
-  $('annName').value = S.annotator;
+  /* Ids for hand-drawn events carry a per-session number. Two reviewers
+     working the same record at the same time both count from the file's
+     next_id, so without it they mint the SAME id for different events and a
+     merge cannot tell them apart. Digits only: the log links events by
+     matching the id at the head of a line. */
+  S.idTag = String(1000 + Math.floor(Math.random() * 9000));
+  /* Who is annotating is settled by the link, not by a field: a personal key
+     maps to one reader id, the header states it, and there is nothing to type.
+     Independence is the whole point of the blind sets, and an identity a
+     reader can retype is one they can retype as somebody else. */
+  let cfg = {};
+  /* Deployed, the key alone answers this and the parameter is ignored; on the
+     local server the parameter is what stands in for a key, so a doctor's
+     locked link can be exercised before anything is deployed. */
+  const urlAnn = new URLSearchParams(location.search).get('annotator');
+  try {
+    cfg = await (await fetch(api('/config' +
+      (urlAnn ? '?annotator=' + encodeURIComponent(urlAnn) : '')))).json();
+  } catch {}
+  if (cfg.locked && cfg.annotator){
+    S.annotator = cfg.annotator;
+    $('annName').style.display = 'none';
+    const w = $('annWho');
+    w.textContent = cfg.annotator;
+    w.title = 'Your reader id, set by the link you were given — every edit is recorded under it';
+    w.classList.add('on');
+    const pa = $('protoAttr');
+    if (pa) pa.textContent = 'Your reader id (top right) is set by your personal link; ' +
+      'every action is recorded under it.';
+  } else {
+    S.annotator = localStorage.getItem('annotator') || '';
+    $('annName').value = S.annotator;
+  }
   syncNameHint();
   buildBaselinePicker();
   S.pilot = (await (await fetch(api('/pilot.json'))).json()).records;
-  S.status = await (await fetch(api('/status'))).json();
+  S.status = await (await fetch(api('/status' +
+    (S.annotator ? '?annotator=' + encodeURIComponent(S.annotator) : '')))).json();
   renderRecs();
-  if (S.pilot.length) loadRecord(S.pilot[0].id);
+  const first = pilotOrder()[0];
+  if (first) loadRecord(first.id);
+}
+/* The blind set is the work being asked for, so it stands at the head of the
+   list and the page opens on it; the reviewed records keep their order below.
+   A display rule rather than a reordered file -- pilot.json stays in the order
+   the records were chosen in. */
+function pilotOrder(){
+  return [...S.pilot].sort((a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0));
 }
 /* Viewing is open, editing is not. Until a name is entered the field carries
    a standing tint -- enough to draw the eye to where to type, without a line
@@ -372,40 +430,45 @@ function prefill(rec){
   return {schema:1, record_id:rec.record_id, annotator:S.annotator, status:'in_progress',
           notes:'', next_id:n+1, decels, contractions:cons, deleted:[], history:[]};
 }
+/* A blind record's marks are one copy PER ANNOTATOR, never shared: locally
+   the server is told whose copy by this parameter, deployed the personal
+   access key says it and the parameter is ignored. */
+function annPath(rid, blind){
+  const p = '/ann/rec_'+rid+'.json';
+  return blind && S.annotator ? p + '?annotator=' + encodeURIComponent(S.annotator) : p;
+}
 async function loadRecord(rid){
   await flushSave();
   const rec = await (await fetch(api('/data/rec_'+rid+'.json'))).json();
+  /* Blind protocol: the record file carries the raw strip and nothing else,
+     and everything that could hint at our reading -- baseline, expert
+     overlay, outcome line, shared annotations -- switches off with it. */
+  const pl = S.pilot?.find(p => p.id === rid);
+  const blind = !!(rec.blind || pl?.blind);
   let ann = null;
-  const r = await fetch(api('/ann/rec_'+rid+'.json'));
+  const r = await fetch(api(annPath(rid, blind)));
   if (r.ok) ann = await r.json();
   S.conflict = false; $('conflictBar').style.display = 'none';
-  S.rid = rid; S.rec = rec;
+  S.rid = rid; S.rec = rec; S.blind = blind;
+  if (blind && S.showExpert){ S.showExpert = false; $('expertBtn').classList.remove('on'); }
+  $('expertBtn').style.display = blind ? 'none' : '';
   if (S.showExpert) await loadExpert(rid);
-  await loadBaselines(rid); S.ann = ann || prefill(rec);
+  if (blind) S.blCache = {rid, data: {}}; else await loadBaselines(rid);
+  S.blAvail = Object.keys(S.blCache?.data || {}).length > 0;
+  if (!S.blAvail) S.blOn = false;
+  buildBaselinePicker();
+  S.ann = ann || prefill(rec);
+  S.loaded = JSON.parse(JSON.stringify(S.ann));   // the merge base
   if (!S.ann.history) S.ann.history = [];
   S.baseUpdated = ann ? (ann.updated ?? null) : null;
   S.undo = []; S.redo = []; S.sel = null;
-  /* The paper chart runs 50-210 bpm because paper cannot be re-ruled per
-     patient. A screen can: a real trace lives in maybe 90-180, so a fixed
-     range spends most of the pane on heart rates this fetus never had, and
-     every deceleration is drawn shallower than it reads. The range is fitted
-     once per record -- not per view, which would rescale under a pan -- with
-     a floor on the span so a quiet record is not magnified into drama, and
-     the normal band's edges kept in sight wherever they fall. */
-  {
-    const f = rec.strip.fhr.filter(v => v != null).sort((a, b) => a - b);
-    let lo = 50, hi = 210;
-    if (f.length > 60){
-      lo = f[Math.floor(f.length * 0.005)] - 12;
-      hi = f[Math.floor(f.length * 0.995)] + 12;
-      const span = Math.max(hi - lo, 80);        // never magnify a quiet record
-      const mid = (lo + hi) / 2;
-      lo = mid - span / 2; hi = mid + span / 2;
-      lo = Math.max(50, Math.min(lo, 100));      // always keep the normal band
-      hi = Math.min(210, Math.max(hi, 170));     // and its edges, in sight
-    }
-    S.yr = [Math.round(lo / 10) * 10, Math.round(hi / 10) * 10];
-  }
+  /* The conventional clinical strip runs 30-240 bpm, and that is the scale
+     the reviewers' pattern recognition was trained on -- a per-record
+     magnified fit made the tracings read as unfamiliar (Larkin, review
+     feedback). One fixed rule for every record, like the paper. */
+  /* 8 bpm of air past each end so the 30 and 240 rules -- the ones that say
+     what scale this is -- are drawn inside the pane instead of on its edge. */
+  S.yr = [30 - 8, 240 + 8];
   const x = rec.strip.x;
   S.tmin = x[0]; S.tmax = x[x.length-1];
   S.view = {t0:S.tmin, t1:S.tmax};
@@ -414,10 +477,16 @@ async function loadRecord(rid){
      table, and the pilot index carries it too. Read whichever is there. */
   const ph = S.pilot?.find(p => p.id === rid)?.ph ?? rec.ph ??
     (rec.meta?.['Outcome measures'] || []).find(r => r[0] === 'pH')?.[1] ?? '?';
-  $('recMeta').innerHTML = `<b>rec ${rid}</b> · pH ${ph} · ` +
-    (rec.hypoxia ? '<span style="color:var(--red)">hypoxia</span>' : 'normal') +
-    ` · ${((S.tmax-S.tmin)).toFixed(0)} min` +
-    (rec.ii_start != null ? ` · stage II ${rec.ii_start.toFixed(0)}′` : '');
+  /* Blind: no record number, no pH, no outcome. The number is a pointer into
+     a public database, and "normal" of a withheld outcome would be a claim
+     nobody has checked -- the strip is the whole statement. */
+  $('recMeta').innerHTML = blind
+    ? `<b>${pl?.label || 'blind'}</b> · <span style="color:var(--green);font-weight:600">blind read</span>` +
+      ` · ${((S.tmax-S.tmin)).toFixed(0)} min`
+    : `<b>rec ${rid}</b> · pH ${ph} · ` +
+      (rec.hypoxia ? '<span style="color:var(--red)">hypoxia</span>' : 'normal') +
+      ` · ${((S.tmax-S.tmin)).toFixed(0)} min` +
+      (rec.ii_start != null ? ` · stage II ${rec.ii_start.toFixed(0)}′` : '');
   renderAll();
 }
 
@@ -497,12 +566,80 @@ function savePayload(){
   for (const d of a.decels) d.nadir_min = nadirOf(d);
   return a;
 }
-async function saveNow(){
+/* Two people on one shared record. The old answer was a red bar and a reload,
+   which threw away everything the second one had done since opening it --
+   with one link going to a mailing list that is the likely case now, not the
+   rare one. So the two versions are merged instead. Reviewers work through a
+   strip event by event, so their edits almost always land on different
+   decelerations and both survive; where they really did touch the same event
+   the OTHER reading is kept and the event is flagged, because a silent
+   overwrite is the one outcome nobody can spot afterwards. */
+function mergeInto(theirs, base, mine){
+  const out = JSON.parse(JSON.stringify(theirs));
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  const clashes = [];
+  for (const list of ['decels','contractions']){
+    out[list] = out[list] || [];
+    const B = new Map((base[list] || []).map(e => [e.id, e]));
+    const T = new Map(out[list].map(e => [e.id, e]));
+    for (const e of mine[list] || []){
+      const b = B.get(e.id), t = T.get(e.id);
+      if (!b){                                   // I drew it
+        if (!t){ out[list].push(e); T.set(e.id, e); }
+        continue;
+      }
+      if (same(b, e)) continue;                  // I never touched it
+      if (!t) continue;                          // they deleted it — leave it deleted
+      if (same(t, b)) Object.assign(t, e);       // only I changed it
+      else if (!same(t, e)){ t.flag = true; clashes.push(e.id); }
+    }
+    for (const b of base[list] || []){           // events I deleted
+      if ((mine[list] || []).some(e => e.id === b.id)) continue;
+      const t = T.get(b.id);
+      if (t && same(t, b)) out[list] = out[list].filter(e => e.id !== b.id);
+    }
+    out[list].sort((p, q) => p.a - q.a);
+  }
+  out.history = (out.history || [])
+    .concat((mine.history || []).slice((base.history || []).length));
+  if (clashes.length)
+    out.history.push({t: new Date().toISOString(), by: S.annotator,
+      action: `${clashes.join(',')}: two reviewers edited this at once — ` +
+              `the other reading was kept and flagged for a look`});
+  out.deleted = (out.deleted || [])
+    .concat((mine.deleted || []).slice((base.deleted || []).length));
+  out.next_id = Math.max(out.next_id || 1, mine.next_id || 1);
+  out.notes = mine.notes || out.notes;
+  out.annotator = S.annotator;
+  out.updated = new Date().toISOString();
+  return out;
+}
+async function mergeAndRetry(depth){
+  const r = await fetch(api(annPath(S.rid, S.blind)));
+  if (!r.ok) return false;
+  let theirs;
+  try { theirs = await r.json(); } catch { return false; }
+  if (!theirs || !theirs.decels) return false;
+  S.ann = mergeInto(theirs, S.loaded || theirs, S.ann);
+  S.baseUpdated = theirs.updated ?? null;
+  /* Undo cannot reach back across somebody else's edit -- the states it holds
+     describe a record that no longer exists. The merged state is the new
+     floor. */
+  S.undo = []; S.redo = [];
+  fixSel();
+  $('saveState').textContent = 'Merged with another reviewer';
+  await saveNow(depth + 1);
+  renderAll();
+  return true;
+}
+async function saveNow(depth){
   if (!S.ann || S.conflict) return;
   clearTimeout(S.saveTimer);
+  depth = depth || 0;
   try{
     const r = await fetch(api('/save'), {method:'POST', body:JSON.stringify(savePayload())});
     if (r.status === 409){
+      if (depth < 3 && await mergeAndRetry(depth)) return;
       /* A dead end unless it is loud: the little grey line went unread, the
          autosave kept ramming the same conflict, and everything since load
          was stranded. Autosave pauses until the record is reloaded. */
@@ -514,6 +651,7 @@ async function saveNow(){
     if (!r.ok) throw new Error(r.status);
     S.dirty = false;
     S.baseUpdated = S.ann.updated;
+    S.loaded = JSON.parse(JSON.stringify(S.ann));   // the server now holds this
     $('saveState').textContent = 'Saved ' + new Date().toLocaleTimeString();
     S.status[S.rid] = localStatus(); renderRecs();
   }catch(e){ $('saveState').textContent = 'Save failed!'; }
@@ -832,8 +970,8 @@ function drawFHR(){
   const [g, w, h] = sizeCanvas($('fhr'));
   g.clearRect(0,0,w,h);
   const [ymin, ymax] = S.yr || [50, 210], y2 = v => h - (v - ymin)/(ymax - ymin)*h;
-  const yt = [], yst = niceStep(ymax - ymin, 5);
-  for (let v = Math.ceil(ymin / yst) * yst; v < ymax; v += yst) yt.push(v);
+  const yt = [], yst = (ymax - ymin) >= 180 ? 30 : niceStep(ymax - ymin, 5);
+  for (let v = Math.ceil(ymin / yst) * yst; v <= ymax; v += yst) yt.push(v);
   g.strokeStyle = '#f0f0f3'; g.lineWidth = 1;
   for (const v of yt){
     g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w, y2(v)); g.stroke();
@@ -1087,10 +1225,12 @@ function renderCanvases(){ if (!S.rec) return; drawFHR(); drawLinks(); drawUC();
 function renderRecs(){
   const el = $('recs'); el.innerHTML = '';
   const f = S.recFilter || 'all';
-  for (const p of S.pilot){
+  for (const p of pilotOrder()){
     const st = S.status[p.id];
+    /* A blind record's outcome is withheld, so it can honestly answer
+       neither filter: it is not known-normal any more than known-hypoxia. */
     if (f === 'hyp' && !p.hypoxia) continue;
-    if (f === 'norm' && p.hypoxia) continue;
+    if (f === 'norm' && (p.hypoxia || p.blind)) continue;
     if (f === 'flag' && !(st && st.n_flag > 0)) continue;
     const row = document.createElement('div');
     row.className = 'recRow' + (p.id === S.rid ? ' cur' : '');
@@ -1103,9 +1243,10 @@ function renderRecs(){
       stStyle = 'color:var(--orange);font-size:13px;font-weight:700';
       tip = ` · ${st.n_flag} flag(s)`;
     }
-    row.innerHTML = `<span class="${p.hypoxia ? 'dotH' : 'dotN'}"></span>
-      <span class="rid">${p.id}</span><span class="ph">${p.ph ?? ''}</span>
-      <span class="st" style="${stStyle}">${stTxt}</span>`;
+    row.innerHTML = `<span class="${p.blind ? 'dotB' : p.hypoxia ? 'dotH' : 'dotN'}"></span>
+      <span class="rid">${p.blind ? (p.label || 'blind') : p.id}</span><span class="ph">${p.ph ?? ''}</span>
+      <span class="st" style="${stStyle}">${stTxt}</span>`
+      + (p.new ? '<span class="new">NEW</span>' : '');
     row.title = (p.reason || '') + tip;
     row.onclick = () => loadRecord(p.id);
     el.appendChild(row);
@@ -1161,7 +1302,7 @@ function recordCard(){
   const starts = cs.map(c => c.a).sort((a, b) => a - b);
   let per10 = 0;
   for (const s0 of starts) per10 = Math.max(per10, starts.filter(t => t >= s0 && t < s0 + 10).length);
-  const b = S.rec.strip.base.filter(v => v != null);
+  const b = (S.rec.strip.base || []).filter(v => v != null);
   const bmin = Math.round(Math.min(...b)), bmax = Math.round(Math.max(...b));
   const flags = [...ds, ...cs].filter(v => v.flag).length;
   const row = (k, v, tone) =>
@@ -1174,7 +1315,7 @@ function recordCard(){
     row('Time in decel', (100 * inDec / Math.max(usable, 1e-9)).toFixed(0) + '%') +
     row('Contractions', cs.length) +
     row('Peak rate', per10 + ' / 10 min', per10 > 5 ? 'var(--red)' : '') +
-    row('Baseline', bmin === bmax ? bmin + ' bpm' : `${bmin}–${bmax} bpm`) +
+    (b.length ? row('Baseline', bmin === bmax ? bmin + ' bpm' : `${bmin}–${bmax} bpm`) : '') +
     (flags ? row('Flags', '⚑ ' + flags, 'var(--orange)') : '') +
     `<div class="t" style="margin:8px 0 0">Click an event, or press <b>Tab</b> to walk the decelerations</div>`;
 }
@@ -1221,21 +1362,27 @@ function pctl(arr, q){
   return v[Math.max(0, Math.min(v.length - 1, Math.floor(q * (v.length - 1))))];
 }
 function decMorph(e){
+  /* The nadir and its timing need only the trace; depth, area and the rates
+     are measured FROM the baseline, and a blind record has none -- those
+     rows simply stay off the card rather than claiming a number. */
   const {x, fhr, base} = S.rec.strip;
   const ia = idxOf(e.a), ib = idxOf(e.b), out = {dur: (e.b - e.a) * 60};
-  let nad = -1, nv = Infinity, area = 0, nOK = 0;
+  let nad = -1, nv = Infinity, area = 0, nOK = 0, nBase = 0;
   for (let i = ia; i <= ib; i++){
-    if (fhr[i] == null || base[i] == null) continue;
+    if (fhr[i] == null) continue;
     nOK++;
     if (fhr[i] < nv){ nv = fhr[i]; nad = i; }
-    area += Math.max(0, base[i] - fhr[i]);
+    if (base && base[i] != null){ nBase++; area += Math.max(0, base[i] - fhr[i]); }
   }
   if (nad < 0 || nOK < 3) return out;              // unreadable span
   out.cov = nOK / (ib - ia + 1);
-  out.depth = base[nad] - fhr[nad];
-  out.ttn = nad - ia; out.rec = ib - nad; out.area = area;
-  out.desc = out.depth / Math.max(out.ttn, 1);
-  out.recs = out.depth / Math.max(out.rec, 1);
+  out.ttn = nad - ia; out.rec = ib - nad;
+  if (base && base[nad] != null && nBase >= 3){
+    out.depth = base[nad] - fhr[nad];
+    out.area = area;
+    out.desc = out.depth / Math.max(out.ttn, 1);
+    out.recs = out.depth / Math.max(out.rec, 1);
+  }
   // lag vs the paired contraction's peak
   const pid = partnerOf({list: 'decels', id: e.id});
   if (pid){
@@ -1307,11 +1454,12 @@ function morphRows(e, isD){
   if (isD){
     const m = decMorph(e);
     r.push(['Duration', fmtS(m.dur)]);
-    if (m.depth != null){
-      r.push(['Onset → nadir / → end', Math.round(m.ttn) + ' / ' + Math.round(m.rec) + ' s'],
-             ['Depth at nadir', fmtB(m.depth)],
-             ['Fall / recovery rate', m.desc.toFixed(1) + ' / ' + m.recs.toFixed(1) + ' bpm/s'],
-             ['Area below baseline', Math.round(m.area) + ' bpm·s']);
+    if (m.ttn != null){
+      r.push(['Onset → nadir / → end', Math.round(m.ttn) + ' / ' + Math.round(m.rec) + ' s']);
+      if (m.depth != null)
+        r.push(['Depth at nadir', fmtB(m.depth)],
+               ['Fall / recovery rate', m.desc.toFixed(1) + ' / ' + m.recs.toFixed(1) + ' bpm/s'],
+               ['Area below baseline', Math.round(m.area) + ' bpm·s']);
       if (m.lag != null)
         r.push(['Nadir vs UC peak', (m.lag >= 0 ? '+' : '') + Math.round(m.lag) + ' s<i>' +
                 (m.lag >= 0 ? 'after peak' : 'before peak') + '</i>'],
@@ -1468,12 +1616,17 @@ window.setType = t => { const e = getSel(); if (!e || S.sel.list !== 'decels') r
    first is answered: the picker stays out of the header until the baseline is
    actually being drawn. */
 window.toggleBaseline = () => {
+  if (S.blAvail === false) return;      // no baselines file for this record
   S.blOn = !S.blOn;
   if (S.blOn && !S.blShow.size) S.blShow.add(BL_IN_USE);
   buildBaselinePicker(); renderCanvases();
 };
 function buildBaselinePicker(){
   const el = $('blPicker');
+  /* A record with no baselines file -- a blind one above all -- must not
+     offer the overlay at all: a button that draws nothing reads as broken,
+     and on a blind read the baseline is withheld on purpose. */
+  $('baseBtn').style.display = S.blAvail === false ? 'none' : '';
   el.classList.toggle('open', !!S.blOn);
   $('baseBtn').textContent = S.blOn ? 'hide baseline' : 'show baseline';
   $('baseBtn').classList.toggle('on', !!S.blOn);
@@ -1492,6 +1645,7 @@ function buildBaselinePicker(){
   }
 }
 window.toggleExpert = async () => {
+  if (S.blind) return;                  // the reference is exactly what a blind read must not see
   S.showExpert = !S.showExpert;
   $('expertBtn').classList.toggle('on', !!S.showExpert);
   if (S.showExpert && S.rid != null) await loadExpert(S.rid);
@@ -1539,17 +1693,25 @@ $('notes').addEventListener('keydown', ev => {
     if (mutate(() => { if (e) commitProvisional(e); }, 'note: ' + v)){ $('notes').value = ''; S.noteAuto = ''; }
   }
 });
-$('annName').addEventListener('change', () => {
+$('annName').addEventListener('change', async () => {
   const v = $('annName').value.trim();
   if (v && !/^[a-zA-Z0-9_-]{1,40}$/.test(v)){
     $('saveState').textContent = 'Name: letters, digits, - and _ only';
     $('annName').value = S.annotator; return;
   }
+  await flushSave();     // anything pending belongs to the name it was typed under
   S.annotator = v;
   localStorage.setItem('annotator', v);
   syncNameHint();
-  if (v && $('saveState').textContent.startsWith('Enter your name')) $('saveState').textContent = '';
   if (v) $('saveState').textContent = 'Hi ' + v + ' — edits will be recorded under this name';
+  if (!v) return;
+  /* On the blind sets the name IS which copy is yours, so it has to be
+     re-fetched the moment one is given: a reader coming back to finish would
+     otherwise mark up a blank page and then collide with their own saved work. */
+  try {
+    S.status = await (await fetch(api('/status?annotator=' + encodeURIComponent(v)))).json();
+  } catch {}
+  if (S.blind && S.rid != null) await loadRecord(S.rid); else renderRecs();
 });
 document.querySelectorAll('#recFilter button').forEach(b => b.onclick = () => {
   S.recFilter = b.dataset.f;
@@ -1776,7 +1938,7 @@ window.addEventListener('mouseup', () => {
       if (!requireName()){ renderCanvases(); return; }
       pushUndo();          // its own step, or undo swallows the one before it too
       const list = d.pane === 'fhr' ? 'decels' : 'contractions';
-      const nid = (d.pane === 'fhr' ? 'd' : 'c') + 'm' + (S.ann.next_id++);
+      const nid = (d.pane === 'fhr' ? 'd' : 'c') + 'm' + S.idTag + (S.ann.next_id++);
       /* A drawn deceleration stays provisional until it is typed, flagged or
          noted -- the drag alone does not say what it is, and an untyped band
          left lying about is worse than none. A contraction has nothing to

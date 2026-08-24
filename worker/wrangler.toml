@@ -2,6 +2,15 @@ name = "decel-review"
 main = "worker.js"
 compatibility_date = "2026-08-01"
 
+[vars]
+# Records read BLIND: served with no baseline and no prefill, annotations
+# stored one copy per annotator under ann_blind/<annotator>/rec_N. Requires
+# the ACCESS_KEYS secret — a JSON object {"<random key>": "annotator-id"},
+# one personal key per doctor. These are ALIAS ids: the CTU-CHB record
+# numbers appear nowhere the site serves; the only mapping is
+# blind_lock.json in research_log, which is never deployed.
+BLIND_IDS = "9001,9002,9003"
+
 [assets]
 directory = "../public"
 binding = "ASSETS"
