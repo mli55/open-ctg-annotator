@@ -49,6 +49,21 @@ One entry per calendar day summarizes changes pushed to the live review site.
   zoomed; changed the x-axis to a clear `Time before delivery (min)` countdown;
   refined y-axis ticks and paper-style grid typography; and standardized
   TOCO to 0–100 unless the recorded signal itself exceeds 100.
+- **2026-08-24** — Added three fully blind review strips with no outcome,
+  baseline, prefilled events, or expert overlay. Each reader now gets a private
+  annotation copy selected by their name, and concurrent saves merge independent
+  edits while flagging genuine same-event conflicts.
+- **2026-08-21** — Reworked the clinical review workflow: added live event
+  measurements, selectable baseline overlays, clinician-reference comparison,
+  visual deceleration–contraction pairing, external axes, stage markers, a
+  record summary and decision queue, multi-event actions, keyboard navigation,
+  conflict recovery, and a draggable whole-record overview. The colour system,
+  history panel, notes, filters, and annotation controls were also simplified
+  for continuous review.
+- **2026-08-20** — Launched the shared deceleration-review site with the pilot
+  records, Cloudflare KV persistence, name-attributed edits, shared history,
+  event drawing and boundary editing, provisional annotations, consensus-seeded
+  deceleration types, and the reviewed uterine-contraction prefill.
 
 ## Data licence
 
