@@ -103,10 +103,10 @@
     background:var(--card); user-select:none; -webkit-user-select:none}
   aside#recsWrap, #recFilter{user-select:none; -webkit-user-select:none}
   #mini{height:52px; margin-bottom:6px}
-  #fhr{flex:44 1 0; min-height:0}
+  #fhr{flex:44 1 0; min-height:0; background:#fffdfa}
   #link{flex:none; height:34px; margin:2px 0; border:none; background:transparent;
     border-radius:0}
-  #uc{flex:36 1 0; min-height:0}
+  #uc{flex:36 1 0; min-height:0; background:#fffdfa}
   aside#panel{width:252px; flex:none; border-left:1px solid var(--line); background:var(--card);
     display:flex; flex-direction:column; min-height:0}
   .secTitle{font-size:10.5px; font-weight:600; color:var(--dim); text-transform:uppercase;
@@ -682,30 +682,34 @@ const SNAP = 1/60, MINDUR = 5/60;
 const rt = t => Math.round(t*60)/60;
 function panes(){ return {fhr:$('fhr'), uc:$('uc')}; }
 /* The axes stand outside the plot, not over it: a gutter on the left for the
-   scale, and ONE time axis along the foot of the UC pane, which the FHR pane
-   above is read against too. Numbers laid over a trace have to be given a
-   background to survive it, and a background over a trace is a hole in the
-   data. Every pane maps time through t2px, so the gutter shifts them all
-   together and they stay aligned with each other. */
+   scale and a time axis at the foot of each clinical trace. Numbers laid over
+   a trace have to be given a background to survive it, and a background over
+   a trace is a hole in the data. Every pane maps time through t2px, so the
+   gutters shift together and the two axes stay aligned. */
 const AXW = 58, AXH = 34, AXR = 8;
+const AXIS_FONT = '11px Arial, Helvetica, sans-serif';
+const AXIS_TITLE_FONT = '600 13px Arial, Helvetica, sans-serif';
+const AXIS_INK = '#655d59', AXIS_RULE = '#a99b95';
+const GRID_MAJOR = '#dccbc4', GRID_MID = '#e9ddd8', GRID_MINOR = '#f2e9e5';
 function t2px(t, w){ return AXW + (t - S.view.t0)/(S.view.t1 - S.view.t0)*(w - AXW - AXR); }
 function px2t(p, w){ return S.view.t0 + (p - AXW)/(w - AXW - AXR)*(S.view.t1 - S.view.t0); }
 function yAxis(g, w, h, ticks, y2, title){
-  g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
+  g.strokeStyle = AXIS_RULE; g.lineWidth = 1.1;
   g.beginPath(); g.moveTo(AXW - .5, 0); g.lineTo(AXW - .5, h); g.stroke();
-  g.font = '10.5px -apple-system'; g.textAlign = 'right';
+  g.font = AXIS_FONT; g.textAlign = 'right';
   for (const v of ticks){
     const y = y2(v);
-    if (y < 6 || y > h - 2) continue;
-    g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
+    if (y < 0 || y > h) continue;
+    g.strokeStyle = AXIS_RULE; g.lineWidth = 1.1;
     g.beginPath(); g.moveTo(AXW - 5.5, y); g.lineTo(AXW - .5, y); g.stroke();
-    g.fillStyle = '#6d6d72'; g.fillText(String(Math.round(v)), AXW - 9, y + 3.5);
+    const labelY = Math.min(Math.max(y + 3.5, 9), h - 2);
+    g.fillStyle = AXIS_INK; g.fillText(String(Math.round(v)), AXW - 9, labelY);
   }
   if (title){                    // the pane's name, stood on end beside its scale
     g.save();
     g.translate(15, h / 2); g.rotate(-Math.PI / 2);
-    g.font = '16px -apple-system'; g.textAlign = 'center';
-    g.fillStyle = '#8e8e93'; g.fillText(title, 0, 0);
+    g.font = AXIS_TITLE_FONT; g.textAlign = 'center';
+    g.fillStyle = AXIS_INK; g.fillText(title, 0, 0);
     g.restore();
   }
 }
@@ -724,15 +728,6 @@ function sizeCanvas(c){
   const g = c.getContext('2d');
   g.setTransform(dpr,0,0,dpr,0,0);
   return [g, r.width, r.height];
-}
-function timeStep(span){
-  return span > 40 ? 10 : span > 15 ? 5 : span > 6 ? 2 : span > 2.5 ? 1 : 0.5;
-}
-function niceStep(span, want){
-  const raw = span / want;
-  const mag = Math.pow(10, Math.floor(Math.log10(raw)));
-  for (const m of [1, 2, 2.5, 5, 10]) if (raw <= m * mag) return m * mag;
-  return 10 * mag;
 }
 /* Second stage: pushing. The trace either side of it is read differently, so
    the boundary has to be legible at a glance -- a hairline with a caption
@@ -758,7 +753,7 @@ function drawStageAxis(g, w, y){
     {x0: AXW, x1: px, lab: '1st stage', fill: 'rgba(181,101,29,.14)', ink: '#8a5116'},
     {x0: px, x1: w,   lab: '2nd stage', fill: '#b5651d',              ink: '#fff'},
   ];
-  g.font = '600 9.5px -apple-system'; g.textAlign = 'center';
+  g.font = '600 10px Arial, Helvetica, sans-serif'; g.textAlign = 'center';
   for (const sgm of segs){
     const sw = sgm.x1 - sgm.x0;
     if (sw < 2) continue;
@@ -768,24 +763,44 @@ function drawStageAxis(g, w, y){
     }
   }
 }
-function drawTimeGrid(g, w, h, axisAt){
-  const step = timeStep(S.view.t1 - S.view.t0);
-  g.font = '10px -apple-system'; g.textAlign = 'center';
+function axisTimeLabel(t){
+  const seconds = Math.round(Math.abs(t) * 60);
+  if (seconds % 60 === 0) return String(seconds / 60);
+  return Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
+}
+function drawTimeGrid(g, w, h, axisAt, caption){
+  g.font = AXIS_FONT; g.textAlign = 'center';
   if (axisAt != null){
-    g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
-    g.beginPath(); g.moveTo(AXW - .5, axisAt + .5); g.lineTo(w, axisAt + .5); g.stroke();
+    g.strokeStyle = AXIS_RULE; g.lineWidth = 1.1;
+    g.beginPath(); g.moveTo(AXW - .5, axisAt + .5); g.lineTo(w - AXR, axisAt + .5); g.stroke();
   }
-  for (let t = Math.ceil(S.view.t0/step)*step; t <= S.view.t1; t += step){
-    const px = t2px(t, w);
-    if (px < AXW) continue;
-    g.strokeStyle = '#ececf0'; g.lineWidth = 1;
-    g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke();
-    if (axisAt != null){
-      g.strokeStyle = '#b8b8bd'; g.lineWidth = 1.2;
+  /* CTG paper makes rhythm visible with a fine one-minute grid and a stronger
+     five-minute rule. Full strips are numbered every five minutes; close-up
+     annotation views add one-minute (then 30-second) labels without changing
+     what the stronger five-minute rules mean. */
+  const span = S.view.t1 - S.view.t0;
+  const minor = span <= 2.5 ? .25 : span <= 6 ? .5 : 1;
+  const labelStep = span <= 2.5 ? .5 : span <= 10 ? 1 : 5;
+  const major = 5;
+  const tickEnd = S.view.t1 > -.05 ? 0 : S.view.t1;
+  for (let t = Math.ceil(S.view.t0/minor)*minor; t <= tickEnd + 1e-6; t += minor){
+    const px = t === 0 && S.view.t1 < 0 ? w - AXR : t2px(t, w);
+    if (px < AXW || px > w - AXR) continue;
+    const isMajor = Math.abs(t / major - Math.round(t / major)) < 1e-6;
+    const isLabel = Math.abs(t / labelStep - Math.round(t / labelStep)) < 1e-6;
+    g.strokeStyle = isMajor ? GRID_MAJOR : isLabel ? GRID_MID : GRID_MINOR;
+    g.lineWidth = isMajor ? 1 : isLabel ? .85 : .65;
+    if (h > 0){ g.beginPath(); g.moveTo(px, 0); g.lineTo(px, h); g.stroke(); }
+    if (axisAt != null && isLabel){
+      g.strokeStyle = AXIS_RULE; g.lineWidth = 1.1;
       g.beginPath(); g.moveTo(px, axisAt); g.lineTo(px, axisAt + 4); g.stroke();
-      g.fillStyle = '#6d6d72'; g.font = '10.5px -apple-system';
-      g.fillText(fmtT(t).replace(/:00$/, ''), px, axisAt + 14);
+      g.fillStyle = AXIS_INK; g.font = AXIS_FONT;
+      g.fillText(axisTimeLabel(t), px, axisAt + 15);
     }
+  }
+  if (axisAt != null && caption){
+    g.fillStyle = AXIS_INK; g.font = '9.5px Arial, Helvetica, sans-serif';
+    g.textAlign = 'right'; g.fillText(caption, w - AXR, axisAt + 28);
   }
 }
 /* The FHR baseline. It is not decoration: two of the typing criteria are
@@ -969,39 +984,43 @@ function drawExpert(g, w, h, list){
 function drawFHR(){
   const [g, w, h] = sizeCanvas($('fhr'));
   g.clearRect(0,0,w,h);
-  const [ymin, ymax] = S.yr || [50, 210], y2 = v => h - (v - ymin)/(ymax - ymin)*h;
-  const yt = [], yst = (ymax - ymin) >= 180 ? 30 : niceStep(ymax - ymin, 5);
-  for (let v = Math.ceil(ymin / yst) * yst; v <= ymax; v += yst) yt.push(v);
-  g.strokeStyle = '#f0f0f3'; g.lineWidth = 1;
-  for (const v of yt){
-    g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w, y2(v)); g.stroke();
+  const ph = h - AXH;
+  const [ymin, ymax] = S.yr || [50, 210], y2 = v => ph - (v - ymin)/(ymax - ymin)*ph;
+  const yt = [];
+  for (let v = Math.ceil(ymin / 30) * 30; v <= ymax; v += 30) yt.push(v);
+  for (let v = Math.ceil(ymin / 10) * 10; v <= ymax; v += 10){
+    const major = v % 30 === 0;
+    g.strokeStyle = major ? GRID_MAJOR : GRID_MINOR;
+    g.lineWidth = major ? 1 : .65;
+    g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w - AXR, y2(v)); g.stroke();
   }
   // the edges of the normal band, so tachy/brady is read without arithmetic
   g.strokeStyle = '#e2e8de'; g.lineWidth = 1; g.setLineDash([2,4]);
   for (const v of [110, 160]){
     if (v <= ymin || v >= ymax) continue;
-    g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w, y2(v)); g.stroke();
+    g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w - AXR, y2(v)); g.stroke();
   }
   g.setLineDash([]);
   /* Zoomed in, a band or a trace can start left of the first tick; without a
      clip it runs out over the scale and reads as data at a heart rate the
      axis says is something else. The plot is its own region. */
-  g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, h); g.clip();
-  drawTimeGrid(g, w, h, null);
-  drawStageBoundary(g, w, h);
+  g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW - AXR, ph); g.clip();
+  drawTimeGrid(g, w, ph, null);
+  drawStageBoundary(g, w, ph);
   const pFHR = partnerOf(S.sel);
   for (const d of S.ann.decels){
     const isSel = mselHas('decels', d.id);
     const isPair = pFHR?.list === 'decels' && pFHR.id === d.id;
-    eventRect(g, w, h, d, d.flag ? '#ff9500' : TCOLOR[d.type || 'pending'],
+    eventRect(g, w, ph, d, d.flag ? '#ff9500' : TCOLOR[d.type || 'pending'],
               isSel || isPair, isSel);
   }
-  drawExpert(g, w, h, 'decels');
-  drawSignal(g, w, h, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
-  drawBaselines(g, w, h, ymin, ymax);
-  drawLinkAnchor(g, w, h, 'fhr');
+  drawExpert(g, w, ph, 'decels');
+  drawSignal(g, w, ph, S.rec.strip.fhr, ymin, ymax, '#1c1c1e', 1.1);
+  drawBaselines(g, w, ph, ymin, ymax);
+  drawLinkAnchor(g, w, ph, 'fhr');
   g.restore();
-  yAxis(g, w, h, yt, y2, 'FHR  bpm');
+  drawTimeGrid(g, w, 0, ph, 'Time before delivery (min)');
+  yAxis(g, w, ph, yt, y2, 'FHR (bpm)');
   const sel = getSel();
   if (sel && S.sel.list === 'decels'){
     const nt = nadirOf(sel);
@@ -1155,16 +1174,21 @@ function drawUC(){
   g.clearRect(0,0,w,h);
   let ymax = 0;
   for (const v of S.rec.strip.uc) if (v != null && v > ymax) ymax = v;
-  ymax = Math.max(ymax, 20);
   const ph = h - AXH;                       // the foot is the shared time axis
-  const ytop = ymax * 1.05, y2 = v => ph - v / ytop * ph;
-  const step = niceStep(ytop, 3), yt = [];
-  for (let v = step; v < ytop; v += step) yt.push(v);
-  g.strokeStyle = '#f0f0f3'; g.lineWidth = 1;
-  for (const v of yt){
-    g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w, y2(v)); g.stroke();
+  // External TOCO is conventionally read on a 0-100 scale. Do not let a
+  // near-100 peak spill onto a 0-120 axis merely because of display padding;
+  // extend by 20 only when the recorded signal itself actually exceeds 100.
+  const ytop = ymax <= 100 ? 100 : Math.ceil((ymax + .5) / 20) * 20;
+  const y2 = v => ph - v / ytop * ph, yt = [];
+  for (let v = 0; v <= ytop; v += 20) yt.push(v);
+  for (let v = 0; v <= ytop; v += 10){
+    const major = v % 20 === 0;
+    g.strokeStyle = major ? GRID_MAJOR : GRID_MINOR;
+    g.lineWidth = major ? 1 : .65;
+    g.beginPath(); g.moveTo(AXW, y2(v)); g.lineTo(w - AXR, y2(v)); g.stroke();
   }
-  g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW, ph); g.clip();
+  g.save(); g.beginPath(); g.rect(AXW, 0, w - AXW - AXR, ph); g.clip();
+  drawTimeGrid(g, w, ph, null);
   const pUC = partnerOf(S.sel);
   for (const c of S.ann.contractions){
     const isSel = mselHas('contractions', c.id);
@@ -1173,10 +1197,10 @@ function drawUC(){
     eventRect(g, w, ph, c, c.flag ? '#ff9500' : '#00877f', isSel || isPair, isSel);
   }
   drawExpert(g, w, ph, 'contractions');
-  drawSignal(g, w, ph, S.rec.strip.uc, 0, ymax*1.05, '#48484a', 1.1);
+  drawSignal(g, w, ph, S.rec.strip.uc, 0, ytop, '#48484a', 1.1);
   drawLinkAnchor(g, w, ph, 'uc');
   g.restore();
-  drawTimeGrid(g, w, ph, ph);
+  drawTimeGrid(g, w, 0, ph);
   drawStageBoundary(g, w, ph);
   yAxis(g, w, ph, yt, y2, 'TOCO');
   drawStageAxis(g, w, ph + 19);
@@ -1785,15 +1809,16 @@ function setupPane(id){
   const c = $(id);
   c.addEventListener('mousedown', ev => {
     ev.preventDefault();
-    const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
-    if (px < AXW) return;                 // the scale gutter is not a drawing surface
+    const r = c.getBoundingClientRect(), px = ev.clientX - r.left,
+          py = ev.clientY - r.top, w = r.width, ph = r.height - AXH;
+    if (px < AXW || py > ph) return;       // neither gutter is a drawing surface
+    const t = px2t(px, w);
     /* With the labels hidden the panes are for reading the trace, not for
        pointing at events: selecting one that cannot be seen, or drawing a new
        one over bands that are not shown, is a decision made blind. */
     if (S.hideBands){ S.drag = {mode:'pan', pane:id, t, v0:{...S.view}, x0:ev.clientX, w}; return; }
-    const t = px2t(px, w);
     if (id === 'fhr'){
-      const d0 = fhrAnchorHit(px, ev.clientY - r.top, r.height, w);
+      const d0 = fhrAnchorHit(px, py, ph, w);
       if (d0){
         if (!requireName()){ renderAll(); return; }
         const a = linkAnchors().find(v => v.d.id === d0.id);
@@ -1804,7 +1829,7 @@ function setupPane(id){
       }
     }
     if (id === 'uc'){
-      const d0 = ucAnchorHit(px, ev.clientY - r.top, w);
+      const d0 = ucAnchorHit(px, py, w);
       if (d0){                        // the tip sits over the band it points at
         if (!requireName()){ renderAll(); return; }
         const a = linkAnchors().find(v => v.d.id === d0.id);
@@ -1847,7 +1872,9 @@ function setupPane(id){
     }
   });
   c.addEventListener('dblclick', ev => {
-    const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
+    const r = c.getBoundingClientRect(), px = ev.clientX - r.left,
+          py = ev.clientY - r.top, w = r.width, ph = r.height - AXH;
+    if (px < AXW || py > ph) return;
     const hit = hitTest(id, px, w);
     if (hit){
       S.sel = {list:hit.list, id:hit.e.id};
@@ -1868,7 +1895,8 @@ function setupPane(id){
     clampView(); renderCanvases();
   }, {passive:false});
   c.addEventListener('mousemove', ev => {
-    const r = c.getBoundingClientRect(), px = ev.clientX - r.left, w = r.width;
+    const r = c.getBoundingClientRect(), px = ev.clientX - r.left,
+          py = ev.clientY - r.top, w = r.width, ph = r.height - AXH;
     const t = px2t(px, w);
     S.mouse = {pane:id, t};
     const {x, fhr, uc} = S.rec ? S.rec.strip : {};
@@ -1881,10 +1909,10 @@ function setupPane(id){
     }
     $('cursorRead').textContent = read;
     if (!S.drag){
-      if (px < AXW){ c.style.cursor = 'default'; return; }
-      if (id === 'uc' && ucAnchorHit(px, ev.clientY - r.top, w)){
+      if (px < AXW || py > ph){ c.style.cursor = 'default'; return; }
+      if (id === 'uc' && ucAnchorHit(px, py, w)){
         c.style.cursor = 'grab'; return; }
-      if (id === 'fhr' && fhrAnchorHit(px, ev.clientY - r.top, r.height, w)){
+      if (id === 'fhr' && fhrAnchorHit(px, py, ph, w)){
         c.style.cursor = 'grab'; return; }
       const hit = hitTest(id, px, w);
       const hitSel = hit && S.sel && S.sel.id === hit.e.id;
@@ -1917,9 +1945,9 @@ function setupPane(id){
 }
 function drawCreate(c, d){
   const [g, w, h0] = sizeCanvas(c);
-  // the UC pane gives its foot to the shared time axis; a band drawn over it
-  // would sit where no toco is plotted
-  const h = c.id === 'uc' ? h0 - AXH : h0;
+  // Both clinical panes give their foot to a time axis; a new band belongs
+  // only to the plotted signal above it.
+  const h = (c.id === 'fhr' || c.id === 'uc') ? h0 - AXH : h0;
   const pa = t2px(Math.min(d.t0, d.t1), w), pb = t2px(Math.max(d.t0, d.t1), w);
   g.fillStyle = 'rgba(0,122,255,.18)'; g.fillRect(pa, 0, pb - pa, h);
   g.strokeStyle = '#007aff'; g.setLineDash([4,3]); g.strokeRect(pa, 0, pb - pa, h); g.setLineDash([]);
