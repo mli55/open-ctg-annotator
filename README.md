@@ -3,9 +3,11 @@
 Shared expert review of fetal heart rate decelerations on the CTU-CHB
 intrapartum cohort — live at https://decel-review.mnli.workers.dev.
 
-25 records, selected for signal quality (13 hypoxia / 12 normal, pH
-6.93–7.37). One shared annotation copy; every edit is name-attributed;
-⚑ flags mark events still needing a decision.
+13 review records: 10 selected for signal quality (5 hypoxia / 5 normal,
+pH 6.93–7.37) plus 3 fully blind records with outcome withheld. The 10
+standard records use one shared annotation copy; each blind record keeps a
+separate copy per reader. Every edit is name-attributed; ⚑ flags mark events
+still needing a decision.
 
 ## What the prefill is
 
