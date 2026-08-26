@@ -175,4 +175,4 @@ pairing. Card layout (same date): measurements directly under the title,
 type buttons below them, duration dropped from the title.
 
 Deployment note: Measurements panel, card layout and manual pairing are
-all live on decel-review (GitHub + Cloudflare) as of 2026-08-21.
+all live on open-ctg-annotator (GitHub) and Cloudflare as of 2026-08-21.
