@@ -5,7 +5,6 @@ node_modules/
 worker/.dev.vars
 worker/.wrangler/
 .wrangler/
-worker-redirect/.wrangler/
 
 # Blind readings and raw KV dumps stay out of the public repo while the study
 # is running: a reader who can look up somebody else's marks before making

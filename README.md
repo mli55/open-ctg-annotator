@@ -40,8 +40,6 @@ still needing a decision.
   `/export`) with 409 conflict protection; `/export` requires the admin key
 - `annotations/shared/` — the live shared annotations (versioned backup;
   refresh via `scripts/pull_annotations.py`)
-- `worker-redirect/` — a stub Worker that forwards the retired workers.dev
-  address to the current one
 - `scripts/` — seed / pull / sync helpers (see `DEPLOY.md`)
 
 Blind readings (`annotations/blind/`) and raw KV dumps (`backups/`) are kept
@@ -53,29 +51,21 @@ the Worker's KV.
 
 One entry per calendar day summarizes changes pushed to the live review site.
 
-- **2026-08-28** — Moved the site to `decel.sensingschool.org`. All existing
-  annotations came across. Reader names are now matched case-insensitively,
-  and the blind records sort to the top of the list.
-- **2026-08-26** — Updated the CTG plots for clinical review: added aligned
-  FHR and TOCO time axes with five-minute major ticks and finer labels when
-  zoomed; changed the x-axis to a clear `Time before delivery (min)` countdown;
-  refined y-axis ticks and paper-style grid typography; and standardized
-  TOCO to 0–100 unless the recorded signal itself exceeds 100.
-- **2026-08-24** — Added three fully blind review strips with no outcome,
-  baseline, prefilled events, or expert overlay. Each reader now gets a private
-  annotation copy selected by their name, and concurrent saves merge independent
-  edits while flagging genuine same-event conflicts.
-- **2026-08-21** — Reworked the clinical review workflow: added live event
-  measurements, selectable baseline overlays, clinician-reference comparison,
-  visual deceleration–contraction pairing, external axes, stage markers, a
-  record summary and decision queue, multi-event actions, keyboard navigation,
-  conflict recovery, and a draggable whole-record overview. The colour system,
-  history panel, notes, filters, and annotation controls were also simplified
-  for continuous review.
-- **2026-08-20** — Launched the shared deceleration-review site with the pilot
-  records, Cloudflare KV persistence, name-attributed edits, shared history,
-  event drawing and boundary editing, provisional annotations, consensus-seeded
-  deceleration types, and the reviewed uterine-contraction prefill.
+- **2026-08-28** — Moved to `decel.sensingschool.org`; annotations carried
+  over. Reader names now match case-insensitively, and the blind records sort
+  to the top of the list.
+- **2026-08-26** — Reworked the plot axes: aligned FHR and TOCO time axes, a
+  `Time before delivery (min)` countdown, and TOCO fixed to 0–100 unless the
+  signal exceeds it.
+- **2026-08-24** — Added three blind strips, with no outcome, baseline,
+  prefill or expert overlay. Each reader gets a private copy, and concurrent
+  saves merge rather than collide.
+- **2026-08-21** — Added live event measurements, baseline overlays, the CTU
+  expert comparison, deceleration–contraction pairing, external axes, a
+  decision queue and keyboard navigation.
+- **2026-08-20** — Launched the shared review site: pilot records, KV
+  persistence, name-attributed edits, event drawing, and the seeded
+  deceleration and contraction prefill.
 
 ## Data licence
 
