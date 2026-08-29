@@ -1,7 +1,7 @@
 # Deceleration Annotator
 
 Shared expert review of fetal heart rate decelerations on the CTU-CHB
-intrapartum cohort — live at https://decel-review.mnli.workers.dev.
+intrapartum cohort — live at https://decel.sensingschool.org.
 
 13 review records: 10 selected for signal quality (5 hypoxia / 5 normal,
 pH 6.93–7.37) plus 3 fully blind records with outcome withheld. The 10
@@ -40,12 +40,22 @@ still needing a decision.
   `/export`) with 409 conflict protection; `/export` requires the admin key
 - `annotations/shared/` — the live shared annotations (versioned backup;
   refresh via `scripts/pull_annotations.py`)
+- `worker-redirect/` — a stub Worker that forwards the retired workers.dev
+  address to the current one
 - `scripts/` — seed / pull / sync helpers (see `DEPLOY.md`)
+
+Blind readings (`annotations/blind/`) and raw KV dumps (`backups/`) are kept
+out of this repository, which is public: a reader who can look up another's
+marks before making their own is not reading blind. Both live on disk and in
+the Worker's KV.
 
 ## Website update notes
 
 One entry per calendar day summarizes changes pushed to the live review site.
 
+- **2026-08-28** — Moved the site to `decel.sensingschool.org`. All existing
+  annotations came across. Reader names are now matched case-insensitively,
+  and the blind records sort to the top of the list.
 - **2026-08-26** — Updated the CTG plots for clinical review: added aligned
   FHR and TOCO time axes with five-minute major ticks and finer labels when
   zoomed; changed the x-axis to a clear `Time before delivery (min)` countdown;
