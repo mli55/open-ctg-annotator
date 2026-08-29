@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1180,
- "annotator": "qa",
+ "annotator": "Jake",
  "status": "open",
  "notes": "",
  "next_id": 91,
@@ -233,48 +233,12 @@
    "b0": -54.58,
    "origin": "detector",
    "review": "edited",
-   "type": "late",
+   "type": "variable",
    "nadir_min": -55.133,
    "src_rule": "prolonged",
    "src_linker": null,
    "nadir_lag_s": 131,
-   "by": "Mengning"
-  },
-  {
-   "id": "d80",
-   "a": -53.22,
-   "b": -52.48,
-   "a0": -53.22,
-   "b0": -52.48,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -53.033,
-   "det_pass": 2
-  },
-  {
-   "id": "d81",
-   "a": -51.68,
-   "b": -50.88,
-   "a0": -51.68,
-   "b0": -50.88,
-   "origin": "detector",
-   "review": "pending",
-   "type": "late",
-   "nadir_min": -51.083,
-   "det_pass": 2
-  },
-  {
-   "id": "d82",
-   "a": -49.48,
-   "b": -49.08,
-   "a0": -49.48,
-   "b0": -49.08,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -49.4,
-   "det_pass": 2
+   "by": "Jake"
   },
   {
    "id": "d83",
@@ -526,12 +490,12 @@
    "b0": -16.8,
    "origin": "detector",
    "review": "edited",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -18.55,
    "src_rule": "prolonged",
    "src_linker": "early",
    "nadir_lag_s": 1,
-   "by": "Mengning"
+   "by": "Jake"
   },
   {
    "id": "dm66",
@@ -553,12 +517,13 @@
    "a0": -16.13,
    "b0": -15.38,
    "origin": "detector",
-   "review": "pending",
-   "type": "variable",
+   "review": "accepted",
+   "type": "early",
    "nadir_min": -16,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -29
+   "nadir_lag_s": -29,
+   "by": "Jake"
   },
   {
    "id": "d88",
@@ -567,10 +532,11 @@
    "a0": -15.02,
    "b0": -14.5,
    "origin": "detector",
-   "review": "pending",
-   "type": "variable",
+   "review": "accepted",
+   "type": "late",
    "nadir_min": -14.9,
-   "det_pass": 2
+   "det_pass": 2,
+   "by": "Jake"
   },
   {
    "id": "d26",
@@ -605,12 +571,13 @@
    "a0": -12.98,
    "b0": -12.46,
    "origin": "detector",
-   "review": "pending",
-   "type": "variable",
+   "review": "accepted",
+   "type": "early",
    "nadir_min": -12.683,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 6
+   "nadir_lag_s": 6,
+   "by": "Jake"
   },
   {
    "id": "d90",
@@ -688,12 +655,12 @@
    "b0": -6.79,
    "origin": "detector",
    "review": "edited",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -8.233,
    "src_rule": "variable",
    "src_linker": "late",
    "nadir_lag_s": 8,
-   "by": "Mengning",
+   "by": "Jake",
    "pair": "c63"
   },
   {
@@ -704,8 +671,8 @@
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "Mengning",
-   "type": "na",
+   "by": "Jake",
+   "type": "variable",
    "det_type": null,
    "nadir_min": -7.1
   },
@@ -717,12 +684,12 @@
    "b0": -5.4,
    "origin": "detector",
    "review": "edited",
-   "type": "na",
+   "type": "variable",
    "nadir_min": -5.45,
    "src_rule": null,
    "src_linker": null,
    "nadir_lag_s": null,
-   "by": "Mengning"
+   "by": "Jake"
   },
   {
    "id": "d31",
@@ -731,12 +698,13 @@
    "a0": -5.08,
    "b0": -3.95,
    "origin": "detector",
-   "review": "pending",
-   "type": "na",
+   "review": "accepted",
+   "type": "variable",
    "nadir_min": -4.167,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": null
+   "nadir_lag_s": null,
+   "by": "Jake"
   },
   {
    "id": "d32",
@@ -746,13 +714,12 @@
    "b0": -3.06,
    "origin": "detector",
    "review": "edited",
-   "type": null,
+   "type": "variable",
    "nadir_min": -3.033,
    "src_rule": null,
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true,
-   "by": "Mengning"
+   "by": "Jake"
   },
   {
    "id": "d33",
@@ -762,13 +729,12 @@
    "b0": -0.23,
    "origin": "detector",
    "review": "edited",
-   "type": null,
+   "type": "variable",
    "nadir_min": -1.683,
    "src_rule": "prolonged",
    "src_linker": null,
    "nadir_lag_s": null,
-   "flag": true,
-   "by": "Mengning"
+   "by": "Jake"
   },
   {
    "id": "dm72",
@@ -778,10 +744,9 @@
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "Mengning",
-   "type": null,
+   "by": "Jake",
+   "type": "variable",
    "det_type": null,
-   "flag": true,
    "nadir_min": -0.45
   }
  ],
@@ -1057,7 +1022,146 @@
    "review": "pending"
   }
  ],
- "deleted": [],
- "updated": "2026-08-22T02:08:57.158605+00:00",
- "history": []
+ "deleted": [
+  {
+   "list": "decels",
+   "id": "d80",
+   "a": -53.22,
+   "b": -52.48,
+   "a0": -53.22,
+   "b0": -52.48,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -53.033,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d81",
+   "a": -51.68,
+   "b": -50.88,
+   "a0": -51.68,
+   "b0": -50.88,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "late",
+   "nadir_min": -51.083,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d82",
+   "a": -49.48,
+   "b": -49.08,
+   "a0": -49.48,
+   "b0": -49.08,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -49.4,
+   "det_pass": 2,
+   "by": "Jake"
+  }
+ ],
+ "updated": "2026-08-22T19:45:31.436Z",
+ "history": [
+  {
+   "t": "2026-08-22T02:10:11.124Z",
+   "by": "Mengning",
+   "action": "dm72: type \u2192 na (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T02:10:13.856Z",
+   "by": "Mengning",
+   "action": "d32,d33: type \u2192 na (2 questions cleared)"
+  },
+  {
+   "t": "2026-08-22T19:42:07.908Z",
+   "by": "Jake",
+   "action": "d13: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:42:10.947Z",
+   "by": "Jake",
+   "action": "d80: deleted"
+  },
+  {
+   "t": "2026-08-22T19:42:14.651Z",
+   "by": "Jake",
+   "action": "d81: deleted"
+  },
+  {
+   "t": "2026-08-22T19:42:17.219Z",
+   "by": "Jake",
+   "action": "d82: deleted"
+  },
+  {
+   "t": "2026-08-22T19:43:09.647Z",
+   "by": "Jake",
+   "action": "note: would not characterize any drops from -55 through -48 as significant decals, more consistent with variability of heart rate"
+  },
+  {
+   "t": "2026-08-22T19:43:26.172Z",
+   "by": "Jake",
+   "action": "d24: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:43:31.419Z",
+   "by": "Jake",
+   "action": "d29: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:43:34.676Z",
+   "by": "Jake",
+   "action": "dm71: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:43:43.403Z",
+   "by": "Jake",
+   "action": "d30: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:43:45.804Z",
+   "by": "Jake",
+   "action": "d31: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:43:47.867Z",
+   "by": "Jake",
+   "action": "d32: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:43:50.011Z",
+   "by": "Jake",
+   "action": "d33: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:43:51.644Z",
+   "by": "Jake",
+   "action": "dm72: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:44:34.775Z",
+   "by": "Jake",
+   "action": "note: characterizing decals from -8 through delivery as variables based on morphology"
+  },
+  {
+   "t": "2026-08-22T19:44:58.100Z",
+   "by": "Jake",
+   "action": "d27: type \u2192 early"
+  },
+  {
+   "t": "2026-08-22T19:45:23.451Z",
+   "by": "Jake",
+   "action": "d25: type \u2192 early"
+  },
+  {
+   "t": "2026-08-22T19:45:31.436Z",
+   "by": "Jake",
+   "action": "d88: type \u2192 late"
+  }
+ ]
 }

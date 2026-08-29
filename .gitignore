@@ -5,3 +5,14 @@ node_modules/
 worker/.dev.vars
 worker/.wrangler/
 .wrangler/
+worker-redirect/.wrangler/
+
+# Blind readings and raw KV dumps stay out of the public repo while the study
+# is running: a reader who can look up somebody else's marks before making
+# their own is no longer reading blind, which is the one thing these three
+# records exist to test. Backups live on disk and in the Worker's KV.
+annotations/blind/
+backups/
+worker/migrate.json
+__pycache__/
+*.pyc

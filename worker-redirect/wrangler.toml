@@ -1,0 +1,3 @@
+name = "decel-review"
+main = "redirect.js"
+compatibility_date = "2026-08-01"

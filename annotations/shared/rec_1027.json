@@ -1,0 +1,472 @@
+{
+ "schema": 1,
+ "record_id": 1027,
+ "annotator": "test",
+ "notes": "",
+ "next_id": 43,
+ "decels": [
+  {
+   "id": "d1",
+   "a": -74.69,
+   "b": -73.22,
+   "a0": -74.69,
+   "b0": -73.22,
+   "origin": "detector",
+   "det_type": "early",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -74.2,
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "early",
+   "flag": true
+  },
+  {
+   "id": "d2",
+   "a": -70.9,
+   "b": -70.2,
+   "a0": -70.9,
+   "b0": -70.2,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -70.5,
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
+  },
+  {
+   "id": "d3",
+   "a": -63.59,
+   "b": -62.86,
+   "a0": -63.59,
+   "b0": -62.86,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -63.317,
+   "by": "as",
+   "src_rule": "variable",
+   "src_claude": "variable",
+   "pair": "c34"
+  },
+  {
+   "id": "d4",
+   "a": -61.44,
+   "b": -60.91,
+   "a0": -61.44,
+   "b0": -60.91,
+   "origin": "detector",
+   "det_type": "variable",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -61.183,
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
+  },
+  {
+   "id": "d5",
+   "a": -48.68333333333333,
+   "b": -46.87333333333333,
+   "a0": -59.43,
+   "b0": -57.62,
+   "origin": "detector",
+   "det_type": "early",
+   "review": "edited",
+   "type": null,
+   "nadir_min": null,
+   "by": "as",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": "late",
+   "pair": "none"
+  },
+  {
+   "id": "d7",
+   "a": -37.3,
+   "b": -36.2,
+   "a0": -37.3,
+   "b0": -36.2,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -36.617,
+   "by": "mengning",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": null
+  },
+  {
+   "id": "d8",
+   "a": -32.51,
+   "b": -31.17,
+   "a0": -32.51,
+   "b0": -31.17,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "early",
+   "nadir_min": -31.733,
+   "by": "mn-jy",
+   "flag": false,
+   "src_rule": null,
+   "src_claude": "variable"
+  },
+  {
+   "id": "d9",
+   "a": -30.99,
+   "b": -29.72,
+   "a0": -30.99,
+   "b0": -29.72,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -30.183,
+   "by": "mengning",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": "variable"
+  },
+  {
+   "id": "d10",
+   "a": -28.81,
+   "b": -28.08,
+   "a0": -28.81,
+   "b0": -28.08,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -28.45,
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
+  },
+  {
+   "id": "d11",
+   "a": -26.94,
+   "b": -26.05,
+   "a0": -26.94,
+   "b0": -26.05,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -26.45,
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
+  },
+  {
+   "id": "d12",
+   "a": -21.466666666666665,
+   "b": -20.75,
+   "a0": -21.82,
+   "b0": -20.75,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "edited",
+   "type": null,
+   "nadir_min": -21.083,
+   "by": "test",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": null
+  },
+  {
+   "id": "d13",
+   "a": -16.48,
+   "b": -15.36,
+   "a0": -16.48,
+   "b0": -15.36,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "late",
+   "nadir_min": -15.517,
+   "by": "test",
+   "src_rule": null,
+   "src_claude": null
+  },
+  {
+   "id": "d14",
+   "a": -14.26,
+   "b": -13.73,
+   "a0": -14.26,
+   "b0": -13.73,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -14.217,
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
+  },
+  {
+   "id": "d15",
+   "a": -11.98,
+   "b": -10.7,
+   "a0": -11.98,
+   "b0": -10.7,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -11.133,
+   "by": "mengning",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": "variable"
+  },
+  {
+   "id": "d16",
+   "a": -9.6,
+   "b": -9.21,
+   "a0": -9.6,
+   "b0": -9.21,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -9.283,
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
+  },
+  {
+   "id": "d17",
+   "a": -7.3,
+   "b": -6.31,
+   "a0": -7.3,
+   "b0": -6.31,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "accepted",
+   "type": null,
+   "nadir_min": -6.567,
+   "by": "mengning",
+   "flag": true,
+   "src_rule": null,
+   "src_claude": "variable"
+  },
+  {
+   "id": "d18",
+   "a": -5.44,
+   "b": -4.033333333333333,
+   "a0": -5.44,
+   "b0": -3.95,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "edited",
+   "type": "variable",
+   "nadir_min": -5.15,
+   "by": "Justin",
+   "src_rule": "variable",
+   "src_claude": "variable"
+  },
+  {
+   "id": "dm32",
+   "a": -3.22,
+   "b": -2.92,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "type": "variable",
+   "det_type": null,
+   "nadir_min": -2.967,
+   "by": "mengning",
+   "src_rule": "variable",
+   "src_claude": "variable"
+  }
+ ],
+ "contractions": [
+  {
+   "id": "c33",
+   "a": -74.22,
+   "b": -72.63,
+   "a0": -74.22,
+   "b0": -72.63,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c34",
+   "a": -71.56,
+   "b": -68.9,
+   "a0": -71.56,
+   "b0": -68.9,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c35",
+   "a": -66.57,
+   "b": -64.45,
+   "a0": -66.57,
+   "b0": -64.45,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c36",
+   "a": -62.37,
+   "b": -61.45,
+   "a0": -62.37,
+   "b0": -61.45,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "c37",
+   "a": -60.11,
+   "b": -57.76,
+   "a0": -60.11,
+   "b0": -57.76,
+   "origin": "detector",
+   "review": "pending"
+  },
+  {
+   "id": "cm42",
+   "a": -56,
+   "b": -55,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "mengning"
+  },
+  {
+   "id": "c38",
+   "a": -47.03,
+   "b": -44.86,
+   "a0": -47.03,
+   "b0": -44.86,
+   "origin": "detector",
+   "review": "pending"
+  }
+ ],
+ "deleted": [
+  {
+   "list": "decels",
+   "id": "d6",
+   "a": -55.37,
+   "b": -55.05,
+   "a0": -55.37,
+   "b0": -55.05,
+   "origin": "detector",
+   "det_type": "untyped",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -55.067,
+   "by": "as",
+   "src_rule": "variable",
+   "src_claude": "variable",
+   "pair": "c37"
+  }
+ ],
+ "updated": "2026-08-21T23:22:55.270Z",
+ "history": [
+  {
+   "t": "2026-08-21T00:59:17.652777+00:00",
+   "by": "mengning",
+   "action": "consensus seeding: 10 decel(s) agreed by the pipeline linker, the geometric rule and the visual pass -> type pre-filled for quick confirmation; 9 disagreed or had a single source -> left unclassified and flagged \u2691 for expert typing"
+  },
+  {
+   "t": "2026-08-21T19:28:55.486Z",
+   "by": "mn-jy",
+   "action": "d8: type \u2192 early"
+  },
+  {
+   "t": "2026-08-21T19:28:57.685Z",
+   "by": "mn-jy",
+   "action": "d8: question cleared"
+  },
+  {
+   "t": "2026-08-21T19:29:01.124Z",
+   "by": "mn-jy",
+   "action": "undo"
+  },
+  {
+   "t": "2026-08-21T21:39:03.709Z",
+   "by": "mn-jy",
+   "action": "d8: question cleared"
+  },
+  {
+   "t": "2026-08-21T21:50:20.606Z",
+   "by": "as",
+   "action": "d6: paired \u2192 c37"
+  },
+  {
+   "t": "2026-08-21T21:50:29.747Z",
+   "by": "as",
+   "action": "d5: moved -59:26..-57:37 \u2192 -56:08..-54:19"
+  },
+  {
+   "t": "2026-08-21T21:52:35.916Z",
+   "by": "as",
+   "action": "d6: deleted"
+  },
+  {
+   "t": "2026-08-21T21:52:39.745Z",
+   "by": "as",
+   "action": "d5: moved -56:08..-54:19 \u2192 -48:41..-46:52"
+  },
+  {
+   "t": "2026-08-21T21:54:35.661Z",
+   "by": "as",
+   "action": "d5: paired \u2192 cm42"
+  },
+  {
+   "t": "2026-08-21T21:55:22.878Z",
+   "by": "as",
+   "action": "d5: paired \u2192 c38"
+  },
+  {
+   "t": "2026-08-21T21:58:35.709Z",
+   "by": "as",
+   "action": "d3: paired \u2192 c34"
+  },
+  {
+   "t": "2026-08-21T22:01:12.225Z",
+   "by": "as",
+   "action": "d5: paired \u2192 no contraction"
+  },
+  {
+   "t": "2026-08-21T22:36:48.207Z",
+   "by": "Justin",
+   "action": "d18: boundary -5:26..-3:57 \u2192 -5:26..-3:43"
+  },
+  {
+   "t": "2026-08-21T22:36:48.600Z",
+   "by": "Justin",
+   "action": "d18: boundary -5:26..-3:43 \u2192 -5:26..-3:34"
+  },
+  {
+   "t": "2026-08-21T22:36:50.915Z",
+   "by": "Justin",
+   "action": "d18: boundary -5:26..-3:34 \u2192 -5:26..-4:02"
+  },
+  {
+   "t": "2026-08-21T23:21:52.020Z",
+   "by": "test",
+   "action": "d12: boundary -21:49..-20:45 \u2192 -21:28..-20:45"
+  },
+  {
+   "t": "2026-08-21T23:22:54.371Z",
+   "by": "test",
+   "action": "d13: type \u2192 early (question cleared)"
+  },
+  {
+   "t": "2026-08-21T23:22:55.270Z",
+   "by": "test",
+   "action": "d13: type \u2192 late"
+  }
+ ]
+}

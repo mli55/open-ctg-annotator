@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "record_id": 1485,
- "annotator": "detector",
+ "annotator": "Jake",
  "status": "open",
  "notes": "",
  "next_id": 56,
@@ -27,12 +27,13 @@
    "a0": -82.32,
    "b0": -81.26,
    "origin": "detector",
-   "review": "pending",
-   "type": "na",
+   "review": "accepted",
+   "type": null,
    "nadir_min": -81.729,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": null
+   "nadir_lag_s": null,
+   "by": "Jake"
   },
   {
    "id": "d3",
@@ -43,7 +44,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -79.987,
+   "nadir_min": -79.979,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -3
@@ -57,7 +58,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "late",
-   "nadir_min": -77.446,
+   "nadir_min": -76.779,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 104
@@ -71,7 +72,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "late",
-   "nadir_min": -74.875,
+   "nadir_min": -74.879,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 51
@@ -85,7 +86,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -71.7,
+   "nadir_min": -73.112,
    "src_rule": "prolonged",
    "src_linker": "late",
    "nadir_lag_s": -29
@@ -97,36 +98,13 @@
    "a0": -70.29,
    "b0": -68.4,
    "origin": "detector",
-   "review": "pending",
-   "type": "early",
-   "nadir_min": -69.287,
+   "review": "accepted",
+   "type": "late",
+   "nadir_min": -69.846,
    "src_rule": "variable",
    "src_linker": "early",
-   "nadir_lag_s": 21
-  },
-  {
-   "id": "d53",
-   "a": -63.05,
-   "b": -62.73,
-   "a0": -63.05,
-   "b0": -62.73,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -62.796,
-   "det_pass": 2
-  },
-  {
-   "id": "d54",
-   "a": -55.78,
-   "b": -55.53,
-   "a0": -55.78,
-   "b0": -55.53,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -55.729,
-   "det_pass": 2
+   "nadir_lag_s": 21,
+   "by": "Jake"
   },
   {
    "id": "d8",
@@ -137,22 +115,10 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -53.904,
+   "nadir_min": -53.912,
    "src_rule": "prolonged",
    "src_linker": null,
    "nadir_lag_s": -37
-  },
-  {
-   "id": "d55",
-   "a": -47.45,
-   "b": -47.25,
-   "a0": -47.45,
-   "b0": -47.25,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -47.312,
-   "det_pass": 2
   },
   {
    "id": "d9",
@@ -163,7 +129,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -41.825,
+   "nadir_min": -41.829,
    "src_rule": "variable",
    "src_linker": null,
    "nadir_lag_s": null
@@ -177,7 +143,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -38.941,
+   "nadir_min": -38.946,
    "src_rule": "variable",
    "src_linker": null,
    "nadir_lag_s": null
@@ -203,12 +169,13 @@
    "a0": -32.84,
    "b0": -32.06,
    "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -32.433,
+   "review": "accepted",
+   "type": "late",
+   "nadir_min": -32.429,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 27
+   "nadir_lag_s": 27,
+   "by": "Jake"
   },
   {
    "id": "d13",
@@ -219,7 +186,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -30.525,
+   "nadir_min": -30.529,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -15
@@ -233,7 +200,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -27.016,
+   "nadir_min": -25.562,
    "src_rule": "prolonged",
    "src_linker": null,
    "nadir_lag_s": -59
@@ -247,7 +214,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -23.104,
+   "nadir_min": -24.029,
    "src_rule": "prolonged",
    "src_linker": "early",
    "nadir_lag_s": -69
@@ -261,7 +228,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -19.804,
+   "nadir_min": -19.812,
    "src_rule": "prolonged",
    "src_linker": "late",
    "nadir_lag_s": 42.1
@@ -275,7 +242,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -13.966,
+   "nadir_min": -13.963,
    "src_rule": "prolonged",
    "src_linker": "late",
    "nadir_lag_s": 33
@@ -289,7 +256,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -8.816,
+   "nadir_min": -8.812,
    "src_rule": "prolonged",
    "src_linker": "late",
    "nadir_lag_s": 101
@@ -303,7 +270,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -5.158,
+   "nadir_min": -4.763,
    "src_rule": "prolonged",
    "src_linker": "early",
    "nadir_lag_s": -94
@@ -613,7 +580,86 @@
    "review": "pending"
   }
  ],
- "deleted": [],
- "updated": "2026-08-22T02:08:57.158605+00:00",
- "history": []
+ "deleted": [
+  {
+   "list": "decels",
+   "id": "d53",
+   "a": -63.05,
+   "b": -62.73,
+   "a0": -63.05,
+   "b0": -62.73,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -62.796,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d54",
+   "a": -55.78,
+   "b": -55.53,
+   "a0": -55.78,
+   "b0": -55.53,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -55.729,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d55",
+   "a": -47.45,
+   "b": -47.25,
+   "a0": -47.45,
+   "b0": -47.25,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -47.312,
+   "det_pass": 2,
+   "by": "Jake"
+  }
+ ],
+ "updated": "2026-08-22T19:51:33.351Z",
+ "history": [
+  {
+   "t": "2026-08-22T19:48:41.036Z",
+   "by": "Jake",
+   "action": "d2: type \u2192 unclassified"
+  },
+  {
+   "t": "2026-08-22T19:48:58.363Z",
+   "by": "Jake",
+   "action": "d7: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T19:49:04.852Z",
+   "by": "Jake",
+   "action": "d53: deleted"
+  },
+  {
+   "t": "2026-08-22T19:49:11.724Z",
+   "by": "Jake",
+   "action": "d54: deleted"
+  },
+  {
+   "t": "2026-08-22T19:49:19.451Z",
+   "by": "Jake",
+   "action": "d55: deleted"
+  },
+  {
+   "t": "2026-08-22T19:49:31.579Z",
+   "by": "Jake",
+   "action": "d12: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T19:51:33.351Z",
+   "by": "Jake",
+   "action": "note: many of the prolonged decals have classic morphology of variable decal with slow return to baseline - suggesting an episode of cord occlusion followed by transient hypoxia. great example at -20"
+  }
+ ]
 }

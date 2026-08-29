@@ -1,10 +1,10 @@
 {
  "schema": 1,
  "record_id": 1385,
- "annotator": "Justin",
+ "annotator": "Jake",
  "status": "open",
  "notes": "",
- "next_id": 37,
+ "next_id": 38,
  "decels": [
   {
    "id": "d29",
@@ -14,10 +14,10 @@
    "b0": -55,
    "origin": "detector",
    "review": "accepted",
-   "type": "early",
+   "type": "late",
    "nadir_min": -55.267,
    "det_pass": 2,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
    "id": "dm36",
@@ -31,60 +31,6 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -41.85
-  },
-  {
-   "id": "d2",
-   "a": -36.53,
-   "b": -35.18,
-   "a0": -36.53,
-   "b0": -35.18,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -36.317,
-   "src_rule": "variable",
-   "src_linker": "variable",
-   "nadir_lag_s": -102
-  },
-  {
-   "id": "d30",
-   "a": -34.35,
-   "b": -32.58,
-   "a0": -34.35,
-   "b0": -32.58,
-   "origin": "detector",
-   "review": "accepted",
-   "type": "variable",
-   "nadir_min": -34.25,
-   "det_pass": 2,
-   "by": "Justin"
-  },
-  {
-   "id": "d3",
-   "a": -28.15,
-   "b": -25.5,
-   "a0": -28.15,
-   "b0": -26.46,
-   "origin": "detector",
-   "review": "edited",
-   "type": "late",
-   "nadir_min": -25.983,
-   "src_rule": "late",
-   "src_linker": "late",
-   "nadir_lag_s": 103,
-   "by": "Justin"
-  },
-  {
-   "id": "d34",
-   "a": -19.85,
-   "b": -18.7,
-   "a0": -19.85,
-   "b0": -18.7,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -19.417,
-   "det_pass": 2
   },
   {
    "id": "d4",
@@ -135,12 +81,13 @@
    "a0": -6.97,
    "b0": -5.89,
    "origin": "detector",
-   "review": "pending",
-   "type": "na",
+   "review": "accepted",
+   "type": "variable",
    "nadir_min": -6.133,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": -37
+   "nadir_lag_s": -37,
+   "by": "Jake"
   },
   {
    "id": "d8",
@@ -187,11 +134,12 @@
   {
    "id": "c10",
    "a": -56.22,
-   "b": -53.66,
+   "b": -55.35,
    "a0": -56.22,
    "b0": -53.66,
    "origin": "detector",
-   "review": "pending"
+   "review": "edited",
+   "by": "Jake"
   },
   {
    "id": "c11",
@@ -423,9 +371,69 @@
    "det_pass": 2,
    "flag": true,
    "by": "Justin"
+  },
+  {
+   "list": "decels",
+   "id": "d2",
+   "a": -36.53,
+   "b": -35.18,
+   "a0": -36.53,
+   "b0": -35.18,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -36.317,
+   "src_rule": "variable",
+   "src_linker": "variable",
+   "nadir_lag_s": -102,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d30",
+   "a": -34.35,
+   "b": -32.58,
+   "a0": -34.35,
+   "b0": -32.58,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -34.25,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d3",
+   "a": -28.15,
+   "b": -25.5,
+   "a0": -28.15,
+   "b0": -26.46,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "late",
+   "nadir_min": -25.983,
+   "src_rule": "late",
+   "src_linker": "late",
+   "nadir_lag_s": 103,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d34",
+   "a": -19.85,
+   "b": -18.7,
+   "a0": -19.85,
+   "b0": -18.7,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -19.417,
+   "det_pass": 2,
+   "by": "Jake"
   }
  ],
- "updated": "2026-08-22T02:08:57.158605+00:00",
+ "updated": "2026-08-22T19:47:44.380Z",
  "history": [
   {
    "t": "2026-08-22T01:57:01.975Z",
@@ -476,6 +484,41 @@
    "t": "2026-08-22T01:58:07.995Z",
    "by": "Justin",
    "action": "d3: boundary -28:09..-26:28 \u2192 -28:09..-25:30"
+  },
+  {
+   "t": "2026-08-22T19:46:22.532Z",
+   "by": "Jake",
+   "action": "c10: boundary -56:13..-53:40 \u2192 -56:13..-55:21"
+  },
+  {
+   "t": "2026-08-22T19:46:29.686Z",
+   "by": "Jake",
+   "action": "d29: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T19:46:42.600Z",
+   "by": "Jake",
+   "action": "d2: deleted"
+  },
+  {
+   "t": "2026-08-22T19:46:45.091Z",
+   "by": "Jake",
+   "action": "d30: deleted"
+  },
+  {
+   "t": "2026-08-22T19:47:24.124Z",
+   "by": "Jake",
+   "action": "d3: deleted"
+  },
+  {
+   "t": "2026-08-22T19:47:29.507Z",
+   "by": "Jake",
+   "action": "d34: deleted"
+  },
+  {
+   "t": "2026-08-22T19:47:44.380Z",
+   "by": "Jake",
+   "action": "d7: type \u2192 variable"
   }
  ]
 }

@@ -1,24 +1,25 @@
 {
  "schema": 1,
  "record_id": 1008,
- "annotator": "Justin",
+ "annotator": "Mengning",
  "status": "open",
  "notes": "",
- "next_id": 63,
+ "next_id": 67,
  "decels": [
   {
    "id": "d1",
-   "a": -66.66,
-   "b": -65.48,
+   "a": -66.85,
+   "b": -64.56666666666666,
    "a0": -66.66,
    "b0": -65.48,
    "origin": "detector",
-   "review": "pending",
+   "review": "edited",
    "type": "variable",
    "nadir_min": -66.333,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": -35
+   "nadir_lag_s": -35,
+   "by": "Jake"
   },
   {
    "id": "dm48",
@@ -32,19 +33,6 @@
    "type": "variable",
    "det_type": null,
    "nadir_min": -61.6
-  },
-  {
-   "id": "d55",
-   "a": -60.28,
-   "b": -59.62,
-   "a0": -60.28,
-   "b0": -59.62,
-   "origin": "detector",
-   "review": "accepted",
-   "type": "early",
-   "nadir_min": -60.217,
-   "det_pass": 2,
-   "by": "Justin"
   },
   {
    "id": "d2",
@@ -76,19 +64,6 @@
    "nadir_lag_s": 23
   },
   {
-   "id": "d56",
-   "a": -54.8,
-   "b": -54.17,
-   "a0": -54.8,
-   "b0": -54.17,
-   "origin": "detector",
-   "review": "accepted",
-   "type": "late",
-   "nadir_min": -54.317,
-   "det_pass": 2,
-   "by": "Justin"
-  },
-  {
    "id": "d57",
    "a": -53.07,
    "b": -52.12,
@@ -115,19 +90,6 @@
    "nadir_min": -51.217
   },
   {
-   "id": "d58",
-   "a": -50.55,
-   "b": -50.2,
-   "a0": -50.55,
-   "b0": -50.2,
-   "origin": "detector",
-   "review": "accepted",
-   "type": "early",
-   "nadir_min": -50.333,
-   "det_pass": 2,
-   "by": "Justin"
-  },
-  {
    "id": "d4",
    "a": -47.55,
    "b": -45.85,
@@ -150,10 +112,10 @@
    "b0": -42.67,
    "origin": "detector",
    "review": "accepted",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -43.2,
    "det_pass": 2,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
    "id": "d60",
@@ -163,10 +125,10 @@
    "b0": -42.27,
    "origin": "detector",
    "review": "accepted",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -42.483,
    "det_pass": 2,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
    "id": "d5",
@@ -176,12 +138,12 @@
    "b0": -41.42,
    "origin": "detector",
    "review": "accepted",
-   "type": "late",
+   "type": "variable",
    "nadir_min": -41.5,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 103,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
    "id": "d6",
@@ -191,74 +153,25 @@
    "b0": -37.88,
    "origin": "detector",
    "review": "accepted",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -38.017,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 73,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
-   "id": "d7",
-   "a": -36.67,
-   "b": -35.416666666666664,
-   "a0": -36.67,
-   "b0": -34.4,
-   "origin": "detector",
-   "review": "edited",
-   "type": "early",
-   "nadir_min": -35.717,
-   "src_rule": "prolonged",
-   "src_linker": null,
-   "nadir_lag_s": 29,
-   "by": "Justin",
-   "pair": "none"
-  },
-  {
-   "id": "dm52",
-   "a": -35.13333333333333,
-   "b": -34.333333333333336,
+   "id": "dm64",
+   "a": -36.7,
+   "b": -31.266666666666666,
    "a0": null,
    "b0": null,
    "origin": "manual",
    "review": "added",
-   "by": "Mengning",
-   "type": "variable",
+   "by": "Jake",
+   "type": "prolonged",
    "det_type": null,
-   "pair": "none",
-   "nadir_min": -34.683
-  },
-  {
-   "id": "d8",
-   "a": -34.17,
-   "b": -33.19,
-   "a0": -34.17,
-   "b0": -33.19,
-   "origin": "detector",
-   "review": "pending",
-   "type": "early",
-   "nadir_min": -33.433,
-   "src_rule": "early",
-   "src_linker": "early",
-   "nadir_lag_s": -9,
-   "pair": "c34",
-   "by": "Mengning"
-  },
-  {
-   "id": "d9",
-   "a": -32.7,
-   "b": -31.33,
-   "a0": -32.7,
-   "b0": -31.33,
-   "origin": "detector",
-   "review": "accepted",
-   "type": "variable",
-   "nadir_min": -31.7,
-   "src_rule": "late",
-   "src_linker": null,
-   "nadir_lag_s": 95,
-   "pair": "none",
-   "by": "Justin"
+   "nadir_min": -35.717
   },
   {
    "id": "d10",
@@ -347,18 +260,18 @@
   },
   {
    "id": "d15",
-   "a": -19.25,
+   "a": -19.683333333333334,
    "b": -18.33,
    "a0": -19.25,
    "b0": -18.33,
    "origin": "detector",
-   "review": "accepted",
-   "type": "early",
+   "review": "edited",
+   "type": "variable",
    "nadir_min": -18.483,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 42,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
    "id": "d16",
@@ -368,54 +281,25 @@
    "b0": -15.95,
    "origin": "detector",
    "review": "accepted",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -16.383,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 48,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
-   "id": "d54",
-   "a": -15.6,
-   "b": -15.22,
-   "a0": -15.6,
-   "b0": -15.22,
-   "origin": "detector",
-   "review": "accepted",
-   "type": "early",
-   "nadir_min": -15.533,
-   "det_pass": 2,
-   "by": "Justin"
-  },
-  {
-   "id": "d17",
-   "a": -14.65,
-   "b": -13.71,
-   "a0": -14.65,
-   "b0": -13.71,
-   "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -14.517,
-   "src_rule": "variable",
-   "src_linker": "variable",
-   "nadir_lag_s": -79
-  },
-  {
-   "id": "d18",
-   "a": -13.1,
-   "b": -11.56,
-   "a0": -13.1,
-   "b0": -11.56,
-   "origin": "detector",
-   "review": "accepted",
-   "type": "early",
-   "nadir_min": -12.433,
-   "src_rule": null,
-   "src_linker": null,
-   "nadir_lag_s": -44,
-   "by": "Mengning"
+   "id": "dm65",
+   "a": -15.7,
+   "b": -11.016666666666667,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Jake",
+   "type": "prolonged",
+   "det_type": null,
+   "nadir_min": -14.517
   },
   {
    "id": "d19",
@@ -440,10 +324,10 @@
    "b0": -9.18,
    "origin": "detector",
    "review": "accepted",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -9.2,
    "det_pass": 2,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
    "id": "d20",
@@ -463,17 +347,17 @@
   {
    "id": "d21",
    "a": -6.1,
-   "b": -3.64,
+   "b": -3.316666666666667,
    "a0": -6.1,
    "b0": -3.64,
    "origin": "detector",
-   "review": "accepted",
-   "type": "variable",
+   "review": "edited",
+   "type": "late",
    "nadir_min": -4.817,
    "src_rule": "prolonged",
    "src_linker": null,
    "nadir_lag_s": -105,
-   "by": "Justin"
+   "by": "Jake"
   },
   {
    "id": "d22",
@@ -498,12 +382,12 @@
    "b0": -0.67,
    "origin": "detector",
    "review": "accepted",
-   "type": "early",
+   "type": "variable",
    "nadir_min": -1.35,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -35,
-   "by": "Justin"
+   "by": "Jake"
   }
  ],
  "contractions": [
@@ -749,9 +633,148 @@
    "det_pass": 2,
    "flag": true,
    "by": "Justin"
+  },
+  {
+   "list": "decels",
+   "id": "d7",
+   "a": -36.67,
+   "b": -35.416666666666664,
+   "a0": -36.67,
+   "b0": -34.4,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -35.717,
+   "src_rule": "prolonged",
+   "src_linker": null,
+   "nadir_lag_s": 29,
+   "by": "Jake",
+   "pair": "none"
+  },
+  {
+   "list": "decels",
+   "id": "d8",
+   "a": -34.17,
+   "b": -33.19,
+   "a0": -34.17,
+   "b0": -33.19,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -33.433,
+   "src_rule": "early",
+   "src_linker": "early",
+   "nadir_lag_s": -9,
+   "pair": "c34",
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d9",
+   "a": -32.7,
+   "b": -31.33,
+   "a0": -32.7,
+   "b0": -31.33,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -31.7,
+   "src_rule": "late",
+   "src_linker": null,
+   "nadir_lag_s": 95,
+   "pair": "none",
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d17",
+   "a": -14.65,
+   "b": -13.71,
+   "a0": -14.65,
+   "b0": -13.71,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -14.517,
+   "src_rule": "variable",
+   "src_linker": "variable",
+   "nadir_lag_s": -79,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d18",
+   "a": -13.1,
+   "b": -11.56,
+   "a0": -13.1,
+   "b0": -11.56,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "early",
+   "nadir_min": -12.433,
+   "src_rule": null,
+   "src_linker": null,
+   "nadir_lag_s": -44,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d54",
+   "a": -15.6,
+   "b": -15.22,
+   "a0": -15.6,
+   "b0": -15.22,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -15.533,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d58",
+   "a": -50.55,
+   "b": -50.2,
+   "a0": -50.55,
+   "b0": -50.2,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "early",
+   "nadir_min": -50.333,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d56",
+   "a": -54.8,
+   "b": -54.17,
+   "a0": -54.8,
+   "b0": -54.17,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "late",
+   "nadir_min": -54.317,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d55",
+   "a": -60.28,
+   "b": -59.62,
+   "a0": -60.28,
+   "b0": -59.62,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "variable",
+   "nadir_min": -60.217,
+   "det_pass": 2,
+   "by": "Jake"
   }
  ],
- "updated": "2026-08-22T02:08:57.158605+00:00",
+ "updated": "2026-08-24T04:17:15.146Z",
  "history": [
   {
    "t": "2026-08-22T01:27:35.676Z",
@@ -882,6 +905,181 @@
    "t": "2026-08-22T01:41:00.374Z",
    "by": "Justin",
    "action": "d22: type \u2192 variable (1 question cleared)"
+  },
+  {
+   "t": "2026-08-22T18:20:07.035Z",
+   "by": "Jake",
+   "action": "cm63: added 0:10 \u2192 0:19"
+  },
+  {
+   "t": "2026-08-22T18:20:10.003Z",
+   "by": "Jake",
+   "action": "cm63: boundary 0:10..0:19 \u2192 -22:22..0:19"
+  },
+  {
+   "t": "2026-08-22T18:21:05.971Z",
+   "by": "Jake",
+   "action": "d23: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:21:57.173Z",
+   "by": "Jake",
+   "action": "d55: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:24:16.796Z",
+   "by": "Jake",
+   "action": "d5: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:24:56.708Z",
+   "by": "Jake",
+   "action": "d59: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:24:59.532Z",
+   "by": "Jake",
+   "action": "d60: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:25:08.171Z",
+   "by": "Jake",
+   "action": "d60: type \u2192 unclassified"
+  },
+  {
+   "t": "2026-08-22T18:25:32.740Z",
+   "by": "Jake",
+   "action": "d6: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:25:35.708Z",
+   "by": "Jake",
+   "action": "d7: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:25:49.812Z",
+   "by": "Jake",
+   "action": "d8: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:26:28.677Z",
+   "by": "Jake",
+   "action": "d7: deleted"
+  },
+  {
+   "t": "2026-08-22T18:26:31.964Z",
+   "by": "Jake",
+   "action": "dm52: deleted"
+  },
+  {
+   "t": "2026-08-22T18:26:35.308Z",
+   "by": "Jake",
+   "action": "d8: deleted"
+  },
+  {
+   "t": "2026-08-22T18:26:38.036Z",
+   "by": "Jake",
+   "action": "d9: deleted"
+  },
+  {
+   "t": "2026-08-22T18:26:54.212Z",
+   "by": "Jake",
+   "action": "dm64: added -36:42 \u2192 -31:16"
+  },
+  {
+   "t": "2026-08-22T18:26:54.212Z",
+   "by": "Jake",
+   "action": "dm64: type \u2192 prolonged"
+  },
+  {
+   "t": "2026-08-22T18:27:14.702Z",
+   "by": "Jake",
+   "action": "d15: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:27:25.356Z",
+   "by": "Jake",
+   "action": "d16: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:27:28.445Z",
+   "by": "Jake",
+   "action": "d54: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:27:41.876Z",
+   "by": "Jake",
+   "action": "d17: deleted"
+  },
+  {
+   "t": "2026-08-22T18:27:44.278Z",
+   "by": "Jake",
+   "action": "d18: deleted"
+  },
+  {
+   "t": "2026-08-22T18:27:51.564Z",
+   "by": "Jake",
+   "action": "d54: deleted"
+  },
+  {
+   "t": "2026-08-22T18:27:58.660Z",
+   "by": "Jake",
+   "action": "dm65: added -15:42 \u2192 -11:01"
+  },
+  {
+   "t": "2026-08-22T18:27:58.660Z",
+   "by": "Jake",
+   "action": "dm65: type \u2192 prolonged"
+  },
+  {
+   "t": "2026-08-22T18:28:06.630Z",
+   "by": "Jake",
+   "action": "d62: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:28:40.053Z",
+   "by": "Jake",
+   "action": "d21: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T18:29:12.741Z",
+   "by": "Jake",
+   "action": "d60: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:29:24.797Z",
+   "by": "Jake",
+   "action": "d58: deleted"
+  },
+  {
+   "t": "2026-08-22T18:30:03.301Z",
+   "by": "Jake",
+   "action": "d1: boundary -66:40..-65:29 \u2192 -66:40..-64:34"
+  },
+  {
+   "t": "2026-08-22T18:30:07.662Z",
+   "by": "Jake",
+   "action": "d1: boundary -66:40..-64:34 \u2192 -66:51..-64:34"
+  },
+  {
+   "t": "2026-08-22T18:31:27.565Z",
+   "by": "Jake",
+   "action": "d15: boundary -19:15..-18:20 \u2192 -19:41..-18:20"
+  },
+  {
+   "t": "2026-08-22T18:33:06.598Z",
+   "by": "Jake",
+   "action": "d21: boundary -6:06..-3:38 \u2192 -6:06..-3:19"
+  },
+  {
+   "t": "2026-08-22T18:35:11.590Z",
+   "by": "Jake",
+   "action": "d56: deleted"
+  },
+  {
+   "t": "2026-08-22T18:35:27.261Z",
+   "by": "Jake",
+   "action": "d55: deleted"
   }
  ]
 }

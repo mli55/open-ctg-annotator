@@ -1,10 +1,10 @@
 {
  "schema": 1,
  "record_id": 1112,
- "annotator": "detector",
+ "annotator": "mengning",
  "status": "open",
  "notes": "",
- "next_id": 67,
+ "next_id": 71,
  "decels": [
   {
    "id": "d60",
@@ -43,16 +43,17 @@
    "det_pass": 2
   },
   {
-   "id": "d62",
-   "a": -61.6,
-   "b": -61.15,
-   "a0": -61.6,
-   "b0": -61.15,
-   "origin": "detector",
-   "review": "pending",
+   "id": "dm67",
+   "a": -62.28333333333333,
+   "b": -62.05,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Jake",
    "type": "variable",
-   "nadir_min": -61.533,
-   "det_pass": 2
+   "det_type": null,
+   "nadir_min": -62.183
   },
   {
    "id": "d63",
@@ -68,15 +69,16 @@
   },
   {
    "id": "d64",
-   "a": -55.42,
+   "a": -55.583333333333336,
    "b": -55.25,
    "a0": -55.42,
    "b0": -55.25,
    "origin": "detector",
-   "review": "pending",
+   "review": "edited",
    "type": "variable",
-   "nadir_min": -55.333,
-   "det_pass": 2
+   "nadir_min": -55.533,
+   "det_pass": 2,
+   "by": "Jake"
   },
   {
    "id": "d65",
@@ -91,6 +93,19 @@
    "det_pass": 2
   },
   {
+   "id": "dm70",
+   "a": -47.8,
+   "b": -47.3,
+   "a0": null,
+   "b0": null,
+   "origin": "manual",
+   "review": "added",
+   "by": "Jake",
+   "type": "variable",
+   "det_type": null,
+   "nadir_min": -47.683
+  },
+  {
    "id": "d1",
    "a": -47.1,
    "b": -46.58,
@@ -99,7 +114,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -46.763,
+   "nadir_min": -46.767,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 26
@@ -125,7 +140,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "late",
-   "nadir_min": -41.808,
+   "nadir_min": -41.8,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 37
@@ -139,7 +154,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -40.408,
+   "nadir_min": -40.417,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -3
@@ -151,12 +166,13 @@
    "a0": -39.19,
    "b0": -38.09,
    "origin": "detector",
-   "review": "pending",
-   "type": "early",
-   "nadir_min": -38.179,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -38.183,
    "src_rule": null,
    "src_linker": "early",
-   "nadir_lag_s": -19
+   "nadir_lag_s": -19,
+   "by": "Jake"
   },
   {
    "id": "d5",
@@ -167,7 +183,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "early",
-   "nadir_min": -38.179,
+   "nadir_min": -38.183,
    "src_rule": null,
    "src_linker": "early",
    "nadir_lag_s": -19
@@ -179,12 +195,13 @@
    "a0": -37.23,
    "b0": -36.37,
    "origin": "detector",
-   "review": "pending",
-   "type": "variable",
-   "nadir_min": -36.871,
+   "review": "accepted",
+   "type": "late",
+   "nadir_min": -36.867,
    "src_rule": "variable",
    "src_linker": "variable",
-   "nadir_lag_s": 60
+   "nadir_lag_s": 60,
+   "by": "Jake"
   },
   {
    "id": "d66",
@@ -207,7 +224,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -34.908,
+   "nadir_min": -34.9,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -4
@@ -219,12 +236,13 @@
    "a0": -33.74,
    "b0": -32.44,
    "origin": "detector",
-   "review": "pending",
-   "type": "late",
+   "review": "accepted",
+   "type": "variable",
    "nadir_min": -32.767,
    "src_rule": "late",
    "src_linker": "late",
-   "nadir_lag_s": 60
+   "nadir_lag_s": 60,
+   "by": "Jake"
   },
   {
    "id": "d9",
@@ -233,12 +251,13 @@
    "a0": -31.48,
    "b0": -30.37,
    "origin": "detector",
-   "review": "pending",
-   "type": "na",
-   "nadir_min": -30.808,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -30.8,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": -45
+   "nadir_lag_s": -45,
+   "by": "Jake"
   },
   {
    "id": "d10",
@@ -247,12 +266,13 @@
    "a0": -29.78,
    "b0": -28.61,
    "origin": "detector",
-   "review": "pending",
-   "type": "late",
-   "nadir_min": -28.958,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -28.95,
    "src_rule": null,
    "src_linker": "late",
-   "nadir_lag_s": -62
+   "nadir_lag_s": -62,
+   "by": "Jake"
   },
   {
    "id": "d11",
@@ -263,7 +283,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -27.688,
+   "nadir_min": -27.7,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 13
@@ -275,12 +295,13 @@
    "a0": -26.05,
    "b0": -24.17,
    "origin": "detector",
-   "review": "pending",
-   "type": "na",
-   "nadir_min": -25.308,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -25.333,
    "src_rule": null,
    "src_linker": null,
-   "nadir_lag_s": -40
+   "nadir_lag_s": -40,
+   "by": "Jake"
   },
   {
    "id": "d13",
@@ -291,7 +312,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "prolonged",
-   "nadir_min": -23.104,
+   "nadir_min": -23.1,
    "src_rule": "prolonged",
    "src_linker": "early",
    "nadir_lag_s": -22
@@ -303,12 +324,13 @@
    "a0": -20.72,
    "b0": -19.24,
    "origin": "detector",
-   "review": "pending",
-   "type": "late",
-   "nadir_min": -20.038,
+   "review": "accepted",
+   "type": "variable",
+   "nadir_min": -20.033,
    "src_rule": "late",
    "src_linker": "early",
-   "nadir_lag_s": 71
+   "nadir_lag_s": 71,
+   "by": "Jake"
   },
   {
    "id": "d15",
@@ -333,7 +355,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -17.696,
+   "nadir_min": -17.683,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -52
@@ -347,7 +369,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "late",
-   "nadir_min": -16.108,
+   "nadir_min": -16.1,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 43
@@ -361,7 +383,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "late",
-   "nadir_min": -14.087,
+   "nadir_min": -14.083,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 72
@@ -375,7 +397,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -13.021,
+   "nadir_min": -13.017,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": -60
@@ -383,16 +405,17 @@
   {
    "id": "d20",
    "a": -12.03,
-   "b": -10.96,
+   "b": -10.733333333333333,
    "a0": -12.03,
    "b0": -10.96,
    "origin": "detector",
-   "review": "pending",
+   "review": "edited",
    "type": "late",
    "nadir_min": -11.05,
    "src_rule": "late",
    "src_linker": "early",
-   "nadir_lag_s": 58
+   "nadir_lag_s": 58,
+   "by": "mengning"
   },
   {
    "id": "d21",
@@ -403,24 +426,10 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -10.079,
+   "nadir_min": -10.083,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 36
-  },
-  {
-   "id": "d22",
-   "a": -8.79,
-   "b": -7.85,
-   "a0": -8.79,
-   "b0": -7.85,
-   "origin": "detector",
-   "review": "pending",
-   "type": "late",
-   "nadir_min": -8.117,
-   "src_rule": "late",
-   "src_linker": "late",
-   "nadir_lag_s": 66
   },
   {
    "id": "d23",
@@ -459,7 +468,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "early",
-   "nadir_min": -4.854,
+   "nadir_min": -4.85,
    "src_rule": "early",
    "src_linker": "early",
    "nadir_lag_s": -7
@@ -473,7 +482,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "variable",
-   "nadir_min": -3.812,
+   "nadir_min": -3.8,
    "src_rule": "variable",
    "src_linker": "variable",
    "nadir_lag_s": 56
@@ -499,7 +508,7 @@
    "origin": "detector",
    "review": "pending",
    "type": "late",
-   "nadir_min": -0.571,
+   "nadir_min": -0.567,
    "src_rule": "late",
    "src_linker": "late",
    "nadir_lag_s": 62
@@ -768,7 +777,164 @@
    "review": "pending"
   }
  ],
- "deleted": [],
- "updated": "2026-08-22T02:08:57.158605+00:00",
- "history": []
+ "deleted": [
+  {
+   "list": "decels",
+   "id": "d62",
+   "a": -61.6,
+   "b": -61.15,
+   "a0": -61.6,
+   "b0": -61.15,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "late",
+   "nadir_min": -61.533,
+   "det_pass": 2,
+   "by": "Jake"
+  },
+  {
+   "list": "decels",
+   "id": "d22",
+   "a": -15.7,
+   "b": -8.299999999999999,
+   "a0": -8.79,
+   "b0": -7.85,
+   "origin": "detector",
+   "review": "deleted",
+   "type": "late",
+   "nadir_min": -14.083,
+   "src_rule": "late",
+   "src_linker": "late",
+   "nadir_lag_s": 66,
+   "by": "mengning"
+  }
+ ],
+ "updated": "2026-08-26T19:13:17.125Z",
+ "history": [
+  {
+   "t": "2026-08-22T18:41:03.337Z",
+   "by": "Jake",
+   "action": "dm67: added -62:17 \u2192 -62:03"
+  },
+  {
+   "t": "2026-08-22T18:41:03.337Z",
+   "by": "Jake",
+   "action": "dm67: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:41:11.193Z",
+   "by": "Jake",
+   "action": "d62: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T18:41:20.625Z",
+   "by": "Jake",
+   "action": "d64: boundary -55:25..-55:15 \u2192 -55:35..-55:15"
+  },
+  {
+   "t": "2026-08-22T18:41:51.937Z",
+   "by": "Jake",
+   "action": "dm68: added -53:43 \u2192 -53:09"
+  },
+  {
+   "t": "2026-08-22T18:41:51.937Z",
+   "by": "Jake",
+   "action": "dm68: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T18:41:56.185Z",
+   "by": "Jake",
+   "action": "dm69: added -52:25 \u2192 -51:22"
+  },
+  {
+   "t": "2026-08-22T18:41:56.185Z",
+   "by": "Jake",
+   "action": "dm69: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T18:42:06.361Z",
+   "by": "Jake",
+   "action": "dm70: added -47:48 \u2192 -47:18"
+  },
+  {
+   "t": "2026-08-22T18:42:06.361Z",
+   "by": "Jake",
+   "action": "dm70: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:42:19.801Z",
+   "by": "Jake",
+   "action": "d4: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:42:26.506Z",
+   "by": "Jake",
+   "action": "d6: type \u2192 late"
+  },
+  {
+   "t": "2026-08-22T18:42:44.025Z",
+   "by": "Jake",
+   "action": "d8: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:42:50.601Z",
+   "by": "Jake",
+   "action": "d9: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:42:59.866Z",
+   "by": "Jake",
+   "action": "d10: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T18:43:04.817Z",
+   "by": "Jake",
+   "action": "d12: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:36:52.729Z",
+   "by": "Jake",
+   "action": "d62: deleted"
+  },
+  {
+   "t": "2026-08-22T19:37:14.899Z",
+   "by": "Jake",
+   "action": "dm68: deleted"
+  },
+  {
+   "t": "2026-08-22T19:37:18.307Z",
+   "by": "Jake",
+   "action": "dm69: deleted"
+  },
+  {
+   "t": "2026-08-22T19:37:59.923Z",
+   "by": "Jake",
+   "action": "d14: type \u2192 variable"
+  },
+  {
+   "t": "2026-08-22T19:41:23.023Z",
+   "by": "Jake",
+   "action": "note: decals from -16 to delivery difficult to characterize. this is a common pattern immediately prior to delivery. the return to baseline with moderate variability between contractions is evidence for normal fetal pH"
+  },
+  {
+   "t": "2026-08-22T21:52:43.719Z",
+   "by": "Mengning",
+   "action": "d22: boundary -8:47..-7:51 \u2192 -15:15..-7:51"
+  },
+  {
+   "t": "2026-08-26T19:13:07.908Z",
+   "by": "mengning",
+   "action": "d20: boundary -12:02..-10:58 \u2192 -12:02..-10:44"
+  },
+  {
+   "t": "2026-08-26T19:13:13.892Z",
+   "by": "mengning",
+   "action": "d22: moved -15:15..-7:51 \u2192 -15:42..-8:18"
+  },
+  {
+   "t": "2026-08-26T19:13:17.125Z",
+   "by": "mengning",
+   "action": "d22: deleted"
+  }
+ ]
 }

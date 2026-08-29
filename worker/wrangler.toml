@@ -2,6 +2,11 @@ name = "decel-review"
 main = "worker.js"
 compatibility_date = "2026-08-01"
 
+# The tool is reached here, not on a workers.dev subdomain: hospital web
+# filters block that domain wholesale as phishing-adjacent, which kept one
+# of the reviewers out entirely.
+routes = [ { pattern = "decel.sensingschool.org", custom_domain = true } ]
+
 [vars]
 # Records read BLIND: served with no baseline and no prefill, annotations
 # stored one copy per annotator under ann_blind/<annotator>/rec_N. Requires
@@ -19,4 +24,4 @@ run_worker_first = true
 # After `wrangler kv namespace create ANN`, paste the returned id below.
 [[kv_namespaces]]
 binding = "ANN"
-id = "84680cfe9de14a5e8af972365a64bb2c"
+id = "d699abc6ad9f464188e4926b4feee69d"
